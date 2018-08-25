@@ -17,9 +17,11 @@
 		BE3C84B4212BF7AD0053EFE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE3C84B2212BF7AD0053EFE2 /* LaunchScreen.storyboard */; };
 		BE3C84BF212BF7AD0053EFE2 /* clapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3C84BE212BF7AD0053EFE2 /* clapTests.swift */; };
 		BE3C84CA212BF7AD0053EFE2 /* clapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3C84C9212BF7AD0053EFE2 /* clapUITests.swift */; };
-		C94B0348213049B600B8F0DF /* GoogleService-Info (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = C94B0347213049B600B8F0DF /* GoogleService-Info (1).plist */; };
-		C94B0349213049B600B8F0DF /* GoogleService-Info (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = C94B0347213049B600B8F0DF /* GoogleService-Info (1).plist */; };
-		C94B034A213049B600B8F0DF /* GoogleService-Info (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = C94B0347213049B600B8F0DF /* GoogleService-Info (1).plist */; };
+		C923A41E2130D7E80007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
+		C923A4202130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
+		C923A4212130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
+		C9344D282130CFFD004931F1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE3C84CB212BF7AD0053EFE2 /* Info.plist */; };
+		C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D86592130808D00EDB3F2 /* registerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +62,8 @@
 		BE3C84C9212BF7AD0053EFE2 /* clapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clapUITests.swift; sourceTree = "<group>"; };
 		BE3C84CB212BF7AD0053EFE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0366C950F8733F1171BF265 /* Pods_clapUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clapUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C94B0347213049B600B8F0DF /* GoogleService-Info (1).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info (1).plist"; sourceTree = "<group>"; };
+		C923A41D2130D7E70007D784 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C93D86592130808D00EDB3F2 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
 		DC6E4A81ADE570696665400E /* Pods-clapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clapUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clapUITests/Pods-clapUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DFCB4A2A527B40ADB768C150 /* Pods_clap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -135,9 +138,10 @@
 				BE3C84AB212BF7AB0053EFE2 /* ViewController.swift */,
 				BE3C84AD212BF7AB0053EFE2 /* Main.storyboard */,
 				BE3C84B0212BF7AD0053EFE2 /* Assets.xcassets */,
+				C93D86592130808D00EDB3F2 /* registerViewController.swift */,
 				BE3C84B2212BF7AD0053EFE2 /* LaunchScreen.storyboard */,
 				BE3C84B5212BF7AD0053EFE2 /* Info.plist */,
-				C94B0347213049B600B8F0DF /* GoogleService-Info (1).plist */,
+				C923A41D2130D7E70007D784 /* GoogleService-Info.plist */,
 			);
 			path = clap;
 			sourceTree = "<group>";
@@ -281,7 +285,7 @@
 				BE3C84B4212BF7AD0053EFE2 /* LaunchScreen.storyboard in Resources */,
 				BE3C84B1212BF7AD0053EFE2 /* Assets.xcassets in Resources */,
 				BE3C84AF212BF7AB0053EFE2 /* Main.storyboard in Resources */,
-				C94B0348213049B600B8F0DF /* GoogleService-Info (1).plist in Resources */,
+				C923A41E2130D7E80007D784 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +293,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C94B0349213049B600B8F0DF /* GoogleService-Info (1).plist in Resources */,
+				C923A4202130D86A0007D784 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +301,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C94B034A213049B600B8F0DF /* GoogleService-Info (1).plist in Resources */,
+				C9344D282130CFFD004931F1 /* Info.plist in Resources */,
+				C923A4212130D86A0007D784 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,15 +314,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-clapUITests-checkManifestLockResult.txt",
 			);
@@ -331,15 +332,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-clap-checkManifestLockResult.txt",
 			);
@@ -353,8 +350,6 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-clap/Pods-clap-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
@@ -365,8 +360,6 @@
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
@@ -385,15 +378,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-clapTests-checkManifestLockResult.txt",
 			);
@@ -409,6 +398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */,
 				BE3C84AC212BF7AB0053EFE2 /* ViewController.swift in Sources */,
 				BE3C84AA212BF7AB0053EFE2 /* AppDelegate.swift in Sources */,
 			);
