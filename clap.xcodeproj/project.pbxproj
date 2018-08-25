@@ -20,6 +20,7 @@
 		C923A41E2130D7E80007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4202130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4212130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
+		C923A4232130F23D0007D784 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923A4222130F23D0007D784 /* LoginViewController.swift */; };
 		C9344D282130CFFD004931F1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE3C84CB212BF7AD0053EFE2 /* Info.plist */; };
 		C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D86592130808D00EDB3F2 /* registerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		BE3C84CB212BF7AD0053EFE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0366C950F8733F1171BF265 /* Pods_clapUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clapUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C923A41D2130D7E70007D784 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C923A4222130F23D0007D784 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C93D86592130808D00EDB3F2 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
 		DC6E4A81ADE570696665400E /* Pods-clapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clapUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clapUITests/Pods-clapUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DFCB4A2A527B40ADB768C150 /* Pods_clap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +143,7 @@
 				C93D86592130808D00EDB3F2 /* registerViewController.swift */,
 				BE3C84B2212BF7AD0053EFE2 /* LaunchScreen.storyboard */,
 				BE3C84B5212BF7AD0053EFE2 /* Info.plist */,
+				C923A4222130F23D0007D784 /* LoginViewController.swift */,
 				C923A41D2130D7E70007D784 /* GoogleService-Info.plist */,
 			);
 			path = clap;
@@ -398,6 +401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C923A4232130F23D0007D784 /* LoginViewController.swift in Sources */,
 				C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */,
 				BE3C84AC212BF7AB0053EFE2 /* ViewController.swift in Sources */,
 				BE3C84AA212BF7AB0053EFE2 /* AppDelegate.swift in Sources */,

@@ -954,7 +954,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iNp-uK-cmn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3583" y="1947"/>
+            <point key="canvasLocation" x="4580" y="1924"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="QzJ-Qg-dTZ">
@@ -1238,7 +1238,7 @@
                                 <state key="normal" title="ログインへ"/>
                                 <connections>
                                     <action selector="loginSegueButton:" destination="hV5-Or-8Yr" eventType="touchUpInside" id="Oza-ze-YtN"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="goToLoginImplement" id="uau-Th-fca"/>
+                                    <segue destination="Exz-gh-qmw" kind="show" identifier="goLoginCommonPeople" id="rUM-ut-Sfw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1314,10 +1314,10 @@
             </objects>
             <point key="canvasLocation" x="2873.913043478261" y="-632.60869565217399"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="v2B-7L-1kT">
             <objects>
-                <viewController id="Exz-gh-qmw" sceneMemberID="viewController">
+                <viewController id="Exz-gh-qmw" customClass="LoginViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QG4-uV-W90">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1364,6 +1364,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="commonLoginButton:" destination="Exz-gh-qmw" eventType="touchUpInside" id="EiG-xw-Puv"/>
                                     <segue destination="pc3-OC-xLU" kind="show" identifier="goScheduleByUser" id="awe-qS-XVo"/>
                                 </connections>
                             </button>
@@ -1383,6 +1384,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dko-z1-IC6"/>
                     </view>
+                    <connections>
+                        <outlet property="commonMailaddress" destination="FhA-IV-1en" id="BCr-iZ-YD4"/>
+                        <outlet property="commonPassword" destination="y4o-IO-hNi" id="YTC-lr-d1M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ar8-CD-spD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1403,10 +1408,10 @@
         <image name="weight" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="rUM-ut-Sfw"/>
         <segue reference="nXu-dS-S0Q"/>
         <segue reference="awe-qS-XVo"/>
         <segue reference="pbd-Qj-8zi"/>
         <segue reference="OPz-uV-KhT"/>
-        <segue reference="uau-Th-fca"/>
     </inferredMetricsTieBreakers>
 </document>

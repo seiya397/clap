@@ -1,5 +1,5 @@
 //
-//  registerViewController.swift
+//  LoginViewController.swift
 //  clap
 //
 //  Created by オムラユウキ on 2018/08/25.
@@ -8,20 +8,16 @@
 
 import UIKit
 import Firebase
-import FirebaseAuth
-import SVProgressHUD
 
-class registerViewController: UIViewController {
+class LoginViewController: UIViewController {
 
-    @IBOutlet weak var mailAddress: UITextField!
-    @IBOutlet weak var paswordRegister: UITextField!
+    @IBOutlet weak var commonMailaddress: UITextField!
+    @IBOutlet weak var commonPassword: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        mailAddress.layer.borderWidth = 2
-        paswordRegister.layer.borderWidth = 2
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,22 +25,18 @@ class registerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func registerButton(_ sender: Any) {
-        Auth.auth().createUser(withEmail: mailAddress.text!, password: paswordRegister.text!) { (user, error) in
+    @IBAction func commonLoginButton(_ sender: Any) {
+        Auth.auth().signIn(withEmail: commonMailaddress.text!, password: commonPassword.text!) { (user, error) in
             if let error = error {
-                print(error)
+                print("loginに失敗しました🧠")
+                return
             }
             if let _ = user {
-                print("登録できました")
+                print("loginに成功しました🧠")
             }
         }
     }
     
-    
-    
-    @IBAction func loginSegueButton(_ sender: Any) {
-        performSegue(withIdentifier: "goLoginCommonPeople", sender: nil)
-    }
     /*
     // MARK: - Navigation
 
