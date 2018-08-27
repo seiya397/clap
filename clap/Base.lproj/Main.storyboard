@@ -90,10 +90,10 @@
             </objects>
             <point key="canvasLocation" x="922" y="-633"/>
         </scene>
-        <!--View Controller-->
+        <!--Manager Login View Controller-->
         <scene sceneID="mrs-dH-mgT">
             <objects>
-                <viewController id="uuz-ti-KT8" sceneMemberID="viewController">
+                <viewController id="uuz-ti-KT8" customClass="managerLoginViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tMY-6y-gbe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,6 +120,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="managerNextButton:" destination="uuz-ti-KT8" eventType="touchUpInside" id="XUN-4V-keZ"/>
                                     <segue destination="pc3-OC-xLU" kind="show" identifier="goScheduleByManager" id="73o-TZ-1lJ"/>
                                 </connections>
                             </button>
@@ -138,6 +139,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="managerRegisterButton:" destination="uuz-ti-KT8" eventType="touchUpInside" id="LhS-f3-auE"/>
                                     <segue destination="9fd-S7-fus" kind="show" identifier="goManagerRegister" id="chc-yu-1Vn"/>
                                 </connections>
                             </button>
@@ -145,15 +147,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="L4M-OM-L8B"/>
                     </view>
+                    <connections>
+                        <outlet property="managerMailaddress" destination="1Qp-Se-sNh" id="G4Y-0W-oIU"/>
+                        <outlet property="managerPassword" destination="i9c-Ko-8pR" id="pGK-Pe-Jza"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QNz-lc-xm8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-313" y="2892"/>
         </scene>
-        <!--View Controller-->
+        <!--Team Info Register View Controller-->
         <scene sceneID="X0q-hG-GSX">
             <objects>
-                <viewController id="kDL-WT-C0p" sceneMemberID="viewController">
+                <viewController id="kDL-WT-C0p" customClass="teamInfoRegisterViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4J2-zH-J7s">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,6 +201,7 @@
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="managerRegisterNextButton:" destination="kDL-WT-C0p" eventType="touchUpInside" id="Drn-xK-Cic"/>
                                     <segue destination="4lN-n7-eCR" kind="show" identifier="goTaemID" id="hus-f0-nhc"/>
                                 </connections>
                             </button>
@@ -221,15 +228,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="M01-14-PkQ"/>
                     </view>
+                    <connections>
+                        <outlet property="belongTo" destination="IRK-p4-7gD" id="z3U-br-OcC"/>
+                        <outlet property="managerName" destination="dU9-1F-zw3" id="tl4-Dk-PE2"/>
+                        <outlet property="sports" destination="jx0-pz-oIM" id="5jU-0s-YXw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sXT-Pj-2wR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="541" y="3715"/>
         </scene>
-        <!--View Controller-->
+        <!--Manager Register View Controller-->
         <scene sceneID="nG8-tv-bcw">
             <objects>
-                <viewController id="9fd-S7-fus" sceneMemberID="viewController">
+                <viewController id="9fd-S7-fus" customClass="managerRegisterViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mtY-AK-6pg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -244,6 +256,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="managerRegisterNextButton:" destination="9fd-S7-fus" eventType="touchUpInside" id="rx0-9t-I6i"/>
                                     <segue destination="kDL-WT-C0p" kind="show" identifier="goTeamRegister" id="pbd-Qj-8zi"/>
                                 </connections>
                             </button>
@@ -298,6 +311,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bGg-61-JpY"/>
                     </view>
+                    <connections>
+                        <outlet property="managerRegisterMailaddress" destination="0Xn-QG-LIU" id="hdP-ZR-yPc"/>
+                        <outlet property="managerRegisterPassword" destination="8PB-Jl-HDb" id="rY1-NA-Ey2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Yw-yy-P3f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1408,9 +1425,10 @@
         <image name="weight" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="hus-f0-nhc"/>
         <segue reference="rUM-ut-Sfw"/>
         <segue reference="nXu-dS-S0Q"/>
-        <segue reference="awe-qS-XVo"/>
+        <segue reference="73o-TZ-1lJ"/>
         <segue reference="pbd-Qj-8zi"/>
         <segue reference="OPz-uV-KhT"/>
     </inferredMetricsTieBreakers>

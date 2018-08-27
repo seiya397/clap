@@ -1,8 +1,8 @@
 //
-//  LoginViewController.swift
+//  managerRegisterViewController.swift
 //  clap
 //
-//  Created by オムラユウキ on 2018/08/25.
+//  Created by オムラユウキ on 2018/08/26.
 //  Copyright © 2018年 Seiya. All rights reserved.
 //
 
@@ -10,10 +10,10 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class LoginViewController: UIViewController {
+class managerRegisterViewController: UIViewController {
     
-    @IBOutlet weak var commonMailaddress: UITextField!
-    @IBOutlet weak var commonPassword: UITextField!
+    @IBOutlet weak var managerRegisterMailaddress: UITextField!
+    @IBOutlet weak var managerRegisterPassword: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +26,14 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func commonLoginButton(_ sender: Any) {
-        Auth.auth().signIn(withEmail: commonMailaddress.text!, password: commonPassword.text!) { (user, error) in
+    @IBAction func managerRegisterNextButton(_ sender: Any) {
+        Auth.auth().createUser(withEmail: managerRegisterMailaddress.text!, password: managerRegisterMailaddress.text!) { (user, error) in
             if let error = error {
-                print("loginに失敗しました🧠")
-                return
+                print("エラーが発生したぜ")
             }
-            if let _ = user {
-                print("loginに成功しました🧠")
-                self.dismiss(animated: true, completion: nil)
-                self.performSegue(withIdentifier: "goScheduleByUser", sender: nil)
+            if let user = user {
+                print("成功したぜ")
+                self.performSegue(withIdentifier: "goTeamRegister", sender: nil)
             }
         }
     }

@@ -17,6 +17,9 @@
 		BE3C84B4212BF7AD0053EFE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE3C84B2212BF7AD0053EFE2 /* LaunchScreen.storyboard */; };
 		BE3C84BF212BF7AD0053EFE2 /* clapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3C84BE212BF7AD0053EFE2 /* clapTests.swift */; };
 		BE3C84CA212BF7AD0053EFE2 /* clapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3C84C9212BF7AD0053EFE2 /* clapUITests.swift */; };
+		C906488E213393000025AD44 /* managerLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C906488D213393000025AD44 /* managerLoginViewController.swift */; };
+		C9064890213393180025AD44 /* managerRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C906488F213393180025AD44 /* managerRegisterViewController.swift */; };
+		C9064892213393340025AD44 /* teamInfoRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9064891213393340025AD44 /* teamInfoRegisterViewController.swift */; };
 		C923A41E2130D7E80007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4202130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4212130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
@@ -63,6 +66,9 @@
 		BE3C84C9212BF7AD0053EFE2 /* clapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clapUITests.swift; sourceTree = "<group>"; };
 		BE3C84CB212BF7AD0053EFE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0366C950F8733F1171BF265 /* Pods_clapUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clapUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C906488D213393000025AD44 /* managerLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = managerLoginViewController.swift; sourceTree = "<group>"; };
+		C906488F213393180025AD44 /* managerRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = managerRegisterViewController.swift; sourceTree = "<group>"; };
+		C9064891213393340025AD44 /* teamInfoRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamInfoRegisterViewController.swift; sourceTree = "<group>"; };
 		C923A41D2130D7E70007D784 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C923A4222130F23D0007D784 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C93D86592130808D00EDB3F2 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
@@ -142,8 +148,11 @@
 				BE3C84B0212BF7AD0053EFE2 /* Assets.xcassets */,
 				C93D86592130808D00EDB3F2 /* registerViewController.swift */,
 				BE3C84B2212BF7AD0053EFE2 /* LaunchScreen.storyboard */,
+				C906488F213393180025AD44 /* managerRegisterViewController.swift */,
 				BE3C84B5212BF7AD0053EFE2 /* Info.plist */,
+				C906488D213393000025AD44 /* managerLoginViewController.swift */,
 				C923A4222130F23D0007D784 /* LoginViewController.swift */,
+				C9064891213393340025AD44 /* teamInfoRegisterViewController.swift */,
 				C923A41D2130D7E70007D784 /* GoogleService-Info.plist */,
 			);
 			path = clap;
@@ -401,6 +410,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9064892213393340025AD44 /* teamInfoRegisterViewController.swift in Sources */,
+				C906488E213393000025AD44 /* managerLoginViewController.swift in Sources */,
+				C9064890213393180025AD44 /* managerRegisterViewController.swift in Sources */,
 				C923A4232130F23D0007D784 /* LoginViewController.swift in Sources */,
 				C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */,
 				BE3C84AC212BF7AB0053EFE2 /* ViewController.swift in Sources */,
