@@ -30,8 +30,10 @@ class teamInfoRegisterViewController: UIViewController {
     }
     
     @IBAction func managerRegisterNextButton(_ sender: Any) {
-        let messageData = ["belong": belongTo.text!, "sport": sports.text!, "manager": managerName.text!]
-        databaseRef.childByAutoId().setValue(messageData)
+        let messageData = ["manager": managerName.text!]
+        
+        databaseRef.child(belongTo.text!).child(sports.text!).childByAutoId().setValue(messageData)
+        //選択式にすべき！！！！！！！
     }
     /*
      // MARK: - Navigation

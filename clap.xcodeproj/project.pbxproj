@@ -20,6 +20,9 @@
 		C906488E213393000025AD44 /* managerLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C906488D213393000025AD44 /* managerLoginViewController.swift */; };
 		C9064890213393180025AD44 /* managerRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C906488F213393180025AD44 /* managerRegisterViewController.swift */; };
 		C9064892213393340025AD44 /* teamInfoRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9064891213393340025AD44 /* teamInfoRegisterViewController.swift */; };
+		C90648942133C6B80025AD44 /* userInfoRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90648932133C6B80025AD44 /* userInfoRegisterViewController.swift */; };
+		C90648962133E2B20025AD44 /* teamIdGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90648952133E2B20025AD44 /* teamIdGenerateViewController.swift */; };
+		C90648982133F1EA0025AD44 /* scheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90648972133F1EA0025AD44 /* scheduleViewController.swift */; };
 		C923A41E2130D7E80007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4202130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4212130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
@@ -69,6 +72,9 @@
 		C906488D213393000025AD44 /* managerLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = managerLoginViewController.swift; sourceTree = "<group>"; };
 		C906488F213393180025AD44 /* managerRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = managerRegisterViewController.swift; sourceTree = "<group>"; };
 		C9064891213393340025AD44 /* teamInfoRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamInfoRegisterViewController.swift; sourceTree = "<group>"; };
+		C90648932133C6B80025AD44 /* userInfoRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userInfoRegisterViewController.swift; sourceTree = "<group>"; };
+		C90648952133E2B20025AD44 /* teamIdGenerateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdGenerateViewController.swift; sourceTree = "<group>"; };
+		C90648972133F1EA0025AD44 /* scheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleViewController.swift; sourceTree = "<group>"; };
 		C923A41D2130D7E70007D784 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C923A4222130F23D0007D784 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C93D86592130808D00EDB3F2 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
@@ -146,13 +152,16 @@
 				BE3C84AB212BF7AB0053EFE2 /* ViewController.swift */,
 				BE3C84AD212BF7AB0053EFE2 /* Main.storyboard */,
 				BE3C84B0212BF7AD0053EFE2 /* Assets.xcassets */,
-				C93D86592130808D00EDB3F2 /* registerViewController.swift */,
 				BE3C84B2212BF7AD0053EFE2 /* LaunchScreen.storyboard */,
+				C93D86592130808D00EDB3F2 /* registerViewController.swift */,
 				C906488F213393180025AD44 /* managerRegisterViewController.swift */,
-				BE3C84B5212BF7AD0053EFE2 /* Info.plist */,
-				C906488D213393000025AD44 /* managerLoginViewController.swift */,
-				C923A4222130F23D0007D784 /* LoginViewController.swift */,
+				C90648932133C6B80025AD44 /* userInfoRegisterViewController.swift */,
 				C9064891213393340025AD44 /* teamInfoRegisterViewController.swift */,
+				C923A4222130F23D0007D784 /* LoginViewController.swift */,
+				C90648972133F1EA0025AD44 /* scheduleViewController.swift */,
+				C90648952133E2B20025AD44 /* teamIdGenerateViewController.swift */,
+				C906488D213393000025AD44 /* managerLoginViewController.swift */,
+				BE3C84B5212BF7AD0053EFE2 /* Info.plist */,
 				C923A41D2130D7E70007D784 /* GoogleService-Info.plist */,
 			);
 			path = clap;
@@ -364,7 +373,9 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-clap/Pods-clap-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CalculateCalendarLogic/CalculateCalendarLogic.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
@@ -373,7 +384,9 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CalculateCalendarLogic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
@@ -413,9 +426,12 @@
 				C9064892213393340025AD44 /* teamInfoRegisterViewController.swift in Sources */,
 				C906488E213393000025AD44 /* managerLoginViewController.swift in Sources */,
 				C9064890213393180025AD44 /* managerRegisterViewController.swift in Sources */,
+				C90648982133F1EA0025AD44 /* scheduleViewController.swift in Sources */,
 				C923A4232130F23D0007D784 /* LoginViewController.swift in Sources */,
 				C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */,
+				C90648962133E2B20025AD44 /* teamIdGenerateViewController.swift in Sources */,
 				BE3C84AC212BF7AB0053EFE2 /* ViewController.swift in Sources */,
+				C90648942133C6B80025AD44 /* userInfoRegisterViewController.swift in Sources */,
 				BE3C84AA212BF7AB0053EFE2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
