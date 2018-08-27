@@ -7,16 +7,23 @@
 //
 
 import UIKit
+import Firebase
 
 class teamIdGenerateViewController: UIViewController {
 
     @IBOutlet weak var generateTeamId: UILabel!
+    
+    var databaseRef:DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
         // Do any additional setup after loading the view.
+        databaseRef = Database.database().reference()
+        let resultNum = self.randomString(length: 10)
+        databaseRef.childByAutoId().setValue(resultNum)
+        print(self.randomString(length: 10))
         
     }
 
@@ -27,6 +34,22 @@ class teamIdGenerateViewController: UIViewController {
     
     @IBAction func goLoginButton(_ sender: Any) {
         
+    }
+    
+    func randomString(length: Int) -> String {
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = UInt32(letters.length)
+        
+        var randomString = ""
+        
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+        
+        return randomString
     }
     
     /*
