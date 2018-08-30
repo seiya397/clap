@@ -10,6 +10,7 @@ target 'clap' do
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
+pod 'FirebaseStorage'
 pod 'SVProgressHUD'
 pod 'ChameleonFramework'
 pod 'FSCalendar'

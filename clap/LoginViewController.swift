@@ -28,13 +28,15 @@ class LoginViewController: UIViewController {
     
     @IBAction func commonLoginButton(_ sender: Any) {
         Auth.auth().signIn(withEmail: commonMailaddress.text!, password: commonPassword.text!) { (user, error) in
-            if let error = error {
+            if error != nil {
                 print("loginに失敗しました🧠")
                 return
             }
             if let _ = user {
                 print("loginに成功しました🧠")
-                self.dismiss(animated: true, completion: nil)
+                let storyboard: UIStoryboard = self.storyboard!
+                let nextView = storyboard.instantiateViewController(withIdentifier: "Image")
+                self.present(nextView, animated: true, completion: nil)
                 self.performSegue(withIdentifier: "goScheduleByUser", sender: nil)
             }
         }

@@ -23,6 +23,7 @@
 		C90648942133C6B80025AD44 /* userInfoRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90648932133C6B80025AD44 /* userInfoRegisterViewController.swift */; };
 		C90648962133E2B20025AD44 /* teamIdGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90648952133E2B20025AD44 /* teamIdGenerateViewController.swift */; };
 		C90648982133F1EA0025AD44 /* scheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90648972133F1EA0025AD44 /* scheduleViewController.swift */; };
+		C9162C9121367F3800370F34 /* managerUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9162C9021367F3800370F34 /* managerUpdateViewController.swift */; };
 		C923A41E2130D7E80007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4202130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4212130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
@@ -75,6 +76,7 @@
 		C90648932133C6B80025AD44 /* userInfoRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userInfoRegisterViewController.swift; sourceTree = "<group>"; };
 		C90648952133E2B20025AD44 /* teamIdGenerateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdGenerateViewController.swift; sourceTree = "<group>"; };
 		C90648972133F1EA0025AD44 /* scheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleViewController.swift; sourceTree = "<group>"; };
+		C9162C9021367F3800370F34 /* managerUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = managerUpdateViewController.swift; sourceTree = "<group>"; };
 		C923A41D2130D7E70007D784 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C923A4222130F23D0007D784 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C93D86592130808D00EDB3F2 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				C90648932133C6B80025AD44 /* userInfoRegisterViewController.swift */,
 				C9064891213393340025AD44 /* teamInfoRegisterViewController.swift */,
 				C923A4222130F23D0007D784 /* LoginViewController.swift */,
+				C9162C9021367F3800370F34 /* managerUpdateViewController.swift */,
 				C90648972133F1EA0025AD44 /* scheduleViewController.swift */,
 				C90648952133E2B20025AD44 /* teamIdGenerateViewController.swift */,
 				C906488D213393000025AD44 /* managerLoginViewController.swift */,
@@ -427,6 +430,7 @@
 				C906488E213393000025AD44 /* managerLoginViewController.swift in Sources */,
 				C9064890213393180025AD44 /* managerRegisterViewController.swift in Sources */,
 				C90648982133F1EA0025AD44 /* scheduleViewController.swift in Sources */,
+				C9162C9121367F3800370F34 /* managerUpdateViewController.swift in Sources */,
 				C923A4232130F23D0007D784 /* LoginViewController.swift in Sources */,
 				C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */,
 				C90648962133E2B20025AD44 /* teamIdGenerateViewController.swift in Sources */,

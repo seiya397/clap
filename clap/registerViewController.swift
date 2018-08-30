@@ -35,16 +35,12 @@ class registerViewController: UIViewController {
                 print(error)
             }
             if let _ = user {
-                print("登録できました")
+                print("登録ok!!")
             }
         }
     }
     
     
-    
-    @IBAction func loginSegueButton(_ sender: Any) {
-        performSegue(withIdentifier: "goLoginCommonPeople", sender: nil)
-    }
     /*
     // MARK: - Navigation
 

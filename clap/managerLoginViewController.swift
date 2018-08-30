@@ -30,6 +30,11 @@ class managerLoginViewController: UIViewController {
     @IBAction func managerRegisterButton(_ sender: Any) {
         performSegue(withIdentifier: "goManagerRegister", sender: nil)
     }
+    
+    @IBAction func updateRegisterInfoButton(_ sender: Any) {
+        performSelector(inBackground: Selector("goUpdatePage"), with: nil)
+    }
+    
     /*
      // MARK: - Navigation
      

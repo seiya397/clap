@@ -36,9 +36,10 @@ class userInfoRegisterViewController: UIViewController {
     
     @IBAction func userInfoRegisterButton(_ sender: Any) {
 //        let messageData = ["manager": managerName.text!]
+//        let invidiv = 
         let userBasicInfo = ["userName": userName.text!, "userAge": userAge.text!, "userWight": userWeight.text!, "userHeight": userHeight.text!]
         
-        databaseRef.child(teamID.text!).child(userPosition.text!).child(userJender.text!).childByAutoId().setValue(userBasicInfo)
+        databaseRef.child("invidiv").childByAutoId().setValue(userBasicInfo) //firebaeからindivキーを取得し、そこの階層直下に配備
         //選択式にすべき！！！！！！！
     }
     
