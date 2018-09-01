@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
             FirebaseApp.configure()
+//        Auth.auth().addStateDidChangeListener { (auth, user) in
+//            if user != nil && user!.isEmailVerified {
+//                let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//                let nextView: mainPageViewController = mainStoryBoard.instantiateViewController(withIdentifier: "mainPageViewController") as! mainPageViewController
+//                self.window?.rootViewController = nextView
+//            }
+//        }
         return true
     }
 

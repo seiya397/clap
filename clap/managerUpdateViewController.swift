@@ -11,14 +11,8 @@ import UIKit
 class managerUpdateViewController: UIViewController {
 
     @IBOutlet weak var currentBrlongTo: UILabel!
-    @IBOutlet weak var currentSports: UILabel!
-    @IBOutlet weak var currentManagerName: UILabel!
-    @IBOutlet weak var currentManagerAge: UILabel!
     
     @IBOutlet weak var updateBelongTo: UITextField!
-    @IBOutlet weak var updateSports: UITextField!
-    @IBOutlet weak var updateManagerName: UITextField!
-    @IBOutlet weak var updateManagerAge: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
