@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseStorage
 import FirebaseDatabase
+import FirebaseFirestore
 import MobileCoreServices
 
 class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
@@ -19,11 +20,12 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     @IBOutlet weak var managerName: UITextField!
     @IBOutlet weak var managerAge: UITextField!
     @IBOutlet weak var userProfileImageView: UIImageView!
+    @IBOutlet weak var roleTextField: UITextField!
     
-    var databaseRef:DatabaseReference!
-    
+    let db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let currentUser = Auth.auth().currentUser
         
         if currentUser == nil {
@@ -36,8 +38,6 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
         print("varified \(String(describing: currentUser?.isEmailVerified))")
         
         // Do any additional setup after loading the view.
-        var databaseReference:DatabaseReference!
-        databaseRef = Database.database().reference()
         
         let storageReference = Storage.storage().reference()
         let profileImageDownloadUrlReference = storageReference.child("user/\(currentUser!.uid)/\(currentUser!.uid)-profileImage.jpg")
@@ -71,6 +71,7 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     }
     
     @IBAction func managerRegisterNextButton(_ sender: Any) {
+        let currentUser = Auth.auth().currentUser
         let dateUnix: TimeInterval = Date().timeIntervalSince1970
         let date = Date(timeIntervalSince1970: dateUnix)
         // NSDate型を日時文字列に変換するためのNSDateFormatterを生成
@@ -78,11 +79,23 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         // NSDateFormatterを使ってNSDate型 "date" を日時文字列 "dateStr" に変換
         let dateStr: String = formatter.string(from: date) //現在時刻取得
-        let messageData = ["manager": managerName.text!, "age": managerAge.text!, "createAccount": dateStr]
-        let resultNum = self.randomString(length: 10) as! String
-        print(self.randomString(length: 10))
         
-        databaseRef.child(resultNum).child(belongTo.text!).child(sports.text!).child("invidiv").childByAutoId().setValue(messageData)
+        //----------------------------------------------------- firestore
+        let messageData = ["name": managerName.text!, "age": managerAge.text!,"role":roleTextField.text!, "createAccount": dateStr, "clap": 3,"profileImage": "user/\(currentUser!.uid)/\(currentUser!.uid)-profileImage.jpg"] as [String : Any]
+        
+        var ref: DocumentReference? = nil
+        
+        ref = db.collection(sports.text!).addDocument(data: ["Belong" : belongTo.text!]).collection("users").addDocument(data: messageData)
+        {
+            err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+        //-----------------------------------------------------
+
         //選択式にすべき！！！！！！！
     }
     
@@ -93,23 +106,6 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
         profileImagePicker.mediaTypes = [kUTTypeImage as String]
         profileImagePicker.delegate = self
         present(profileImagePicker, animated: true, completion: nil)
-    }
-    
-
-    func randomString(length: Int) -> Any {
-        
-        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        let len = UInt32(letters.length)
-        
-        var randomString = ""
-        
-        for _ in 0 ..< length {
-            let rand = arc4random_uniform(len)
-            var nextChar = letters.character(at: Int(rand))
-            randomString += NSString(characters: &nextChar, length: 1) as String
-        }
-        
-        return randomString
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
@@ -127,7 +123,7 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     }
     
     func uploadProfileImage(imageData: Data){ //firebaseStorageへのアップ
-        let activityIndicator = UIActivityIndicatorView.init(activityIndicatorStyle: .gray)
+        let activityIndicator = UIActivityIndicatorView.init(activityIndicatorStyle: .gray)//while upload
         activityIndicator.startAnimating()
         activityIndicator.center = self.view.center
         self.view.addSubview(activityIndicator)
