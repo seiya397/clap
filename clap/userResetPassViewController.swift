@@ -1,17 +1,17 @@
 //
-//  passwordResetViewController.swift
+//  userResetPassViewController.swift
 //  clap
 //
-//  Created by オムラユウキ on 2018/09/01.
+//  Created by オムラユウキ on 2018/09/02.
 //  Copyright © 2018年 Seiya. All rights reserved.
 //
 
 import UIKit
 import FirebaseAuth
 
-class passwordResetViewController: UIViewController {
-    @IBOutlet weak var emaiAddoressText: UITextField!
-    
+class userResetPassViewController: UIViewController {
+
+    @IBOutlet weak var userEmailForResetPass: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,10 +23,10 @@ class passwordResetViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func resetPasswordTapped(_ sender: Any) {
-        guard let emailAddress = emaiAddoressText.text, !emailAddress.isEmpty else {return}
+    @IBAction func resetPassButtonTapped(_ sender: Any) {//resetButton
+        guard let userEmailAddress = userEmailForResetPass.text, !userEmailAddress.isEmpty else {return}
         
-        Auth.auth().sendPasswordReset(withEmail: emailAddress) { (error) in
+        Auth.auth().sendPasswordReset(withEmail: userEmailAddress) { (error) in
             if error != nil {
                 self.ShowMessage(messageToDisplay: (error?.localizedDescription)!)
                 return
@@ -35,7 +35,7 @@ class passwordResetViewController: UIViewController {
         }
     }
     
-    @IBAction func cancelButtonTapped(_ sender: Any) {
+    @IBAction func usercancelButtonTapped(_ sender: Any) {//cancelButton
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -50,5 +50,4 @@ class passwordResetViewController: UIViewController {
         
         self.present(alertController, animated: true, completion: nil)
     }
-
 }

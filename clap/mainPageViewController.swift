@@ -27,7 +27,7 @@ class mainPageViewController: UIViewController {
         do {
             try Auth.auth().signOut()
             
-            let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "managerLoginViewController") as! managerLoginViewController
+            let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "topSelectPageViewController") as! topSelectPageViewController
             
             let appDelegate = UIApplication.shared.delegate
             

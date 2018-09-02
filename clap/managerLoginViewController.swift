@@ -41,6 +41,7 @@ class managerLoginViewController: UIViewController {
                 self.ShowMessage(messageToDisplay: error.localizedDescription)
                 return
             }
+            
             if user != nil {
                 let mainPage = self.storyboard?.instantiateViewController(withIdentifier: "mainPageViewController") as! mainPageViewController
                 self.present(mainPage, animated: true, completion: nil)

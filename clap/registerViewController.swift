@@ -15,6 +15,7 @@ class registerViewController: UIViewController {
 
     @IBOutlet weak var mailAddress: UITextField!
     @IBOutlet weak var paswordRegister: UITextField!
+    @IBOutlet weak var oneMorePasswordRegister: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,25 +31,50 @@ class registerViewController: UIViewController {
     }
     
     @IBAction func registerButton(_ sender: Any) {
-        Auth.auth().createUser(withEmail: mailAddress.text!, password: paswordRegister.text!) { (user, error) in
+        guard let userRegisterMailText = mailAddress.text, !userRegisterMailText.isEmpty else {
+            self.ShowMessage(messageToDisplay: "メールアドレスを記入してください。")
+            return
+        }
+        guard let userRegisterPassText = paswordRegister.text, !userRegisterPassText.isEmpty else {
+            self.ShowMessage(messageToDisplay: "パスワードを記入してください。")
+            return
+        }
+        guard let userRegisterResetPassText = oneMorePasswordRegister.text, !userRegisterResetPassText.isEmpty else {
+            self.ShowMessage(messageToDisplay: "パスワードを記入してください。")
+            return
+        }
+        Auth.auth().createUser(withEmail: userRegisterMailText, password: userRegisterPassText) { (user, error) in
             if let error = error {
-                print(error)
+                print(error.localizedDescription)
+                self.ShowMessage(messageToDisplay: error.localizedDescription)
+                return
             }
-            if let _ = user {
-                print("登録ok!!")
+            if let user = user {
+                var databaseReference: DatabaseReference!
+                databaseReference = Database.database().reference()
+                print("success")
+                self.performSegue(withIdentifier: "goPlofileRegister", sender: nil)
             }
         }
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func userRegisterCancelButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
-    */
+    
+    
+    //認証用関数
+    public func ShowMessage(messageToDisplay: String) {
+        let alertController = UIAlertController(title: "Alert Title", message: messageToDisplay, preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "ok", style: .default) { (action: UIAlertAction!) in
+            print("ok button tapped!!")
+        }
+        
+        alertController.addAction(OKAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 
 }

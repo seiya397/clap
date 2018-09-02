@@ -32,6 +32,8 @@
 		C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D86592130808D00EDB3F2 /* registerViewController.swift */; };
 		C96247462139D5C000BC7C69 /* mainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96247452139D5C000BC7C69 /* mainPageViewController.swift */; };
 		C9624749213A955A00BC7C69 /* passwordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9624748213A955A00BC7C69 /* passwordResetViewController.swift */; };
+		C962474B213B895C00BC7C69 /* userResetPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962474A213B895C00BC7C69 /* userResetPassViewController.swift */; };
+		C962474D213B9D1D00BC7C69 /* topSelectPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,8 @@
 		C93D86592130808D00EDB3F2 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
 		C96247452139D5C000BC7C69 /* mainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainPageViewController.swift; sourceTree = "<group>"; };
 		C9624748213A955A00BC7C69 /* passwordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passwordResetViewController.swift; sourceTree = "<group>"; };
+		C962474A213B895C00BC7C69 /* userResetPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userResetPassViewController.swift; sourceTree = "<group>"; };
+		C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = topSelectPageViewController.swift; sourceTree = "<group>"; };
 		DC6E4A81ADE570696665400E /* Pods-clapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clapUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clapUITests/Pods-clapUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DFCB4A2A527B40ADB768C150 /* Pods_clap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -155,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				BE3C84A9212BF7AB0053EFE2 /* AppDelegate.swift */,
+				C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */,
 				BE3C84AB212BF7AB0053EFE2 /* ViewController.swift */,
 				BE3C84AD212BF7AB0053EFE2 /* Main.storyboard */,
 				BE3C84B0212BF7AD0053EFE2 /* Assets.xcassets */,
@@ -172,6 +177,7 @@
 				C923A41D2130D7E70007D784 /* GoogleService-Info.plist */,
 				C96247452139D5C000BC7C69 /* mainPageViewController.swift */,
 				C9624748213A955A00BC7C69 /* passwordResetViewController.swift */,
+				C962474A213B895C00BC7C69 /* userResetPassViewController.swift */,
 			);
 			path = clap;
 			sourceTree = "<group>";
@@ -440,10 +446,12 @@
 				C90648982133F1EA0025AD44 /* scheduleViewController.swift in Sources */,
 				C9162C9121367F3800370F34 /* managerUpdateViewController.swift in Sources */,
 				C923A4232130F23D0007D784 /* LoginViewController.swift in Sources */,
+				C962474D213B9D1D00BC7C69 /* topSelectPageViewController.swift in Sources */,
 				C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */,
 				C90648962133E2B20025AD44 /* teamIdGenerateViewController.swift in Sources */,
 				C96247462139D5C000BC7C69 /* mainPageViewController.swift in Sources */,
 				C9624749213A955A00BC7C69 /* passwordResetViewController.swift in Sources */,
+				C962474B213B895C00BC7C69 /* userResetPassViewController.swift in Sources */,
 				BE3C84AC212BF7AB0053EFE2 /* ViewController.swift in Sources */,
 				C90648942133C6B80025AD44 /* userInfoRegisterViewController.swift in Sources */,
 				BE3C84AA212BF7AB0053EFE2 /* AppDelegate.swift in Sources */,
