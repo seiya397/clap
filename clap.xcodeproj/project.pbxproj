@@ -34,6 +34,8 @@
 		C9624749213A955A00BC7C69 /* passwordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9624748213A955A00BC7C69 /* passwordResetViewController.swift */; };
 		C962474B213B895C00BC7C69 /* userResetPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962474A213B895C00BC7C69 /* userResetPassViewController.swift */; };
 		C962474D213B9D1D00BC7C69 /* topSelectPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */; };
+		C962474F213D36AA00BC7C69 /* memberEvaluationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */; };
+		C9624751213D383A00BC7C69 /* chatPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9624750213D383A00BC7C69 /* chatPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		C9624748213A955A00BC7C69 /* passwordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passwordResetViewController.swift; sourceTree = "<group>"; };
 		C962474A213B895C00BC7C69 /* userResetPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userResetPassViewController.swift; sourceTree = "<group>"; };
 		C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = topSelectPageViewController.swift; sourceTree = "<group>"; };
+		C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memberEvaluationViewController.swift; sourceTree = "<group>"; };
+		C9624750213D383A00BC7C69 /* chatPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatPageViewController.swift; sourceTree = "<group>"; };
 		DC6E4A81ADE570696665400E /* Pods-clapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clapUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clapUITests/Pods-clapUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DFCB4A2A527B40ADB768C150 /* Pods_clap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -178,6 +182,8 @@
 				C96247452139D5C000BC7C69 /* mainPageViewController.swift */,
 				C9624748213A955A00BC7C69 /* passwordResetViewController.swift */,
 				C962474A213B895C00BC7C69 /* userResetPassViewController.swift */,
+				C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */,
+				C9624750213D383A00BC7C69 /* chatPageViewController.swift */,
 			);
 			path = clap;
 			sourceTree = "<group>";
@@ -465,7 +471,9 @@
 				C9624749213A955A00BC7C69 /* passwordResetViewController.swift in Sources */,
 				C962474B213B895C00BC7C69 /* userResetPassViewController.swift in Sources */,
 				BE3C84AC212BF7AB0053EFE2 /* ViewController.swift in Sources */,
+				C9624751213D383A00BC7C69 /* chatPageViewController.swift in Sources */,
 				C90648942133C6B80025AD44 /* userInfoRegisterViewController.swift in Sources */,
+				C962474F213D36AA00BC7C69 /* memberEvaluationViewController.swift in Sources */,
 				BE3C84AA212BF7AB0053EFE2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

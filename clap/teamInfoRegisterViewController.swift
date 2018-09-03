@@ -23,6 +23,7 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     @IBOutlet weak var roleTextField: UITextField!
     
     let db = Firestore.firestore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -81,17 +82,29 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
         let dateStr: String = formatter.string(from: date) //現在時刻取得
         
         //----------------------------------------------------- firestore
-        let messageData = ["name": managerName.text!, "age": managerAge.text!,"role":roleTextField.text!, "createAccount": dateStr, "clap": 3,"profileImage": "user/\(currentUser!.uid)/\(currentUser!.uid)-profileImage.jpg"] as [String : Any]
+        let messageData = ["name": managerName.text!, "age": managerAge.text!,"role":roleTextField.text!, "createAccount": dateStr, "clap": 3,"profileImage": "user/\(currentUser!.uid)/\(currentUser!.uid)-profileImage.jpg", "sports": sports.text!] as [String : Any]
         
+        let belong = ["shozoku": belongTo.text!] as [String: Any]
         var ref: DocumentReference? = nil
         
-        ref = db.collection(sports.text!).addDocument(data: ["Belong" : belongTo.text!]).collection("users").addDocument(data: messageData)
+//        db.collection("team").document("ddd").collection("belong").document("users").setData(userBasicInfo)
+//        {
+//            err in
+//            if let err = err {
+//                print("Error writing document: \(err)")
+//            } else {
+//                print("Document successfully written!")
+//            }
+//        }
+        
+        db.collection("team").document("ddd").setData(belong)
+        db.collection("team").document("ddd").collection("users").document("user").setData(messageData)
         {
             err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
-                print("Document added with ID: \(ref!.documentID)")
+                print("Document added with ID")
             }
         }
         //-----------------------------------------------------

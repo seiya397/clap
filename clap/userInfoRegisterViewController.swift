@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseStorage
 import FirebaseDatabase
+import FirebaseFirestore
 import MobileCoreServices
 
 class userInfoRegisterViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
@@ -25,6 +26,7 @@ class userInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     @IBOutlet weak var userProfileImage: UIImageView!
     
     var databaseRef:DatabaseReference!
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,11 +77,25 @@ class userInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     }
     
     @IBAction func userInfoRegisterButton(_ sender: Any) {
-//        let messageData = ["manager": managerName.text!]
-//        let invidiv = 
-        let userBasicInfo = ["userName": userName.text!, "userAge": userAge.text!, "userWight": userWeight.text!, "userHeight": userHeight.text!]
         
-        databaseRef.child("invidiv").childByAutoId().setValue(userBasicInfo) //firebaeからindivキーを取得し、そこの階層直下に配備
+        let userBasicInfo = ["userName": userName.text!, "userAge": userAge.text!, "userWight": userWeight.text!, "userHeight": userHeight.text!] as [String : Any]
+        
+        //----------------------------------------------------- firestore
+        var ref: DocumentReference? = nil
+        
+        
+        
+        db.collection("team").document("user").setData(["user\(1)": [userBasicInfo]])
+        {
+            err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+        
+        //----------------------------------------------------- firestore
         //選択式にすべき！！！！！！！
     }
     

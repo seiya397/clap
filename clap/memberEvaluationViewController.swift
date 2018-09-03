@@ -1,16 +1,15 @@
 //
-//  mainPageViewController.swift
+//  memberEvaluationViewController.swift
 //  clap
 //
-//  Created by オムラユウキ on 2018/09/01.
+//  Created by オムラユウキ on 2018/09/03.
 //  Copyright © 2018年 Seiya. All rights reserved.
 //
 
 import UIKit
 import FirebaseAuth
-import FirebaseDatabase
 
-class mainPageViewController: UIViewController {
+class memberEvaluationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,28 +22,30 @@ class mainPageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func logoutButtonTapped(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-            
-            let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "topSelectPageViewController") as! topSelectPageViewController
-            
-            let appDelegate = UIApplication.shared.delegate
-            
-            appDelegate?.window??.rootViewController = signInPage
-        }catch {
-            self.ShowMessage(messageToDisplay: "ログアウトができません。")
-        }
+    
+    @IBAction func goScheduleButtonTappedFromEvaluation(_ sender: Any) {
+        let SchedulePage = self.storyboard?.instantiateViewController(withIdentifier: "mainPageViewController") as! mainPageViewController
+        self.present(SchedulePage, animated: true, completion: nil)
+        
     }
     
-    @IBAction func goMemberEvaluationButtonTapped(_ sender: Any) {
-        let evaluatePage = self.storyboard?.instantiateViewController(withIdentifier: "memberEvaluationViewController") as! memberEvaluationViewController
-        self.present(evaluatePage, animated: true, completion: nil)
-    }
-    
-    @IBAction func goChatButtonTapped(_ sender: Any) {
+    @IBAction func goChatButtonTappedFromEvaluation(_ sender: Any) {
         let cahtPage = self.storyboard?.instantiateViewController(withIdentifier: "chatPageViewController") as! chatPageViewController
         self.present(cahtPage, animated: true, completion: nil)
+    }
+    
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+            do {
+                try Auth.auth().signOut()
+        
+                let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "topSelectPageViewController") as! topSelectPageViewController
+        
+                let appDelegate = UIApplication.shared.delegate
+        
+                appDelegate?.window??.rootViewController = signInPage
+            }catch {
+                self.ShowMessage(messageToDisplay: "ログアウトができません。")
+            }
     }
     
     public func ShowMessage(messageToDisplay: String) { //確認用
@@ -58,5 +59,4 @@ class mainPageViewController: UIViewController {
         
         self.present(alertController, animated: true, completion: nil)
     }
-    
 }
