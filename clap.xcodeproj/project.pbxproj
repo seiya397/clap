@@ -17,6 +17,7 @@
 		BE3C84B4212BF7AD0053EFE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE3C84B2212BF7AD0053EFE2 /* LaunchScreen.storyboard */; };
 		BE3C84BF212BF7AD0053EFE2 /* clapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3C84BE212BF7AD0053EFE2 /* clapTests.swift */; };
 		BE3C84CA212BF7AD0053EFE2 /* clapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3C84C9212BF7AD0053EFE2 /* clapUITests.swift */; };
+		BEF298A1213F092A00E75472 /* chatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF298A0213F092A00E75472 /* chatViewController.swift */; };
 		C906488E213393000025AD44 /* managerLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C906488D213393000025AD44 /* managerLoginViewController.swift */; };
 		C9064890213393180025AD44 /* managerRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C906488F213393180025AD44 /* managerRegisterViewController.swift */; };
 		C9064892213393340025AD44 /* teamInfoRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9064891213393340025AD44 /* teamInfoRegisterViewController.swift */; };
@@ -75,6 +76,7 @@
 		BE3C84C5212BF7AD0053EFE2 /* clapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = clapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3C84C9212BF7AD0053EFE2 /* clapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clapUITests.swift; sourceTree = "<group>"; };
 		BE3C84CB212BF7AD0053EFE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEF298A0213F092A00E75472 /* chatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatViewController.swift; sourceTree = "<group>"; };
 		C0366C950F8733F1171BF265 /* Pods_clapUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clapUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C906488D213393000025AD44 /* managerLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = managerLoginViewController.swift; sourceTree = "<group>"; };
 		C906488F213393180025AD44 /* managerRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = managerRegisterViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				C9624748213A955A00BC7C69 /* passwordResetViewController.swift */,
 				C962474A213B895C00BC7C69 /* userResetPassViewController.swift */,
 				C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */,
+				BEF298A0213F092A00E75472 /* chatViewController.swift */,
 				C9624750213D383A00BC7C69 /* chatPageViewController.swift */,
 			);
 			path = clap;
@@ -470,6 +473,7 @@
 				C96247462139D5C000BC7C69 /* mainPageViewController.swift in Sources */,
 				C9624749213A955A00BC7C69 /* passwordResetViewController.swift in Sources */,
 				C962474B213B895C00BC7C69 /* userResetPassViewController.swift in Sources */,
+				BEF298A1213F092A00E75472 /* chatViewController.swift in Sources */,
 				BE3C84AC212BF7AB0053EFE2 /* ViewController.swift in Sources */,
 				C9624751213D383A00BC7C69 /* chatPageViewController.swift in Sources */,
 				C90648942133C6B80025AD44 /* userInfoRegisterViewController.swift in Sources */,
@@ -649,7 +653,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9BM69LRYZ5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = clap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -668,7 +672,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9BM69LRYZ5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = clap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
