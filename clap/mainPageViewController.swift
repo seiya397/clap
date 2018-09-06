@@ -15,7 +15,11 @@ class mainPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let userDefaults:UserDefaults = UserDefaults.standard
+        let teamID: String = userDefaults.string(forKey: "teamID")!
+        print("これはチームIDの\(teamID)")
+        let userID: String = userDefaults.string(forKey: "userID")!
+        print("これはuserの\(userID)")
     }
 
     override func didReceiveMemoryWarning() {

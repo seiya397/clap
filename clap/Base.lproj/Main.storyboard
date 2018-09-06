@@ -434,7 +434,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ここにチームID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13R-Vt-Hw0">
-                                <rect key="frame" x="103" y="444" width="128" height="22"/>
+                                <rect key="frame" x="54" y="444" width="317" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.51807197029999996" green="0.2979992239" blue="0.90927697470000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -530,7 +530,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vtq-Sj-VKf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1155" y="3011"/>
+            <point key="canvasLocation" x="1153.6231884057972" y="3010.597826086957"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="8Tr-gP-Xwa">
@@ -1104,7 +1104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iNp-uK-cmn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4580" y="1924"/>
+            <point key="canvasLocation" x="5168" y="4829"/>
         </scene>
         <!--Top Select Page View Controller-->
         <scene sceneID="QzJ-Qg-dTZ">
@@ -1758,7 +1758,8 @@
         <image name="weight" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OJ9-zM-Qgr"/>
-        <segue reference="YDp-M6-0I5"/>
+        <segue reference="hus-f0-nhc"/>
+        <segue reference="SVK-r8-9KL"/>
+        <segue reference="OPz-uV-KhT"/>
     </inferredMetricsTieBreakers>
 </document>

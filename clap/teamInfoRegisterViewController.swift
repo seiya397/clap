@@ -22,6 +22,8 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     @IBOutlet weak var userProfileImageView: UIImageView!
     @IBOutlet weak var roleTextField: UITextField!
     
+    
+    
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
@@ -33,12 +35,9 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
             self.ShowMessage(messageToDisplay: "ユーザー情報を取得できませんでした。")
             return
         }
-        
-        print("user id = \(String(describing: currentUser?.uid))")
-        print("user email \(String(describing: currentUser?.email))")
-        print("varified \(String(describing: currentUser?.isEmailVerified))")
-        
         // Do any additional setup after loading the view.
+        
+        //----------------------------------------------------- fireStorage
         
         let storageReference = Storage.storage().reference()
         let profileImageDownloadUrlReference = storageReference.child("user/\(currentUser!.uid)/\(currentUser!.uid)-profileImage.jpg")
@@ -59,6 +58,7 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
                 }
             }
         }
+        //-----------------------------------------------------
 
     }
     
@@ -71,7 +71,7 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func managerRegisterNextButton(_ sender: Any) {
+    @IBAction func managerRegisterNextButton(_ sender: Any) { //登録ボタン
         let currentUser = Auth.auth().currentUser
         let dateUnix: TimeInterval = Date().timeIntervalSince1970
         let date = Date(timeIntervalSince1970: dateUnix)
@@ -81,24 +81,31 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
         // NSDateFormatterを使ってNSDate型 "date" を日時文字列 "dateStr" に変換
         let dateStr: String = formatter.string(from: date) //現在時刻取得
         
+        //----------------------------------------------------- userDefaults
+        let randomStringToUserID = self.randomString(length: 20)
+        let userDefaults:UserDefaults = UserDefaults.standard
+        userDefaults.register(defaults: ["userID": randomStringToUserID])//それをuserDefaultsでstorageに格納
+        userDefaults.synchronize()
+        let userID: String = userDefaults.string(forKey: "userID")!//呼び出してきて、変数に格納
+        
+        let randomStringToTeamID = self.randomString(length: 20)
+        userDefaults.register(defaults: ["teamID": randomStringToTeamID])
+        userDefaults.synchronize()
+        let teamID: String = userDefaults.string(forKey: "teamID")!//teamID生成
+        
+        //-----------------------------------------------------
+        
+        
         //----------------------------------------------------- firestore
         let messageData = ["name": managerName.text!, "age": managerAge.text!,"role":roleTextField.text!, "createAccount": dateStr, "clap": 3,"profileImage": "user/\(currentUser!.uid)/\(currentUser!.uid)-profileImage.jpg", "sports": sports.text!] as [String : Any]
         
-        let belong = ["shozoku": belongTo.text!] as [String: Any]
+        let belong = ["belong": belongTo.text!] as [String: Any]
+        
         var ref: DocumentReference? = nil
         
-//        db.collection("team").document("ddd").collection("belong").document("users").setData(userBasicInfo)
-//        {
-//            err in
-//            if let err = err {
-//                print("Error writing document: \(err)")
-//            } else {
-//                print("Document successfully written!")
-//            }
-//        }
+        db.collection("team").document(teamID).setData(belong)
         
-        db.collection("team").document("ddd").setData(belong)
-        db.collection("team").document("ddd").collection("users").document("user").setData(messageData)
+        db.collection("users").document(userID).setData(messageData)
         {
             err in
             if let err = err {
@@ -158,9 +165,23 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
         }
     }
     
+    func randomString(length: Int) -> String {  //ランダムID
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = UInt32(letters.length)
+        
+        var randomString = ""
+        
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+        
+        return randomString
+    }
     
-    //認証用関数
-    public func ShowMessage(messageToDisplay: String) {
+    public func ShowMessage(messageToDisplay: String) { //認証用関数
         let alertController = UIAlertController(title: "Alert Title", message: messageToDisplay, preferredStyle: .alert)
         
         let OKAction = UIAlertAction(title: "ok", style: .default) { (action: UIAlertAction!) in

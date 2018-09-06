@@ -6,6 +6,8 @@
 //  Copyright © 2018年 Seiya. All rights reserved.
 //
 
+//userdefaultsでキャッシュしたデータを呼び出して表示（teamIDのための確認）
+
 import UIKit
 import Firebase
 
@@ -17,10 +19,11 @@ class teamIdGenerateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        let userDefaults:UserDefaults = UserDefaults.standard
+        let teamID: String = userDefaults.string(forKey: "teamID")!
+        print("これはチームID\(teamID)")
+        self.generateTeamId.text! = teamID
         // Do any additional setup after loading the view.
-        databaseRef = Database.database().reference()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,16 +35,5 @@ class teamIdGenerateViewController: UIViewController {
         
     }
     
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

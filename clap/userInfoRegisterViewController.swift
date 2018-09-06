@@ -78,14 +78,21 @@ class userInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     
     @IBAction func userInfoRegisterButton(_ sender: Any) {
         
+        //----------------------------------------------------- userDefaults
+        let randomStringToUserID = self.randomString(length: 20)
+        let userDefaults:UserDefaults = UserDefaults.standard
+        userDefaults.register(defaults: ["userID": randomStringToUserID])//それをuserDefaultsでstorageに格納
+        userDefaults.synchronize()
+        let userID: String = userDefaults.string(forKey: "userID")!//呼び出してきて、変数に格納
+
+        //-----------------------------------------------------
+        
         let userBasicInfo = ["userName": userName.text!, "userAge": userAge.text!, "userWight": userWeight.text!, "userHeight": userHeight.text!] as [String : Any]
         
         //----------------------------------------------------- firestore
         var ref: DocumentReference? = nil
         
-        
-        
-        db.collection("team").document("user").setData(["user\(1)": [userBasicInfo]])
+        db.collection("users").document(userID).setData(userBasicInfo)
         {
             err in
             if let err = err {
@@ -119,6 +126,22 @@ class userInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     {
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func randomString(length: Int) -> String {  //ランダムID
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = UInt32(letters.length)
+        
+        var randomString = ""
+        
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+        
+        return randomString
     }
     
     func uploadProfileImage(imageData: Data){ //firebaseStorageへのアップ
