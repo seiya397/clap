@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import FirebaseStorage
 import FirebaseDatabase
 import FirebaseFirestore
 import MobileCoreServices
@@ -16,11 +15,6 @@ import MobileCoreServices
 class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     @IBOutlet weak var belongTo: UITextField!
-    @IBOutlet weak var sports: UITextField!
-    @IBOutlet weak var managerName: UITextField!
-    @IBOutlet weak var managerAge: UITextField!
-    @IBOutlet weak var userProfileImageView: UIImageView!
-    @IBOutlet weak var roleTextField: UITextField!
     
     
     
@@ -36,29 +30,6 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
             return
         }
         // Do any additional setup after loading the view.
-        
-        //----------------------------------------------------- fireStorage
-        
-        let storageReference = Storage.storage().reference()
-        let profileImageDownloadUrlReference = storageReference.child("user/\(currentUser!.uid)/\(currentUser!.uid)-profileImage.jpg")
-        
-        profileImageDownloadUrlReference.downloadURL { url, error in
-            if let error = error {
-                // Handle any errors
-                print("Error took place \(error.localizedDescription)")
-            } else {
-                // Get the download URL for 'images/stars.jpg'
-                print("Profile image download URL \(String(describing: url!))")
-                do {
-                    let imageData:NSData = try NSData(contentsOf: url!)
-                    let image = UIImage(data: imageData as Data)
-                    self.userProfileImageView.image = image
-                } catch {
-                    print(error)
-                }
-            }
-        }
-        //-----------------------------------------------------
 
     }
     
@@ -97,8 +68,8 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
         
         
         //----------------------------------------------------- firestore
-        let messageData = ["name": managerName.text!, "age": managerAge.text!,"role":roleTextField.text!, "createAccount": dateStr, "clap": 3, "sports": sports.text!] as [String : Any]
-        //"profileImage": "user/\(currentUser!.uid)/\(currentUser!.uid)-profileImage.jpg",
+        let messageData = [ "createAccount": dateStr, "clap": 3,] as [String : Any]
+
         
         let belong = ["belong": belongTo.text!] as [String: Any]
         
@@ -118,52 +89,6 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
         //-----------------------------------------------------
 
         //選択式にすべき！！！！！！！
-    }
-    
-    
-    @IBAction func uploadProfileImageTapped(_ sender: Any) {//storageに画像保存
-        let profileImagePicker = UIImagePickerController()
-        profileImagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        profileImagePicker.mediaTypes = [kUTTypeImage as String]
-        profileImagePicker.delegate = self
-        present(profileImagePicker, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
-    {
-        if let profileImage = info[UIImagePickerControllerOriginalImage] as? UIImage, let optimizedImageData = UIImageJPEGRepresentation(profileImage, 0.6)
-        {
-            uploadProfileImage(imageData: optimizedImageData)
-        }
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
-    {
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func uploadProfileImage(imageData: Data){ //firebaseStorageへのアップ
-        let activityIndicator = UIActivityIndicatorView.init(activityIndicatorStyle: .gray)//while upload
-        activityIndicator.startAnimating()
-        activityIndicator.center = self.view.center
-        self.view.addSubview(activityIndicator)
-        let StorageRefelence = Storage.storage().reference()
-        let currentUser = Auth.auth().currentUser
-//        let profileImageRef = StorageRefelence.child("user").child(currentUser!.uid).child("\(currentUser!.uid)-profileImage.jpg")
-//        let uploadMetadata = StorageMetadata()
-//        uploadMetadata.contentType = "image/jpeg"
-//        profileImageRef.putData(imageData, metadata: uploadMetadata)
-//        {(uploadedImageMeta, error) in
-//            activityIndicator.stopAnimating()
-//            activityIndicator.removeFromSuperview()
-//            if error != nil {
-//                print("Error took place \(describing: error?.localizedDescription)")
-//                return
-//            } else {
-//                print("metadata of uploaded imageg \(String(describing: uploadedImageMeta))")
-//            }
-//        }
     }
     
     func randomString(length: Int) -> String {  //ランダムID
