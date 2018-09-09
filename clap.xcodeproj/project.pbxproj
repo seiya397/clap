@@ -18,8 +18,6 @@
 		BE3C84BF212BF7AD0053EFE2 /* clapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3C84BE212BF7AD0053EFE2 /* clapTests.swift */; };
 		BE3C84CA212BF7AD0053EFE2 /* clapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3C84C9212BF7AD0053EFE2 /* clapUITests.swift */; };
 		BEF298A1213F092A00E75472 /* chatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF298A0213F092A00E75472 /* chatViewController.swift */; };
-		C906488E213393000025AD44 /* managerLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C906488D213393000025AD44 /* managerLoginViewController.swift */; };
-		C9064890213393180025AD44 /* managerRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C906488F213393180025AD44 /* managerRegisterViewController.swift */; };
 		C9064892213393340025AD44 /* teamInfoRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9064891213393340025AD44 /* teamInfoRegisterViewController.swift */; };
 		C90648942133C6B80025AD44 /* userInfoRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90648932133C6B80025AD44 /* userInfoRegisterViewController.swift */; };
 		C90648962133E2B20025AD44 /* teamIdGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90648952133E2B20025AD44 /* teamIdGenerateViewController.swift */; };
@@ -32,11 +30,11 @@
 		C9344D282130CFFD004931F1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE3C84CB212BF7AD0053EFE2 /* Info.plist */; };
 		C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D86592130808D00EDB3F2 /* registerViewController.swift */; };
 		C96247462139D5C000BC7C69 /* mainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96247452139D5C000BC7C69 /* mainPageViewController.swift */; };
-		C9624749213A955A00BC7C69 /* passwordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9624748213A955A00BC7C69 /* passwordResetViewController.swift */; };
 		C962474B213B895C00BC7C69 /* userResetPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962474A213B895C00BC7C69 /* userResetPassViewController.swift */; };
 		C962474D213B9D1D00BC7C69 /* topSelectPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */; };
 		C962474F213D36AA00BC7C69 /* memberEvaluationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */; };
 		C9624751213D383A00BC7C69 /* chatPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9624750213D383A00BC7C69 /* chatPageViewController.swift */; };
+		C9708B472143DDCD0013FD4C /* teamIdConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9708B462143DDCD0013FD4C /* teamIdConfirmationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,8 +76,6 @@
 		BE3C84CB212BF7AD0053EFE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEF298A0213F092A00E75472 /* chatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatViewController.swift; sourceTree = "<group>"; };
 		C0366C950F8733F1171BF265 /* Pods_clapUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clapUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C906488D213393000025AD44 /* managerLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = managerLoginViewController.swift; sourceTree = "<group>"; };
-		C906488F213393180025AD44 /* managerRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = managerRegisterViewController.swift; sourceTree = "<group>"; };
 		C9064891213393340025AD44 /* teamInfoRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamInfoRegisterViewController.swift; sourceTree = "<group>"; };
 		C90648932133C6B80025AD44 /* userInfoRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userInfoRegisterViewController.swift; sourceTree = "<group>"; };
 		C90648952133E2B20025AD44 /* teamIdGenerateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdGenerateViewController.swift; sourceTree = "<group>"; };
@@ -89,11 +85,11 @@
 		C923A4222130F23D0007D784 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C93D86592130808D00EDB3F2 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
 		C96247452139D5C000BC7C69 /* mainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainPageViewController.swift; sourceTree = "<group>"; };
-		C9624748213A955A00BC7C69 /* passwordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passwordResetViewController.swift; sourceTree = "<group>"; };
 		C962474A213B895C00BC7C69 /* userResetPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userResetPassViewController.swift; sourceTree = "<group>"; };
 		C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = topSelectPageViewController.swift; sourceTree = "<group>"; };
 		C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memberEvaluationViewController.swift; sourceTree = "<group>"; };
 		C9624750213D383A00BC7C69 /* chatPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatPageViewController.swift; sourceTree = "<group>"; };
+		C9708B462143DDCD0013FD4C /* teamIdConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdConfirmationViewController.swift; sourceTree = "<group>"; };
 		DC6E4A81ADE570696665400E /* Pods-clapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clapUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clapUITests/Pods-clapUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DFCB4A2A527B40ADB768C150 /* Pods_clap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -165,28 +161,26 @@
 			isa = PBXGroup;
 			children = (
 				BE3C84A9212BF7AB0053EFE2 /* AppDelegate.swift */,
+				BE3C84AD212BF7AB0053EFE2 /* Main.storyboard */,
 				C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */,
 				BE3C84AB212BF7AB0053EFE2 /* ViewController.swift */,
-				BE3C84AD212BF7AB0053EFE2 /* Main.storyboard */,
 				BE3C84B0212BF7AD0053EFE2 /* Assets.xcassets */,
 				BE3C84B2212BF7AD0053EFE2 /* LaunchScreen.storyboard */,
 				C93D86592130808D00EDB3F2 /* registerViewController.swift */,
-				C906488F213393180025AD44 /* managerRegisterViewController.swift */,
 				C90648932133C6B80025AD44 /* userInfoRegisterViewController.swift */,
 				C9064891213393340025AD44 /* teamInfoRegisterViewController.swift */,
 				C923A4222130F23D0007D784 /* LoginViewController.swift */,
 				C9162C9021367F3800370F34 /* managerUpdateViewController.swift */,
 				C90648972133F1EA0025AD44 /* scheduleViewController.swift */,
 				C90648952133E2B20025AD44 /* teamIdGenerateViewController.swift */,
-				C906488D213393000025AD44 /* managerLoginViewController.swift */,
 				BE3C84B5212BF7AD0053EFE2 /* Info.plist */,
 				C923A41D2130D7E70007D784 /* GoogleService-Info.plist */,
 				C96247452139D5C000BC7C69 /* mainPageViewController.swift */,
-				C9624748213A955A00BC7C69 /* passwordResetViewController.swift */,
 				C962474A213B895C00BC7C69 /* userResetPassViewController.swift */,
 				C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */,
 				BEF298A0213F092A00E75472 /* chatViewController.swift */,
 				C9624750213D383A00BC7C69 /* chatPageViewController.swift */,
+				C9708B462143DDCD0013FD4C /* teamIdConfirmationViewController.swift */,
 			);
 			path = clap;
 			sourceTree = "<group>";
@@ -462,8 +456,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9064892213393340025AD44 /* teamInfoRegisterViewController.swift in Sources */,
-				C906488E213393000025AD44 /* managerLoginViewController.swift in Sources */,
-				C9064890213393180025AD44 /* managerRegisterViewController.swift in Sources */,
 				C90648982133F1EA0025AD44 /* scheduleViewController.swift in Sources */,
 				C9162C9121367F3800370F34 /* managerUpdateViewController.swift in Sources */,
 				C923A4232130F23D0007D784 /* LoginViewController.swift in Sources */,
@@ -471,12 +463,12 @@
 				C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */,
 				C90648962133E2B20025AD44 /* teamIdGenerateViewController.swift in Sources */,
 				C96247462139D5C000BC7C69 /* mainPageViewController.swift in Sources */,
-				C9624749213A955A00BC7C69 /* passwordResetViewController.swift in Sources */,
 				C962474B213B895C00BC7C69 /* userResetPassViewController.swift in Sources */,
 				BEF298A1213F092A00E75472 /* chatViewController.swift in Sources */,
 				BE3C84AC212BF7AB0053EFE2 /* ViewController.swift in Sources */,
 				C9624751213D383A00BC7C69 /* chatPageViewController.swift in Sources */,
 				C90648942133C6B80025AD44 /* userInfoRegisterViewController.swift in Sources */,
+				C9708B472143DDCD0013FD4C /* teamIdConfirmationViewController.swift in Sources */,
 				C962474F213D36AA00BC7C69 /* memberEvaluationViewController.swift in Sources */,
 				BE3C84AA212BF7AB0053EFE2 /* AppDelegate.swift in Sources */,
 			);

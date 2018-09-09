@@ -97,8 +97,7 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
         
         
         //----------------------------------------------------- firestore
-        let messageData = ["name": managerName.text!, "age": managerAge.text!,"role":roleTextField.text!, "createAccount": dateStr, "clap": 3, "sports": sports.text!] as [String : Any]
-        //"profileImage": "user/\(currentUser!.uid)/\(currentUser!.uid)-profileImage.jpg",
+        let messageData = ["name": managerName.text!, "age": managerAge.text!,"role":roleTextField.text!, "createAccount": dateStr, "clap": 3,"profileImage": "user/\(currentUser!.uid)/\(currentUser!.uid)-profileImage.jpg", "sports": sports.text!] as [String : Any]
         
         let belong = ["belong": belongTo.text!] as [String: Any]
         
@@ -150,20 +149,20 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
         self.view.addSubview(activityIndicator)
         let StorageRefelence = Storage.storage().reference()
         let currentUser = Auth.auth().currentUser
-//        let profileImageRef = StorageRefelence.child("user").child(currentUser!.uid).child("\(currentUser!.uid)-profileImage.jpg")
-//        let uploadMetadata = StorageMetadata()
-//        uploadMetadata.contentType = "image/jpeg"
-//        profileImageRef.putData(imageData, metadata: uploadMetadata)
-//        {(uploadedImageMeta, error) in
-//            activityIndicator.stopAnimating()
-//            activityIndicator.removeFromSuperview()
-//            if error != nil {
-//                print("Error took place \(describing: error?.localizedDescription)")
-//                return
-//            } else {
-//                print("metadata of uploaded imageg \(String(describing: uploadedImageMeta))")
-//            }
-//        }
+        let profileImageRef = StorageRefelence.child("user").child(currentUser!.uid).child("\(currentUser!.uid)-profileImage.jpg")
+        let uploadMetadata = StorageMetadata()
+        uploadMetadata.contentType = "image/jpeg"
+        profileImageRef.putData(imageData, metadata: uploadMetadata)
+        {(uploadedImageMeta, error) in
+            activityIndicator.stopAnimating()
+            activityIndicator.removeFromSuperview()
+            if error != nil {
+                print("Error took place \(describing: error?.localizedDescription)")
+                return
+            } else {
+                print("metadata of uploaded imageg \(String(describing: uploadedImageMeta))")
+            }
+        }
     }
     
     func randomString(length: Int) -> String {  //ランダムID

@@ -21,15 +21,14 @@ class topSelectPageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func teamIdRegisterButton(_ sender: Any) {
+        let teamInfoRegister = self.storyboard?.instantiateViewController(withIdentifier: "teamInfoRegisterViewController") as! teamInfoRegisterViewController
+        self.present(teamInfoRegister, animated: true, completion: nil)
+        //segueで繋いでいる理由は、視覚的にわかりやすくするため
     }
-    */
-
+    @IBAction func userRegisterButton(_ sender: Any) {
+        let teamIdConfirmation = self.storyboard?.instantiateViewController(withIdentifier: "teamIdConfirmationViewController") as! teamIdConfirmationViewController
+        self.present(teamIdConfirmation, animated: true, completion: nil)
+        //segueで繋いでいる理由は、視覚的にわかりやすくするため
+    }
 }
