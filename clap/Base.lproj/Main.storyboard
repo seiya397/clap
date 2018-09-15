@@ -11,86 +11,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Team Info Register View Controller-->
-        <scene sceneID="X0q-hG-GSX">
-            <objects>
-                <viewController storyboardIdentifier="teamInfoRegisterViewController" id="kDL-WT-C0p" customClass="teamInfoRegisterViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="4J2-zH-J7s">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="学校名" textAlignment="natural" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="IRK-p4-7gD">
-                                <rect key="frame" x="19" y="249" width="374" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                            </textField>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wP6-aR-v5W">
-                                <rect key="frame" x="134" y="120" width="146" height="65"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="manager" translatesAutoresizingMaskIntoConstraints="NO" id="O55-Rd-9MY">
-                                        <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="65" id="kvH-oV-YzY"/>
-                                            <constraint firstAttribute="width" constant="65" id="vgP-Qq-Jzq"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcH-Py-nYb">
-                                        <rect key="frame" x="65" y="0.0" width="34" height="65"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="48" id="Mz1-j3-n0s"/>
-                                            <constraint firstAttribute="width" constant="34" id="YLO-ng-iyI"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" red="0.51807197029999996" green="0.2979992239" blue="0.90927697470000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group" translatesAutoresizingMaskIntoConstraints="NO" id="QYC-D5-SIA">
-                                        <rect key="frame" x="99" y="0.0" width="47" height="65"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="48" id="JHr-YO-0iG"/>
-                                            <constraint firstAttribute="width" constant="47" id="N7A-XJ-VqO"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="may-Lx-HrZ">
-                                <rect key="frame" x="87" y="658" width="238" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.66061844985820206" green="0.39382082358216364" blue="0.93301190488834673" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="登録する">
-                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="managerRegisterNextButton:" destination="kDL-WT-C0p" eventType="touchUpInside" id="Drn-xK-Cic"/>
-                                    <segue destination="4lN-n7-eCR" kind="show" identifier="goTaemID" id="hus-f0-nhc"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="チーム情報を登録してください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZa-uu-10L">
-                                <rect key="frame" x="87" y="204" width="238" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" red="0.51807197033043784" green="0.29799922388073602" blue="0.909276974685301" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="wP6-aR-v5W" firstAttribute="centerX" secondItem="4J2-zH-J7s" secondAttribute="centerX" id="XGb-7w-ar3"/>
-                            <constraint firstItem="wP6-aR-v5W" firstAttribute="top" secondItem="M01-14-PkQ" secondAttribute="top" constant="100" id="gOf-ek-aPN"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="M01-14-PkQ"/>
-                    </view>
-                    <connections>
-                        <outlet property="belongTo" destination="IRK-p4-7gD" id="z3U-br-OcC"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sXT-Pj-2wR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3649" y="1988"/>
-        </scene>
         <!--Team Id Generate View Controller-->
         <scene sceneID="grB-wm-9Fg">
             <objects>
@@ -173,7 +93,6 @@
                                 </state>
                                 <connections>
                                     <action selector="goLoginButton:" destination="4lN-n7-eCR" eventType="touchUpInside" id="qpH-59-vhr"/>
-                                    <segue destination="Exz-gh-qmw" kind="presentation" id="26P-jO-eWC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="チームID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWr-vF-IQ3">
@@ -225,22 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vtq-Sj-VKf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2910" y="2688"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Fwn-G8-pap">
-            <objects>
-                <viewController id="VU1-GO-bjR" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uJL-Oc-lhl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="uQg-mC-lNe"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XeN-7h-Rx5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3000" y="3645"/>
+            <point key="canvasLocation" x="-3065" y="3557"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="8Tr-gP-Xwa">
@@ -491,7 +395,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3MA-Il-ief" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967" y="1189"/>
+            <point key="canvasLocation" x="1665" y="1492"/>
         </scene>
         <!--チャット一覧-->
         <scene sceneID="q5f-lY-IIb">
@@ -902,7 +806,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eon-4b-Lwi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4033" y="-867"/>
+            <point key="canvasLocation" x="4158" y="-867"/>
         </scene>
         <!--クラップ-->
         <scene sceneID="x6X-pp-tVA">
@@ -990,7 +894,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjB-9B-gCG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="686" y="1988"/>
+            <point key="canvasLocation" x="1384" y="2291"/>
         </scene>
         <!--Title-->
         <scene sceneID="OwG-IN-cRG">
@@ -1017,7 +921,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Slw-3R-nEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1568" y="1988"/>
+            <point key="canvasLocation" x="2265" y="2291"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="5Lh-Rs-CfH">
@@ -1089,90 +993,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iNp-uK-cmn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5168" y="4829"/>
-        </scene>
-        <!--Top Select Page View Controller-->
-        <scene sceneID="QzJ-Qg-dTZ">
-            <objects>
-                <viewController storyboardIdentifier="topSelectPageViewController" id="9jd-GK-Fz0" customClass="topSelectPageViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="igl-NQ-910">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="利用者タイプを選んでください。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obb-yJ-7NG">
-                                <rect key="frame" x="77" y="197" width="260" height="20.333333333333343"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbW-56-FAU">
-                                <rect key="frame" x="61" y="317.33333333333331" width="92" height="30"/>
-                                <state key="normal" title="チームに参加"/>
-                                <connections>
-                                    <action selector="userRegisterButton:" destination="9jd-GK-Fz0" eventType="touchUpInside" id="j8n-Hz-BFt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nzw-45-yFL">
-                                <rect key="frame" x="261" y="317.33333333333331" width="92" height="30"/>
-                                <state key="normal" title="チームを登録"/>
-                                <connections>
-                                    <action selector="teamIdRegisterButton:" destination="9jd-GK-Fz0" eventType="touchUpInside" id="9df-Vb-aBF"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Nzw-45-yFL" firstAttribute="top" secondItem="Obb-yJ-7NG" secondAttribute="bottom" constant="100" id="7w4-3x-Fq2"/>
-                            <constraint firstItem="Obb-yJ-7NG" firstAttribute="centerX" secondItem="igl-NQ-910" secondAttribute="centerX" id="XQE-Dp-spr"/>
-                            <constraint firstItem="tbW-56-FAU" firstAttribute="centerX" secondItem="igl-NQ-910" secondAttribute="centerX" constant="-100" id="ZbS-fC-pJD"/>
-                            <constraint firstItem="Obb-yJ-7NG" firstAttribute="top" secondItem="AXQ-uI-kvq" secondAttribute="top" constant="177" id="gm5-pT-hLl"/>
-                            <constraint firstItem="Nzw-45-yFL" firstAttribute="centerX" secondItem="igl-NQ-910" secondAttribute="centerX" constant="100" id="vf7-Dh-vlR"/>
-                            <constraint firstItem="tbW-56-FAU" firstAttribute="top" secondItem="Obb-yJ-7NG" secondAttribute="bottom" constant="100" id="wfu-mw-tIv"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="AXQ-uI-kvq"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MnA-cf-RVK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2012" y="1262"/>
-        </scene>
-        <!--Team Id Confirmation View Controller-->
-        <scene sceneID="fiH-IZ-nd1">
-            <objects>
-                <viewController storyboardIdentifier="teamIdConfirmationViewController" id="t0O-gg-GQX" customClass="teamIdConfirmationViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WbO-0Z-9O5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9g-hz-sK5">
-                                <rect key="frame" x="184" y="493" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="hV5-Or-8Yr" kind="presentation" id="fjK-ka-Uuk"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ftd-Ra-gmn">
-                                <rect key="frame" x="159" y="155" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HnJ-IH-B7s">
-                                <rect key="frame" x="159" y="214" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="F2p-Kq-cr4"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gIr-Ez-wgc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2910" y="461"/>
         </scene>
         <!--Main Page View Controller-->
         <scene sceneID="YXR-5Z-GLn">
@@ -1257,7 +1077,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JuH-Wo-kIr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="264" y="1262"/>
+            <point key="canvasLocation" x="962" y="1565"/>
         </scene>
         <!--報徳学園高校-->
         <scene sceneID="gmO-Rj-xbj">
@@ -1631,7 +1451,6 @@ MjAxOOW5tDnmnIgxMuaXpRERA
         <!--Tab Bar Controller-->
         <scene sceneID="skF-VW-JB7">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cGU-6E-0dS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController id="2sg-vh-AQf" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3fP-No-Ldr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -1645,6 +1464,7 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                         <segue destination="y8v-HQ-XbP" kind="relationship" relationship="viewControllers" id="gWt-rf-fhd"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cGU-6E-0dS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="746" y="-665"/>
         </scene>
@@ -1703,7 +1523,6 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="managerRegisterNextButton:" destination="kDL-WT-C0p" eventType="touchUpInside" id="LUy-oh-jvH"/>
                                     <action selector="resetPassButtonTapped:" destination="NXO-M7-a3m" eventType="touchUpInside" id="dwV-Q2-fVI"/>
                                 </connections>
                             </button>
@@ -1717,7 +1536,7 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OMW-0l-HB8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3984" y="461"/>
+            <point key="canvasLocation" x="-5255" y="1189"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="6Xo-o3-Id2">
@@ -1738,7 +1557,6 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                                 </state>
                                 <connections>
                                     <action selector="registerButton:" destination="hV5-Or-8Yr" eventType="touchUpInside" id="flf-ef-FOH"/>
-                                    <segue destination="2Nh-N5-hYV" kind="show" identifier="goPlofileRegister" id="uIX-Xm-9SQ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一般新規登録" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FxZ-CG-7ag">
@@ -1814,7 +1632,7 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yh-5s-VOb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2910" y="-259"/>
+            <point key="canvasLocation" x="-4143" y="-351"/>
         </scene>
         <!--User Info Register View Controller-->
         <scene sceneID="jZ3-Xg-5at">
@@ -1892,7 +1710,6 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                                 <state key="normal" title="登録"/>
                                 <connections>
                                     <action selector="userInfoRegisterButton:" destination="2Nh-N5-hYV" eventType="touchUpInside" id="D13-Pt-tcd"/>
-                                    <segue destination="ia7-gl-s29" kind="presentation" id="Zq6-Ty-TNa"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="udH-M6-b1F">
@@ -1928,7 +1745,7 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S29-Qn-F7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2910" y="-991"/>
+            <point key="canvasLocation" x="-4143" y="-1242"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="v2B-7L-1kT">
@@ -2037,12 +1854,12 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ar8-CD-spD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2910.144927536232" y="1188.5869565217392"/>
+            <point key="canvasLocation" x="-4143" y="1189"/>
         </scene>
-        <!--View Controller-->
+        <!--Team Id Confirm Again View Controller-->
         <scene sceneID="ieO-3K-LgU">
             <objects>
-                <viewController id="EVM-ri-8li" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="teamIdConfirmAgainViewController" id="EVM-ri-8li" customClass="teamIdConfirmAgainViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3LN-BT-li4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2064,7 +1881,6 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="managerRegisterNextButton:" destination="kDL-WT-C0p" eventType="touchUpInside" id="6Rn-i8-JGr"/>
                                     <segue destination="pe6-kw-VO4" kind="show" id="55y-MD-8wq"/>
                                 </connections>
                             </button>
@@ -2181,12 +1997,12 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOU-J9-luY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-768" y="143"/>
+            <point key="canvasLocation" x="-3348" y="-351"/>
         </scene>
-        <!--View Controller-->
+        <!--Team Id Confirmation View Controller-->
         <scene sceneID="hNX-jY-GXh">
             <objects>
-                <viewController id="4RP-ae-gf9" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="teamIdConfirmationViewController" id="4RP-ae-gf9" customClass="teamIdConfirmationViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NTp-Ob-XUV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2208,8 +2024,8 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="managerRegisterNextButton:" destination="kDL-WT-C0p" eventType="touchUpInside" id="sDY-Le-O9u"/>
-                                    <segue destination="EVM-ri-8li" kind="show" id="PmN-mw-aNF"/>
+                                    <action selector="confirmTreamIdButtonTapped:" destination="4RP-ae-gf9" eventType="touchUpInside" id="v38-Yf-847"/>
+                                    <segue destination="rLu-Bb-SbK" kind="show" id="BAp-mQ-OsU"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="55" translatesAutoresizingMaskIntoConstraints="NO" id="wsY-W6-2bW">
@@ -2298,15 +2114,18 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X5r-NF-tzh"/>
                     </view>
+                    <connections>
+                        <outlet property="confirmTeamID" destination="b5k-QM-NHd" id="o2e-sP-EaP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mq8-Se-hwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1568" y="495"/>
+            <point key="canvasLocation" x="-3065" y="374"/>
         </scene>
-        <!--View Controller-->
+        <!--Team Id Confirm Wrong View Controller-->
         <scene sceneID="UAg-lu-CF8">
             <objects>
-                <viewController id="rLu-Bb-SbK" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="teamIdConfirmWrongViewController" id="rLu-Bb-SbK" customClass="teamIdConfirmWrongViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9qg-j9-Fbl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2327,9 +2146,6 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                 <state key="normal" title="確定">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="managerRegisterNextButton:" destination="kDL-WT-C0p" eventType="touchUpInside" id="UH2-gf-6Iy"/>
-                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="55" translatesAutoresizingMaskIntoConstraints="NO" id="vcX-H4-MeX">
                                 <rect key="frame" x="99.666666666666686" y="312.66666666666669" width="215" height="15"/>
@@ -2418,7 +2234,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ItL-AW-EPu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-768" y="818"/>
+            <point key="canvasLocation" x="-2555" y="-351"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="jHw-Sz-O7K">
@@ -2559,7 +2375,6 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="managerRegisterNextButton:" destination="kDL-WT-C0p" eventType="touchUpInside" id="45b-IA-J3B"/>
                                     <segue destination="2sg-vh-AQf" kind="show" id="D4T-pD-85B"/>
                                 </connections>
                             </button>
@@ -2583,12 +2398,12 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1zO-5v-dks" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="129" y="143"/>
+            <point key="canvasLocation" x="-3065" y="-1242"/>
         </scene>
-        <!--View Controller-->
+        <!--Top Select Page View Controller-->
         <scene sceneID="hq6-eW-Xg0">
             <objects>
-                <viewController id="TL9-xb-bEe" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="topSelectPageViewController" id="TL9-xb-bEe" customClass="topSelectPageViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="stR-AM-r4U">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2629,6 +2444,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                         </constraints>
                                         <state key="normal" image="group"/>
                                         <connections>
+                                            <action selector="userRegisterButton:" destination="TL9-xb-bEe" eventType="touchUpInside" id="3L9-OP-xkQ"/>
                                             <segue destination="4RP-ae-gf9" kind="show" id="c0o-W4-3W9"/>
                                         </connections>
                                     </button>
@@ -2640,6 +2456,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                         </constraints>
                                         <state key="normal" title="Button" image="coach"/>
                                         <connections>
+                                            <action selector="teamIdRegisterButton:" destination="TL9-xb-bEe" eventType="touchUpInside" id="x6q-OC-xWc"/>
                                             <segue destination="Vsl-Ot-XyV" kind="show" id="wPI-9u-Hab"/>
                                         </connections>
                                     </button>
@@ -2666,12 +2483,12 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dII-f4-Zta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2145" y="1189"/>
+            <point key="canvasLocation" x="-3065" y="1189"/>
         </scene>
         <!--Title-->
         <scene sceneID="2rB-u7-UG3">
             <objects>
-                <viewController id="Vsl-Ot-XyV" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="teamInfoRegisterViewController" id="Vsl-Ot-XyV" customClass="teamInfoRegisterViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lLC-3b-Ke4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2774,7 +2591,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="managerRegisterNextButton:" destination="kDL-WT-C0p" eventType="touchUpInside" id="RMP-bt-CgE"/>
+                                    <action selector="managerRegisterNextButton:" destination="Vsl-Ot-XyV" eventType="touchUpInside" id="JHB-Pw-DLk"/>
                                     <segue destination="NxX-eN-ryL" kind="show" id="3L7-n9-M0G"/>
                                 </connections>
                             </button>
@@ -2797,15 +2614,20 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                         <viewLayoutGuide key="safeArea" id="dYR-V2-uNM"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="6fS-Kv-jG0"/>
+                    <connections>
+                        <outlet property="belongTo" destination="pPR-Cx-9oy" id="Zbw-js-07J"/>
+                        <outlet property="kindOfPerson" destination="axb-yB-soi" id="lDl-Hh-nUg"/>
+                        <outlet property="teamSports" destination="dKQ-VV-D6r" id="RND-0a-o39"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9z-Zr-hLM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2613" y="1951"/>
+            <point key="canvasLocation" x="-3065" y="2004"/>
         </scene>
-        <!--View Controller-->
+        <!--Team Replesent Register View Controller-->
         <scene sceneID="OVy-5t-OTU">
             <objects>
-                <viewController id="NxX-eN-ryL" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="teamReplesentRegisterViewController" id="NxX-eN-ryL" customClass="teamReplesentRegisterViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QRz-dq-TCR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2947,8 +2769,8 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="managerRegisterNextButton:" destination="kDL-WT-C0p" eventType="touchUpInside" id="Wmt-h8-fKO"/>
-                                    <segue destination="2sg-vh-AQf" kind="show" id="EoR-Dg-a8q"/>
+                                    <action selector="replesentInfoRegisterButtonTapped:" destination="NxX-eN-ryL" eventType="touchUpInside" id="V83-t4-uKK"/>
+                                    <segue destination="4lN-n7-eCR" kind="show" id="ZGx-VP-l99"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2968,10 +2790,18 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zDI-B4-XcP"/>
                     </view>
+                    <connections>
+                        <outlet property="replesentEmail" destination="XDa-0O-dIA" id="Si6-SE-o7w"/>
+                        <outlet property="replesentGrade" destination="qSj-Dm-zKc" id="c9j-gZ-q2b"/>
+                        <outlet property="replesentName" destination="q8R-yv-9ri" id="pqK-8o-f7s"/>
+                        <outlet property="replesentPass" destination="tcI-9O-sRX" id="o2A-9U-OjJ"/>
+                        <outlet property="replesentPassAgain" destination="5Ih-cv-m3s" id="DOK-qB-ATr"/>
+                        <outlet property="replesentRole" destination="JpZ-C4-6bx" id="DJs-DA-I8m"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g5r-ve-iwv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1896" y="2076"/>
+            <point key="canvasLocation" x="-3065" y="2781"/>
         </scene>
         <!--チャット-->
         <scene sceneID="Zje-wc-aot">
@@ -3010,9 +2840,6 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                 <state key="normal" title="送信">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="managerRegisterNextButton:" destination="kDL-WT-C0p" eventType="touchUpInside" id="72M-ay-bSE"/>
-                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="omura" translatesAutoresizingMaskIntoConstraints="NO" id="2hD-0B-ESM">
                                 <rect key="frame" x="10" y="168" width="50" height="50"/>
@@ -3043,7 +2870,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WnS-lN-aY5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3002.898550724638" y="-201.35869565217394"/>
+            <point key="canvasLocation" x="3129" y="-201"/>
         </scene>
         <!--チャット-->
         <scene sceneID="O4E-Cu-Xfb">
@@ -3253,7 +3080,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZpH-ZE-Sv9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3003" y="-867"/>
+            <point key="canvasLocation" x="3129" y="-867"/>
         </scene>
     </scenes>
     <resources>
@@ -3277,8 +3104,5 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
         <image name="user" width="686" height="680"/>
         <image name="weight" width="512" height="512"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="EoR-Dg-a8q"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

@@ -23,6 +23,9 @@
 		C90648962133E2B20025AD44 /* teamIdGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90648952133E2B20025AD44 /* teamIdGenerateViewController.swift */; };
 		C90648982133F1EA0025AD44 /* scheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90648972133F1EA0025AD44 /* scheduleViewController.swift */; };
 		C9162C9121367F3800370F34 /* managerUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9162C9021367F3800370F34 /* managerUpdateViewController.swift */; };
+		C9169697214CDE85002EECEF /* teamReplesentRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9169696214CDE85002EECEF /* teamReplesentRegisterViewController.swift */; };
+		C9169699214D229B002EECEF /* teamIdConfirmAgainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9169698214D229A002EECEF /* teamIdConfirmAgainViewController.swift */; };
+		C916969B214D22F6002EECEF /* teamIdConfirmWrongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C916969A214D22F6002EECEF /* teamIdConfirmWrongViewController.swift */; };
 		C923A41E2130D7E80007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4202130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4212130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
@@ -81,6 +84,9 @@
 		C90648952133E2B20025AD44 /* teamIdGenerateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdGenerateViewController.swift; sourceTree = "<group>"; };
 		C90648972133F1EA0025AD44 /* scheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleViewController.swift; sourceTree = "<group>"; };
 		C9162C9021367F3800370F34 /* managerUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = managerUpdateViewController.swift; sourceTree = "<group>"; };
+		C9169696214CDE85002EECEF /* teamReplesentRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamReplesentRegisterViewController.swift; sourceTree = "<group>"; };
+		C9169698214D229A002EECEF /* teamIdConfirmAgainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdConfirmAgainViewController.swift; sourceTree = "<group>"; };
+		C916969A214D22F6002EECEF /* teamIdConfirmWrongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdConfirmWrongViewController.swift; sourceTree = "<group>"; };
 		C923A41D2130D7E70007D784 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C923A4222130F23D0007D784 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C93D86592130808D00EDB3F2 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +187,9 @@
 				BEF298A0213F092A00E75472 /* chatViewController.swift */,
 				C9624750213D383A00BC7C69 /* chatPageViewController.swift */,
 				C9708B462143DDCD0013FD4C /* teamIdConfirmationViewController.swift */,
+				C9169696214CDE85002EECEF /* teamReplesentRegisterViewController.swift */,
+				C9169698214D229A002EECEF /* teamIdConfirmAgainViewController.swift */,
+				C916969A214D22F6002EECEF /* teamIdConfirmWrongViewController.swift */,
 			);
 			path = clap;
 			sourceTree = "<group>";
@@ -455,8 +464,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9169699214D229B002EECEF /* teamIdConfirmAgainViewController.swift in Sources */,
 				C9064892213393340025AD44 /* teamInfoRegisterViewController.swift in Sources */,
 				C90648982133F1EA0025AD44 /* scheduleViewController.swift in Sources */,
+				C9169697214CDE85002EECEF /* teamReplesentRegisterViewController.swift in Sources */,
 				C9162C9121367F3800370F34 /* managerUpdateViewController.swift in Sources */,
 				C923A4232130F23D0007D784 /* LoginViewController.swift in Sources */,
 				C962474D213B9D1D00BC7C69 /* topSelectPageViewController.swift in Sources */,
@@ -469,6 +480,7 @@
 				C9624751213D383A00BC7C69 /* chatPageViewController.swift in Sources */,
 				C90648942133C6B80025AD44 /* userInfoRegisterViewController.swift in Sources */,
 				C9708B472143DDCD0013FD4C /* teamIdConfirmationViewController.swift in Sources */,
+				C916969B214D22F6002EECEF /* teamIdConfirmWrongViewController.swift in Sources */,
 				C962474F213D36AA00BC7C69 /* memberEvaluationViewController.swift in Sources */,
 				BE3C84AA212BF7AB0053EFE2 /* AppDelegate.swift in Sources */,
 			);

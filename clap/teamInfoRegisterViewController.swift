@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import FirebaseDatabase
 import FirebaseFirestore
 import MobileCoreServices
@@ -15,22 +14,14 @@ import MobileCoreServices
 class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     @IBOutlet weak var belongTo: UITextField!
+    @IBOutlet weak var kindOfPerson: UITextField!
     
-    
+    @IBOutlet weak var teamSports: UITextField!
     
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let currentUser = Auth.auth().currentUser
-        
-        if currentUser == nil {
-            self.ShowMessage(messageToDisplay: "ユーザー情報を取得できませんでした。")
-            return
-        }
-        // Do any additional setup after loading the view.
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +34,21 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     }
     
     @IBAction func managerRegisterNextButton(_ sender: Any) { //登録ボタン
-        let currentUser = Auth.auth().currentUser
+        
+        guard let belongText = belongTo.text, !belongText.isEmpty else {
+            self.ShowMessage(messageToDisplay: "チーム名を記入してください。")
+            return
+        }
+        guard let kindText = kindOfPerson.text, !kindText.isEmpty else {
+            self.ShowMessage(messageToDisplay: "種別を記入してください。")
+            return
+        }
+        guard let sportsText = teamSports.text, !sportsText.isEmpty else {
+            self.ShowMessage(messageToDisplay: "競技項目を記入してください。")
+            return
+            
+        }
+        
         let dateUnix: TimeInterval = Date().timeIntervalSince1970
         let date = Date(timeIntervalSince1970: dateUnix)
         // NSDate型を日時文字列に変換するためのNSDateFormatterを生成
@@ -53,31 +58,22 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
         let dateStr: String = formatter.string(from: date) //現在時刻取得
         
         //----------------------------------------------------- userDefaults
-        let randomStringToUserID = self.randomString(length: 20)
         let userDefaults:UserDefaults = UserDefaults.standard
-        userDefaults.register(defaults: ["userID": randomStringToUserID])//それをuserDefaultsでstorageに格納
-        userDefaults.synchronize()
-        let userID: String = userDefaults.string(forKey: "userID")!//呼び出してきて、変数に格納
-        
         let randomStringToTeamID = self.randomString(length: 20)
-        userDefaults.register(defaults: ["teamID": randomStringToTeamID])
+        userDefaults.set(randomStringToTeamID, forKey: "teamID")
         userDefaults.synchronize()
-        let teamID: String = userDefaults.string(forKey: "teamID")!//teamID生成
+        //let lastMyData: String? = userDefaults.object(forKey: "myData") as? String
+        let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)!//teamID取得
         
         //-----------------------------------------------------
-        
-        
         //----------------------------------------------------- firestore
-        let messageData = [ "createAccount": dateStr, "clap": 3,] as [String : Any]
+        let dateData = [ "createAccount": dateStr, "clap": 3] as [String : Any]
 
+        let teamData = ["belong": belongTo.text!, "kind": kindOfPerson.text!, "sports": teamSports.text!] as [String: Any]
         
-        let belong = ["belong": belongTo.text!] as [String: Any]
+        var _: DocumentReference? = nil
         
-        var ref: DocumentReference? = nil
-        
-        db.collection("team").document(teamID).setData(belong)
-        
-        db.collection("users").document(userID).setData(messageData)
+        db.collection("team").document(teamID).setData(teamData)
         {
             err in
             if let err = err {
@@ -87,8 +83,14 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
             }
         }
         //-----------------------------------------------------
-
         //選択式にすべき！！！！！！！
+        //----------------------------------------------------- teamReplesentPage移動
+        let teamPeplesentRegister = self.storyboard?.instantiateViewController(withIdentifier: "teamReplesentRegisterViewController") as! teamReplesentRegisterViewController
+        self.present(teamPeplesentRegister, animated: true, completion: nil)
+        //segueで繋いでいる理由は、視覚的にわかりやすくするため
+        //-----------------------------------------------------
+
+
     }
     
     func randomString(length: Int) -> String {  //ランダムID

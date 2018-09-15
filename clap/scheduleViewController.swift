@@ -1,11 +1,3 @@
-//
-//  scheduleViewController.swift
-//  clap
-//
-//  Created by オムラユウキ on 2018/08/27.
-//  Copyright © 2018年 Seiya. All rights reserved.
-//
-
 import UIKit
 import Firebase
 import FSCalendar
@@ -90,16 +82,5 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     
     
 }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 

@@ -1,24 +1,55 @@
-//
-//  teamIdConfirmationViewController.swift
-//  clap
-//
-//  Created by オムラユウキ on 2018/09/08.
-//  Copyright © 2018年 Seiya. All rights reserved.
-//
-
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
+
 
 class teamIdConfirmationViewController: UIViewController {
 
+    @IBOutlet weak var confirmTeamID: UITextField!
+    
+    let db = Firestore.firestore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func confirmTreamIdButtonTapped(_ sender: Any) {
+        guard let confirmText = confirmTeamID.text, !confirmText.isEmpty else {
+            self.ShowMessage(messageToDisplay: "チームIDを記入してください。")
+            return
+        }
+        let docRef = db.collection("team").document(confirmTeamID.text!)
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let againConfirm = self.storyboard?.instantiateViewController(withIdentifier: "teamIdConfirmAgainViewController") as! teamIdConfirmAgainViewController
+                self.present(againConfirm, animated: true, completion: nil)
+                //segueで繋いでいる理由は、視覚的にわかりやすくするため
+            } else {
+                let wrongConfirm = self.storyboard?.instantiateViewController(withIdentifier: "teamIdConfirmWrongViewController") as! teamIdConfirmWrongViewController
+                self.present(wrongConfirm, animated: true, completion: nil)
+                //segueで繋いでいる理由は、視覚的にわかりやすくするため
+                
+            }
+        }
+    }
+    
+    
+    public func ShowMessage(messageToDisplay: String) { //認証用関数
+        let alertController = UIAlertController(title: "Alert Title", message: messageToDisplay, preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "ok", style: .default) { (action: UIAlertAction!) in
+            print("ok button tapped!!")
+        }
+        
+        alertController.addAction(OKAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
 }
