@@ -65,24 +65,24 @@ class teamReplesentRegisterViewController: UIViewController {
         //createUser
         Auth.auth().createUser(withEmail: replesentEmail.text!, password: replesentPass.text!) { (user, error) in
             if let error = error {
-                print(error.localizedDescription)
+                print("新規登録できませんでした")
                 self.ShowMessage(messageToDisplay: error.localizedDescription)
                 return
             }
             if user != nil {
-                print("success")
-            }
-        }
-        
-        //login
-        Auth.auth().signIn(withEmail: replesentEmail.text!, password: replesentPass.text!) { (user, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                self.ShowMessage(messageToDisplay: error.localizedDescription)
-                return
-            }
-            if let user = user {
-                print("ログインできました")
+                print("新規登録できました")
+                
+                //login
+                Auth.auth().signIn(withEmail: self.replesentEmail.text!, password: self.replesentPass.text!) { (user, error) in
+                    if let error = error {
+                        print("ログインに失敗しました")
+                        self.ShowMessage(messageToDisplay: error.localizedDescription)
+                        return
+                    }
+                    if let user = user {
+                        print("ログインできました")
+                    }
+                }
             }
         }
         
