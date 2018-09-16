@@ -54,22 +54,43 @@ class teamReplesentRegisterViewController: UIViewController {
         }
         
         //--------------------------------------- fireAuth
+        
+        //logout
+//        do {
+//            try Auth.auth().signOut()
+//        } catch let error as NSError {
+//            print("ログアウトに関しては\(error)")
+//        }
+        
+        //createUser
         Auth.auth().createUser(withEmail: replesentEmail.text!, password: replesentPass.text!) { (user, error) in
             if let error = error {
                 print(error.localizedDescription)
                 self.ShowMessage(messageToDisplay: error.localizedDescription)
                 return
             }
-            if let user = user {
-                var databaseReference: DatabaseReference!
-                databaseReference = Database.database().reference()
+            if user != nil {
+                print("success")
             }
         }
-//         let user = Auth.auth().currentUser
-//        self.userID = user?.uid
-        let fireAuthUID = Auth.auth().currentUser
-        let userID = fireAuthUID?.uid
-        print("これは\(userID)")
+        
+        //login
+        Auth.auth().signIn(withEmail: replesentEmail.text!, password: replesentPass.text!) { (user, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                self.ShowMessage(messageToDisplay: error.localizedDescription)
+                return
+            }
+            if let user = user {
+                print("ログインできました")
+            }
+        }
+        
+        //ログインしている現ユーザーUID取得
+        let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
+        
+        print("今度こそ\(fireAuthUID)")
+        
         //--------------------------------------- fireAuth
         //--------------------------------------- createDate
         let dateUnix: TimeInterval = Date().timeIntervalSince1970
@@ -88,7 +109,7 @@ class teamReplesentRegisterViewController: UIViewController {
         let userRegistInfo = ["regist": true, "teamID": teamID] as [String : Any]
 
         var _: DocumentReference? = nil
-        db.collection("team").document(teamID).collection("users").document(userID!).setData(userRegistInfo)
+        db.collection("team").document(teamID).collection("users").document(fireAuthUID).setData(userRegistInfo)
         {
             err in
             if let err = err {
@@ -97,7 +118,7 @@ class teamReplesentRegisterViewController: UIViewController {
                 print("Document added with ID")
             }
         }
-        db.collection("users").document(userID!).setData(replesentData)
+        db.collection("users").document(fireAuthUID).setData(replesentData)
         {
             err in
             if let err2 = err {

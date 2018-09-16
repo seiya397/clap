@@ -29,11 +29,9 @@ class teamIdConfirmationViewController: UIViewController {
             if let document = document, document.exists {
                 let againConfirm = self.storyboard?.instantiateViewController(withIdentifier: "teamIdConfirmAgainViewController") as! teamIdConfirmAgainViewController
                 self.present(againConfirm, animated: true, completion: nil)
-                //segueで繋いでいる理由は、視覚的にわかりやすくするため
             } else {
                 let wrongConfirm = self.storyboard?.instantiateViewController(withIdentifier: "teamIdConfirmWrongViewController") as! teamIdConfirmWrongViewController
                 self.present(wrongConfirm, animated: true, completion: nil)
-                //segueで繋いでいる理由は、視覚的にわかりやすくするため
                 
             }
         }
