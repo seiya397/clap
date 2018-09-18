@@ -73,8 +73,9 @@ class userInfoRegisterViewController: UIViewController{
                     }
                     if let user = user {
                         print("ログインできました")
-                        let schedulePage = self.storyboard?.instantiateViewController(withIdentifier: "scheduleViewController") as! scheduleViewController
-                        self.present(schedulePage, animated: true, completion: nil)
+                        self.performSegue(withIdentifier: "schedule", sender: nil)
+//                        let schedulePage = self.storyboard?.instantiateViewController(withIdentifier: "scheduleViewController") as! scheduleViewController
+//                        self.present(schedulePage, animated: true, completion: nil)
                     }
                 }
             }

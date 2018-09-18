@@ -93,6 +93,7 @@
                                 </state>
                                 <connections>
                                     <action selector="goLoginButton:" destination="4lN-n7-eCR" eventType="touchUpInside" id="qpH-59-vhr"/>
+                                    <segue destination="2sg-vh-AQf" kind="show" identifier="schedule" id="tD7-by-SRa"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="チームID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWr-vF-IQ3">
@@ -1315,7 +1316,7 @@
         <!--スケジュール-->
         <scene sceneID="63O-UF-aIb">
             <objects>
-                <viewController id="wOm-Kt-aHB" customClass="scheduleViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scheduleViewController" id="wOm-Kt-aHB" customClass="scheduleViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4ge-du-E4E">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1420,6 +1421,7 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                         <color key="badgeColor" name="controlDarkShadowColor" catalog="System" colorSpace="catalog"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="スケジュール" id="7s2-Uv-wJK"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="calendar" destination="29U-2u-HD5" id="06K-0S-zMU"/>
                     </connections>
@@ -1603,6 +1605,7 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                                 </state>
                                 <connections>
                                     <action selector="commonLoginButton:" destination="Exz-gh-qmw" eventType="touchUpInside" id="EiG-xw-Puv"/>
+                                    <segue destination="2sg-vh-AQf" kind="show" identifier="schedule" id="3Qw-Jw-5gg"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lp1-6D-KIV">
@@ -2170,6 +2173,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                 </state>
                                 <connections>
                                     <action selector="userRegisterButtonTapped:" destination="pe6-kw-VO4" eventType="touchUpInside" id="2oZ-Ir-shT"/>
+                                    <segue destination="2sg-vh-AQf" kind="show" identifier="schedule" id="B9F-4i-KET"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2905,5 +2909,8 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
         <image name="user" width="686" height="680"/>
         <image name="weight" width="512" height="512"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="B9F-4i-KET"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

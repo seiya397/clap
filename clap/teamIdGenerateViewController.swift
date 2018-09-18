@@ -21,8 +21,9 @@ class teamIdGenerateViewController: UIViewController {
     
     @IBAction func goLoginButton(_ sender: Any) {
         //--------------------------------------- 移動
-        let schedulePage = self.storyboard?.instantiateViewController(withIdentifier: "scheduleViewController") as! scheduleViewController
-        self.present(schedulePage, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "schedule", sender: nil)
+//        let schedulePage = self.storyboard?.instantiateViewController(withIdentifier: "scheduleViewController") as! scheduleViewController
+//        self.present(schedulePage, animated: true, completion: nil)
         //segueで繋いでいる理由は、視覚的にわかりやすくするため
         //--------------------------------------- 移動
     }

@@ -1,11 +1,3 @@
-//
-//  LoginViewController.swift
-//  clap
-//
-//  Created by オムラユウキ on 2018/08/25.
-//  Copyright © 2018年 Seiya. All rights reserved.
-//
-
 import UIKit
 import Firebase
 import FirebaseAuth
@@ -35,7 +27,7 @@ class LoginViewController: UIViewController {
             self.ShowMessage(messageToDisplay: "パスワードを記入してください。")
             return
         }
-        Auth.auth().signIn(withEmail: userEmailText, password: userPassText) { (user, error) in
+        Auth.auth().signIn(withEmail: commonMailaddress.text!, password: commonPassword.text!) { (user, error) in
             if let error = error {
                 print(error.localizedDescription)
                 self.ShowMessage(messageToDisplay: error.localizedDescription)
@@ -43,8 +35,10 @@ class LoginViewController: UIViewController {
             }
             
             if user != nil {
-                let mainPage = self.storyboard?.instantiateViewController(withIdentifier: "mainPageViewController") as! mainPageViewController
-                self.present(mainPage, animated: true, completion: nil)
+                print("ログインできました。")
+//                let mainPage = self.storyboard?.instantiateViewController(withIdentifier: "scheduleViewController") as! scheduleViewController
+//                self.present(mainPage, animated: true, completion: nil)
+                self.performSegue(withIdentifier: "schedule", sender: nil)
             }
         }
     }
