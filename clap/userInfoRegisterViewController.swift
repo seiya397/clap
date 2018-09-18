@@ -56,29 +56,36 @@ class userInfoRegisterViewController: UIViewController{
         }
         //---------------------------------------------------- 記入確認
         //---------------------------------------------------- fireAuth
-        Auth.auth().createUser(withEmail: userEmail.text!, password: userPass.text!) { (user, error) in
-            if let error = error {
-                print("新規登録できませんでした")
-                print(error.localizedDescription)
-                self.ShowMessage(messageToDisplay: error.localizedDescription)
-                return
-            } else {
-                print("新規登録成功しました")
-                //login
-                Auth.auth().signIn(withEmail: self.userEmail.text!, password: self.userPass.text!) { (user, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                        self.ShowMessage(messageToDisplay: error.localizedDescription)
-                        return
-                    }
-                    if let user = user {
-                        print("ログインできました")
-                        self.performSegue(withIdentifier: "schedule", sender: nil)
-//                        let schedulePage = self.storyboard?.instantiateViewController(withIdentifier: "scheduleViewController") as! scheduleViewController
-//                        self.present(schedulePage, animated: true, completion: nil)
+        //logout
+        do {
+            try Auth.auth().signOut()
+
+            Auth.auth().createUser(withEmail: userEmail.text!, password: userPass.text!) { (user, error) in
+                if let error = error {
+                    print("新規登録できませんでした")
+                    print(error.localizedDescription)
+                    self.ShowMessage(messageToDisplay: error.localizedDescription)
+                    return
+                } else {
+                    print("新規登録成功しました")
+                    //login
+                    Auth.auth().signIn(withEmail: self.userEmail.text!, password: self.userPass.text!) { (user, error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                            self.ShowMessage(messageToDisplay: error.localizedDescription)
+                            return
+                        }
+                        if let user = user {
+                            print("ログインできました")
+                            self.performSegue(withIdentifier: "schedule", sender: nil)
+    //                        let schedulePage = self.storyboard?.instantiateViewController(withIdentifier: "scheduleViewController") as! scheduleViewController
+    //                        self.present(schedulePage, animated: true, completion: nil)
+                        }
                     }
                 }
             }
+        } catch {
+            print("ログアウトできませんでした")
         }
         //ログインしている現ユーザーUID取得
         let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
@@ -98,8 +105,9 @@ class userInfoRegisterViewController: UIViewController{
         let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)!//teamID取得
         
         let registerData = ["name": userName.text!, "role": userRole.text!, "createDate": dateStr] as [String: Any]
+        let teamRegisterData = ["regist": true] as [String: Any]
         let userRegistInfo = ["regist": true, "teamID": teamID] as [String : Any]
-        db.collection("team").document(teamID).collection("users").document(fireAuthUID).setData(userRegistInfo)
+        db.collection("teams").document(teamID).collection("users").document(fireAuthUID).setData(userRegistInfo)
         {
             err in
             if let err = err {
@@ -108,10 +116,19 @@ class userInfoRegisterViewController: UIViewController{
                 print("登録成功")
             }
         }
-        db.collection("users").document(fireAuthUID).setData(registerData)
+        db.collection("users").document(fireAuthUID).collection("teams").document(teamID).setData(teamRegisterData)
         {
             err in
             if let err2 = err {
+                print("登録できません")
+            } else {
+                print("登録成功")
+            }
+        }
+            db.collection("users").document(fireAuthUID).setData(registerData)
+        {
+            err in
+            if let err3 = err {
                 print("登録できません")
             } else {
                 print("登録成功")

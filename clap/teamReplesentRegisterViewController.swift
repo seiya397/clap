@@ -56,37 +56,39 @@ class teamReplesentRegisterViewController: UIViewController {
         //--------------------------------------- fireAuth
         
         //logout
-//        do {
-//            try Auth.auth().signOut()
-//        } catch let error as NSError {
-//            print("ログアウトに関しては\(error)")
-//        }
-        
-        //createUser
-        Auth.auth().createUser(withEmail: replesentEmail.text!, password: replesentPass.text!) { (user, error) in
-            if let error = error {
-                print("新規登録できませんでした")
-                self.ShowMessage(messageToDisplay: error.localizedDescription)
-                return
-            }
-            if user != nil {
-                print("新規登録できました")
-                
-                //login
-                Auth.auth().signIn(withEmail: self.replesentEmail.text!, password: self.replesentPass.text!) { (user, error) in
-                    if let error = error {
-                        print("ログインに失敗しました")
-                        self.ShowMessage(messageToDisplay: error.localizedDescription)
-                        return
-                    }
-                    if let user = user {
-                        print("ログインできました")
+        do {
+            try Auth.auth().signOut()
+            //createUser
+            Auth.auth().createUser(withEmail: replesentEmail.text!, password: replesentPass.text!) { (user, error) in
+                if let error = error {
+                    print("新規登録できませんでした")
+                    self.ShowMessage(messageToDisplay: error.localizedDescription)
+                    return
+                }
+                if user != nil {
+                    print("新規登録できました")
+                    
+                    //login
+                    Auth.auth().signIn(withEmail: self.replesentEmail.text!, password: self.replesentPass.text!) { (user, error) in
+                        if let error = error {
+                            print("ログインに失敗しました")
+                            self.ShowMessage(messageToDisplay: error.localizedDescription)
+                            return
+                        }
+                        if let user = user {
+                            print("ログインできました")
+
+                        }
                     }
                 }
             }
+        } catch {
+            print("ログアウトできませんでした")
         }
         
         //ログインしている現ユーザーUID取得
+        //ログインの前に先にこれが処理されて、うまく動作しない
+        //ログアウトしてこのページではno data だが、mypageではしっかりとcurrentUserのUID取得できている。よって問題点は、処理の順番になる。
         let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
         
         print("今度こそ\(fireAuthUID)")
@@ -107,9 +109,9 @@ class teamReplesentRegisterViewController: UIViewController {
         
         let replesentData = ["name": replesentName.text!, "role": replesentRole.text!, "grade": replesentGrade.text!, "createDate": dateStr] as [String: Any]
         let userRegistInfo = ["regist": true, "teamID": teamID] as [String : Any]
-
+        let teamRegisterData = ["regist": true] as [String: Any]
         var _: DocumentReference? = nil
-        db.collection("team").document(teamID).collection("users").document(fireAuthUID).setData(userRegistInfo)
+        db.collection("teams").document(teamID).collection("users").document(fireAuthUID).setData(userRegistInfo)
         {
             err in
             if let err = err {
@@ -118,6 +120,7 @@ class teamReplesentRegisterViewController: UIViewController {
                 print("Document added with ID")
             }
         }
+       
         db.collection("users").document(fireAuthUID).setData(replesentData)
         {
             err in

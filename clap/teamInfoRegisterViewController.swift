@@ -73,7 +73,7 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
         
         var _: DocumentReference? = nil
         
-        db.collection("team").document(teamID).setData(teamData)
+        db.collection("teams").document(teamID).setData(teamData)
         {
             err in
             if let err = err {
