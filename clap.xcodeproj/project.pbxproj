@@ -38,6 +38,7 @@
 		C962474F213D36AA00BC7C69 /* memberEvaluationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */; };
 		C9624751213D383A00BC7C69 /* chatPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9624750213D383A00BC7C69 /* chatPageViewController.swift */; };
 		C9708B472143DDCD0013FD4C /* teamIdConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9708B462143DDCD0013FD4C /* teamIdConfirmationViewController.swift */; };
+		C99DE78D2150E3D4002EBF89 /* myPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DE78C2150E3D4002EBF89 /* myPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memberEvaluationViewController.swift; sourceTree = "<group>"; };
 		C9624750213D383A00BC7C69 /* chatPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatPageViewController.swift; sourceTree = "<group>"; };
 		C9708B462143DDCD0013FD4C /* teamIdConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdConfirmationViewController.swift; sourceTree = "<group>"; };
+		C99DE78C2150E3D4002EBF89 /* myPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myPageViewController.swift; sourceTree = "<group>"; };
 		DC6E4A81ADE570696665400E /* Pods-clapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clapUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clapUITests/Pods-clapUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DFCB4A2A527B40ADB768C150 /* Pods_clap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -190,6 +192,7 @@
 				C9169696214CDE85002EECEF /* teamReplesentRegisterViewController.swift */,
 				C9169698214D229A002EECEF /* teamIdConfirmAgainViewController.swift */,
 				C916969A214D22F6002EECEF /* teamIdConfirmWrongViewController.swift */,
+				C99DE78C2150E3D4002EBF89 /* myPageViewController.swift */,
 			);
 			path = clap;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				C90648962133E2B20025AD44 /* teamIdGenerateViewController.swift in Sources */,
 				C96247462139D5C000BC7C69 /* mainPageViewController.swift in Sources */,
 				C962474B213B895C00BC7C69 /* userResetPassViewController.swift in Sources */,
+				C99DE78D2150E3D4002EBF89 /* myPageViewController.swift in Sources */,
 				BEF298A1213F092A00E75472 /* chatViewController.swift in Sources */,
 				BE3C84AC212BF7AB0053EFE2 /* ViewController.swift in Sources */,
 				C9624751213D383A00BC7C69 /* chatPageViewController.swift in Sources */,

@@ -576,7 +576,7 @@
         <!--マイページ-->
         <scene sceneID="c21-bJ-KQW">
             <objects>
-                <viewController id="rBC-2k-Vg1" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="myPageViewController" id="rBC-2k-Vg1" customClass="myPageViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UIb-48-vFE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -627,6 +627,16 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="graph" translatesAutoresizingMaskIntoConstraints="NO" id="kBj-tA-pgL">
                                 <rect key="frame" x="15" y="463" width="384" height="214"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAT-M1-9Wu">
+                                <rect key="frame" x="322" y="64" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="ログアウト">
+                                    <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutButton:" destination="rBC-2k-Vg1" eventType="touchUpInside" id="2ha-f7-gHi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -644,8 +654,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KUY-xQ-ckj"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="マイページ" id="gKE-ZM-jjL"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="z5D-Tg-xue"/>
                     <navigationItem key="navigationItem" title="マイページ" id="4Yq-tz-663"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gLW-gs-fQH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
