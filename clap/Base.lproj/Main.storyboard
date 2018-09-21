@@ -375,8 +375,8 @@
                                     <action selector="logoutButton:" destination="rBC-2k-Vg1" eventType="touchUpInside" id="2ha-f7-gHi"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aaaaaaa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ztc-A5-T52">
-                                <rect key="frame" x="0.0" y="375.66666666666669" width="414" height="20.333333333333314"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="this is a teamID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ztc-A5-T52">
+                                <rect key="frame" x="0.0" y="375" width="414" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -388,22 +388,32 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あああああ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfs-qM-0S4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="this is a teamName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfs-qM-0S4">
                                 <rect key="frame" x="0.0" y="301.33333333333331" width="414" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="チームID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aM-i4-fqd">
-                                <rect key="frame" x="0.0" y="347.33333333333331" width="414" height="20.333333333333314"/>
+                                <rect key="frame" x="0.0" y="346.66666666666669" width="414" height="20.333333333333314"/>
                                 <color key="backgroundColor" red="0.85949397208121825" green="0.85949397208121825" blue="0.85949397208121825" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRS-HP-N3B">
+                                <rect key="frame" x="211.66666666666666" y="212.66666666666666" width="31" height="30"/>
+                                <state key="normal" title="編集">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cahngeInfoButtonTapped:" destination="rBC-2k-Vg1" eventType="touchUpInside" id="WGu-av-aVa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="cRS-HP-N3B" firstAttribute="centerX" secondItem="UIb-48-vFE" secondAttribute="centerX" constant="20" id="43p-RO-bPQ"/>
                             <constraint firstItem="uAT-M1-9Wu" firstAttribute="top" secondItem="Ztc-A5-T52" secondAttribute="bottom" constant="116" id="5l1-7P-mJV"/>
                             <constraint firstItem="5aM-i4-fqd" firstAttribute="leading" secondItem="KUY-xQ-ckj" secondAttribute="leading" id="6fk-bC-alw"/>
                             <constraint firstItem="5aM-i4-fqd" firstAttribute="centerX" secondItem="UIb-48-vFE" secondAttribute="centerX" id="BVP-Gr-mNW"/>
@@ -414,6 +424,7 @@
                             <constraint firstItem="Fs0-oC-Lau" firstAttribute="centerX" secondItem="UIb-48-vFE" secondAttribute="centerX" constant="-100" id="Js6-jj-FQR"/>
                             <constraint firstItem="tfs-qM-0S4" firstAttribute="centerX" secondItem="UIb-48-vFE" secondAttribute="centerX" id="Qew-tX-gD2"/>
                             <constraint firstItem="Ztc-A5-T52" firstAttribute="leading" secondItem="KUY-xQ-ckj" secondAttribute="leading" id="XH3-Ks-u7t"/>
+                            <constraint firstItem="cRS-HP-N3B" firstAttribute="top" secondItem="702-Le-QAw" secondAttribute="bottom" constant="25" id="Xx6-jn-ATU"/>
                             <constraint firstItem="Ztc-A5-T52" firstAttribute="top" secondItem="5aM-i4-fqd" secondAttribute="bottom" constant="8.6699999999999999" id="ZOc-LS-uSJ"/>
                             <constraint firstItem="Ztc-A5-T52" firstAttribute="centerX" secondItem="UIb-48-vFE" secondAttribute="centerX" id="ZlL-zB-rq4"/>
                             <constraint firstItem="702-Le-QAw" firstAttribute="centerY" secondItem="Fs0-oC-Lau" secondAttribute="centerY" id="cwV-jL-cqS"/>
@@ -434,6 +445,8 @@
                     <connections>
                         <outlet property="teamIDLabel" destination="Ztc-A5-T52" id="6tC-Np-lqB"/>
                         <outlet property="teamName" destination="tfs-qM-0S4" id="Fh6-FU-QSx"/>
+                        <outlet property="userName" destination="oAE-JZ-JiN" id="qKT-3K-edU"/>
+                        <outlet property="userRole" destination="pv3-K4-2WE" id="20p-JY-Vzo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gLW-gs-fQH" userLabel="First Responder" sceneMemberID="firstResponder"/>
