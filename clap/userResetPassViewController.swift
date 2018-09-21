@@ -24,7 +24,10 @@ class userResetPassViewController: UIViewController {
     }
     
     @IBAction func resetPassButtonTapped(_ sender: Any) {//resetButton
-        guard let userEmailAddress = userEmailForResetPass.text, !userEmailAddress.isEmpty else {return}
+        guard let userEmailAddress = userEmailForResetPass.text, !userEmailAddress.isEmpty else {
+            self.ShowMessage(messageToDisplay: "メールアドレスを記入してください。")
+            return
+        }
         
         Auth.auth().sendPasswordReset(withEmail: userEmailAddress) { (error) in
             if error != nil {
