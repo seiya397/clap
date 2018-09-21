@@ -27,9 +27,11 @@ class teamIdConfirmationViewController: UIViewController {
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
+                print("成功した場合\(document)")
                 let againConfirm = self.storyboard?.instantiateViewController(withIdentifier: "teamIdConfirmAgainViewController") as! teamIdConfirmAgainViewController
                 self.present(againConfirm, animated: true, completion: nil)
             } else {
+                print("失敗した場合\(error)")
                 let wrongConfirm = self.storyboard?.instantiateViewController(withIdentifier: "teamIdConfirmWrongViewController") as! teamIdConfirmWrongViewController
                 self.present(wrongConfirm, animated: true, completion: nil)
                 

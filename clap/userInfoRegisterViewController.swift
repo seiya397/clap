@@ -56,8 +56,8 @@ class userInfoRegisterViewController: UIViewController{
         }
         //---------------------------------------------------- 記入確認
         //---------------------------------------------------- fireAuth
-
-            Auth.auth().createUser(withEmail: userEmail.text!, password: userPass.text!) { (user, error) in
+        DispatchQueue.global(qos: .default).async {
+            Auth.auth().createUser(withEmail: self.userEmail.text!, password: self.userPass.text!) { (user, error) in
                 if let error = error {
                     print("新規登録できませんでした")
                     print(error.localizedDescription)
@@ -74,59 +74,65 @@ class userInfoRegisterViewController: UIViewController{
                         }
                         if let user = user {
                             print("ログインできました")
-                            self.performSegue(withIdentifier: "schedule", sender: nil)  
+                            self.performSegue(withIdentifier: "schedule", sender: nil)
+                            DispatchQueue.main.async {
+                                //ログインしている現ユーザーUID取得
+                                let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
+                                print("今度こそ\(fireAuthUID)")
+                                
+                                //---------------------------------------------------- fireAuth
+                                //--------------------------------------- createDate
+                                let dateUnix: TimeInterval = Date().timeIntervalSince1970
+                                let date = Date(timeIntervalSince1970: dateUnix)
+                                // NSDate型を日時文字列に変換するためのNSDateFormatterを生成
+                                let formatter = DateFormatter()
+                                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                                // NSDateFormatterを使ってNSDate型 "date" を日時文字列 "dateStr" に変換
+                                let dateStr: String = formatter.string(from: date) //現在時刻取得
+                                //--------------------------------------- createDate
+                                //--------------------------------------- fireStore
+                                let userDefaults:UserDefaults = UserDefaults.standard //userDefaultsでチームID取得
+                                let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)!//teamID取得
+                                
+                                let registerData = ["name": self.userName.text!, "role": self.userRole.text!, "createDate": dateStr] as [String: Any]
+                                let teamRegisterData = ["regist": true] as [String: Any]
+                                let userRegistInfo = ["regist": true, "teamID": teamID] as [String : Any]
+                                self.db.collection("teams").document(teamID).collection("users").document(fireAuthUID).setData(userRegistInfo)
+                                {
+                                    err in
+                                    if let err = err {
+                                        print("エラー \(err)")
+                                    } else {
+                                        print("ユーザー情報登録成功")
+                                    }
+                                }
+                                self.db.collection("users").document(fireAuthUID).collection("teams").document(teamID).setData(teamRegisterData)
+                                {
+                                    err in
+                                    if let err2 = err {
+                                        print("ユーザー情報登録できません")
+                                    } else {
+                                        print("ユーザー情報登録成功")
+                                    }
+                                }
+                                self.db.collection("users").document(fireAuthUID).setData(registerData)
+                                {
+                                    err in
+                                    if let err3 = err {
+                                        print("ユーザー情報登録できません")
+                                    } else {
+                                        print("ユーザー情報登録成功")
+                                    }
+                                }
+                                //--------------------------------------- fireStore
+                            }
                         }
                     }
                 }
             }
-        //ログインしている現ユーザーUID取得
-        let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
-        print("今度こそ\(fireAuthUID)")
-        //---------------------------------------------------- fireAuth
-        //--------------------------------------- createDate
-        let dateUnix: TimeInterval = Date().timeIntervalSince1970
-        let date = Date(timeIntervalSince1970: dateUnix)
-        // NSDate型を日時文字列に変換するためのNSDateFormatterを生成
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        // NSDateFormatterを使ってNSDate型 "date" を日時文字列 "dateStr" に変換
-        let dateStr: String = formatter.string(from: date) //現在時刻取得
-        //--------------------------------------- createDate
-        //--------------------------------------- fireStore
-        let userDefaults:UserDefaults = UserDefaults.standard //userDefaultsでチームID取得
-        let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)!//teamID取得
+        }
         
-        let registerData = ["name": userName.text!, "role": userRole.text!, "createDate": dateStr] as [String: Any]
-        let teamRegisterData = ["regist": true] as [String: Any]
-        let userRegistInfo = ["regist": true, "teamID": teamID] as [String : Any]
-        db.collection("teams").document(teamID).collection("users").document(fireAuthUID).setData(userRegistInfo)
-        {
-            err in
-            if let err = err {
-                print("エラー \(err)")
-            } else {
-                print("登録成功")
-            }
-        }
-        db.collection("users").document(fireAuthUID).collection("teams").document(teamID).setData(teamRegisterData)
-        {
-            err in
-            if let err2 = err {
-                print("登録できません")
-            } else {
-                print("登録成功")
-            }
-        }
-            db.collection("users").document(fireAuthUID).setData(registerData)
-        {
-            err in
-            if let err3 = err {
-                print("登録できません")
-            } else {
-                print("登録成功")
-            }
-        }
-        //--------------------------------------- fireStore
+        
     }
     
     //認証用関数
