@@ -31,4 +31,9 @@ class topSelectPageViewController: UIViewController {
         self.present(teamIdConfirmation, animated: true, completion: nil)
         //segueで繋いでいる理由は、視覚的にわかりやすくするため
     }
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        let loginPage = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        self.present(loginPage, animated: true, completion: nil)
+        
+    }
 }

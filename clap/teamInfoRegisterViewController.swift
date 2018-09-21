@@ -95,6 +95,12 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
 
     }
     
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        let loginPage = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        self.present(loginPage, animated: true, completion: nil)
+        
+    }
+    
     func randomString(length: Int) -> String {  //ランダムID
         
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"

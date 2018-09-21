@@ -1021,7 +1021,7 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" red="0.51807197029999996" green="0.2979992239" blue="0.90927697470000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="wZd-Xz-Kph">
@@ -1043,8 +1043,8 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="cancel">
-                                    <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="キャンセル">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="usercancelButtonTapped:" destination="NXO-M7-a3m" eventType="touchUpInside" id="if5-pF-82Y"/>
@@ -1119,7 +1119,7 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBa-bc-uRY">
                                 <rect key="frame" x="131" y="453" width="153" height="30"/>
                                 <state key="normal" title="パスワードを忘れた方">
-                                    <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetPassButtontapped:" destination="Exz-gh-qmw" eventType="touchUpInside" id="4Km-M9-6f8"/>
@@ -1294,7 +1294,9 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="ZDF-4T-lBw"/>
                                 </constraints>
-                                <state key="normal" title="キャンセル"/>
+                                <state key="normal" title="キャンセル">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="cancelButtonTapped:" destination="EVM-ri-8li" eventType="touchUpInside" id="YIV-of-orq"/>
                                 </connections>
@@ -1420,14 +1422,25 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                     <constraint firstAttribute="bottom" secondItem="gay-o2-fVg" secondAttribute="bottom" id="vzx-i2-yku"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUT-oG-pk7">
+                                <rect key="frame" x="169" y="563" width="77" height="30"/>
+                                <state key="normal" title="キャンセル">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelbuttonTapped:" destination="4RP-ae-gf9" eventType="touchUpInside" id="JiF-jt-gqI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="d3g-Wb-pXN" firstAttribute="centerX" secondItem="NTp-Ob-XUV" secondAttribute="centerX" id="46l-Er-xFu"/>
                             <constraint firstItem="X5r-NF-tzh" firstAttribute="trailing" secondItem="b5k-QM-NHd" secondAttribute="trailing" constant="100" id="6N0-OQ-d26"/>
                             <constraint firstItem="wsY-W6-2bW" firstAttribute="centerX" secondItem="NTp-Ob-XUV" secondAttribute="centerX" id="7ii-xo-Lc6"/>
+                            <constraint firstItem="zUT-oG-pk7" firstAttribute="centerX" secondItem="NTp-Ob-XUV" secondAttribute="centerX" id="Aoi-yy-Spk"/>
                             <constraint firstItem="d3g-Wb-pXN" firstAttribute="top" secondItem="b5k-QM-NHd" secondAttribute="bottom" constant="30" id="Dcp-tv-Ke1"/>
                             <constraint firstItem="dtI-DY-RDn" firstAttribute="centerY" secondItem="NTp-Ob-XUV" secondAttribute="centerY" id="EZq-9e-6le"/>
+                            <constraint firstItem="zUT-oG-pk7" firstAttribute="top" secondItem="d3g-Wb-pXN" secondAttribute="bottom" constant="35" id="QmC-xp-xKB"/>
                             <constraint firstItem="T7n-9R-6E6" firstAttribute="top" secondItem="X5r-NF-tzh" secondAttribute="top" constant="65" id="XhL-BX-xS8"/>
                             <constraint firstItem="wsY-W6-2bW" firstAttribute="top" secondItem="T7n-9R-6E6" secondAttribute="bottom" constant="8" symbolic="YES" id="cQV-Qz-vwg"/>
                             <constraint firstItem="b5k-QM-NHd" firstAttribute="top" secondItem="dtI-DY-RDn" secondAttribute="bottom" constant="40" id="rLz-ct-CDo"/>
@@ -1540,10 +1553,20 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                     <constraint firstItem="qWB-5N-99O" firstAttribute="leading" secondItem="IIU-j5-9pT" secondAttribute="trailing" id="oRH-QP-Jtc"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHA-mX-T5p">
+                                <rect key="frame" x="169" y="553" width="77" height="30"/>
+                                <state key="normal" title="キャンセル">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="rLu-Bb-SbK" eventType="touchUpInside" id="2B2-kx-SCT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TZM-It-rHI" firstAttribute="centerX" secondItem="9qg-j9-Fbl" secondAttribute="centerX" id="1rB-jE-Jbb"/>
+                            <constraint firstItem="iHA-mX-T5p" firstAttribute="top" secondItem="bng-O9-QfT" secondAttribute="bottom" constant="35" id="41m-TV-MPV"/>
                             <constraint firstItem="vcX-H4-MeX" firstAttribute="centerX" secondItem="9qg-j9-Fbl" secondAttribute="centerX" id="468-2A-1CT"/>
                             <constraint firstItem="vcX-H4-MeX" firstAttribute="top" secondItem="b5N-jv-V6L" secondAttribute="bottom" constant="8" symbolic="YES" id="4Vt-v9-i8c"/>
                             <constraint firstItem="TZM-It-rHI" firstAttribute="centerY" secondItem="9qg-j9-Fbl" secondAttribute="centerY" id="AES-fD-RDH"/>
@@ -1552,6 +1575,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                             <constraint firstItem="TEr-uS-Of3" firstAttribute="top" secondItem="TZM-It-rHI" secondAttribute="bottom" constant="40" id="ED4-Cm-ZLG"/>
                             <constraint firstItem="OJO-kT-I1o" firstAttribute="trailing" secondItem="TEr-uS-Of3" secondAttribute="trailing" constant="100" id="Lmq-yK-pbz"/>
                             <constraint firstItem="TZM-It-rHI" firstAttribute="top" secondItem="vcX-H4-MeX" secondAttribute="bottom" constant="20" id="RGC-qr-daL"/>
+                            <constraint firstItem="iHA-mX-T5p" firstAttribute="centerX" secondItem="9qg-j9-Fbl" secondAttribute="centerX" id="fYu-ys-P9o"/>
                             <constraint firstItem="TEr-uS-Of3" firstAttribute="leading" secondItem="OJO-kT-I1o" secondAttribute="leading" constant="100" id="pJY-Ml-gLO"/>
                             <constraint firstItem="bng-O9-QfT" firstAttribute="centerX" secondItem="9qg-j9-Fbl" secondAttribute="centerX" id="ypF-Sl-wR3"/>
                             <constraint firstItem="bng-O9-QfT" firstAttribute="top" secondItem="TEr-uS-Of3" secondAttribute="bottom" constant="30" id="zdL-hs-Yeb"/>
@@ -1806,6 +1830,15 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zb6-iq-0dX">
+                                <rect key="frame" x="168.66666666666666" y="461.33333333333331" width="77" height="30"/>
+                                <state key="normal" title="キャンセル">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="TL9-xb-bEe" eventType="touchUpInside" id="eXN-7v-ZwI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1813,8 +1846,10 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                             <constraint firstItem="3dE-ny-mGY" firstAttribute="centerX" secondItem="stR-AM-r4U" secondAttribute="centerX" id="5Kc-Ky-PyY"/>
                             <constraint firstItem="GZq-3j-sSq" firstAttribute="centerY" secondItem="stR-AM-r4U" secondAttribute="centerY" id="BEd-XX-Rso"/>
                             <constraint firstItem="GZq-3j-sSq" firstAttribute="top" secondItem="TG9-UG-Ie2" secondAttribute="bottom" constant="30" id="R3I-ds-2ZV"/>
+                            <constraint firstItem="Zb6-iq-0dX" firstAttribute="top" secondItem="3dE-ny-mGY" secondAttribute="bottom" constant="35" id="alZ-4C-AMT"/>
                             <constraint firstItem="3dE-ny-mGY" firstAttribute="top" secondItem="GZq-3j-sSq" secondAttribute="bottom" constant="8" symbolic="YES" id="cgg-kg-Gsb"/>
                             <constraint firstItem="GZq-3j-sSq" firstAttribute="centerX" secondItem="stR-AM-r4U" secondAttribute="centerX" id="dmn-Zw-z5s"/>
+                            <constraint firstItem="Zb6-iq-0dX" firstAttribute="centerX" secondItem="stR-AM-r4U" secondAttribute="centerX" id="iGu-6q-mks"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xUg-i0-1bg"/>
                     </view>
@@ -1933,11 +1968,21 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                     <segue destination="NxX-eN-ryL" kind="show" id="3L7-n9-M0G"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upm-43-XTO">
+                                <rect key="frame" x="168.66666666666666" y="618.66666666666663" width="77" height="30"/>
+                                <state key="normal" title="キャンセル">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="Vsl-Ot-XyV" eventType="touchUpInside" id="6vD-5W-Xo9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TfS-pd-Rl9" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="78f-1b-vBU"/>
                             <constraint firstItem="17g-vB-zdz" firstAttribute="top" secondItem="TfS-pd-Rl9" secondAttribute="bottom" constant="8" symbolic="YES" id="Cwy-EX-qKc"/>
+                            <constraint firstItem="upm-43-XTO" firstAttribute="top" secondItem="Hhx-zk-WO2" secondAttribute="bottom" constant="35" id="G7j-L0-8tX"/>
                             <constraint firstItem="dYR-V2-uNM" firstAttribute="trailing" secondItem="gLS-NP-8GF" secondAttribute="trailing" constant="100" id="J2l-jl-4G8"/>
                             <constraint firstItem="gLS-NP-8GF" firstAttribute="top" secondItem="vdk-kx-u5E" secondAttribute="bottom" constant="40" id="N9e-sK-p0I"/>
                             <constraint firstItem="vdk-kx-u5E" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="ZB3-am-lRn"/>
@@ -1946,6 +1991,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                             <constraint firstItem="gLS-NP-8GF" firstAttribute="leading" secondItem="dYR-V2-uNM" secondAttribute="leading" constant="100" id="eDt-LD-zWg"/>
                             <constraint firstItem="vdk-kx-u5E" firstAttribute="centerY" secondItem="lLC-3b-Ke4" secondAttribute="centerY" id="gFf-7h-aza"/>
                             <constraint firstItem="Hhx-zk-WO2" firstAttribute="top" secondItem="gLS-NP-8GF" secondAttribute="bottom" constant="30" id="rMn-Mt-EKN"/>
+                            <constraint firstItem="upm-43-XTO" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="rSH-QY-653"/>
                             <constraint firstItem="17g-vB-zdz" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="sFR-DS-j4s"/>
                             <constraint firstItem="Hhx-zk-WO2" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="zfJ-Tf-DIh"/>
                         </constraints>

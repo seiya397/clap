@@ -39,6 +39,10 @@ class teamIdConfirmationViewController: UIViewController {
         }
     }
     
+    @IBAction func cancelbuttonTapped(_ sender: Any) {
+        let loginPage = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        self.present(loginPage, animated: true, completion: nil)
+    }
     
     public func ShowMessage(messageToDisplay: String) { //認証用関数
         let alertController = UIAlertController(title: "Alert Title", message: messageToDisplay, preferredStyle: .alert)
