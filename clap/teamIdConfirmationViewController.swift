@@ -23,7 +23,7 @@ class teamIdConfirmationViewController: UIViewController {
             self.ShowMessage(messageToDisplay: "チームIDを記入してください。")
             return
         }
-        let docRef = db.collection("team").document(confirmTeamID.text!)
+        let docRef = db.collection("teams").document(confirmTeamID.text!)
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {

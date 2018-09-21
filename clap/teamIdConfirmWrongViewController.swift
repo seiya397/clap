@@ -33,7 +33,7 @@ class teamIdConfirmWrongViewController: UIViewController {
             return
         }
         
-        let docRef = db.collection("team").document(confirmTextAgain.text!)
+        let docRef = db.collection("teams").document(confirmTextAgain.text!)
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {

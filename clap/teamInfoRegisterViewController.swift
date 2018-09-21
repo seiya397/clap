@@ -77,9 +77,11 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
         {
             err in
             if let err = err {
-                print("Error adding document: \(err)")
+                print("失敗の場合\(teamID)")
+                print("チーム情報登録でエラー")
             } else {
-                print("Document added with ID")
+                print("成功の場合\(teamID)")
+                print("チーム情報登録成功")
             }
         }
         //-----------------------------------------------------

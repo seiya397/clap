@@ -20,7 +20,7 @@ class teamIdConfirmAgainViewController: UIViewController {
         let userDefaults: UserDefaults = UserDefaults.standard
         let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)!
         
-        db.collection("team").document(teamID).addSnapshotListener { (snapshot, error) in
+        db.collection("teams").document(teamID).addSnapshotListener { (snapshot, error) in
             guard let document = snapshot else {
                 print("error \(error)")
                 return

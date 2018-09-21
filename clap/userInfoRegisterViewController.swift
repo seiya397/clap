@@ -56,9 +56,6 @@ class userInfoRegisterViewController: UIViewController{
         }
         //---------------------------------------------------- 記入確認
         //---------------------------------------------------- fireAuth
-        //logout
-        do {
-            try Auth.auth().signOut()
 
             Auth.auth().createUser(withEmail: userEmail.text!, password: userPass.text!) { (user, error) in
                 if let error = error {
@@ -77,16 +74,11 @@ class userInfoRegisterViewController: UIViewController{
                         }
                         if let user = user {
                             print("ログインできました")
-                            self.performSegue(withIdentifier: "schedule", sender: nil)
-    //                        let schedulePage = self.storyboard?.instantiateViewController(withIdentifier: "scheduleViewController") as! scheduleViewController
-    //                        self.present(schedulePage, animated: true, completion: nil)
+                            self.performSegue(withIdentifier: "schedule", sender: nil)  
                         }
                     }
                 }
             }
-        } catch {
-            print("ログアウトできませんでした")
-        }
         //ログインしている現ユーザーUID取得
         let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
         print("今度こそ\(fireAuthUID)")

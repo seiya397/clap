@@ -54,10 +54,6 @@ class teamReplesentRegisterViewController: UIViewController {
         }
         
         //--------------------------------------- fireAuth
-        
-        //logout
-        do {
-            try Auth.auth().signOut()
             //createUser
             Auth.auth().createUser(withEmail: replesentEmail.text!, password: replesentPass.text!) { (user, error) in
                 if let error = error {
@@ -82,9 +78,7 @@ class teamReplesentRegisterViewController: UIViewController {
                     }
                 }
             }
-        } catch {
-            print("ログアウトできませんでした")
-        }
+        
         
         //ログインしている現ユーザーUID取得
         //ログインの前に先にこれが処理されて、うまく動作しない
