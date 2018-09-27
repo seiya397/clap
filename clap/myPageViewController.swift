@@ -2,7 +2,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 import FirebaseAuth
-import FirebaseStorage
+import FirebaseUI
 
 
 class myPageViewController: UIViewController{
@@ -69,6 +69,11 @@ class myPageViewController: UIViewController{
         tap.numberOfTapsRequired = 1
         
         self.userImge.addGestureRecognizer(tap)
+        
+        let storageReference = Storage.storage().reference()
+        let profileImageDownloadedURLReference = storageReference.child("users/\(Auth.auth().currentUser?.uid)/profileImage.jpg")
+//        let placeholderImage = UIImage(named: "placeholder.jpg")
+        userImge.sd_setImage(with: profileImageDownloadedURLReference)
     }
 
     override func didReceiveMemoryWarning() {
@@ -123,18 +128,28 @@ extension myPageViewController: UIImagePickerControllerDelegate, UINavigationCon
     }
     
     func uploadFileImage(imageData: Data) {
+        let activeIndicater = UIActivityIndicatorView.init(activityIndicatorStyle: .gray)
+        activeIndicater.startAnimating()
+        activeIndicater.center = self.view.center
+        self.view.addSubview(activeIndicater)
         let reference = Storage.storage().reference()
         let UidForPath = (Auth.auth().currentUser?.uid ?? "no data")
         let profileImageRef = reference.child("users").child(UidForPath).child("profileImage.jpg")
         let uploadMetadata = StorageMetadata()
         uploadMetadata.contentType = "image/jpeg"
         profileImageRef.putData(imageData, metadata: uploadMetadata) { (metaData, error) in
+            activeIndicater.stopAnimating()
+            activeIndicater.removeFromSuperview()
             if error != nil {
                 print("画像のアップロードに失敗")
                 return
             } else {
                 print("画像のアップロードに成功\(String(describing: metaData))")
+                
             }
         }
     }
+    
+    //アップした画像を引っ張る　永続化　firestoreはその次
+    
 }

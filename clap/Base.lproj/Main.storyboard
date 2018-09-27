@@ -283,6 +283,13 @@
                                     <action selector="logoutButton:" destination="rBC-2k-Vg1" eventType="touchUpInside" id="2ha-f7-gHi"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfa-8X-WdT">
+                                <rect key="frame" x="310" y="110" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -300,9 +307,11 @@
                     <navigationItem key="navigationItem" title="遠藤悠生" id="4Yq-tz-663"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="teamIDLabel" destination="Ztc-A5-T52" id="6tC-Np-lqB"/>
-                        <outlet property="teamName" destination="tfs-qM-0S4" id="Fh6-FU-QSx"/>
-                        <outlet property="userImge" destination="RgL-K8-B3f" id="6uA-nW-4hJ"/>
+                        <outlet property="teamIDLabel" destination="Kl6-tg-CWJ" id="PWs-nB-ubX"/>
+                        <outlet property="teamName" destination="tfs-qM-0S4" id="mB3-uZ-ENS"/>
+                        <outlet property="userImge" destination="RgL-K8-B3f" id="cqz-3N-u3N"/>
+                        <outlet property="userName" destination="dfa-8X-WdT" id="Qae-ff-ZdK"/>
+                        <outlet property="userRole" destination="Ztc-A5-T52" id="bQc-jz-w8E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gLW-gs-fQH" userLabel="First Responder" sceneMemberID="firstResponder"/>

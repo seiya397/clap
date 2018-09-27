@@ -134,6 +134,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Firestore
+  - Firebase/Storage
   - FirebaseStorage
   - FirebaseUI/Storage
   - FSCalendar
@@ -196,6 +197,6 @@ SPEC CHECKSUMS:
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 971db40490e30a4f913a9e4f8a4d8a81b768b1db
+PODFILE CHECKSUM: 5c4868b31f5c42d49172188657c47a93a6eead7d
 
 COCOAPODS: 1.5.3
