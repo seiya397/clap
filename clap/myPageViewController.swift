@@ -1,6 +1,9 @@
 import UIKit
+import Firebase
 import FirebaseFirestore
 import FirebaseAuth
+import FirebaseStorage
+
 
 class myPageViewController: UIViewController{
     
@@ -8,14 +11,19 @@ class myPageViewController: UIViewController{
     @IBOutlet weak var userRole: UILabel!
     @IBOutlet weak var teamName: UILabel!
     @IBOutlet weak var teamIDLabel: UILabel!
+    @IBOutlet weak var userImge: UIImageView!
     
-    var item = String()
-    var add = UILabel()
+    let imagePicker = UIImagePickerController()
+    
+    var selectedPhoto = UIImage()
     
     let db = Firestore.firestore()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userImge.layer.cornerRadius = userImge.frame.size.width / 2
+        userImge.clipsToBounds = true
 
         // Do any additional setup after loading the view.
         let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
@@ -27,33 +35,40 @@ class myPageViewController: UIViewController{
         
         db.collection("teams").document(teamID).addSnapshotListener { (snapshot, error) in
             guard let document = snapshot else {
-                print("error \(error)")
+                print("error \(String(describing: error))")
                 return
             }
             let data = document.data()
-            print("このデータは \(data!["belong"])")
+            print("このデータは \(String(describing: data!["belong"]))")
             self.teamName.text = data!["belong"] as? String //チーム名表示
         }
         
         db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot2, error) in
             guard let document2 = snapshot2 else {
-                print("erorr2 \(error)")
+                print("erorr2 \(String(describing: error))")
                 return
             }
             let data = document2.data()
-            print("この名前は \(data!["name"])")
+            print("この名前は \(String(describing: data!["name"]))")
             self.userName.text = data!["name"] as? String //ユーザー名表示
         }
         
         db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot3, error) in
             guard let document3 = snapshot3 else {
-                print("erorr2 \(error)")
+                print("erorr2 \(String(describing: error))")
                 return
             }
             let data = document3.data()
-            print("この名前は \(data!["role"])")
+            print("この名前は \(String(describing: data!["role"]))")
             self.userRole.text = data!["role"] as? String //ユーザー名表示
         }
+        
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(myPageViewController.selectPhoto(_:)))
+        
+        tap.numberOfTapsRequired = 1
+        
+        self.userImge.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,47 +88,53 @@ class myPageViewController: UIViewController{
         }
     }
     
-    @IBAction func cahngeInfoButtonTapped(_ sender: Any) {
-        alert()
+    @objc func selectPhoto(_ tap: UITapGestureRecognizer) {
+        self.imagePicker.delegate = self
+        self.imagePicker.isEditing = true
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            self.imagePicker.sourceType = .camera
+        } else {
+            self.imagePicker.sourceType = .photoLibrary
+        }
+        
+        self.present(imagePicker, animated: true, completion: nil)
     }
     
-    func alert() {
-        let alert = UIAlertController(title: "名前変更", message: "メッセージ", preferredStyle: .alert)
-        
-        // OKボタンの設定
-        let okAction = UIAlertAction(title: "保存", style: .default, handler: {
-            (action:UIAlertAction!) -> Void in
-            
-            // OKを押した時入力されていたテキストを表示
-            if let textFields = alert.textFields {
-                
-                // アラートに含まれるすべてのテキストフィールドを調べる
-                for textField in textFields {
-                    self.userName.text = textField.text!
-                    
-                    let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
-                    self.db.collection("users").document(fireAuthUID).updateData(["name": (self.userName.text)!])
-                    
-                    print(textField.text!)
-                }
-            }
-        })
-        
-        alert.addAction(okAction)
-        
-        // キャンセルボタンの設定
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(cancelAction)
-        
-        // テキストフィールドを追加
-        alert.addTextField(configurationHandler: {(textField: UITextField!) -> Void in
-            textField.placeholder = "テキスト"
-        })
-        
-        alert.view.setNeedsLayout() // シミュレータの種類によっては、これがないと警告が発生
-        
-        // アラートを画面に表示
-        self.present(alert, animated: true, completion: nil)
+}
 
+extension myPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let selected = info[UIImagePickerControllerOriginalImage] as? UIImage, let optimizedImageData = UIImageJPEGRepresentation(selected, 0.8) {
+            uploadFileImage(imageData: optimizedImageData)
+            
+            self.userImge.image = selected
+        } else {
+            print("error")
+        }
+
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func uploadFileImage(imageData: Data) {
+        let reference = Storage.storage().reference()
+        let UidForPath = (Auth.auth().currentUser?.uid ?? "no data")
+        let profileImageRef = reference.child("users").child(UidForPath).child("profileImage.jpg")
+        let uploadMetadata = StorageMetadata()
+        uploadMetadata.contentType = "image/jpeg"
+        profileImageRef.putData(imageData, metadata: uploadMetadata) { (metaData, error) in
+            if error != nil {
+                print("画像のアップロードに失敗")
+                return
+            } else {
+                print("画像のアップロードに成功\(String(describing: metaData))")
+            }
+        }
     }
 }

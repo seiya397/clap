@@ -30,6 +30,7 @@
 		C923A4202130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4212130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4232130F23D0007D784 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923A4222130F23D0007D784 /* LoginViewController.swift */; };
+		C9338E91215BE1C40008D2B5 /* profileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9338E90215BE1C40008D2B5 /* profileEditViewController.swift */; };
 		C9344D282130CFFD004931F1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE3C84CB212BF7AD0053EFE2 /* Info.plist */; };
 		C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D86592130808D00EDB3F2 /* registerViewController.swift */; };
 		C96247462139D5C000BC7C69 /* mainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96247452139D5C000BC7C69 /* mainPageViewController.swift */; };
@@ -90,6 +91,7 @@
 		C916969A214D22F6002EECEF /* teamIdConfirmWrongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdConfirmWrongViewController.swift; sourceTree = "<group>"; };
 		C923A41D2130D7E70007D784 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C923A4222130F23D0007D784 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C9338E90215BE1C40008D2B5 /* profileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileEditViewController.swift; sourceTree = "<group>"; };
 		C93D86592130808D00EDB3F2 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
 		C96247452139D5C000BC7C69 /* mainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainPageViewController.swift; sourceTree = "<group>"; };
 		C962474A213B895C00BC7C69 /* userResetPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userResetPassViewController.swift; sourceTree = "<group>"; };
@@ -168,8 +170,8 @@
 		BE3C84A8212BF7AB0053EFE2 /* clap */ = {
 			isa = PBXGroup;
 			children = (
-				BE3C84A9212BF7AB0053EFE2 /* AppDelegate.swift */,
 				BE3C84AD212BF7AB0053EFE2 /* Main.storyboard */,
+				BE3C84A9212BF7AB0053EFE2 /* AppDelegate.swift */,
 				C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */,
 				BE3C84AB212BF7AB0053EFE2 /* ViewController.swift */,
 				BE3C84B0212BF7AD0053EFE2 /* Assets.xcassets */,
@@ -193,6 +195,7 @@
 				C9169698214D229A002EECEF /* teamIdConfirmAgainViewController.swift */,
 				C916969A214D22F6002EECEF /* teamIdConfirmWrongViewController.swift */,
 				C99DE78C2150E3D4002EBF89 /* myPageViewController.swift */,
+				C9338E90215BE1C40008D2B5 /* profileEditViewController.swift */,
 			);
 			path = clap;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				C9064892213393340025AD44 /* teamInfoRegisterViewController.swift in Sources */,
 				C90648982133F1EA0025AD44 /* scheduleViewController.swift in Sources */,
 				C9169697214CDE85002EECEF /* teamReplesentRegisterViewController.swift in Sources */,
+				C9338E91215BE1C40008D2B5 /* profileEditViewController.swift in Sources */,
 				C9162C9121367F3800370F34 /* managerUpdateViewController.swift in Sources */,
 				C923A4232130F23D0007D784 /* LoginViewController.swift in Sources */,
 				C962474D213B9D1D00BC7C69 /* topSelectPageViewController.swift in Sources */,
