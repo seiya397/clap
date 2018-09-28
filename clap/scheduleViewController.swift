@@ -14,6 +14,17 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         // デリゲートの設定
         self.calendar.dataSource = self
         self.calendar.delegate = self
+        let alert: UIAlertController = UIAlertController(title: "ようこそ！", message: "マイページでチームIDを確認しよう！", preferredStyle:  UIAlertControllerStyle.alert)
+        
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            print("OK")
+        })
+        
+        alert.addAction(defaultAction)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

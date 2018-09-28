@@ -1,11 +1,3 @@
-//
-//  teamIdConfirmAgainViewController.swift
-//  clap
-//
-//  Created by オムラユウキ on 2018/09/15.
-//  Copyright © 2018年 Seiya. All rights reserved.
-//
-
 import UIKit
 import FirebaseFirestore
 
@@ -46,8 +38,4 @@ class teamIdConfirmAgainViewController: UIViewController {
         let loginPage2 = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         self.present(loginPage2, animated: true, completion: nil)
     }
-    //所属をfirestoreから引っ張る、表示
-    //チームIDも表示
-    //キャンセルを押したらログイン画面
-    //はいを押したら登録画面
 }

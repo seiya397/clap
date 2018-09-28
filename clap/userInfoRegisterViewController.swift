@@ -93,10 +93,12 @@ class userInfoRegisterViewController: UIViewController{
                                 //--------------------------------------- fireStore
                                 let userDefaults:UserDefaults = UserDefaults.standard //userDefaultsでチームID取得
                                 let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)!//teamID取得
+                                print("ユーザー登録画面のuserDefaults\(teamID)")
                                 
                                 let registerData = ["name": self.userName.text!, "role": self.userRole.text!, "createDate": dateStr] as [String: Any]
                                 let teamRegisterData = ["regist": true] as [String: Any]
                                 let userRegistInfo = ["regist": true, "teamID": teamID] as [String : Any]
+                                var _: DocumentReference? = nil
                                 self.db.collection("teams").document(teamID).collection("users").document(fireAuthUID).setData(userRegistInfo)
                                 {
                                     err in

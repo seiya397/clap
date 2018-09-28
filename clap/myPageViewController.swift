@@ -7,11 +7,13 @@ import FirebaseUI
 
 class myPageViewController: UIViewController{
     
-    @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var userRole: UILabel!
-    @IBOutlet weak var teamName: UILabel!
-    @IBOutlet weak var teamIDLabel: UILabel!
-    @IBOutlet weak var userImge: UIImageView!
+    @IBOutlet weak var userName: UITextField!
+    @IBOutlet weak var userRole: UITextField!
+    @IBOutlet weak var teamName: UITextField!
+    @IBOutlet weak var teamIDLabel: UITextField!
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userEmail: UITextField!
+    
     
     let imagePicker = UIImagePickerController()
     
@@ -22,15 +24,24 @@ class myPageViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userImge.layer.cornerRadius = userImge.frame.size.width / 2
-        userImge.clipsToBounds = true
+        if userImage.image == nil {
+            let image = UIImage(named: "avatardefault_92824")
+            userImage.image = image
+        }
+        
+        view.addSubview(userImage)
+        
+        let userDefaults: UserDefaults = UserDefaults.standard
+        let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)!
+        
+        let user = Auth.auth().currentUser
+        if let user = user {
+            userEmail.text = user.email
+        }
 
         // Do any additional setup after loading the view.
         let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
         print("今度こそ\(fireAuthUID)")
-        
-        let userDefaults:UserDefaults = UserDefaults.standard
-        let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)!//teamID取得
         self.teamIDLabel.text = teamID //チームID表示
         
         db.collection("teams").document(teamID).addSnapshotListener { (snapshot, error) in
@@ -68,21 +79,53 @@ class myPageViewController: UIViewController{
         
         tap.numberOfTapsRequired = 1
         
-        self.userImge.addGestureRecognizer(tap)
+        self.userImage.addGestureRecognizer(tap)
         
         let storageReference = Storage.storage().reference()
         print("ここまで動いている１＝＝＝＝＝＝＝＝＝＝＝")
         let profileImageDownloadedURLReference = storageReference.child("users/\(Auth.auth().currentUser?.uid ?? " ")/profileImage.jpg")
         print("ここまで動いている２＝＝＝＝＝＝＝＝＝＝＝")
         let placeholderImage = UIImage(named: "placeholder.jpg")
-        userImge.sd_setImage(with: profileImageDownloadedURLReference, placeholderImage: placeholderImage)
+        userImage.sd_setImage(with: profileImageDownloadedURLReference, placeholderImage: placeholderImage)
         print("ここまで動いている３＝＝＝＝＝＝＝＝＝＝＝")
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        uploadObject(name: self.userName.text!, role: self.userRole.text!, email: self.userEmail.text!)
+        ShowSaveAlert()
+    }
+    
+    
+    func uploadObject(name: String, role: String, email: String) {
+        
+        let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
+        
+        db.collection("users").document(fireAuthUID).updateData(["name": name, "role": role]) { (error) in
+            if let error = error {
+                print("アップデートに失敗しました\(error.localizedDescription)")
+                return
+            } else {
+                print("アップデートに成功しました")
+            }
+        }
+        
+        Auth.auth().currentUser?.updateEmail(to: email, completion: { (error) in
+            if let _ = error {
+                print("メールアドレスの更新に失敗しました")
+                return
+            } else {
+                print("メールアドレスの更新に成功しました")
+            }
+        })
+        
+    }
+    
     @IBAction func logoutButton(_ sender: Any) {
         do {
             try Auth.auth().signOut()
@@ -116,7 +159,7 @@ extension myPageViewController: UIImagePickerControllerDelegate, UINavigationCon
         if let selected = info[UIImagePickerControllerOriginalImage] as? UIImage, let optimizedImageData = UIImageJPEGRepresentation(selected, 0.8) {
             uploadFileImage(imageData: optimizedImageData)
             
-            self.userImge.image = selected
+            self.userImage.image = selected
         } else {
             print("error")
         }
@@ -153,6 +196,17 @@ extension myPageViewController: UIImagePickerControllerDelegate, UINavigationCon
         }
     }
     
-    //アップした画像を引っ張る　永続化　firestoreはその次
-    
+    public func ShowSaveAlert() {
+        let alertController = UIAlertController(title: "Alert", message: "保存完了", preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "ok", style: .default) { (action: UIAlertAction!) in
+            print("ok button tapped!!")
+        }
+        
+        alertController.addAction(OKAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+    // から文字処理、画像最初デフォルト処理、なぜかその人の値が取れない問題
 }

@@ -29,16 +29,14 @@ class LoginViewController: UIViewController {
         }
         Auth.auth().signIn(withEmail: commonMailaddress.text!, password: commonPassword.text!) { (user, error) in
             if let error = error {
-                print(error.localizedDescription)
-                self.ShowMessage(messageToDisplay: error.localizedDescription)
+                self.ShowMessage(messageToDisplay: "ログイン出来ません")
+                print("ログイン出来ひん！！！！！")
                 return
-            }
-            
-            if user != nil {
-                print("ログインできました。")
-//                let mainPage = self.storyboard?.instantiateViewController(withIdentifier: "scheduleViewController") as! scheduleViewController
-//                self.present(mainPage, animated: true, completion: nil)
-                self.performSegue(withIdentifier: "schedule", sender: nil)
+            } else if let user = user {
+                print("ログインできました。\(user)")
+                self.performSegue(withIdentifier: "aaaaa", sender: nil)
+    //                let mainPage = self.storyboard?.instantiateViewController(withIdentifier: "scheduleViewController") as! scheduleViewController
+    //                self.present(mainPage, animated: true, completion: nil)
             }
         }
     }
