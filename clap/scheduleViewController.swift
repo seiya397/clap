@@ -3,9 +3,17 @@ import Firebase
 import FSCalendar
 import CalculateCalendarLogic
 
-class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance{
+class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance,UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var calendar: FSCalendar!
+    @IBOutlet weak var pickedDate: UILabel!
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
+        let selectDay = getDay(date)
+    
+        //ラペルにタップした日付を表示
+        pickedDate.text = "\(String(selectDay.0))年\(String(selectDay.1))月\(String(selectDay.2))日" //タプル
+    }
     
     
     override func viewDidLoad() {
@@ -20,6 +28,8 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
             // ボタンが押された時の処理を書く（クロージャ実装）
             (action: UIAlertAction!) -> Void in
             print("OK")
+            
+            
         })
         
         alert.addAction(defaultAction)
@@ -90,6 +100,24 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         return nil
     }
     
+    @IBOutlet weak var event: UITableView!
+    let TODO = ["牛乳を買う", "掃除をする", "アプリ開発の勉強をする"] //追加②
+    
+    
+    //追加③ セルの個数を指定するデリゲートメソッド（必須）
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return TODO.count
+    }
+    
+    //追加④ セルに値を設定するデータソースメソッド（必須）
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // セルを取得する
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath)
+        // セルに表示する値を設定する
+        cell.textLabel!.text = TODO[indexPath.row]
+        return cell
+    }
+
     
     
 }

@@ -10,6 +10,10 @@
 		0C761402252F1D495B83A6E2 /* Pods_clapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 851A3760A22D9BC473BAB1BB /* Pods_clapTests.framework */; };
 		78E1C79064E17E1EDF597CC0 /* Pods_clapUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0366C950F8733F1171BF265 /* Pods_clapUITests.framework */; };
 		87410ECAF50C11D51448E1AD /* Pods_clap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFCB4A2A527B40ADB768C150 /* Pods_clap.framework */; };
+		BE22618D215DFC27006C777F /* XibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE22618C215DFC26006C777F /* XibView.xib */; };
+		BE22618F215DFCFD006C777F /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE22618E215DFCFD006C777F /* XibView.swift */; };
+		BE226194215E108D006C777F /* timelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE226192215E108D006C777F /* timelineViewController.swift */; };
+		BE226195215E108D006C777F /* timelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE226193215E108D006C777F /* timelineViewController.xib */; };
 		BE3C84AA212BF7AB0053EFE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3C84A9212BF7AB0053EFE2 /* AppDelegate.swift */; };
 		BE3C84AC212BF7AB0053EFE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3C84AB212BF7AB0053EFE2 /* ViewController.swift */; };
 		BE3C84AF212BF7AB0053EFE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE3C84AD212BF7AB0053EFE2 /* Main.storyboard */; };
@@ -66,6 +70,10 @@
 		6DD31260E88B3A066701C588 /* Pods-clap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clap.release.xcconfig"; path = "Pods/Target Support Files/Pods-clap/Pods-clap.release.xcconfig"; sourceTree = "<group>"; };
 		851A3760A22D9BC473BAB1BB /* Pods_clapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98B9F1F6B148D7B56B0484D9 /* Pods-clapUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clapUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-clapUITests/Pods-clapUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BE22618C215DFC26006C777F /* XibView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XibView.xib; sourceTree = "<group>"; };
+		BE22618E215DFCFD006C777F /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
+		BE226192215E108D006C777F /* timelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timelineViewController.swift; sourceTree = "<group>"; };
+		BE226193215E108D006C777F /* timelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = timelineViewController.xib; sourceTree = "<group>"; };
 		BE3C84A6212BF7AB0053EFE2 /* clap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = clap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3C84A9212BF7AB0053EFE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE3C84AB212BF7AB0053EFE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,7 +92,7 @@
 		C9064891213393340025AD44 /* teamInfoRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamInfoRegisterViewController.swift; sourceTree = "<group>"; };
 		C90648932133C6B80025AD44 /* userInfoRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userInfoRegisterViewController.swift; sourceTree = "<group>"; };
 		C90648952133E2B20025AD44 /* teamIdGenerateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdGenerateViewController.swift; sourceTree = "<group>"; };
-		C90648972133F1EA0025AD44 /* scheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleViewController.swift; sourceTree = "<group>"; };
+		C90648972133F1EA0025AD44 /* scheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleViewController.swift; sourceTree = "<group>"; tabWidth = 3; };
 		C9162C9021367F3800370F34 /* managerUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = managerUpdateViewController.swift; sourceTree = "<group>"; };
 		C9169696214CDE85002EECEF /* teamReplesentRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamReplesentRegisterViewController.swift; sourceTree = "<group>"; };
 		C9169698214D229A002EECEF /* teamIdConfirmAgainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdConfirmAgainViewController.swift; sourceTree = "<group>"; };
@@ -171,11 +179,15 @@
 			isa = PBXGroup;
 			children = (
 				BE3C84AD212BF7AB0053EFE2 /* Main.storyboard */,
+				BE22618C215DFC26006C777F /* XibView.xib */,
+				BE22618E215DFCFD006C777F /* XibView.swift */,
 				BE3C84A9212BF7AB0053EFE2 /* AppDelegate.swift */,
 				C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */,
 				BE3C84AB212BF7AB0053EFE2 /* ViewController.swift */,
 				BE3C84B0212BF7AD0053EFE2 /* Assets.xcassets */,
 				BE3C84B2212BF7AD0053EFE2 /* LaunchScreen.storyboard */,
+				BE226192215E108D006C777F /* timelineViewController.swift */,
+				BE226193215E108D006C777F /* timelineViewController.xib */,
 				C93D86592130808D00EDB3F2 /* registerViewController.swift */,
 				C90648932133C6B80025AD44 /* userInfoRegisterViewController.swift */,
 				C9064891213393340025AD44 /* teamInfoRegisterViewController.swift */,
@@ -339,7 +351,9 @@
 				BE3C84B4212BF7AD0053EFE2 /* LaunchScreen.storyboard in Resources */,
 				BE3C84B1212BF7AD0053EFE2 /* Assets.xcassets in Resources */,
 				BE3C84AF212BF7AB0053EFE2 /* Main.storyboard in Resources */,
+				BE22618D215DFC27006C777F /* XibView.xib in Resources */,
 				C923A41E2130D7E80007D784 /* GoogleService-Info.plist in Resources */,
+				BE226195215E108D006C777F /* timelineViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,10 +498,12 @@
 				C962474B213B895C00BC7C69 /* userResetPassViewController.swift in Sources */,
 				C99DE78D2150E3D4002EBF89 /* myPageViewController.swift in Sources */,
 				BEF298A1213F092A00E75472 /* chatViewController.swift in Sources */,
+				BE226194215E108D006C777F /* timelineViewController.swift in Sources */,
 				BE3C84AC212BF7AB0053EFE2 /* ViewController.swift in Sources */,
 				C9624751213D383A00BC7C69 /* chatPageViewController.swift in Sources */,
 				C90648942133C6B80025AD44 /* userInfoRegisterViewController.swift in Sources */,
 				C9708B472143DDCD0013FD4C /* teamIdConfirmationViewController.swift in Sources */,
+				BE22618F215DFCFD006C777F /* XibView.swift in Sources */,
 				C916969B214D22F6002EECEF /* teamIdConfirmWrongViewController.swift in Sources */,
 				C962474F213D36AA00BC7C69 /* memberEvaluationViewController.swift in Sources */,
 				BE3C84AA212BF7AB0053EFE2 /* AppDelegate.swift in Sources */,
@@ -665,7 +681,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 44Z7696CT2;
 				INFOPLIST_FILE = clap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -684,7 +700,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 44Z7696CT2;
 				INFOPLIST_FILE = clap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
