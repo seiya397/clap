@@ -920,11 +920,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29U-2u-HD5" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="64" width="414" height="374"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="29U-2u-HD5" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="107" width="414" height="331"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="headerDateFormat" value="yyyy年 MM月"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderType">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyP-Ow-pVy" userLabel="PickedDate">
@@ -945,9 +948,10 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell1" id="DgL-Zb-3mu">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DgL-Zb-3mu" id="NEH-c8-Mns">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -957,6 +961,31 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                                     <outlet property="delegate" destination="wOm-Kt-aHB" id="L8H-BK-bPb"/>
                                 </connections>
                             </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="200" translatesAutoresizingMaskIntoConstraints="NO" id="PJc-9l-0ZH">
+                                <rect key="frame" x="77" y="64" width="260" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXT-S9-2hy">
+                                        <rect key="frame" x="0.0" y="-1" width="30" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="&lt;">
+                                            <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="previousTapped:" destination="wOm-Kt-aHB" eventType="touchUpInside" id="y7o-LM-fST"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKT-h4-GBn">
+                                        <rect key="frame" x="230" y="-1" width="30" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="&gt;">
+                                            <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextTapped:" destination="wOm-Kt-aHB" eventType="touchUpInside" id="iVR-WJ-m8d"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -965,10 +994,12 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                             <constraint firstItem="29U-2u-HD5" firstAttribute="leading" secondItem="3QL-1j-NTG" secondAttribute="leading" id="5Qe-Yv-1VY"/>
                             <constraint firstItem="qyP-Ow-pVy" firstAttribute="centerX" secondItem="4ge-du-E4E" secondAttribute="centerX" id="5km-uc-Mew"/>
                             <constraint firstItem="qyP-Ow-pVy" firstAttribute="top" secondItem="29U-2u-HD5" secondAttribute="bottom" id="BD7-8x-hAw"/>
+                            <constraint firstItem="PJc-9l-0ZH" firstAttribute="centerX" secondItem="4ge-du-E4E" secondAttribute="centerX" id="DcC-On-GR3"/>
                             <constraint firstItem="29U-2u-HD5" firstAttribute="trailing" secondItem="3QL-1j-NTG" secondAttribute="trailing" id="VvP-LM-PX1"/>
                             <constraint firstItem="ysb-op-wpF" firstAttribute="bottom" secondItem="3QL-1j-NTG" secondAttribute="bottom" id="ZxP-O0-xdj"/>
                             <constraint firstItem="qyP-Ow-pVy" firstAttribute="centerY" secondItem="4ge-du-E4E" secondAttribute="centerY" constant="80" id="cAe-KC-xkR"/>
                             <constraint firstItem="3QL-1j-NTG" firstAttribute="trailing" secondItem="qyP-Ow-pVy" secondAttribute="trailing" id="fHh-g0-5Ps"/>
+                            <constraint firstItem="PJc-9l-0ZH" firstAttribute="top" secondItem="3QL-1j-NTG" secondAttribute="top" constant="7" id="fVc-Ou-sFZ"/>
                             <constraint firstItem="29U-2u-HD5" firstAttribute="top" secondItem="3QL-1j-NTG" secondAttribute="top" id="fj7-yS-U1Q"/>
                             <constraint firstItem="qyP-Ow-pVy" firstAttribute="leading" secondItem="3QL-1j-NTG" secondAttribute="leading" id="jLx-bh-T7X"/>
                             <constraint firstItem="ysb-op-wpF" firstAttribute="trailing" secondItem="3QL-1j-NTG" secondAttribute="trailing" id="lvq-W8-42q"/>

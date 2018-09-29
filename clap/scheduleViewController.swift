@@ -7,6 +7,23 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var pickedDate: UILabel!
+    @IBAction func nextTapped(_ sender:UIButton) {
+        calendar.setCurrentPage(getNextMonth(date: calendar.currentPage), animated: true)
+    }
+    
+    @IBAction  func previousTapped(_ sender:UIButton) {
+        calendar.setCurrentPage(getPreviousMonth(date: calendar.currentPage), animated: true)
+    }
+    
+    func getNextMonth(date:Date)->Date {
+        return  Calendar.current.date(byAdding: .month, value: 1, to:date)!
+    }
+    
+    func getPreviousMonth(date:Date)->Date {
+        return  Calendar.current.date(byAdding: .month, value: -1, to:date)!
+    }
+
+    
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
         let selectDay = getDay(date)
