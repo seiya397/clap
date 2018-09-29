@@ -23,6 +23,15 @@ class teamIdConfirmationViewController: UIViewController {
             self.ShowMessage(messageToDisplay: "チームIDを記入してください。")
             return
         }
+        
+        let userDefaults:UserDefaults = UserDefaults.standard
+        
+        let teamIdByWritten = confirmTeamID.text
+        
+        userDefaults.set(teamIdByWritten, forKey: "teamID")
+        
+        userDefaults.synchronize()
+        
         let docRef = db.collection("teams").document(confirmTeamID.text!)
         
         docRef.getDocument { (document, error) in
