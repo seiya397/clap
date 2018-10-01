@@ -987,7 +987,7 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="mjR-jd-ZQQ" kind="show" id="EK1-vl-Bs6"/>
+                                    <segue destination="OU6-ac-dGG" kind="show" id="rNU-ja-2F5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1030,7 +1030,67 @@ MjAxOOW5tDnmnIgxMuaXpRERA
             </objects>
             <point key="canvasLocation" x="2318.840579710145" y="-1538.3152173913045"/>
         </scene>
-        <!--イベント-->
+        <!--Event Choice View Controller-->
+        <scene sceneID="O90-FV-6Sp">
+            <objects>
+                <viewController wantsFullScreenLayout="YES" modalPresentationStyle="overCurrentContext" hidesBottomBarWhenPushed="YES" id="OU6-ac-dGG" customClass="eventChoiceViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fmV-v8-d7V">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SMv-EE-7dg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="5Ca-cP-RMR">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" red="0.090196078431372548" green="0.70980392156862748" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fff-PF-HkK">
+                                <rect key="frame" x="234" y="556" width="100" height="30"/>
+                                <color key="backgroundColor" red="0.28375518620000001" green="0.5751196932" blue="0.90372270349999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Lxz-ag-geh"/>
+                                    <constraint firstAttribute="height" constant="30" id="ted-tm-ID4"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="wk3-3O-J1E"/>
+                                <state key="normal" title="イベント">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="mjR-jd-ZQQ" kind="show" id="Zzh-Dl-WVI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvQ-Ci-dJX">
+                                <rect key="frame" x="234" y="616" width="100" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.32398013089025901" blue="0.61589595626826765" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="CTf-Ld-p3D"/>
+                                    <constraint firstAttribute="height" constant="30" id="IO2-Ya-fEW"/>
+                                </constraints>
+                                <state key="normal" title="共有イベント">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="RyH-ap-wdP" firstAttribute="bottom" secondItem="fff-PF-HkK" secondAttribute="bottom" constant="150" id="16M-nO-UWo"/>
+                            <constraint firstItem="RyH-ap-wdP" firstAttribute="trailing" secondItem="fff-PF-HkK" secondAttribute="trailing" constant="80" id="Ob0-10-zTk"/>
+                            <constraint firstItem="RyH-ap-wdP" firstAttribute="trailing" secondItem="xvQ-Ci-dJX" secondAttribute="trailing" constant="80" id="UeQ-3X-azj"/>
+                            <constraint firstItem="xvQ-Ci-dJX" firstAttribute="top" secondItem="fff-PF-HkK" secondAttribute="bottom" constant="30" id="sru-Ke-7LG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RyH-ap-wdP"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QXZ-5i-Edu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3007.2463768115945" y="-1538.3152173913045"/>
+        </scene>
+        <!--イベントを追加-->
         <scene sceneID="5Is-1Z-nPX">
             <objects>
                 <viewController id="mjR-jd-ZQQ" customClass="planViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
@@ -1047,6 +1107,9 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="memoTextFieldChanged:" destination="mjR-jd-ZQQ" eventType="editingDidEnd" id="aJB-ms-p6I"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLh-kV-Ezz" customClass="XibView" customModule="clap" customModuleProvider="target">
                                 <rect key="frame" x="30" y="124" width="354" height="60"/>
@@ -1082,12 +1145,8 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MHP-FN-wk6"/>
                     </view>
-                    <navigationItem key="navigationItem" title="イベント" id="JHq-tR-Nmn">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="qI4-v1-NpV">
-                            <connections>
-                                <action selector="memoTextFieldChanged:" destination="mjR-jd-ZQQ" id="giZ-2n-uv4"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="イベントを追加" id="JHq-tR-Nmn">
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="qI4-v1-NpV"/>
                         <connections>
                             <outlet property="rightBarButtonItem" destination="qI4-v1-NpV" id="U2O-uj-f8z"/>
                         </connections>
@@ -1099,7 +1158,7 @@ MjAxOOW5tDnmnIgxMuaXpRERA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wrh-xV-EPC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3071.0144927536235" y="-1535.054347826087"/>
+            <point key="canvasLocation" x="3777" y="-1538"/>
         </scene>
         <!--スケジュール-->
         <scene sceneID="fua-im-Lv3">

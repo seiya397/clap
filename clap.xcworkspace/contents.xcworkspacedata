@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:eventChoiceViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:clap.xcodeproj">
    </FileRef>
    <FileRef

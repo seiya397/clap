@@ -47,6 +47,9 @@ class planViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
     //画面遷移した時にメモが保存されたままにする関数
     //この memo に値を設定したいのですが、今回 segue を巻き戻すことで TableView に戻したいので、 segue による遷移が行われる前に実行される prepare というメソッドの中で書いていけばいいですね。
     //こちらの prepare で memo に値を設定していきたいのですが、 Save ボタンが押された時の処理かどうかをチェックしておきましょう。

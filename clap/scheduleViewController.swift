@@ -117,13 +117,16 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         return nil
     }
     
+    
+    
+    
     @IBOutlet weak var event: UITableView!
-    let TODO = ["牛乳を買う", "掃除をする", "アプリ開発の勉強をする"] //追加②
+    var memos = ["牛乳を買う", "掃除をする", "アプリ開発の勉強をする"] //追加②
     
     
     //追加③ セルの個数を指定するデリゲートメソッド（必須）
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TODO.count
+        return memos.count
     }
     
     //追加④ セルに値を設定するデータソースメソッド（必須）
@@ -131,7 +134,7 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         // セルを取得する
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath)
         // セルに表示する値を設定する
-        cell.textLabel!.text = TODO[indexPath.row]
+        cell.textLabel!.text = memos[indexPath.row]
         return cell
     }
 
