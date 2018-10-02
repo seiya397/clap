@@ -47,6 +47,8 @@
 		C9624751213D383A00BC7C69 /* chatPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9624750213D383A00BC7C69 /* chatPageViewController.swift */; };
 		C9708B472143DDCD0013FD4C /* teamIdConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9708B462143DDCD0013FD4C /* teamIdConfirmationViewController.swift */; };
 		C99DE78D2150E3D4002EBF89 /* myPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DE78C2150E3D4002EBF89 /* myPageViewController.swift */; };
+		C9CA480D21632C0B00D9C142 /* userTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA480B21632C0B00D9C142 /* userTableViewCell.swift */; };
+		C9CA480E21632C0B00D9C142 /* userTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9CA480C21632C0B00D9C142 /* userTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +116,8 @@
 		C9624750213D383A00BC7C69 /* chatPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatPageViewController.swift; sourceTree = "<group>"; };
 		C9708B462143DDCD0013FD4C /* teamIdConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdConfirmationViewController.swift; sourceTree = "<group>"; };
 		C99DE78C2150E3D4002EBF89 /* myPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myPageViewController.swift; sourceTree = "<group>"; };
+		C9CA480B21632C0B00D9C142 /* userTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userTableViewCell.swift; sourceTree = "<group>"; };
+		C9CA480C21632C0B00D9C142 /* userTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = userTableViewCell.xib; sourceTree = "<group>"; };
 		DC6E4A81ADE570696665400E /* Pods-clapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clapUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clapUITests/Pods-clapUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DFCB4A2A527B40ADB768C150 /* Pods_clap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -184,6 +188,7 @@
 		BE3C84A8212BF7AB0053EFE2 /* clap */ = {
 			isa = PBXGroup;
 			children = (
+				C9CA480A21632BE700D9C142 /* xib */,
 				BE3C84AD212BF7AB0053EFE2 /* Main.storyboard */,
 				BE019DC3216268970019A38E /* eventChoiceViewController.swift */,
 				BE019DBF2160B5D40019A38E /* planTableViewController.swift */,
@@ -237,6 +242,15 @@
 				BE3C84CB212BF7AD0053EFE2 /* Info.plist */,
 			);
 			path = clapUITests;
+			sourceTree = "<group>";
+		};
+		C9CA480A21632BE700D9C142 /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				C9CA480B21632C0B00D9C142 /* userTableViewCell.swift */,
+				C9CA480C21632C0B00D9C142 /* userTableViewCell.xib */,
+			);
+			path = xib;
 			sourceTree = "<group>";
 		};
 		CF3E3021A3BD011F611A1F92 /* Frameworks */ = {
@@ -361,6 +375,7 @@
 				BE3C84B1212BF7AD0053EFE2 /* Assets.xcassets in Resources */,
 				BE3C84AF212BF7AB0053EFE2 /* Main.storyboard in Resources */,
 				BE22618D215DFC27006C777F /* XibView.xib in Resources */,
+				C9CA480E21632C0B00D9C142 /* userTableViewCell.xib in Resources */,
 				C923A41E2130D7E80007D784 /* GoogleService-Info.plist in Resources */,
 				BE226195215E108D006C777F /* timelineViewController.xib in Resources */,
 			);
@@ -516,6 +531,7 @@
 				C90648942133C6B80025AD44 /* userInfoRegisterViewController.swift in Sources */,
 				C9708B472143DDCD0013FD4C /* teamIdConfirmationViewController.swift in Sources */,
 				BE22618F215DFCFD006C777F /* XibView.swift in Sources */,
+				C9CA480D21632C0B00D9C142 /* userTableViewCell.swift in Sources */,
 				C916969B214D22F6002EECEF /* teamIdConfirmWrongViewController.swift in Sources */,
 				C962474F213D36AA00BC7C69 /* memberEvaluationViewController.swift in Sources */,
 				BE3C84AA212BF7AB0053EFE2 /* AppDelegate.swift in Sources */,

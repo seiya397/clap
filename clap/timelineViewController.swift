@@ -1,36 +1,71 @@
 import UIKit
 
-class timelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{ //追加①
-    
-    let TODO = [
-        "",
-        "",
-        ""
-        ] //追加②
-    
-    //最初からあるコード
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    //最初からあるコード
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    //追加③ セルの個数を指定するデリゲートメソッド（必須）
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TODO.count
-    }
-    
-    //追加④ セルに値を設定するデータソースメソッド（必須）
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // セルを取得する
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        // セルに表示する値を設定する
-        cell.textLabel!.text = TODO[indexPath.row]
-        return cell
-    }
+struct CellData {
+    var image: UIImage
+    var name: String
 }
 
-//tableviewコード参照ページhttps://qiita.com/TD3P/items/cafa8e20029047993025
+class timelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    
+    
+    var arr = [CellData]()
+    
+    @IBOutlet weak var userTable: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        userTable.delegate = self
+        userTable.dataSource = self
+        userTable.register(UINib(nibName: "userTableViewCell", bundle: nil), forCellReuseIdentifier: "cellName")
+        
+        arr = [CellData(image: UIImage(named: "avatardefault_92824")!, name: "test1")]
+        
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arr.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = userTable.dequeueReusableCell(withIdentifier: "cellName", for: indexPath) as! userTableViewCell
+        cell.userImage.image = arr[indexPath.row].image
+        cell.userName.text = arr[indexPath.row].name
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    
+    @IBAction func timeLineButton(_ sender: Any) {
+        self.arr = [
+            CellData(image: UIImage(named: "avatardefault_92824")!, name: "test1"),
+            CellData(image: UIImage(named: "avatardefault_92824")!, name: "test2")
+        ]
+        userTable.reloadData()
+    }
+    
+    @IBAction func subscribeButton(_ sender: Any) {
+        self.arr = [
+            CellData(image: UIImage(named: "avatardefault_92824")!, name: "test1"),
+            CellData(image: UIImage(named: "avatardefault_92824")!, name: "test2"),
+            CellData(image: UIImage(named: "avatardefault_92824")!, name: "test3")
+        ]
+        userTable.reloadData()
+    }
+    @IBAction func submitButton(_ sender: Any) {
+        self.arr = [
+            CellData(image: UIImage(named: "avatardefault_92824")!, name: "test1"),
+            CellData(image: UIImage(named: "avatardefault_92824")!, name: "test2"),
+            CellData(image: UIImage(named: "avatardefault_92824")!, name: "test3"),
+            CellData(image: UIImage(named: "avatardefault_92824")!, name: "test4")
+        ]
+        userTable.reloadData()
+    }
+    
+    @IBAction func addDiaryButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "goDiary", sender: nil)
+    }
+    
+}
