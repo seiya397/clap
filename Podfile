@@ -18,6 +18,7 @@ pod 'SVProgressHUD'
 pod 'ChameleonFramework'
 pod 'FSCalendar'
 pod 'CalculateCalendarLogic'
+pod 'FlexiblePageControl'
 
   target 'clapTests' do
     inherit! :search_paths

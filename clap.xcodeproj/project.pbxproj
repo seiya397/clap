@@ -49,6 +49,7 @@
 		C99DE78D2150E3D4002EBF89 /* myPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DE78C2150E3D4002EBF89 /* myPageViewController.swift */; };
 		C9CA480D21632C0B00D9C142 /* userTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA480B21632C0B00D9C142 /* userTableViewCell.swift */; };
 		C9CA480E21632C0B00D9C142 /* userTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9CA480C21632C0B00D9C142 /* userTableViewCell.xib */; };
+		C9CA481A21635F2200D9C142 /* addDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA481921635F2200D9C142 /* addDiaryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		C99DE78C2150E3D4002EBF89 /* myPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myPageViewController.swift; sourceTree = "<group>"; };
 		C9CA480B21632C0B00D9C142 /* userTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userTableViewCell.swift; sourceTree = "<group>"; };
 		C9CA480C21632C0B00D9C142 /* userTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = userTableViewCell.xib; sourceTree = "<group>"; };
+		C9CA481921635F2200D9C142 /* addDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addDiaryViewController.swift; sourceTree = "<group>"; };
 		DC6E4A81ADE570696665400E /* Pods-clapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clapUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clapUITests/Pods-clapUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DFCB4A2A527B40ADB768C150 /* Pods_clap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -222,6 +224,7 @@
 				C916969A214D22F6002EECEF /* teamIdConfirmWrongViewController.swift */,
 				C99DE78C2150E3D4002EBF89 /* myPageViewController.swift */,
 				C9338E90215BE1C40008D2B5 /* profileEditViewController.swift */,
+				C9CA481921635F2200D9C142 /* addDiaryViewController.swift */,
 			);
 			path = clap;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				"${BUILT_PRODUCTS_DIR}/CalculateCalendarLogic/CalculateCalendarLogic.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/FlexiblePageControl/FlexiblePageControl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -466,6 +470,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CalculateCalendarLogic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexiblePageControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
@@ -516,6 +521,7 @@
 				C9162C9121367F3800370F34 /* managerUpdateViewController.swift in Sources */,
 				C923A4232130F23D0007D784 /* LoginViewController.swift in Sources */,
 				C962474D213B9D1D00BC7C69 /* topSelectPageViewController.swift in Sources */,
+				C9CA481A21635F2200D9C142 /* addDiaryViewController.swift in Sources */,
 				C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */,
 				C90648962133E2B20025AD44 /* teamIdGenerateViewController.swift in Sources */,
 				C96247462139D5C000BC7C69 /* mainPageViewController.swift in Sources */,

@@ -70,6 +70,7 @@ PODS:
   - FirebaseUI/Storage (5.2.0):
     - Firebase/Storage (~> 5.0)
     - SDWebImage (~> 4.0)
+  - FlexiblePageControl (1.0.5)
   - FSCalendar (2.7.9)
   - GoogleAppMeasurement (5.1.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
@@ -137,6 +138,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - FirebaseStorage
   - FirebaseUI/Storage
+  - FlexiblePageControl
   - FSCalendar
   - SVProgressHUD
 
@@ -155,6 +157,7 @@ SPEC REPOS:
     - FirebaseInstanceID
     - FirebaseStorage
     - FirebaseUI
+    - FlexiblePageControl
     - FSCalendar
     - GoogleAppMeasurement
     - GoogleUtilities
@@ -183,6 +186,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: ea5af6920d0a4a29b40459d055bebe4a6c1333c4
   FirebaseStorage: 7ca4bb7b58a25fa647b04f524033fc7cb7eb272b
   FirebaseUI: 9dfa423b6f1b73737ae8ab62692c1c0a8886186d
+  FlexiblePageControl: 70caa5dad6603a7b361b154fa8b75295a8c44f9b
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   GoogleAppMeasurement: f7507b39b70ad0bd80b3d81518b2f43868974307
   GoogleUtilities: 06b66f9567769a7958db20a92f0128b2843e49d5
@@ -197,6 +201,6 @@ SPEC CHECKSUMS:
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 5c4868b31f5c42d49172188657c47a93a6eead7d
+PODFILE CHECKSUM: 639656c65c4a9d59fbf3fe8017478bf54110f12e
 
 COCOAPODS: 1.5.3
