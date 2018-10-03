@@ -1,3 +1,4 @@
+
 import UIKit
 import Firebase
 import FSCalendar
@@ -35,24 +36,36 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        //追加画面で入力した内容を取得する
+        if UserDefaults.standard.object(forKey: "TodoList") != nil {
+            TodoKobetsunonakami = UserDefaults.standard.object(forKey: "TodoList") as! [String]
+        }
         // デリゲートの設定
         self.calendar.dataSource = self
         self.calendar.delegate = self
+        
+        
         let alert: UIAlertController = UIAlertController(title: "ようこそ！", message: "マイページでチームIDを確認しよう！", preferredStyle:  UIAlertControllerStyle.alert)
         
         let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
             // ボタンが押された時の処理を書く（クロージャ実装）
             (action: UIAlertAction!) -> Void in
             print("OK")
-            
-            
         })
-        
         alert.addAction(defaultAction)
         
         present(alert, animated: true, completion: nil)
+
+        
+
+        
     }
+    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -117,26 +130,26 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         return nil
     }
     
+
     
-    
-    
-    @IBOutlet weak var event: UITableView!
-    var memos = ["牛乳を買う", "掃除をする", "アプリ開発の勉強をする"] //追加②
-    
-    
-    //追加③ セルの個数を指定するデリゲートメソッド（必須）
+    @IBOutlet weak var tableView: UITableView!
+    //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return memos.count
+        //戻り値の設定(表示するcell数)
+        return TodoKobetsunonakami.count
     }
     
-    //追加④ セルに値を設定するデータソースメソッド（必須）
+    //UITableView、cellForRowAtの追加(表示するcellの中身を決める)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // セルを取得する
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath)
-        // セルに表示する値を設定する
-        cell.textLabel!.text = memos[indexPath.row]
-        return cell
+        //変数を作る
+        let TodoCell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath)
+        //変数の中身を作る
+        TodoCell.textLabel!.text = TodoKobetsunonakami[indexPath.row]
+        //戻り値の設定（表示する中身)
+        return TodoCell
     }
+    
+    
 
     
     
