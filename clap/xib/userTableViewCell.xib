@@ -20,34 +20,54 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idi-kc-V4j">
-                        <rect key="frame" x="135" y="16" width="46" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idi-kc-V4j">
+                        <rect key="frame" x="110" y="31" width="37" height="28"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SLV-EE-LQ4">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SLV-EE-LQ4" customClass="CircleImageView" customModule="clap" customModuleProvider="target">
                         <rect key="frame" x="5" y="5" width="90" height="89.5"/>
+                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="90" id="jNR-bD-cjC"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3E-Rh-6Dh">
+                        <rect key="frame" x="318" y="62" width="34" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZm-ee-Tch">
+                        <rect key="frame" x="111" y="66.5" width="43" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Idi-kc-V4j" firstAttribute="leading" secondItem="SLV-EE-LQ4" secondAttribute="trailing" constant="40" id="GGZ-y5-Z0V"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="hZm-ee-Tch" secondAttribute="bottom" constant="1.5" id="0Gg-9O-jtR"/>
+                    <constraint firstItem="Idi-kc-V4j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="20" id="FBM-dl-6MP"/>
+                    <constraint firstItem="hZm-ee-Tch" firstAttribute="top" secondItem="Idi-kc-V4j" secondAttribute="bottom" constant="8" id="FdM-Oj-SZV"/>
                     <constraint firstItem="SLV-EE-LQ4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="ImZ-GE-NFL"/>
                     <constraint firstAttribute="bottom" secondItem="SLV-EE-LQ4" secondAttribute="bottom" constant="5" id="MvE-ZO-tuV"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Idi-kc-V4j" secondAttribute="bottom" constant="56" id="QFl-jG-y1D"/>
-                    <constraint firstItem="Idi-kc-V4j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="nX9-KD-K9F"/>
+                    <constraint firstItem="Idi-kc-V4j" firstAttribute="leading" secondItem="SLV-EE-LQ4" secondAttribute="trailing" constant="15" id="Zcw-cc-7xl"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="S3E-Rh-6Dh" secondAttribute="bottom" constant="6" id="buC-KB-oYq"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="S3E-Rh-6Dh" secondAttribute="trailing" constant="7" id="g8A-73-BGL"/>
+                    <constraint firstItem="hZm-ee-Tch" firstAttribute="leading" secondItem="SLV-EE-LQ4" secondAttribute="trailing" constant="16" id="l8f-6F-P12"/>
+                    <constraint firstItem="S3E-Rh-6Dh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="51" id="mYR-5N-vPu"/>
                     <constraint firstItem="SLV-EE-LQ4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="na1-2k-vJ6"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Idi-kc-V4j" secondAttribute="trailing" constant="178" id="t05-7R-vPE"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="userImage" destination="SLV-EE-LQ4" id="SgZ-gD-IGD"/>
-                <outlet property="userName" destination="Idi-kc-V4j" id="pbf-gP-WT0"/>
+                <outlet property="userName" destination="hZm-ee-Tch" id="npH-dA-dE3"/>
+                <outlet property="userTime" destination="S3E-Rh-6Dh" id="FpK-NT-AsK"/>
+                <outlet property="userTitle" destination="Idi-kc-V4j" id="8QR-ae-H8b"/>
             </connections>
+            <point key="canvasLocation" x="72.5" y="54"/>
         </tableViewCell>
     </objects>
 </document>

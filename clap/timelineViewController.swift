@@ -19,7 +19,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
         userTable.dataSource = self
         userTable.register(UINib(nibName: "userTableViewCell", bundle: nil), forCellReuseIdentifier: "cellName")
         
-        arr = [CellData(image: UIImage(named: "avatardefault_92824")!, name: "test1")]
+        arr = [CellData(image: UIImage(named: "weight")!, name: "test1")]
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
