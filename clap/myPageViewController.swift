@@ -21,18 +21,10 @@ class myPageViewController: UIViewController{
     
     let db = Firestore.firestore()
     
+    var teamIDFromFirebase: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if userImage.image == nil {
-            let image = UIImage(named: "avatardefault_92824")
-            userImage.image = image
-        }
-        
-        view.addSubview(userImage)
-        
-        let userDefaults: UserDefaults = UserDefaults.standard
-        let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)!
         
         let user = Auth.auth().currentUser
         if let user = user {
@@ -42,16 +34,25 @@ class myPageViewController: UIViewController{
         // Do any additional setup after loading the view.
         let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
         print("今度こそ\(fireAuthUID)")
-        self.teamIDLabel.text = teamID //チームID表示
         
-        db.collection("teams").document(teamID).addSnapshotListener { (snapshot, error) in
-            guard let document = snapshot else {
-                print("error \(String(describing: error))")
+        db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot3, error) in
+            guard let document3 = snapshot3 else {
+                print("erorr2 \(String(describing: error))")
                 return
             }
-            let data = document.data()
-            print("このデータは \(String(describing: data!["belong"]))")
-            self.teamName.text = data!["belong"] as? String //チーム名表示
+            let data = document3.data()
+            self.teamIDLabel.text = data!["teamID"] as? String //ユーザー名表示
+            self.teamIDFromFirebase = (data!["teamID"] as? String)!
+            
+            self.db.collection("teams").document(self.teamIDFromFirebase).addSnapshotListener { (snapshot, error) in
+                guard let document = snapshot else {
+                    print("error \(String(describing: error))")
+                    return
+                }
+                let data = document.data()
+                print("このデータは \(String(describing: data!["belong"]))")
+                self.teamName.text = data!["belong"] as? String //チーム名表示
+            }
         }
         
         db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot2, error) in
@@ -75,7 +76,7 @@ class myPageViewController: UIViewController{
         }
         
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(myPageViewController.selectPhoto(_:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(myPageViewController.selectPhoto(_:)) as Selector)
         
         tap.numberOfTapsRequired = 1
         

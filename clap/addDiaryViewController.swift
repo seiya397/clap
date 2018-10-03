@@ -32,7 +32,6 @@ class addDiaryViewController: UIViewController, UIScrollViewDelegate, UITextFiel
     
     let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
     
-    let submitOrReplyTime = DateFormatter()
     
     
     
@@ -103,17 +102,27 @@ class addDiaryViewController: UIViewController, UIScrollViewDelegate, UITextFiel
             return
         }
         
+        
+        
         //submit or 保存ボタン押した時の時刻取得
-        submitOrReplyTime.dateStyle = .none
-        submitOrReplyTime.timeStyle = .medium
-        let now = Date()
-        submitOrReplyTime.string(from: now)
+        let now = NSDate()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        
+        let submitOrReplyTime = formatter.string(from: now as Date)
         
         
         let userDefaults: UserDefaults = UserDefaults.standard
         let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)! //teamID取得
         
         let diaryRandomID = self.randomString(length: 20)
+        
+        print("====================================-")
+        print(submitOrReplyTime)
+        print(teamID)
+        print(diaryRandomID)
+        print("====================================-")
         
         
         let data = [
@@ -128,7 +137,7 @@ class addDiaryViewController: UIViewController, UIScrollViewDelegate, UITextFiel
                 self.textLabel5.text!: self.textView5.text!,
                 self.textLabel6.text!: self.textView6.text!,
                 "date": self.datePiclerField.text!,
-                "time": self.submitOrReplyTime,
+                "time": submitOrReplyTime,
                 "commentCount": 0,
             ] as [String : Any]
         
@@ -138,11 +147,13 @@ class addDiaryViewController: UIViewController, UIScrollViewDelegate, UITextFiel
                 print("データの格納に失敗")
             } else {
                 print("データの格納に成功")
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
     
     @IBAction func overwriteButtonTapped(_ sender: Any) {
+        
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {

@@ -40,7 +40,7 @@ class teamIdConfirmationViewController: UIViewController {
                 let againConfirm = self.storyboard?.instantiateViewController(withIdentifier: "teamIdConfirmAgainViewController") as! teamIdConfirmAgainViewController
                 self.present(againConfirm, animated: true, completion: nil)
             } else {
-                print("失敗した場合\(error)")
+                print("失敗した場合\(String(describing: error))")
                 let wrongConfirm = self.storyboard?.instantiateViewController(withIdentifier: "teamIdConfirmWrongViewController") as! teamIdConfirmWrongViewController
                 self.present(wrongConfirm, animated: true, completion: nil)
                 

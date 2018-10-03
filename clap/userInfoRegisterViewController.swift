@@ -1,11 +1,3 @@
-//
-//  userInfoRegisterViewController.swift
-//  clap
-//
-//  Created by オムラユウキ on 2018/08/27.
-//  Copyright © 2018年 Seiya. All rights reserved.
-//
-
 import UIKit
 import Firebase
 import FirebaseAuth
@@ -72,7 +64,7 @@ class userInfoRegisterViewController: UIViewController{
                             self.ShowMessage(messageToDisplay: error.localizedDescription)
                             return
                         }
-                        if let user = user {
+                        if user != nil {
                             print("ログインできました")
                             self.performSegue(withIdentifier: "schedule", sender: nil)
                             DispatchQueue.main.async {
@@ -95,7 +87,7 @@ class userInfoRegisterViewController: UIViewController{
                                 let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)!//teamID取得
                                 print("ユーザー登録画面のuserDefaults\(teamID)")
                                 
-                                let registerData = ["name": self.userName.text!, "role": self.userRole.text!, "createDate": dateStr] as [String: Any]
+                                let registerData = ["name": self.userName.text!, "role": self.userRole.text!, "createDate": dateStr, "teamID": teamID] as [String: Any]
                                 let teamRegisterData = ["regist": true] as [String: Any]
                                 let userRegistInfo = ["regist": true, "teamID": teamID] as [String : Any]
                                 var _: DocumentReference? = nil
@@ -111,7 +103,7 @@ class userInfoRegisterViewController: UIViewController{
                                 self.db.collection("users").document(fireAuthUID).collection("teams").document(teamID).setData(teamRegisterData)
                                 {
                                     err in
-                                    if let err2 = err {
+                                    if err != nil {
                                         print("ユーザー情報登録できません")
                                     } else {
                                         print("ユーザー情報登録成功")
@@ -120,7 +112,7 @@ class userInfoRegisterViewController: UIViewController{
                                 self.db.collection("users").document(fireAuthUID).setData(registerData)
                                 {
                                     err in
-                                    if let err3 = err {
+                                    if err != nil {
                                         print("ユーザー情報登録できません")
                                     } else {
                                         print("ユーザー情報登録成功")

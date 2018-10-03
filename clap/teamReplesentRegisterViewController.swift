@@ -98,9 +98,8 @@ class teamReplesentRegisterViewController: UIViewController {
                                 let userDefaults:UserDefaults = UserDefaults.standard
                                 let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)!//teamID取得
                                 
-                                let replesentData = ["name": self.replesentName.text!, "role": self.replesentRole.text!, "grade": self.replesentGrade.text!, "createDate": dateStr] as [String: Any]
+                                let replesentData = ["name": self.replesentName.text!, "role": self.replesentRole.text!, "grade": self.replesentGrade.text!, "createDate": dateStr, "teamID": teamID] as [String: Any]
                                 let userRegistInfo = ["regist": true, "teamID": teamID] as [String : Any]
-                                let teamRegisterData = ["regist": true] as [String: Any]
                                 var _: DocumentReference? = nil
                                 self.db.collection("teams").document(teamID).collection("users").document(fireAuthUID).setData(userRegistInfo)
                                 {
@@ -115,7 +114,7 @@ class teamReplesentRegisterViewController: UIViewController {
                                 self.db.collection("users").document(fireAuthUID).setData(replesentData)
                                 {
                                     err in
-                                    if let err2 = err {
+                                    if err != nil {
                                         print("can not regist user infomation")
                                     } else {
                                         print(" ")
