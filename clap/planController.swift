@@ -4,14 +4,13 @@ import UIKit
 //変数の設置
 var TodoKobetsunonakami = [String]()
 
-class planViewController: UIViewController {
+class planController: UIViewController {
     
     //テキストフィールドの設定
     @IBOutlet weak var TodoTextField: UITextField!
     
     //追加ボタンの設定
     @IBAction func TodoAddButton(_ sender: Any) {
-    
         //変数に入力内容を入れる
         TodoKobetsunonakami.append(TodoTextField.text!)
         //追加ボタンを押したらフィールドを空にする

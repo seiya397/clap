@@ -8,10 +8,10 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var pickedDate: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     @IBAction func nextTapped(_ sender:UIButton) {
         calendar.setCurrentPage(getNextMonth(date: calendar.currentPage), animated: true)
     }
-    
     @IBAction  func previousTapped(_ sender:UIButton) {
         calendar.setCurrentPage(getPreviousMonth(date: calendar.currentPage), animated: true)
     }
@@ -33,17 +33,33 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         pickedDate.text = "\(String(selectDay.0))年\(String(selectDay.1))月\(String(selectDay.2))日" //タプル
     }
     
+    //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //戻り値の設定(表示するcell数)
+        return TodoKobetsunonakami.count
+    }
+    
+    //UITableView、cellForRowAtの追加(表示するcellの中身を決める)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //変数を作る
+        let TodoCell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath)
+        //変数の中身を作る
+        TodoCell.textLabel!.text = TodoKobetsunonakami[indexPath.row]
+        //戻り値の設定（表示する中身)
+        return TodoCell
+    }
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
         
-        
-        //追加画面で入力した内容を取得する
-        if UserDefaults.standard.object(forKey: "TodoList") != nil {
-            TodoKobetsunonakami = UserDefaults.standard.object(forKey: "TodoList") as! [String]
-        }
+
         // デリゲートの設定
         self.calendar.dataSource = self
         self.calendar.delegate = self
@@ -56,13 +72,16 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
             (action: UIAlertAction!) -> Void in
             print("OK")
         })
+    
         alert.addAction(defaultAction)
-        
+
         present(alert, animated: true, completion: nil)
 
         
-
-        
+        //追加画面で入力した内容を取得する
+        if UserDefaults.standard.object(forKey: "TodoList") != nil {
+            TodoKobetsunonakami = UserDefaults.standard.object(forKey: "TodoList") as! [String]
+        }
     }
     
 
@@ -71,6 +90,8 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
     fileprivate lazy var dateFormatter: DateFormatter = {
@@ -129,30 +150,11 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         
         return nil
     }
-    
 
     
-    @IBOutlet weak var tableView: UITableView!
-    //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //戻り値の設定(表示するcell数)
-        return TodoKobetsunonakami.count
-    }
-    
-    //UITableView、cellForRowAtの追加(表示するcellの中身を決める)
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //変数を作る
-        let TodoCell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath)
-        //変数の中身を作る
-        TodoCell.textLabel!.text = TodoKobetsunonakami[indexPath.row]
-        //戻り値の設定（表示する中身)
-        return TodoCell
-    }
-    
-    
-
     
     
 }
+
 
 
