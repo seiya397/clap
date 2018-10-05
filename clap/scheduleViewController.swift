@@ -15,7 +15,7 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     @IBAction  func previousTapped(_ sender:UIButton) {
         calendar.setCurrentPage(getPreviousMonth(date: calendar.currentPage), animated: true)
     }
-    
+
     func getNextMonth(date:Date)->Date {
         return  Calendar.current.date(byAdding: .month, value: 1, to:date)!
     }
@@ -28,10 +28,16 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
         let selectDay = getDay(date)
+        
     
-        //ラペルにタップした日付を表示
-        pickedDate.text = "\(String(selectDay.0))年\(String(selectDay.1))月\(String(selectDay.2))日" //タプル
+    //PickedDateラベルにカレンダーでタップした日付を表示
+//        pickedDate.text = "\(String(selectDay.0))年\(String(selectDay.1))月\(String(selectDay.2))日" //タプル
+        pickedDate.text = "\(String(selectDay.1))月\(String(selectDay.2))日" //タプル
+        
+            print(pickedDate.text!) //日付のコンソールプリント
     }
+
+    
     
     //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,10 +55,22 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         return TodoCell
     }
     
+    //予定を追加ボタンで遷移先へ日付の受け渡し
+    @IBAction func TapApp(_ sender: Any) {
+        performSegue(withIdentifier: "nextSegue", sender: nil)
+    }
     
+    /// セグエ実行前処理
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let next = segue.destination as? planController
+        let _ = next?.view
+        next?.getStartDate.text = pickedDate.text
+        next?.getEndDate.text = pickedDate.text
+        
+    }
+
     
-    
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +82,7 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         self.calendar.dataSource = self
         self.calendar.delegate = self
         
-        
+        //ログイン後の処理
         let alert: UIAlertController = UIAlertController(title: "ようこそ！", message: "マイページでチームIDを確認しよう！", preferredStyle:  UIAlertControllerStyle.alert)
         
         let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
@@ -78,7 +96,7 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         present(alert, animated: true, completion: nil)
 
         
-        //追加画面で入力した内容を取得する
+    //追加画面で入力した内容を取得する
         if UserDefaults.standard.object(forKey: "TodoList") != nil {
             TodoKobetsunonakami = UserDefaults.standard.object(forKey: "TodoList") as! [String]
         }
@@ -90,7 +108,6 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
