@@ -1443,6 +1443,9 @@
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="wOm-Kt-aHB" kind="relationship" relationship="rootViewController" id="JKD-2S-BEO"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lLj-ZG-VEb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2859,8 +2862,8 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
         <image name="weight" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4cU-EC-nyd"/>
         <segue reference="B9F-4i-KET"/>
+        <segue reference="JKD-2S-BEO"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

@@ -15,7 +15,7 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     @IBAction  func previousTapped(_ sender:UIButton) {
         calendar.setCurrentPage(getPreviousMonth(date: calendar.currentPage), animated: true)
     }
-
+    
     func getNextMonth(date:Date)->Date {
         return  Calendar.current.date(byAdding: .month, value: 1, to:date)!
     }
@@ -23,25 +23,25 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     func getPreviousMonth(date:Date)->Date {
         return  Calendar.current.date(byAdding: .month, value: -1, to:date)!
     }
-
+    
     
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
         let selectDay = getDay(date)
         
-    
-    //PickedDateラベルにカレンダーでタップした日付を表示
-//        pickedDate.text = "\(String(selectDay.0))年\(String(selectDay.1))月\(String(selectDay.2))日" //タプル
-        pickedDate.text = "\(String(selectDay.1))月\(String(selectDay.2))日" //タプル
         
-            print(pickedDate.text!) //日付のコンソールプリント
+        //PickedDateラベルにカレンダーでタップした日付を表示
+        //        pickedDate.text = "\(String(selectDay.0))年\(String(selectDay.1))月\(String(selectDay.2))日" //タプル
+        pickedDate.text = "\(String(selectDay.1))月\(String(selectDay.2))日\(String(selectDay.3))曜日" //タプル
+        
+        print(pickedDate.text!) //日付のコンソールプリント
     }
-
+    
     
     
     //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //戻り値の設定(表示するcell数)
+        //戻り値の設定(表示するcell数)l
         return TodoKobetsunonakami.count
     }
     
@@ -68,16 +68,16 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         next?.getEndDate.text = pickedDate.text
         
     }
-
     
-
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
         
-
+        
         // デリゲートの設定
         self.calendar.dataSource = self
         self.calendar.delegate = self
@@ -90,19 +90,17 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
             (action: UIAlertAction!) -> Void in
             print("OK")
         })
-    
-        alert.addAction(defaultAction)
-
-        present(alert, animated: true, completion: nil)
-
         
-    //追加画面で入力した内容を取得する
+        alert.addAction(defaultAction)
+        
+        present(alert, animated: true, completion: nil)
+        
+        
+        //追加画面で入力した内容を取得する
         if UserDefaults.standard.object(forKey: "TodoList") != nil {
             TodoKobetsunonakami = UserDefaults.standard.object(forKey: "TodoList") as! [String]
         }
     }
-    
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -113,9 +111,11 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "ja_JP")
+        formatter.dateFormat = "yyyy-MM-dd(EEE)"
         return formatter
     }()
+    
     
     // 祝日判定を行い結果を返すメソッド(True:祝日)
     func judgeHoliday(_ date : Date) -> Bool {
@@ -129,24 +129,45 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         
         // CalculateCalendarLogic()：祝日判定のインスタンスの生成
         let holiday = CalculateCalendarLogic()
-        
         return holiday.judgeJapaneseHoliday(year: year, month: month, day: day)
     }
     // date型 -> 年月日をIntで取得
-    func getDay(_ date:Date) -> (Int,Int,Int){
+    func getDay(_ date:Date) -> (Int,Int,Int,String){
         let tmpCalendar = Calendar(identifier: .gregorian)
+        //曜日追加
+        let Component = tmpCalendar.component(.weekday, from: date)
+        let weekName = Component - 1
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ja")
+        
         let year = tmpCalendar.component(.year, from: date)
         let month = tmpCalendar.component(.month, from: date)
         let day = tmpCalendar.component(.day, from: date)
-        return (year,month,day)
+        
+        return (year,month,day,formatter.shortWeekdaySymbols[weekName])
     }
+    
+    //    //曜日判定(日曜日 〜 土曜日)
+    //    func getWeekName(_ date: Date) -> String{
+    //        let tmpCalendar = Calendar(identifier: .gregorian)
+    //        let component = tmpCalendar.component(.weekday, from: date)
+    //        let weekName = component - 1
+    //        let formatter = DateFormatter()
+    //        formatter.locale = Locale(identifier: "ja")
+    //        return formatter.shortWeekdaySymbols[weekName]
+    //    }
+    
+    
+    //
+    //    let weekName = self.getWeekName(date)
+    //    print(weekName) // 2018-06-29 10:35:57 +0000
+    
     
     //曜日判定(日曜日:1 〜 土曜日:7)
     func getWeekIdx(_ date: Date) -> Int{
         let tmpCalendar = Calendar(identifier: .gregorian)
         return tmpCalendar.component(.weekday, from: date)
     }
-    
     
     // 土日や祝日の日の文字色を変える
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
@@ -160,6 +181,7 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         let weekday = self.getWeekIdx(date)
         if weekday == 1 {   //日曜日
             return UIColor.red
+            
         }
         else if weekday == 7 {  //土曜日
             return UIColor.blue
@@ -167,11 +189,5 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         
         return nil
     }
-
-    
-    
     
 }
-
-
-
