@@ -74,6 +74,9 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func timeLineButton(_ sender: Any) {
         self.arr = []
+        self.dataNameFromFireStore = [Any]()
+        self.dataTimeFromFirestore = [Any]()
+        self.dataTitleFromFireStore = [Any]()
         
         self.db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot3, error) in
             guard let document3 = snapshot3 else {
@@ -110,6 +113,10 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func subscribeButton(_ sender: Any) {
         self.arr = []
+        self.dataNameFromFireStore = [Any]()
+        self.dataTimeFromFirestore = [Any]()
+        self.dataTitleFromFireStore = [Any]()
+        
         
         self.db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot3, error) in
             guard let document3 = snapshot3 else {
@@ -126,7 +133,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                     print("Error getting documents: \(err)")
                 } else {
                     var i = 0
-                    for document in querySnapshot!.documents {
+                    for document in querySnapshot!.documents { 
                         print("成功成功成功成功成功\(document.documentID) => \(document.data())")
                         let documentData = document.data()
                         self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
