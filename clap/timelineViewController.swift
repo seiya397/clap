@@ -128,7 +128,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
             
             self.teamIDFromFirebase = (data!["teamID"] as? String)!
             
-            self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: false).getDocuments() { (querySnapshot, err) in
+            self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: false).whereField("userID", isEqualTo: self.fireAuthUID).getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
@@ -152,13 +152,42 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     @IBAction func submitButton(_ sender: Any) {
-        self.arr = [
-            CellData(image: UIImage(named: "avatardefault_92824")!, name: "test1", time: "time", title: ""),
-            CellData(image: UIImage(named: "avatardefault_92824")!, name: "test2", time: "time", title: ""),
-            CellData(image: UIImage(named: "avatardefault_92824")!, name: "test3", time: "time", title: ""),
-            CellData(image: UIImage(named: "avatardefault_92824")!, name: "test4", time: "time", title: "")
-        ]
-        userTable.reloadData()
+        self.arr = []
+        self.dataNameFromFireStore = [Any]()
+        self.dataTimeFromFirestore = [Any]()
+        self.dataTitleFromFireStore = [Any]()
+        
+        
+        self.db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot3, error) in
+            guard let document3 = snapshot3 else {
+                print("erorr2 \(String(describing: error))")
+                return
+            }
+            
+            let data = document3.data()
+            
+            self.teamIDFromFirebase = (data!["teamID"] as? String)!
+            
+            self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: true).whereField("userID", isEqualTo: self.fireAuthUID).getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    var i = 0
+                    for document in querySnapshot!.documents {
+                        print("成功成功成功成功成功\(document.documentID) => \(document.data())")
+                        let documentData = document.data()
+                        self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
+                        self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
+                        self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
+                        self.arr.append(CellData(image: UIImage(named: "weight")!, name: self.dataNameFromFireStore[i] as! String, time: self.dataTimeFromFirestore[i] as! String, title: self.dataTitleFromFireStore[i] as! String))
+                        
+                        i += 1
+                        
+                    }
+                    self.userTable.reloadData()
+                }
+            }
+        }
     }
     
     
