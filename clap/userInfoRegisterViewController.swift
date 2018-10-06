@@ -4,7 +4,7 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class userInfoRegisterViewController: UIViewController{
-
+    
     
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userEmail: UITextField!
@@ -18,7 +18,7 @@ class userInfoRegisterViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -88,7 +88,6 @@ class userInfoRegisterViewController: UIViewController{
                                 print("ユーザー登録画面のuserDefaults\(teamID)")
                                 
                                 let registerData = ["name": self.userName.text!, "role": self.userRole.text!, "createDate": dateStr, "teamID": teamID] as [String: Any]
-                                let teamRegisterData = ["regist": true] as [String: Any]
                                 let userRegistInfo = ["regist": true, "teamID": teamID] as [String : Any]
                                 var _: DocumentReference? = nil
                                 self.db.collection("teams").document(teamID).collection("users").document(fireAuthUID).setData(userRegistInfo)
@@ -96,15 +95,6 @@ class userInfoRegisterViewController: UIViewController{
                                     err in
                                     if let err = err {
                                         print("エラー \(err)")
-                                    } else {
-                                        print("ユーザー情報登録成功")
-                                    }
-                                }
-                                self.db.collection("users").document(fireAuthUID).collection("teams").document(teamID).setData(teamRegisterData)
-                                {
-                                    err in
-                                    if err != nil {
-                                        print("ユーザー情報登録できません")
                                     } else {
                                         print("ユーザー情報登録成功")
                                     }
@@ -141,5 +131,5 @@ class userInfoRegisterViewController: UIViewController{
         
         self.present(alertController, animated: true, completion: nil)
     }
-
+    
 }

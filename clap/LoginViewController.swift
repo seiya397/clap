@@ -34,9 +34,9 @@ class LoginViewController: UIViewController {
                 return
             } else if let user = user {
                 print("ログインできました。\(user)")
-                self.performSegue(withIdentifier: "aaaaa", sender: nil)
-    //                let mainPage = self.storyboard?.instantiateViewController(withIdentifier: "scheduleViewController") as! scheduleViewController
-    //                self.present(mainPage, animated: true, completion: nil)
+//                self.performSegue(withIdentifier: "aaaaa", sender: nil)
+                    let mainPage = self.storyboard?.instantiateViewController(withIdentifier: "navi")
+                    self.present(mainPage!, animated: true, completion: nil)
             }
         }
     }

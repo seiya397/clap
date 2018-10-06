@@ -32,8 +32,9 @@ class addDiaryViewController: UIViewController, UIScrollViewDelegate, UITextFiel
     
     let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
     
+    var teamIDFromFirebase: String = ""
     
-    
+    @IBOutlet weak var userName: UILabel!
     
     //今日の日付を代入
     let nowDate = NSDate()
@@ -74,6 +75,16 @@ class addDiaryViewController: UIViewController, UIScrollViewDelegate, UITextFiel
         //ツールバーにボタンを表示
         pickerToolBar.items = [spaceBarBtn,toolBarBtn]
         datePiclerField.inputAccessoryView = pickerToolBar
+        
+        //ユーザーの名前取得
+        db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot2, error) in
+            guard let document2 = snapshot2 else {
+                print("erorr2 \(String(describing: error))")
+                return
+            }
+            let data = document2.data()
+            self.userName.text = (data!["name"] as? String)! ?? ""
+        }
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
@@ -104,6 +115,7 @@ class addDiaryViewController: UIViewController, UIScrollViewDelegate, UITextFiel
         
         
         
+        
         //submit or 保存ボタン押した時の時刻取得
         let now = NSDate()
         
@@ -112,48 +124,121 @@ class addDiaryViewController: UIViewController, UIScrollViewDelegate, UITextFiel
         
         let submitOrReplyTime = formatter.string(from: now as Date)
         
-        
-        let userDefaults: UserDefaults = UserDefaults.standard
-        let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)! //teamID取得
-        
         let diaryRandomID = self.randomString(length: 20)
         
-        print("====================================-")
-        print(submitOrReplyTime)
-        print(teamID)
-        print(diaryRandomID)
-        print("====================================-")
         
         
-        let data = [
-                "diaryID": diaryRandomID,
-                "userID":self.fireAuthUID,
-                "submit": Bool(),
-                "title": self.textLabel6.text!,
-                self.textLabel1.text!: self.textView1.text!,
-                self.textLabel2.text!: self.textView2.text!,
-                self.textLabel3.text!: self.textView3.text!,
-                self.textLabel4.text!: self.textView4.text!,
-                self.textLabel5.text!: self.textView5.text!,
-                self.textLabel6.text!: self.textView6.text!,
-                "date": self.datePiclerField.text!,
-                "time": submitOrReplyTime,
-                "commentCount": 0,
+        let dataForDiary = [
+            "diaryID": diaryRandomID,
+            "userID":self.fireAuthUID,
+            "userName": self.userName.text ?? "ダメでした",
+            "submit": true,
+            "title": self.textLabel6.text!,
+            self.textLabel1.text!: self.textView1.text!,
+            self.textLabel2.text!: self.textView2.text!,
+            self.textLabel3.text!: self.textView3.text!,
+            self.textLabel4.text!: self.textView4.text!,
+            self.textLabel5.text!: self.textView5.text!,
+            self.textLabel6.text!: self.textView6.text!,
+            "date": self.datePiclerField.text!,
+            "time": submitOrReplyTime,
+            "commentCount": 0,
             ] as [String : Any]
         
         
-        db.collection("diary").document(teamID).collection("diaries").document(diaryRandomID).setData(data) { (error) in
-            if error != nil {
-                print("データの格納に失敗")
-            } else {
-                print("データの格納に成功")
-                self.dismiss(animated: true, completion: nil)
+        db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot3, error) in
+            guard let document3 = snapshot3 else {
+                print("erorr2 \(String(describing: error))")
+                return
+            }
+            let data = document3.data()
+            self.teamIDFromFirebase = (data!["teamID"] as? String)!
+            self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").document(diaryRandomID).setData(dataForDiary) { (error) in
+                if error != nil {
+                    print("データの格納に失敗")
+                } else {
+                    print("データの格納に成功")
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
         }
     }
     
     @IBAction func overwriteButtonTapped(_ sender: Any) {
+        guard let textView1IsEmpty = textView1.text, !textView1IsEmpty.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目2を記入してください。")
+            return
+        }
+        guard let textView2IsEmpty = textView2.text, !textView2IsEmpty.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目2を記入してください。")
+            return
+        }
+        guard let textView3IsEmpty = textView3.text, !textView3IsEmpty.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目3を記入してください。")
+            return
+        }
+        guard let textView4IsEmpty = textView4.text, !textView4IsEmpty.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目4を記入してください。")
+            return
+        }
+        guard let textView5IsEmpty = textView5.text, !textView5IsEmpty.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目5を記入してください。")
+            return
+        }
+        guard let textView6IsEmpty = textView6.text, !textView6IsEmpty.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目6を記入してください。")
+            return
+        }
         
+        
+        
+        
+        //submit or 保存ボタン押した時の時刻取得
+        let now = NSDate()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        
+        let submitOrReplyTime = formatter.string(from: now as Date)
+        
+        let diaryRandomID = self.randomString(length: 20)
+        
+        
+        
+        let dataForDiary = [
+            "diaryID": diaryRandomID,
+            "userID":self.fireAuthUID,
+            "userName": self.userName.text ?? "ダメでした",
+            "submit": false,
+            "title": self.textLabel6.text!,
+            self.textLabel1.text!: self.textView1.text!,
+            self.textLabel2.text!: self.textView2.text!,
+            self.textLabel3.text!: self.textView3.text!,
+            self.textLabel4.text!: self.textView4.text!,
+            self.textLabel5.text!: self.textView5.text!,
+            self.textLabel6.text!: self.textView6.text!,
+            "date": self.datePiclerField.text!,
+            "time": submitOrReplyTime,
+            "commentCount": 0,
+            ] as [String : Any]
+        
+        
+        db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot3, error) in
+            guard let document3 = snapshot3 else {
+                print("erorr2 \(String(describing: error))")
+                return
+            }
+            let data = document3.data()
+            self.teamIDFromFirebase = (data!["teamID"] as? String)!
+            self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").document(diaryRandomID).setData(dataForDiary) { (error) in
+                if error != nil {
+                    print("データの格納に失敗")
+                } else {
+                    print("データの格納に成功")
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {

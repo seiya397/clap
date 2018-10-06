@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wOm-Kt-aHB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Exz-gh-qmw">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -730,6 +730,13 @@
                                                     </barButtonItem>
                                                 </items>
                                             </toolbar>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Exr-dt-BBi">
+                                                <rect key="frame" x="159" y="71" width="133" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -809,11 +816,12 @@
                         <outlet property="textView4" destination="4Ve-td-Psh" id="27Q-ZA-CHC"/>
                         <outlet property="textView5" destination="1ol-Mn-Nkn" id="ERN-PX-I90"/>
                         <outlet property="textView6" destination="jqB-vy-war" id="Uza-xw-tEN"/>
+                        <outlet property="userName" destination="Exr-dt-BBi" id="M1D-aI-0zb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZ5-xy-9l0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3536" y="-320"/>
+            <point key="canvasLocation" x="3534.7826086956525" y="-320.38043478260875"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6g0-ZT-4zS">
@@ -1087,7 +1095,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29U-2u-HD5" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="64" width="414" height="344"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="339"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="headerDateFormat" value="yyyy年 MM月"/>
@@ -1122,7 +1130,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tic-O3-RUw">
-                                <rect key="frame" x="0.0" y="408" width="414" height="30"/>
+                                <rect key="frame" x="0.0" y="403" width="414" height="30"/>
                                 <color key="backgroundColor" red="0.062745098040000002" green="0.20000000000000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="予定を追加">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1133,7 +1141,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="3" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyP-Ow-pVy" userLabel="PickedDate">
-                                <rect key="frame" x="0.0" y="438" width="414" height="20"/>
+                                <rect key="frame" x="0.0" y="433" width="414" height="30"/>
                                 <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="cJk-9x-xBA"/>
@@ -1443,7 +1451,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="skF-VW-JB7">
             <objects>
-                <tabBarController id="2sg-vh-AQf" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="navi" id="2sg-vh-AQf" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="FVn-a2-EYu"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3fP-No-Ldr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -1594,7 +1602,6 @@
                                 </state>
                                 <connections>
                                     <action selector="commonLoginButton:" destination="Exz-gh-qmw" eventType="touchUpInside" id="EiG-xw-Puv"/>
-                                    <segue destination="2sg-vh-AQf" kind="show" identifier="aaaaa" id="Po1-nX-3J5"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lp1-6D-KIV">
@@ -2852,7 +2859,8 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
         <image name="weight" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Po1-nX-3J5"/>
+        <segue reference="4cU-EC-nyd"/>
+        <segue reference="B9F-4i-KET"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
