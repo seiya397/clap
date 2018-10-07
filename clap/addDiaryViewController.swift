@@ -64,7 +64,7 @@ class addDiaryViewController: UIViewController, UIScrollViewDelegate, UITextFiel
         pickerToolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
         pickerToolBar.barStyle = .blackTranslucent
         pickerToolBar.tintColor = UIColor.white
-        pickerToolBar.backgroundColor = UIColor.black
+        pickerToolBar.backgroundColor = UIColor.gray
         
         //ボタンの設定
         //右寄せのためのスペース設定

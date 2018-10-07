@@ -2,7 +2,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
-class diaryFromTimelineViewController: UIViewController {
+class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate {
     
     let db = Firestore.firestore()
     
@@ -12,15 +12,40 @@ class diaryFromTimelineViewController: UIViewController {
     
     var timeline = String()
     
-    var dataFromFireStore1 = [Any]()
-    var dataFromFireStore2 = [Any]()
-    var dataFromFireStore3 = [Any]()
-    var dataFromFireStore4 = [Any]()
-    var dataFromFireStore5 = [Any]()
-    var dataFromFireStore6 = [Any]()
+    @IBOutlet weak var contentView: UIView!
+    
+    @IBOutlet weak var textLabel1: UILabel!
+    @IBOutlet weak var textView1: UITextView!
+    
+    @IBOutlet weak var textLabel2: UILabel!
+    @IBOutlet weak var textView2: UITextView!
+    
+    @IBOutlet weak var textLabel3: UILabel!
+    @IBOutlet weak var textView3: UITextView!
+    
+    @IBOutlet weak var textLabel4: UILabel!
+    @IBOutlet weak var textView4: UITextView!
+    
+    @IBOutlet weak var textLabel5: UILabel!
+    @IBOutlet weak var textView5: UITextView!
+    
+    @IBOutlet weak var textLabel6: UILabel!
+    @IBOutlet weak var textView6: UITextView!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        contentView.backgroundColor = UIColor.lightGray
+        
+        self.view.backgroundColor = UIColor(white: 1, alpha: 0.7)
+        
+        textLabel1.text = "今日のタイトル"
+        textLabel2.text = "ここが良かった！今日の自分"
+        textLabel3.text = "監督へのメッセージ"
+        textLabel4.text = "考えました明日の課題"
+        textLabel5.text = "メンバーのここを褒めたい"
+        textLabel6.text = "こんな練習してみたい"
         
         let userDefaults: UserDefaults = UserDefaults.standard
         timeline = (userDefaults.object(forKey: "goTimeline")! as? String)!
@@ -30,22 +55,18 @@ class diaryFromTimelineViewController: UIViewController {
             if let document = document, document.exists {
                 _ = document.data().map(String.init(describing:)) ?? "nil"
                 self.teamID = String(describing: document["teamID"]!)
-                self.db.collection("diary").document(self.teamID).collection("diaries").document(self.timeline).addSnapshotListener { (snapshot, error) in
+            self.db.collection("diary").document(self.teamID).collection("diaries").document(self.timeline).addSnapshotListener { (snapshot, error) in
                     guard let document = snapshot else {
                         print("erorr2 \(String(describing: error))")
                         return
                     }
-                        let data = document.data()
-                        print("aaaaaaaaaaaaaaaaaaaaaaa")
-                        print(data as Any)
-                    self.dataFromFireStore1.append((data!["こんな練習してみたい"] as? String)!)
-                    self.dataFromFireStore2.append((data!["ここが良かった！今日の自分"] as? String)!)
-                    self.dataFromFireStore3.append((data!["監督へのメッセージ"] as? String)!)
-                    self.dataFromFireStore4.append((data!["考えました明日の課題"] as? String)!)
-                    self.dataFromFireStore5.append((data!["メンバーのここを褒めたい"] as? String)!)
-                    self.dataFromFireStore6.append((data!["今日のタイトル"] as? String)!)
-                    print("======================")
-                    print(self.dataFromFireStore1)
+                    let data = document.data()
+                    self.textView1.text = (data!["今日のタイトル"] as? String)!
+                    self.textView2.text = (data!["ここが良かった！今日の自分"] as? String)!
+                    self.textView3.text = (data!["監督へのメッセージ"] as? String)!
+                    self.textView4.text = (data!["メンバーのここを褒めたい"] as? String)!
+                    self.textView5.text = (data!["考えました明日の課題"] as? String)!
+                    self.textView6.text = (data!["こんな練習してみたい"] as? String)!
                 }
             } else {
                 print("Document does not exist")
