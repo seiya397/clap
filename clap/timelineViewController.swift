@@ -28,11 +28,28 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
     
     var dataNameFromFireStore = [Any]()
     
+    var timelineDocumentIdArr = [Any]()
+    
+    var draftDocumentIdArr = [Any]()
+    
+    var submitDocumentIdArr = [Any]()
+    
+    var selectedNum = 0
+    
+    
+    
     @IBOutlet weak var userTable: UITableView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.arr = []
+        self.dataNameFromFireStore = [Any]()
+        self.dataTimeFromFirestore = [Any]()
+        self.dataTitleFromFireStore = [Any]()
+        self.submitDocumentIdArr = [Any]()
+        
+        self.selectedNum = 1
         
         userTable.delegate = self
         userTable.dataSource = self
@@ -53,7 +70,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                 } else {
                     var i = 0
                     for document in querySnapshot!.documents {
-                        
+                        self.timelineDocumentIdArr.append(document.documentID)
                         
                         let documentData = document.data()
                         self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
@@ -66,6 +83,8 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         
                     }
                     self.userTable.reloadData()
+                    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                    print(self.timelineDocumentIdArr)
                 }
             }
         }
@@ -77,6 +96,9 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
         self.dataNameFromFireStore = [Any]()
         self.dataTimeFromFirestore = [Any]()
         self.dataTitleFromFireStore = [Any]()
+        self.timelineDocumentIdArr = [Any]()
+        
+        self.selectedNum = 1
         
         self.db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot3, error) in
             guard let document3 = snapshot3 else {
@@ -95,6 +117,8 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                     var i = 0
                     for document in querySnapshot!.documents {
                         
+                        self.timelineDocumentIdArr.append(document.documentID)
+                        
                         let documentData = document.data()
                         self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
                         self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
@@ -105,6 +129,8 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         
                     }
                     self.userTable.reloadData()
+                    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                    print(self.timelineDocumentIdArr)
                 }
             }
         }
@@ -116,6 +142,9 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
         self.dataNameFromFireStore = [Any]()
         self.dataTimeFromFirestore = [Any]()
         self.dataTitleFromFireStore = [Any]()
+        self.draftDocumentIdArr = [Any]()
+        
+        self.selectedNum = 2
         
         
         self.db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot3, error) in
@@ -133,7 +162,10 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                     print("Error getting documents: \(err)")
                 } else {
                     var i = 0
-                    for document in querySnapshot!.documents { 
+                    for document in querySnapshot!.documents {
+                        
+                        self.draftDocumentIdArr.append(document.documentID)
+                        
                         print("成功成功成功成功成功\(document.documentID) => \(document.data())")
                         let documentData = document.data()
                         self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
@@ -145,6 +177,8 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         
                     }
                     self.userTable.reloadData()
+                    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                    print(self.draftDocumentIdArr)
                 }
             }
         }
@@ -156,6 +190,9 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
         self.dataNameFromFireStore = [Any]()
         self.dataTimeFromFirestore = [Any]()
         self.dataTitleFromFireStore = [Any]()
+        self.submitDocumentIdArr = [Any]()
+        
+        self.selectedNum = 3
         
         
         self.db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot3, error) in
@@ -174,6 +211,9 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                 } else {
                     var i = 0
                     for document in querySnapshot!.documents {
+                        
+                        self.submitDocumentIdArr.append(document.documentID)
+                        
                         print("成功成功成功成功成功\(document.documentID) => \(document.data())")
                         let documentData = document.data()
                         self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
@@ -185,6 +225,8 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         
                     }
                     self.userTable.reloadData()
+                    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                    print(self.submitDocumentIdArr)
                 }
             }
         }
@@ -205,8 +247,37 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.selectedNum == 1 {
+            let userDefaults:UserDefaults = UserDefaults.standard
+            userDefaults.removeObject(forKey: "goTimeline")
+            userDefaults.set(self.timelineDocumentIdArr[indexPath.row], forKey: "goTimeline")
+            userDefaults.synchronize()
+            print("????????????????????????????")
+            print(self.timelineDocumentIdArr[indexPath.row])
+            self.performSegue(withIdentifier: "goTimeline", sender: nil)
+        } else if self.selectedNum == 2 {
+            let userDefaults:UserDefaults = UserDefaults.standard
+            userDefaults.removeObject(forKey: "goDraft")
+            userDefaults.set(self.draftDocumentIdArr[indexPath.row], forKey: "goDraft")
+            userDefaults.synchronize()
+            print("????????????????????????????")
+            print(self.draftDocumentIdArr[indexPath.row])
+            self.performSegue(withIdentifier: "goDraft", sender: nil)
+        } else if self.selectedNum == 3 {
+            let userDefaults:UserDefaults = UserDefaults.standard
+            userDefaults.removeObject(forKey: "goSubmit")
+            userDefaults.set(self.submitDocumentIdArr[indexPath.row], forKey: "goSubmit")
+            userDefaults.synchronize()
+            print("????????????????????????????")
+            print(self.submitDocumentIdArr[indexPath.row])
+            self.performSegue(withIdentifier: "goSubmit", sender: nil)
+        }
     }
     
     @IBAction func addDiaryButton(_ sender: Any) {

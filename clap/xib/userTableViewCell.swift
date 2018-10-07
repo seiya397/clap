@@ -7,6 +7,7 @@ class userTableViewCell: UITableViewCell {
     @IBOutlet weak var userTime: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
