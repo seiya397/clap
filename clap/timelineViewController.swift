@@ -37,12 +37,16 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
     var selectedNum = 0
     
     
+    @IBOutlet weak var circleButton: UIButton!
     
     @IBOutlet weak var userTable: UITableView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        circleButton = Circle()
+        
         if arr != nil {
             self.arr = []
             self.dataNameFromFireStore = [Any]()
@@ -288,4 +292,19 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
         self.performSegue(withIdentifier: "goDiary", sender: nil)
     }
     
+}
+
+class Circle: UIButton {
+    @IBInspectable var borderColor :  UIColor = UIColor.black
+    @IBInspectable var borderWidth :  CGFloat = 0.1
+    
+    var button: UIButton? {
+        didSet{
+            layer.masksToBounds = false
+            layer.borderColor = borderColor.cgColor
+            layer.borderWidth = borderWidth
+            layer.cornerRadius = frame.height/2
+            clipsToBounds = true
+        }
+    }
 }

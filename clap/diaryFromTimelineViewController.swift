@@ -79,7 +79,13 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func commentButtonTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "goComment", sender: nil)
+    }
+    
 }

@@ -52,6 +52,13 @@
 		C9CA480D21632C0B00D9C142 /* userTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA480B21632C0B00D9C142 /* userTableViewCell.swift */; };
 		C9CA480E21632C0B00D9C142 /* userTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9CA480C21632C0B00D9C142 /* userTableViewCell.xib */; };
 		C9CA481A21635F2200D9C142 /* addDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA481921635F2200D9C142 /* addDiaryViewController.swift */; };
+		C9F44F8B216A7DEB00F1583A /* commentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F44F8A216A7DEB00F1583A /* commentViewController.swift */; };
+		C9F44F8E216A812D00F1583A /* myCommentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F44F8C216A812D00F1583A /* myCommentViewCell.swift */; };
+		C9F44F8F216A812D00F1583A /* myCommentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9F44F8D216A812D00F1583A /* myCommentViewCell.xib */; };
+		C9F44F92216A814400F1583A /* yourCommentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F44F90216A814400F1583A /* yourCommentViewCell.swift */; };
+		C9F44F93216A814400F1583A /* yourCommentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9F44F91216A814400F1583A /* yourCommentViewCell.xib */; };
+		C9F44F9B216A84E800F1583A /* commentRoomInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9F44F9A216A84E800F1583A /* commentRoomInputView.xib */; };
+		C9F44F9D216A85C500F1583A /* commentRoomInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F44F9C216A85C500F1583A /* commentRoomInputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +131,13 @@
 		C9CA480B21632C0B00D9C142 /* userTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userTableViewCell.swift; sourceTree = "<group>"; };
 		C9CA480C21632C0B00D9C142 /* userTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = userTableViewCell.xib; sourceTree = "<group>"; };
 		C9CA481921635F2200D9C142 /* addDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addDiaryViewController.swift; sourceTree = "<group>"; };
+		C9F44F8A216A7DEB00F1583A /* commentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentViewController.swift; sourceTree = "<group>"; };
+		C9F44F8C216A812D00F1583A /* myCommentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCommentViewCell.swift; sourceTree = "<group>"; };
+		C9F44F8D216A812D00F1583A /* myCommentViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = myCommentViewCell.xib; sourceTree = "<group>"; };
+		C9F44F90216A814400F1583A /* yourCommentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yourCommentViewCell.swift; sourceTree = "<group>"; };
+		C9F44F91216A814400F1583A /* yourCommentViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = yourCommentViewCell.xib; sourceTree = "<group>"; };
+		C9F44F9A216A84E800F1583A /* commentRoomInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = commentRoomInputView.xib; sourceTree = "<group>"; };
+		C9F44F9C216A85C500F1583A /* commentRoomInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentRoomInputView.swift; sourceTree = "<group>"; };
 		DC6E4A81ADE570696665400E /* Pods-clapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clapUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clapUITests/Pods-clapUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DFCB4A2A527B40ADB768C150 /* Pods_clap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -197,6 +211,7 @@
 				C9CA480A21632BE700D9C142 /* xib */,
 				BE3C84AD212BF7AB0053EFE2 /* Main.storyboard */,
 				C9104A4D216934EC00FDED0E /* diaryFromTimelineViewController.swift */,
+				C9F44F8A216A7DEB00F1583A /* commentViewController.swift */,
 				C9104A4F2169352000FDED0E /* diarySubmitViewController.swift */,
 				C9104A4B216934AE00FDED0E /* diaryEditViewController.swift */,
 				BE019DC3216268970019A38E /* eventChoiceViewController.swift */,
@@ -258,6 +273,12 @@
 			children = (
 				C9CA480B21632C0B00D9C142 /* userTableViewCell.swift */,
 				C9CA480C21632C0B00D9C142 /* userTableViewCell.xib */,
+				C9F44F8C216A812D00F1583A /* myCommentViewCell.swift */,
+				C9F44F8D216A812D00F1583A /* myCommentViewCell.xib */,
+				C9F44F90216A814400F1583A /* yourCommentViewCell.swift */,
+				C9F44F91216A814400F1583A /* yourCommentViewCell.xib */,
+				C9F44F9C216A85C500F1583A /* commentRoomInputView.swift */,
+				C9F44F9A216A84E800F1583A /* commentRoomInputView.xib */,
 			);
 			path = xib;
 			sourceTree = "<group>";
@@ -380,13 +401,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9F44F9B216A84E800F1583A /* commentRoomInputView.xib in Resources */,
 				BE3C84B4212BF7AD0053EFE2 /* LaunchScreen.storyboard in Resources */,
 				BE3C84B1212BF7AD0053EFE2 /* Assets.xcassets in Resources */,
+				C9F44F8F216A812D00F1583A /* myCommentViewCell.xib in Resources */,
 				BE3C84AF212BF7AB0053EFE2 /* Main.storyboard in Resources */,
 				BE22618D215DFC27006C777F /* XibView.xib in Resources */,
 				C9CA480E21632C0B00D9C142 /* userTableViewCell.xib in Resources */,
 				C923A41E2130D7E80007D784 /* GoogleService-Info.plist in Resources */,
 				BE226195215E108D006C777F /* timelineViewController.xib in Resources */,
+				C9F44F93216A814400F1583A /* yourCommentViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,6 +549,7 @@
 				C9104A4C216934AE00FDED0E /* diaryEditViewController.swift in Sources */,
 				C90648982133F1EA0025AD44 /* scheduleViewController.swift in Sources */,
 				C9169697214CDE85002EECEF /* teamReplesentRegisterViewController.swift in Sources */,
+				C9F44F8E216A812D00F1583A /* myCommentViewCell.swift in Sources */,
 				C9338E91215BE1C40008D2B5 /* profileEditViewController.swift in Sources */,
 				C9162C9121367F3800370F34 /* managerUpdateViewController.swift in Sources */,
 				C923A4232130F23D0007D784 /* LoginViewController.swift in Sources */,
@@ -536,8 +561,11 @@
 				C962474B213B895C00BC7C69 /* userResetPassViewController.swift in Sources */,
 				C99DE78D2150E3D4002EBF89 /* myPageViewController.swift in Sources */,
 				BE019DBC215F673E0019A38E /* planController.swift in Sources */,
+				C9F44F9D216A85C500F1583A /* commentRoomInputView.swift in Sources */,
 				BEF298A1213F092A00E75472 /* chatViewController.swift in Sources */,
 				BE226194215E108D006C777F /* timelineViewController.swift in Sources */,
+				C9F44F8B216A7DEB00F1583A /* commentViewController.swift in Sources */,
+				C9F44F92216A814400F1583A /* yourCommentViewCell.swift in Sources */,
 				BE3C84AC212BF7AB0053EFE2 /* ViewController.swift in Sources */,
 				BE019DC4216268970019A38E /* eventChoiceViewController.swift in Sources */,
 				C9624751213D383A00BC7C69 /* chatPageViewController.swift in Sources */,
