@@ -43,50 +43,54 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.arr = []
-        self.dataNameFromFireStore = [Any]()
-        self.dataTimeFromFirestore = [Any]()
-        self.dataTitleFromFireStore = [Any]()
-        self.submitDocumentIdArr = [Any]()
-        
-        self.selectedNum = 1
-        
-        userTable.delegate = self
-        userTable.dataSource = self
-        userTable.register(UINib(nibName: "userTableViewCell", bundle: nil), forCellReuseIdentifier: "cellName")
-        
-        self.db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot3, error) in
-            guard let document3 = snapshot3 else {
-                print("erorr2 \(String(describing: error))")
-                return
-            }
-            let data = document3.data()
+        if arr != nil {
+            self.arr = []
+            self.dataNameFromFireStore = [Any]()
+            self.dataTimeFromFirestore = [Any]()
+            self.dataTitleFromFireStore = [Any]()
+            self.submitDocumentIdArr = [Any]()
             
-            self.teamIDFromFirebase = (data!["teamID"] as? String)!
+            self.selectedNum = 1
             
-            self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: true).getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    var i = 0
-                    for document in querySnapshot!.documents {
-                        self.timelineDocumentIdArr.append(document.documentID)
-                        
-                        let documentData = document.data()
-                        self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
-                        self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
-                        self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
-                        self.arr.append(CellData(image: UIImage(named: "weight")!, name: self.dataNameFromFireStore[i] as! String, time: self.dataTimeFromFirestore[i] as! String, title: self.dataTitleFromFireStore[i] as! String))
-                        print(self.arr)
-                        
-                        i += 1
-                        
+            userTable.delegate = self
+            userTable.dataSource = self
+            userTable.register(UINib(nibName: "userTableViewCell", bundle: nil), forCellReuseIdentifier: "cellName")
+            
+            self.db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot3, error) in
+                guard let document3 = snapshot3 else {
+                    print("erorr2 \(String(describing: error))")
+                    return
+                }
+                let data = document3.data()
+                
+                self.teamIDFromFirebase = (data!["teamID"] as? String)!
+                
+                self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: true).getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        var i = 0
+                        for document in querySnapshot!.documents {
+                            self.timelineDocumentIdArr.append(document.documentID)
+                            
+                            let documentData = document.data()
+                            self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
+                            self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
+                            self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
+                            self.arr.append(CellData(image: UIImage(named: "weight")!, name: self.dataNameFromFireStore[i] as! String, time: self.dataTimeFromFirestore[i] as! String, title: self.dataTitleFromFireStore[i] as! String))
+                            print(self.arr)
+                            
+                            i += 1
+                            
+                        }
+                        self.userTable.reloadData()
+                        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                        print(self.timelineDocumentIdArr)
                     }
-                    self.userTable.reloadData()
-                    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-                    print(self.timelineDocumentIdArr)
                 }
             }
+        } else {
+            return arr = [CellData(image: UIImage(named: "")!, name: "", time: "", title: "")]
         }
     }
     
