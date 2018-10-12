@@ -3,7 +3,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 
-class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate {
+class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     let db = Firestore.firestore()
     
@@ -12,6 +12,16 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate {
     var teamID = String()
     
     var timeline = String()
+    
+    var userNameFromFirebase = String()
+    
+    let now = NSDate()
+    
+    let formatter = DateFormatter()
+    
+    var commentUserNameArr = [String]()
+    
+    var commentUserTextArr = [String]()
     
     @IBOutlet weak var contentView: UIView!
     
@@ -32,7 +42,14 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var textLabel6: UILabel!
     @IBOutlet weak var textView6: UITextView!
-
+    
+    
+    
+    @IBOutlet weak var commentUserCount: UILabel!
+    @IBOutlet weak var commentUserImage: UIImageView!
+    @IBOutlet weak var commentUserTextfield: UITextView!
+    @IBOutlet weak var commentUserTableView: UITableView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +67,6 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate {
         
         let userDefaults: UserDefaults = UserDefaults.standard
         timeline = (userDefaults.object(forKey: "goTimeline")! as? String)!
-        
         
         self.db.collection("users").document(fireAuthUID).getDocument { (document, error) in
             if let document = document, document.exists {
@@ -73,19 +89,142 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate {
                 print("Document does not exist")
             }
         }
+        
+        //コメント表示
+        
+        self.db.collection("users").document(fireAuthUID).getDocument { (document, error) in
+            if let document = document, document.exists {
+                _ = document.data().map(String.init(describing:)) ?? "nil"
+                self.teamID = String(describing: document["teamID"]!)
+                self.db.collection("diary").document(self.teamID).collection("diaries").document(self.timeline).collection("comment").whereField("edited", isEqualTo: false).getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                        return
+                    } else {
+                        for document in querySnapshot!.documents {
+
+                            print("成功成功成功成功成功\(document.documentID) => \(document.data())")
+                            let documentData = document.data()
+                            self.commentUserNameArr.append((documentData["userID"] as? String)!)
+                            self.commentUserTextArr.append((documentData["text"] as? String)!)
+                            print("==============okokokokokokokokokok")
+
+                        }
+                        self.commentUserTableView.reloadData()
+                    }
+                }
+            } else {
+                print("Document does not exist")
+            }
+        }
+
+        //コメント機能
+        commentUserTableView.delegate = self
+        commentUserTableView.dataSource = self
+        
+        let nibName = UINib(nibName: "commentTableViewCell", bundle: nil)
+        
+        commentUserTableView.register(nibName, forCellReuseIdentifier: "commentTableViewCell")
+        
     }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func commentButtonTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "goComment", sender: nil)
+    @IBAction func commentUserButtonTapped(_ sender: Any) {
+        
+        self.db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot3, error) in
+            guard let document3 = snapshot3 else {
+                print("erorr2 \(String(describing: error))")
+                return
+            }
+            
+            let data = document3.data()
+            
+            self.userNameFromFirebase = (data!["name"] as? String)!
+        }
+        
+        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        
+        let updateDate = formatter.string(from: now as Date)
+
+        
+        let commentRandomNum = self.randomString(length: 20)
+        
+        let commentData = ["id": commentRandomNum, "userID": self.fireAuthUID, "text": self.commentUserTextfield.text!, "edited": false, "update_at": updateDate] as [String : Any]
+        db.collection("diary").document(self.teamID).collection("diaries").document(self.timeline).collection("comment").document(commentRandomNum).setData(commentData) {
+            err in
+            if err != nil {
+                print("コメントの追加に失敗しました")
+                return
+            } else {
+                print("コメントの追加に成功")
+                self.db.collection("diary").document(self.teamID).collection("diaries").document(self.timeline).collection("comment").document(commentRandomNum).addSnapshotListener { (snapshot3, error) in
+                    guard let document3 = snapshot3 else {
+                        print("erorr2 \(String(describing: error))")
+                        return
+                    }
+                    
+                    let data = document3.data()
+                    
+                    let a = (data!["text"] as? String)!
+                    
+                    let b = (data!["userID"] as? String)!
+                    
+                    self.commentUserTextArr.append(a)
+                    
+                    self.commentUserNameArr.append(b)
+                    
+                    self.commentUserTableView.reloadData()
+                }
+            }
+        }
+        
     }
     
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return commentUserTextArr.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = commentUserTableView.dequeueReusableCell(withIdentifier: "commentTableViewCell", for: indexPath) as! commentTableViewCell
+        cell.commentInit(name: commentUserNameArr[indexPath.item], text: commentUserTextArr[indexPath.item], time: "20:10")
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    
+    func randomString(length: Int) -> String {  //ランダムID
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = UInt32(letters.length)
+        
+        var randomString = ""
+        
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+        
+        return randomString
+    }
 }
+
+
+
+
+
+
+
+
+
+
