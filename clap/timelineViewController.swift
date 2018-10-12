@@ -65,9 +65,9 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                     print("erorr2 \(String(describing: error))")
                     return
                 }
-                let data = document3.data()
+                guard let data = document3.data() else { return }
                 
-                self.teamIDFromFirebase = (data!["teamID"] as? String)!
+                self.teamIDFromFirebase = data["teamID"] as? String ?? ""
                 
                 self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: true).getDocuments() { (querySnapshot, err) in
                     if let err = err {

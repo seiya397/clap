@@ -19,9 +19,13 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
     
     let formatter = DateFormatter()
     
+    var commentUserTextArr = [String]()
+    
     var commentUserNameArr = [String]()
     
-    var commentUserTextArr = [String]()
+    var commentedUserName = String()
+    
+    var userName = String()
     
     @IBOutlet weak var contentView: UIView!
     
@@ -72,6 +76,7 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
             if let document = document, document.exists {
                 _ = document.data().map(String.init(describing:)) ?? "nil"
                 self.teamID = String(describing: document["teamID"]!)
+                self.commentedUserName = String(describing: document["name"]!)
             self.db.collection("diary").document(self.teamID).collection("diaries").document(self.timeline).addSnapshotListener { (snapshot, error) in
                     guard let document = snapshot else {
                         print("erorr2 \(String(describing: error))")
@@ -105,7 +110,8 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
 
                             print("成功成功成功成功成功\(document.documentID) => \(document.data())")
                             let documentData = document.data()
-                            self.commentUserNameArr.append((documentData["userID"] as? String)!)
+//                            self.commentUserNameArr.append((documentData["userID"] as? String)!)
+                            self.commentUserNameArr.append((documentData["name"] as? String)!)
                             self.commentUserTextArr.append((documentData["text"] as? String)!)
                             print("==============okokokokokokokokokok")
 
@@ -126,7 +132,19 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
         
         commentUserTableView.register(nibName, forCellReuseIdentifier: "commentTableViewCell")
         
+        //ユーザーの名前取得
+        db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot2, error) in
+            guard let document2 = snapshot2 else {
+                print("erorr2 \(String(describing: error))")
+                return
+            }
+            let data = document2.data()
+            
+            self.userName = (data!["name"] as? String)! ?? ""
+        }
     }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -137,17 +155,6 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
     
     @IBAction func commentUserButtonTapped(_ sender: Any) {
         
-        self.db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot3, error) in
-            guard let document3 = snapshot3 else {
-                print("erorr2 \(String(describing: error))")
-                return
-            }
-            
-            let data = document3.data()
-            
-            self.userNameFromFirebase = (data!["name"] as? String)!
-        }
-        
         formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
         
         let updateDate = formatter.string(from: now as Date)
@@ -155,7 +162,7 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
         
         let commentRandomNum = self.randomString(length: 20)
         
-        let commentData = ["id": commentRandomNum, "userID": self.fireAuthUID, "text": self.commentUserTextfield.text!, "edited": false, "update_at": updateDate] as [String : Any]
+        let commentData = ["id": commentRandomNum, "userID": self.fireAuthUID, "text": self.commentUserTextfield.text!, "edited": false, "name": self.userName, "update_at": updateDate] as [String : Any]
         db.collection("diary").document(self.teamID).collection("diaries").document(self.timeline).collection("comment").document(commentRandomNum).setData(commentData) {
             err in
             if err != nil {
@@ -171,13 +178,13 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
                     
                     let data = document3.data()
                     
-                    let a = (data!["text"] as? String)!
+                    let textDataFromFirebase = (data!["text"] as? String)!
                     
-                    let b = (data!["userID"] as? String)!
+                    let nameDataFromFirebase = (data!["name"] as? String)!
                     
-                    self.commentUserTextArr.append(a)
+                    self.commentUserTextArr.append(textDataFromFirebase)
                     
-                    self.commentUserNameArr.append(b)
+                    self.commentUserNameArr.append(nameDataFromFirebase)
                     
                     self.commentUserTableView.reloadData()
                 }
@@ -218,13 +225,5 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
         return randomString
     }
 }
-
-
-
-
-
-
-
-
 
 
