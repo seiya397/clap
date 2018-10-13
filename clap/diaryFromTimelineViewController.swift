@@ -4,44 +4,6 @@ import FirebaseFirestore
 import FirebaseAuth
 import Foundation
 
-extension Date {
-    
-    func offsetFrom() -> String {
-        if yearsFrom()   > 0 { return "\(yearsFrom())年前"   }
-        if monthsFrom()  > 0 { return "\(monthsFrom())ヶ月前"  }
-        if weeksFrom()   > 0 { return "\(weeksFrom())週間前"   }
-        if daysFrom()    > 0 { return "\(daysFrom())日前"    }
-        if hoursFrom()   > 0 { return "\(hoursFrom())時間前"   }
-        if minutesFrom() > 0 { return "\(minutesFrom())分前" }
-        if secondsFrom() > 0 { return "\(secondsFrom())秒前" }
-        return ""
-    }
-    
-    func yearsFrom() -> Int {
-        return Calendar.current.dateComponents([.year], from: self, to: Date()).year ?? 0
-    }
-    func monthsFrom() -> Int {
-        return Calendar.current.dateComponents([.month], from: self, to: Date()).month ?? 0
-    }
-    func weeksFrom() -> Int {
-        return Calendar.current.dateComponents([.weekOfYear], from: self, to: Date()).weekOfYear ?? 0
-    }
-    func daysFrom() -> Int {
-        return Calendar.current.dateComponents([.day], from: self, to: Date()).day ?? 0
-    }
-    func hoursFrom() -> Int {
-        return Calendar.current.dateComponents([.hour], from: self, to: Date()).hour ?? 0
-    }
-    func minutesFrom() -> Int {
-        return Calendar.current.dateComponents([.minute], from: self, to: Date()).minute ?? 0
-    }
-    func secondsFrom() -> Int {
-        return Calendar.current.dateComponents([.second], from: self, to: Date()).second ?? 0
-    }
-    
-}
-
-
 class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     let db = Firestore.firestore()
@@ -198,7 +160,8 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
         formatter.dateFormat = "HH:mm"
         
         let submitOrReplyTime = formatter.string(from: now as Date)
-
+        
+        
         let commentRandomNum = self.randomString(length: 20)
         
         let commentData = ["id": commentRandomNum, "userID": self.fireAuthUID, "text": self.commentUserTextfield.text!, "edited": false, "name": self.userName, "update_at": submitOrReplyTime] as [String : Any]
@@ -243,13 +206,25 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = commentUserTableView.dequeueReusableCell(withIdentifier: "commentTableViewCell", for: indexPath) as! commentTableViewCell
+        
+        cell.replyButton.addTarget(self, action: #selector(tapSegue(_:)), for: .touchUpInside)
+        
         cell.commentInit(name: commentUserNameArr[indexPath.item], text: commentUserTextArr[indexPath.item], time: commentUserTimeArr[indexPath.item])
+        
         return cell
+    }
+    
+    @objc func tapSegue(_ segue : UIButton) {
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "replyView") as! ReplyViewController
+//        self.present(vc, animated: true, completion: nil)
+        performSegue(withIdentifier: "replyView", sender: nil)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    
+
     
     
     func randomString(length: Int) -> String {  //ランダムID
@@ -268,3 +243,11 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
         return randomString
     }
 }
+
+//extension diaryFromTimelineViewController: CommentTableViewCellDelegate {
+//    func didButtonPressed() {
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "replyView") as! replyViewController
+////        let replyPage = self.storyboard?.instantiateViewController(withIdentifier: "replyViewController") as! replyViewController
+//            self.present(vc, animated: true, completion: nil)
+//    }
+//}

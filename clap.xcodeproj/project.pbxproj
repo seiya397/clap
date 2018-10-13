@@ -50,6 +50,7 @@
 		C9708B472143DDCD0013FD4C /* teamIdConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9708B462143DDCD0013FD4C /* teamIdConfirmationViewController.swift */; };
 		C99C78E8217047B500B70293 /* commentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C78E6217047B500B70293 /* commentTableViewCell.swift */; };
 		C99C78E9217047B500B70293 /* commentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C99C78E7217047B500B70293 /* commentTableViewCell.xib */; };
+		C99C78EB2171C40F00B70293 /* replyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C78EA2171C40F00B70293 /* replyViewController.swift */; };
 		C99DE78D2150E3D4002EBF89 /* myPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DE78C2150E3D4002EBF89 /* myPageViewController.swift */; };
 		C9CA480D21632C0B00D9C142 /* userTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA480B21632C0B00D9C142 /* userTableViewCell.swift */; };
 		C9CA480E21632C0B00D9C142 /* userTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9CA480C21632C0B00D9C142 /* userTableViewCell.xib */; };
@@ -124,6 +125,7 @@
 		C9708B462143DDCD0013FD4C /* teamIdConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdConfirmationViewController.swift; sourceTree = "<group>"; };
 		C99C78E6217047B500B70293 /* commentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentTableViewCell.swift; sourceTree = "<group>"; };
 		C99C78E7217047B500B70293 /* commentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = commentTableViewCell.xib; sourceTree = "<group>"; };
+		C99C78EA2171C40F00B70293 /* replyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = replyViewController.swift; sourceTree = "<group>"; };
 		C99DE78C2150E3D4002EBF89 /* myPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myPageViewController.swift; sourceTree = "<group>"; };
 		C9CA480B21632C0B00D9C142 /* userTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userTableViewCell.swift; sourceTree = "<group>"; };
 		C9CA480C21632C0B00D9C142 /* userTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = userTableViewCell.xib; sourceTree = "<group>"; };
@@ -200,13 +202,12 @@
 			children = (
 				C9CA480A21632BE700D9C142 /* xib */,
 				BE3C84AD212BF7AB0053EFE2 /* Main.storyboard */,
+				C99C78EA2171C40F00B70293 /* replyViewController.swift */,
 				C9104A4D216934EC00FDED0E /* diaryFromTimelineViewController.swift */,
 				C9104A4F2169352000FDED0E /* diarySubmitViewController.swift */,
 				C9104A4B216934AE00FDED0E /* diaryEditViewController.swift */,
 				BE019DC3216268970019A38E /* eventChoiceViewController.swift */,
 				BE019DBB215F673E0019A38E /* planController.swift */,
-				BE22618C215DFC26006C777F /* XibView.xib */,
-				BE22618E215DFCFD006C777F /* XibView.swift */,
 				BE3C84A9212BF7AB0053EFE2 /* AppDelegate.swift */,
 				C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */,
 				BE3C84AB212BF7AB0053EFE2 /* ViewController.swift */,
@@ -264,6 +265,8 @@
 				C9CA480C21632C0B00D9C142 /* userTableViewCell.xib */,
 				C99C78E6217047B500B70293 /* commentTableViewCell.swift */,
 				C99C78E7217047B500B70293 /* commentTableViewCell.xib */,
+				BE22618E215DFCFD006C777F /* XibView.swift */,
+				BE22618C215DFC26006C777F /* XibView.xib */,
 			);
 			path = xib;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				C916969B214D22F6002EECEF /* teamIdConfirmWrongViewController.swift in Sources */,
 				C962474F213D36AA00BC7C69 /* memberEvaluationViewController.swift in Sources */,
 				BE3C84AA212BF7AB0053EFE2 /* AppDelegate.swift in Sources */,
+				C99C78EB2171C40F00B70293 /* replyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,6 +19,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weight" translatesAutoresizingMaskIntoConstraints="NO" id="Jdj-Jm-evb">
+                        <rect key="frame" x="8" y="14.5" width="55" height="55"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="55" id="JgF-Lk-sNb"/>
+                            <constraint firstAttribute="width" constant="55" id="yAy-fb-nQX"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wau-mh-MoH">
                         <rect key="frame" x="74" y="11.5" width="230" height="21.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -40,13 +47,13 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weight" translatesAutoresizingMaskIntoConstraints="NO" id="Jdj-Jm-evb">
-                        <rect key="frame" x="8" y="14.5" width="55" height="55"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ThJ-fu-n5T">
+                        <rect key="frame" x="258" y="63" width="46" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="55" id="JgF-Lk-sNb"/>
-                            <constraint firstAttribute="width" constant="55" id="yAy-fb-nQX"/>
+                            <constraint firstAttribute="width" constant="46" id="BYs-Ei-RKJ"/>
                         </constraints>
-                    </imageView>
+                        <state key="normal" title="返信"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Nh0-yR-GXu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9Cu-e6-bwb"/>
@@ -56,6 +63,7 @@
                     <constraint firstItem="Nh0-yR-GXu" firstAttribute="top" secondItem="wau-mh-MoH" secondAttribute="bottom" constant="1" id="Klo-Dv-a1e"/>
                     <constraint firstItem="Jdj-Jm-evb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="Nb2-UP-O3Z"/>
                     <constraint firstAttribute="bottom" secondItem="Jdj-Jm-evb" secondAttribute="bottom" constant="33.5" id="QFw-7K-fLk"/>
+                    <constraint firstAttribute="trailing" secondItem="ThJ-fu-n5T" secondAttribute="trailing" constant="16" id="Vk2-C9-cwN"/>
                     <constraint firstItem="Nh0-yR-GXu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="33" id="Xu1-vG-eNQ"/>
                     <constraint firstItem="wau-mh-MoH" firstAttribute="leading" secondItem="Jdj-Jm-evb" secondAttribute="trailing" constant="11" id="efR-Rp-n9N"/>
                     <constraint firstItem="wau-mh-MoH" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="fZd-HR-0ej"/>
@@ -64,6 +72,7 @@
                     <constraint firstItem="C8b-Np-qFD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="59" id="lvf-mV-UCc"/>
                     <constraint firstAttribute="bottomMargin" secondItem="C8b-Np-qFD" secondAttribute="bottom" constant="5" id="mEj-Xl-ipp"/>
                     <constraint firstAttribute="trailingMargin" secondItem="C8b-Np-qFD" secondAttribute="trailing" constant="196" id="oWi-Qz-nW2"/>
+                    <constraint firstAttribute="bottom" secondItem="ThJ-fu-n5T" secondAttribute="bottom" constant="7.5" id="sw0-Bv-91E"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -72,6 +81,7 @@
                 <outlet property="commentedUserName" destination="wau-mh-MoH" id="P8C-FJ-mHS"/>
                 <outlet property="commentedUserTextField" destination="Nh0-yR-GXu" id="N6L-vG-R88"/>
                 <outlet property="commentedUserTime" destination="C8b-Np-qFD" id="jqh-bB-HDz"/>
+                <outlet property="replyButton" destination="ThJ-fu-n5T" id="AdI-cx-cuF"/>
             </connections>
             <point key="canvasLocation" x="97.599999999999994" y="48.575712143928037"/>
         </tableViewCell>
