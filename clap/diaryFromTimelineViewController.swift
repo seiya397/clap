@@ -2,6 +2,45 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 import FirebaseAuth
+import Foundation
+
+extension Date {
+    
+    func offsetFrom() -> String {
+        if yearsFrom()   > 0 { return "\(yearsFrom())年前"   }
+        if monthsFrom()  > 0 { return "\(monthsFrom())ヶ月前"  }
+        if weeksFrom()   > 0 { return "\(weeksFrom())週間前"   }
+        if daysFrom()    > 0 { return "\(daysFrom())日前"    }
+        if hoursFrom()   > 0 { return "\(hoursFrom())時間前"   }
+        if minutesFrom() > 0 { return "\(minutesFrom())分前" }
+        if secondsFrom() > 0 { return "\(secondsFrom())秒前" }
+        return ""
+    }
+    
+    func yearsFrom() -> Int {
+        return Calendar.current.dateComponents([.year], from: self, to: Date()).year ?? 0
+    }
+    func monthsFrom() -> Int {
+        return Calendar.current.dateComponents([.month], from: self, to: Date()).month ?? 0
+    }
+    func weeksFrom() -> Int {
+        return Calendar.current.dateComponents([.weekOfYear], from: self, to: Date()).weekOfYear ?? 0
+    }
+    func daysFrom() -> Int {
+        return Calendar.current.dateComponents([.day], from: self, to: Date()).day ?? 0
+    }
+    func hoursFrom() -> Int {
+        return Calendar.current.dateComponents([.hour], from: self, to: Date()).hour ?? 0
+    }
+    func minutesFrom() -> Int {
+        return Calendar.current.dateComponents([.minute], from: self, to: Date()).minute ?? 0
+    }
+    func secondsFrom() -> Int {
+        return Calendar.current.dateComponents([.second], from: self, to: Date()).second ?? 0
+    }
+    
+}
+
 
 class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -15,13 +54,11 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
     
     var userNameFromFirebase = String()
     
-    let now = NSDate()
-    
-    let formatter = DateFormatter()
-    
     var commentUserTextArr = [String]()
     
     var commentUserNameArr = [String]()
+    
+    var commentUserTimeArr = [String]()
     
     var commentedUserName = String()
     
@@ -110,10 +147,10 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
 
                             print("成功成功成功成功成功\(document.documentID) => \(document.data())")
                             let documentData = document.data()
-//                            self.commentUserNameArr.append((documentData["userID"] as? String)!)
                             self.commentUserNameArr.append((documentData["name"] as? String)!)
                             self.commentUserTextArr.append((documentData["text"] as? String)!)
-                            print("==============okokokokokokokokokok")
+                            
+                            self.commentUserTimeArr.append((documentData["update_at"] as? String)!)
 
                         }
                         self.commentUserTableView.reloadData()
@@ -154,15 +191,17 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
     }
     
     @IBAction func commentUserButtonTapped(_ sender: Any) {
+        //submit or 保存ボタン押した時の時刻取得
+        let now = NSDate()
         
-        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
         
-        let updateDate = formatter.string(from: now as Date)
+        let submitOrReplyTime = formatter.string(from: now as Date)
 
-        
         let commentRandomNum = self.randomString(length: 20)
         
-        let commentData = ["id": commentRandomNum, "userID": self.fireAuthUID, "text": self.commentUserTextfield.text!, "edited": false, "name": self.userName, "update_at": updateDate] as [String : Any]
+        let commentData = ["id": commentRandomNum, "userID": self.fireAuthUID, "text": self.commentUserTextfield.text!, "edited": false, "name": self.userName, "update_at": submitOrReplyTime] as [String : Any]
         db.collection("diary").document(self.teamID).collection("diaries").document(self.timeline).collection("comment").document(commentRandomNum).setData(commentData) {
             err in
             if err != nil {
@@ -182,9 +221,13 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
                     
                     let nameDataFromFirebase = (data!["name"] as? String)!
                     
+                    let timeDataFromFirebase = (data!["update_at"] as? String)!
+                    
                     self.commentUserTextArr.append(textDataFromFirebase)
                     
                     self.commentUserNameArr.append(nameDataFromFirebase)
+                    
+                    self.commentUserTimeArr.append(timeDataFromFirebase)
                     
                     self.commentUserTableView.reloadData()
                 }
@@ -200,7 +243,7 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = commentUserTableView.dequeueReusableCell(withIdentifier: "commentTableViewCell", for: indexPath) as! commentTableViewCell
-        cell.commentInit(name: commentUserNameArr[indexPath.item], text: commentUserTextArr[indexPath.item], time: "20:10")
+        cell.commentInit(name: commentUserNameArr[indexPath.item], text: commentUserTextArr[indexPath.item], time: commentUserTimeArr[indexPath.item])
         return cell
     }
 
@@ -225,5 +268,3 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
         return randomString
     }
 }
-
-

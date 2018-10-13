@@ -83,12 +83,9 @@ class myPageViewController: UIViewController{
         self.userImage.addGestureRecognizer(tap)
         
         let storageReference = Storage.storage().reference()
-        print("ここまで動いている１＝＝＝＝＝＝＝＝＝＝＝")
         let profileImageDownloadedURLReference = storageReference.child("users/\(Auth.auth().currentUser?.uid ?? " ")/profileImage.jpg")
-        print("ここまで動いている２＝＝＝＝＝＝＝＝＝＝＝")
         let placeholderImage = UIImage(named: "placeholder.jpg")
         userImage.sd_setImage(with: profileImageDownloadedURLReference, placeholderImage: placeholderImage)
-        print("ここまで動いている３＝＝＝＝＝＝＝＝＝＝＝")
         
     }
 

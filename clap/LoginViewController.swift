@@ -6,11 +6,9 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var commonMailaddress: UITextField!
     @IBOutlet weak var commonPassword: UITextField!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,4 +60,4 @@ class LoginViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-}    
+}
