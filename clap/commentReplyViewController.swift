@@ -1,10 +1,11 @@
 import UIKit
 
-class ReplyViewController: UIViewController {
+class commentReplyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("okokokokokokokokokokokok")
+
+        print("okokokokokokokokok")
     }
     
 }

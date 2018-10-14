@@ -1,18 +1,17 @@
 import UIKit
 
-//protocol CommentTableViewCellDelegate {
-//    func didButtonPressed()
-//}
+protocol CommentTableViewCellDelegate {
+    func didButtonPressed()
+}
 
 class commentTableViewCell: UITableViewCell {
     
-//    var delegate: CommentTableViewCellDelegate?
+    var delegate: CommentTableViewCellDelegate?
     
     @IBOutlet weak var commentedUserImage: UIImageView!
     @IBOutlet weak var commentedUserName: UILabel!
     @IBOutlet weak var commentedUserTextField: UITextView!
     @IBOutlet weak var commentedUserTime: UILabel!
-    @IBOutlet weak var replyButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,9 +31,8 @@ class commentTableViewCell: UITableViewCell {
         self.commentedUserTime.text = time
     }
     
-//    @IBAction func replyButtonTapped(_ sender: Any) {
-//        delegate?.didButtonPressed()
-//
-//    }
+    @IBAction func replyButtonTapped(_ sender: Any) {
+        delegate?.didButtonPressed()
+    }
     
 }

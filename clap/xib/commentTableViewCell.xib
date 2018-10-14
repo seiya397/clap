@@ -53,6 +53,9 @@
                             <constraint firstAttribute="width" constant="46" id="BYs-Ei-RKJ"/>
                         </constraints>
                         <state key="normal" title="返信"/>
+                        <connections>
+                            <action selector="replyButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hcZ-f9-mEq"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -81,7 +84,6 @@
                 <outlet property="commentedUserName" destination="wau-mh-MoH" id="P8C-FJ-mHS"/>
                 <outlet property="commentedUserTextField" destination="Nh0-yR-GXu" id="N6L-vG-R88"/>
                 <outlet property="commentedUserTime" destination="C8b-Np-qFD" id="jqh-bB-HDz"/>
-                <outlet property="replyButton" destination="ThJ-fu-n5T" id="AdI-cx-cuF"/>
             </connections>
             <point key="canvasLocation" x="97.599999999999994" y="48.575712143928037"/>
         </tableViewCell>

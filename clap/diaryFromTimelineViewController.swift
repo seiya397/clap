@@ -207,17 +207,9 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = commentUserTableView.dequeueReusableCell(withIdentifier: "commentTableViewCell", for: indexPath) as! commentTableViewCell
         
-        cell.replyButton.addTarget(self, action: #selector(tapSegue(_:)), for: .touchUpInside)
-        
         cell.commentInit(name: commentUserNameArr[indexPath.item], text: commentUserTextArr[indexPath.item], time: commentUserTimeArr[indexPath.item])
-        
+        cell.delegate = self
         return cell
-    }
-    
-    @objc func tapSegue(_ segue : UIButton) {
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "replyView") as! ReplyViewController
-//        self.present(vc, animated: true, completion: nil)
-        performSegue(withIdentifier: "replyView", sender: nil)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -244,10 +236,9 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
     }
 }
 
-//extension diaryFromTimelineViewController: CommentTableViewCellDelegate {
-//    func didButtonPressed() {
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "replyView") as! replyViewController
-////        let replyPage = self.storyboard?.instantiateViewController(withIdentifier: "replyViewController") as! replyViewController
-//            self.present(vc, animated: true, completion: nil)
-//    }
-//}
+extension diaryFromTimelineViewController: CommentTableViewCellDelegate {
+    func didButtonPressed() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "commentReplyViewController") as! commentReplyViewController
+            self.present(vc, animated: true, completion: nil)
+    }
+}

@@ -85,7 +85,7 @@ class myPageViewController: UIViewController{
         let storageReference = Storage.storage().reference()
         let profileImageDownloadedURLReference = storageReference.child("users/\(Auth.auth().currentUser?.uid ?? " ")/profileImage.jpg")
         let placeholderImage = UIImage(named: "placeholder.jpg")
-        userImage.sd_setImage(with: profileImageDownloadedURLReference, placeholderImage: placeholderImage)
+//        userImage.sd_setImage(with: profileImageDownloadedURLReference, placeholderImage: placeholderImage)
         
     }
 

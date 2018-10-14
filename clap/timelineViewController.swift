@@ -132,6 +132,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
                         self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
                         self.arr.append(CellData(image: UIImage(named: "weight")!, name: self.dataNameFromFireStore[i] as! String, time: self.dataTimeFromFirestore[i] as! String, title: self.dataTitleFromFireStore[i] as! String))
+//                        self.arr.reverse()
                         
                         i += 1
                         
