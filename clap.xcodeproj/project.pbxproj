@@ -52,6 +52,8 @@
 		C99C78E9217047B500B70293 /* commentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C99C78E7217047B500B70293 /* commentTableViewCell.xib */; };
 		C99C78ED2172B16100B70293 /* commentReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C78EC2172B16100B70293 /* commentReplyViewController.swift */; };
 		C99DE78D2150E3D4002EBF89 /* myPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DE78C2150E3D4002EBF89 /* myPageViewController.swift */; };
+		C9B9438A21731E8D00A3B43A /* replyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9438821731E8D00A3B43A /* replyTableViewCell.swift */; };
+		C9B9438B21731E8D00A3B43A /* replyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9B9438921731E8D00A3B43A /* replyTableViewCell.xib */; };
 		C9CA480D21632C0B00D9C142 /* userTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA480B21632C0B00D9C142 /* userTableViewCell.swift */; };
 		C9CA480E21632C0B00D9C142 /* userTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9CA480C21632C0B00D9C142 /* userTableViewCell.xib */; };
 		C9CA481A21635F2200D9C142 /* addDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA481921635F2200D9C142 /* addDiaryViewController.swift */; };
@@ -127,6 +129,8 @@
 		C99C78E7217047B500B70293 /* commentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = commentTableViewCell.xib; sourceTree = "<group>"; };
 		C99C78EC2172B16100B70293 /* commentReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentReplyViewController.swift; sourceTree = "<group>"; };
 		C99DE78C2150E3D4002EBF89 /* myPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myPageViewController.swift; sourceTree = "<group>"; };
+		C9B9438821731E8D00A3B43A /* replyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = replyTableViewCell.swift; sourceTree = "<group>"; };
+		C9B9438921731E8D00A3B43A /* replyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = replyTableViewCell.xib; sourceTree = "<group>"; };
 		C9CA480B21632C0B00D9C142 /* userTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userTableViewCell.swift; sourceTree = "<group>"; };
 		C9CA480C21632C0B00D9C142 /* userTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = userTableViewCell.xib; sourceTree = "<group>"; };
 		C9CA481921635F2200D9C142 /* addDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addDiaryViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +269,8 @@
 				C9CA480C21632C0B00D9C142 /* userTableViewCell.xib */,
 				C99C78E6217047B500B70293 /* commentTableViewCell.swift */,
 				C99C78E7217047B500B70293 /* commentTableViewCell.xib */,
+				C9B9438821731E8D00A3B43A /* replyTableViewCell.swift */,
+				C9B9438921731E8D00A3B43A /* replyTableViewCell.xib */,
 				BE22618E215DFCFD006C777F /* XibView.swift */,
 				BE22618C215DFC26006C777F /* XibView.xib */,
 			);
@@ -396,6 +402,7 @@
 				BE22618D215DFC27006C777F /* XibView.xib in Resources */,
 				C9CA480E21632C0B00D9C142 /* userTableViewCell.xib in Resources */,
 				C923A41E2130D7E80007D784 /* GoogleService-Info.plist in Resources */,
+				C9B9438B21731E8D00A3B43A /* replyTableViewCell.xib in Resources */,
 				BE226195215E108D006C777F /* timelineViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -545,6 +552,7 @@
 				C90648962133E2B20025AD44 /* teamIdGenerateViewController.swift in Sources */,
 				C96247462139D5C000BC7C69 /* mainPageViewController.swift in Sources */,
 				C962474B213B895C00BC7C69 /* userResetPassViewController.swift in Sources */,
+				C9B9438A21731E8D00A3B43A /* replyTableViewCell.swift in Sources */,
 				C99DE78D2150E3D4002EBF89 /* myPageViewController.swift in Sources */,
 				BE019DBC215F673E0019A38E /* planController.swift in Sources */,
 				C99C78ED2172B16100B70293 /* commentReplyViewController.swift in Sources */,
