@@ -16,6 +16,7 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
     
     var userNameFromFirebase = String()
     
+    
     var commentUserTextArr = [String]()
     
     var commentUserNameArr = [String]()

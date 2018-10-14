@@ -9,3 +9,8 @@ class commentReplyViewController: UIViewController {
     }
     
 }
+
+
+//commentを識別できて初めてコメントとリプライを紐つけられる
+
+
