@@ -10,6 +10,10 @@ import UIKit
 
 class replyTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var replyUserImage: UIImageView!
+    @IBOutlet weak var replyUserName: UILabel!
+    @IBOutlet weak var replyUserText: UITextView!
+    @IBOutlet weak var replyUserTime: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +25,10 @@ class replyTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func commentInit(name: String?, text: String?, time: String?) {
+        self.replyUserName.text = name
+        
+        self.replyUserText.text = text
+        self.replyUserTime.text = time
+    }
 }
