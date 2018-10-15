@@ -61,7 +61,7 @@ class commentReplyViewController: UIViewController {
                 }
             }
         }
-        
+        //reply表示
         self.db.collection("users").document(fireAuthUID).getDocument { (document, error) in
             if let document = document, document.exists {
                 _ = document.data().map(String.init(describing:)) ?? "nil"
@@ -82,6 +82,10 @@ class commentReplyViewController: UIViewController {
                             
                             self.replyUserTimeArr.append((documentData["update_at"] as? String)!)
                             
+                            print("===================")
+                            print(self.replyUserTextArr)
+
+                            
                         }
                         self.replyUserTable.reloadData()
                     }
@@ -91,9 +95,14 @@ class commentReplyViewController: UIViewController {
             }
         }
         
+        //コメント機能
+        replyUserTable.delegate = self
+        replyUserTable.dataSource = self
+        
         let nibName = UINib(nibName: "replyTableViewCell", bundle: nil)
         
         replyUserTable.register(nibName, forCellReuseIdentifier: "replyTableViewCell")
+        
         
     }
     
