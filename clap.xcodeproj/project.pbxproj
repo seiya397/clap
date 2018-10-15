@@ -47,6 +47,7 @@
 		C962474D213B9D1D00BC7C69 /* topSelectPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */; };
 		C962474F213D36AA00BC7C69 /* memberEvaluationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */; };
 		C9624751213D383A00BC7C69 /* chatPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9624750213D383A00BC7C69 /* chatPageViewController.swift */; };
+		C963CD5A21747B930081C9F5 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963CD5921747B930081C9F5 /* testViewController.swift */; };
 		C9708B472143DDCD0013FD4C /* teamIdConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9708B462143DDCD0013FD4C /* teamIdConfirmationViewController.swift */; };
 		C99C78E8217047B500B70293 /* commentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C78E6217047B500B70293 /* commentTableViewCell.swift */; };
 		C99C78E9217047B500B70293 /* commentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C99C78E7217047B500B70293 /* commentTableViewCell.xib */; };
@@ -124,6 +125,7 @@
 		C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = topSelectPageViewController.swift; sourceTree = "<group>"; };
 		C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memberEvaluationViewController.swift; sourceTree = "<group>"; };
 		C9624750213D383A00BC7C69 /* chatPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatPageViewController.swift; sourceTree = "<group>"; };
+		C963CD5921747B930081C9F5 /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		C9708B462143DDCD0013FD4C /* teamIdConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdConfirmationViewController.swift; sourceTree = "<group>"; };
 		C99C78E6217047B500B70293 /* commentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentTableViewCell.swift; sourceTree = "<group>"; };
 		C99C78E7217047B500B70293 /* commentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = commentTableViewCell.xib; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			children = (
 				C9CA480A21632BE700D9C142 /* xib */,
 				BE3C84AD212BF7AB0053EFE2 /* Main.storyboard */,
+				C963CD5921747B930081C9F5 /* testViewController.swift */,
 				C9104A4D216934EC00FDED0E /* diaryFromTimelineViewController.swift */,
 				C9104A4F2169352000FDED0E /* diarySubmitViewController.swift */,
 				C9104A4B216934AE00FDED0E /* diaryEditViewController.swift */,
@@ -550,6 +553,7 @@
 				C9CA481A21635F2200D9C142 /* addDiaryViewController.swift in Sources */,
 				C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */,
 				C90648962133E2B20025AD44 /* teamIdGenerateViewController.swift in Sources */,
+				C963CD5A21747B930081C9F5 /* testViewController.swift in Sources */,
 				C96247462139D5C000BC7C69 /* mainPageViewController.swift in Sources */,
 				C962474B213B895C00BC7C69 /* userResetPassViewController.swift in Sources */,
 				C9B9438A21731E8D00A3B43A /* replyTableViewCell.swift in Sources */,

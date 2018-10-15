@@ -23,6 +23,8 @@ class myPageViewController: UIViewController{
     
     var teamIDFromFirebase: String = ""
     
+    var imageURL = [String: String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,27 +35,24 @@ class myPageViewController: UIViewController{
             userEmail.text = user.email
         }
 
-        // Do any additional setup after loading the view.
         let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
-        print("今度こそ\(fireAuthUID)")
         
         db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot3, error) in
             guard let document3 = snapshot3 else {
                 print("erorr2 \(String(describing: error))")
                 return
             }
-            let data = document3.data()
-            self.teamIDLabel.text = data!["teamID"] as? String //ユーザー名表示
-            self.teamIDFromFirebase = (data!["teamID"] as? String)!
+            guard let data = document3.data() else { return }
+            self.teamIDLabel.text = data["teamID"] as? String ?? "" //ユーザー名表示
+            self.teamIDFromFirebase = data["teamID"] as? String ?? ""
             
             self.db.collection("teams").document(self.teamIDFromFirebase).addSnapshotListener { (snapshot, error) in
                 guard let document = snapshot else {
                     print("error \(String(describing: error))")
                     return
                 }
-                let data = document.data()
-                print("このデータは \(String(describing: data!["belong"]))")
-                self.teamName.text = data!["belong"] as? String //チーム名表示
+                guard let data = document.data() else { return }
+                self.teamName.text = data["belong"] as? String ?? "" //チーム名表示
             }
         }
         
@@ -62,9 +61,8 @@ class myPageViewController: UIViewController{
                 print("erorr2 \(String(describing: error))")
                 return
             }
-            let data = document2.data()
-            print("この名前は \(String(describing: data!["name"]))")
-            self.userName.text = data!["name"] as? String //ユーザー名表示
+            guard let data = document2.data() else { return }
+            self.userName.text = data["name"] as? String ?? "" //ユーザー名表示
         }
         
         db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot3, error) in
@@ -72,9 +70,8 @@ class myPageViewController: UIViewController{
                 print("erorr2 \(String(describing: error))")
                 return
             }
-            let data = document3.data()
-            print("この名前は \(String(describing: data!["role"]))")
-            self.userRole.text = data!["role"] as? String //ユーザー名表示
+            guard let data = document3.data() else { return }
+            self.userRole.text = data["role"] as? String ?? "" //ユーザー名表示
         }
         
         
@@ -97,7 +94,6 @@ class myPageViewController: UIViewController{
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -187,6 +183,9 @@ extension myPageViewController: UIImagePickerControllerDelegate, UINavigationCon
         let profileImageRef = reference.child("users").child(UidForPath).child("profileImage.jpg")
         let uploadMetadata = StorageMetadata()
         uploadMetadata.contentType = "image/jpeg"
+        
+        
+        
         profileImageRef.putData(imageData, metadata: uploadMetadata) { (metaData, error) in
             activeIndicater.stopAnimating()
             activeIndicater.removeFromSuperview()
@@ -195,8 +194,24 @@ extension myPageViewController: UIImagePickerControllerDelegate, UINavigationCon
                 return
             } else {
                 print("画像のアップロードに成功\(String(describing: metaData))")
-                print("===============================")
-                
+                profileImageRef.downloadURL(completion: { (getURL, err) in
+                    if err != nil {
+                        print("failed to get a downloadData")
+                        return
+                    }
+                    print("succcess to get a URL")
+                    print(getURL ?? " can't get a URL")
+                    
+                    self.imageURL = ["image": getURL?.absoluteString ?? "デフォルトの画像をURL形式でset"]
+                    self.db.collection("users").document(UidForPath).updateData(self.imageURL) {
+                        err in
+                        if err != nil {
+                            print("firestoreにURLをsetできませんでした")
+                            return
+                        }
+                        print("firestoreにURLをsetできました")
+                    }
+                })
                 
             }
         }
@@ -213,8 +228,6 @@ extension myPageViewController: UIImagePickerControllerDelegate, UINavigationCon
         
         self.present(alertController, animated: true, completion: nil)
     }
-
-    // から文字処理、画像最初デフォルト処理、なぜかその人の値が取れない問題
 }
 
 class CircleImageViewForMypage: UIImageView {

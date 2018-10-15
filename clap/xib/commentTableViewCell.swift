@@ -1,12 +1,12 @@
 import UIKit
 
-protocol CommentTableViewCellDelegate {
+protocol CommentTableViewCellDelegate : class {
     func didButtonPressed(commentID: Int)
 }
 
 class commentTableViewCell: UITableViewCell {
     
-    var delegate: CommentTableViewCellDelegate?
+    weak var delegate: CommentTableViewCellDelegate?
     var commentID = Int()
     
     @IBOutlet weak var commentedUserImage: UIImageView!
