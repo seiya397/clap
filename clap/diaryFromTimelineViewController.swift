@@ -23,6 +23,8 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
     
     var commentUserTimeArr = [String]()
     
+    var commentIdArr = [String]()
+    
     var commentedUserName = String()
     
     var userName = String()
@@ -70,7 +72,7 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
         textLabel6.text = "こんな練習してみたい"
         
         let userDefaults: UserDefaults = UserDefaults.standard
-        timeline = (userDefaults.object(forKey: "goTimeline")! as? String)!
+        timeline = (userDefaults.string(forKey: "goTimeline") ?? "nodata")
         
         self.db.collection("users").document(fireAuthUID).getDocument { (document, error) in
             if let document = document, document.exists {
@@ -109,7 +111,11 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
                         for document in querySnapshot!.documents {
 
                             print("成功成功成功成功成功\(document.documentID) => \(document.data())")
+                            
+                            self.commentIdArr.append(document.documentID)
+                            
                             let documentData = document.data()
+                            
                             self.commentUserNameArr.append((documentData["name"] as? String)!)
                             self.commentUserTextArr.append((documentData["text"] as? String)!)
                             
@@ -140,7 +146,7 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
             }
             let data = document2.data()
             
-            self.userName = (data!["name"] as? String)! ?? ""
+            self.userName = (data!["name"] as? String)!
         }
     }
     
@@ -187,11 +193,15 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
                     
                     let timeDataFromFirebase = (data!["update_at"] as? String)!
                     
+                    let commentIdFromFirebase = (data!["id"] as? String)!
+                    
                     self.commentUserTextArr.append(textDataFromFirebase)
                     
                     self.commentUserNameArr.append(nameDataFromFirebase)
                     
                     self.commentUserTimeArr.append(timeDataFromFirebase)
+                    
+                    self.commentIdArr.append(commentIdFromFirebase)
                     
                     self.commentUserTableView.reloadData()
                 }
@@ -240,9 +250,17 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
 
 extension diaryFromTimelineViewController: CommentTableViewCellDelegate {
     func didButtonPressed(commentID: Int) {
+        
+        let userDefaults:UserDefaults = UserDefaults.standard
+        
+        userDefaults.removeObject(forKey: "goReply")
+        
+        userDefaults.set(self.commentIdArr[commentID], forKey: "goReply")
+        
+        userDefaults.synchronize()
+        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "commentReplyViewController") as! commentReplyViewController
+        
             self.present(vc, animated: true, completion: nil)
-        print("======================")
-        print(commentID)
     }
 }

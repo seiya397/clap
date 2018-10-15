@@ -1164,7 +1164,7 @@
                                     <constraint firstAttribute="height" constant="47" id="np8-KZ-kyd"/>
                                     <constraint firstAttribute="width" constant="60" id="oUp-pj-eQp"/>
                                 </constraints>
-                                <state key="normal" title="送信"/>
+                                <state key="normal" title="このボタン入らない！！"/>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s8T-Wm-zUj">
                                 <rect key="frame" x="9" y="40" width="47" height="47"/>
@@ -1191,6 +1191,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dsn-cW-7lJ"/>
                     </view>
+                    <connections>
+                        <outlet property="commentedUserImage" destination="s8T-Wm-zUj" id="2df-Wy-fDi"/>
+                        <outlet property="commentedUserText" destination="bxe-tl-xVO" id="Jwp-bQ-bob"/>
+                        <outlet property="replyUserTable" destination="f1F-Ba-sFo" id="qsC-ux-wpy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3z-vJ-U50" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
