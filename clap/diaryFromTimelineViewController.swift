@@ -210,6 +210,7 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
         
         cell.commentInit(name: commentUserNameArr[indexPath.item], text: commentUserTextArr[indexPath.item], time: commentUserTimeArr[indexPath.item])
         cell.delegate = self
+        cell.commentID = indexPath.item
         return cell
     }
 
@@ -238,8 +239,10 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
 }
 
 extension diaryFromTimelineViewController: CommentTableViewCellDelegate {
-    func didButtonPressed() {
+    func didButtonPressed(commentID: Int) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "commentReplyViewController") as! commentReplyViewController
             self.present(vc, animated: true, completion: nil)
+        print("======================")
+        print(commentID)
     }
 }

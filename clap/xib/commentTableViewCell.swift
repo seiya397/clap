@@ -1,12 +1,13 @@
 import UIKit
 
 protocol CommentTableViewCellDelegate {
-    func didButtonPressed()
+    func didButtonPressed(commentID: Int)
 }
 
 class commentTableViewCell: UITableViewCell {
     
     var delegate: CommentTableViewCellDelegate?
+    var commentID = Int()
     
     @IBOutlet weak var commentedUserImage: UIImageView!
     @IBOutlet weak var commentedUserName: UILabel!
@@ -32,7 +33,7 @@ class commentTableViewCell: UITableViewCell {
     }
     
     @IBAction func replyButtonTapped(_ sender: Any) {
-        delegate?.didButtonPressed()
+        delegate?.didButtonPressed(commentID: self.commentID)
     }
     
 }

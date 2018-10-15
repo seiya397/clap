@@ -26,6 +26,8 @@ class myPageViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userImage.image = UIImage(named: "weight")
+        
         let user = Auth.auth().currentUser
         if let user = user {
             userEmail.text = user.email
@@ -82,11 +84,15 @@ class myPageViewController: UIViewController{
         
         self.userImage.addGestureRecognizer(tap)
         
-        let storageReference = Storage.storage().reference()
-        let profileImageDownloadedURLReference = storageReference.child("users/\(Auth.auth().currentUser?.uid ?? " ")/profileImage.jpg")
-        let placeholderImage = UIImage(named: "placeholder.jpg")
-//        userImage.sd_setImage(with: profileImageDownloadedURLReference, placeholderImage: placeholderImage)
-        
+//        let storageReference = Storage.storage().reference()
+//        let profileImageDownloadedURLReference = storageReference.child("users/\(Auth.auth().currentUser?.uid ?? " ")/profileImage.jpg")
+//        let placeholderImage = UIImage(named: "placeholder.jpg")
+//
+//        if profileImageDownloadedURLReference != nil {
+//            userImage.sd_setImage(with: profileImageDownloadedURLReference, placeholderImage: placeholderImage)
+//        } else {
+//            userImage.image = UIImage(named: "weight")
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -189,6 +195,8 @@ extension myPageViewController: UIImagePickerControllerDelegate, UINavigationCon
                 return
             } else {
                 print("画像のアップロードに成功\(String(describing: metaData))")
+                print("===============================")
+                
                 
             }
         }

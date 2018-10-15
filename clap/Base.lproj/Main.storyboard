@@ -265,9 +265,8 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weight" translatesAutoresizingMaskIntoConstraints="NO" id="9IT-ih-jHO" customClass="CircleImageViewForMypage" customModule="clap" customModuleProvider="target">
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9IT-ih-jHO" customClass="CircleImageViewForMypage" customModule="clap" customModuleProvider="target">
                                 <rect key="frame" x="167" y="95.666666666666686" width="80" height="80"/>
-                                <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="bQM-2p-MZn"/>
                                     <constraint firstAttribute="width" constant="80" id="uMt-6T-cZY"/>
@@ -3054,7 +3053,6 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
         <image name="groupInfo" width="270" height="287"/>
         <image name="lock" width="409.60000610351562" height="409.60000610351562"/>
         <image name="manager" width="383" height="374"/>
-        <image name="weight" width="409.60000610351562" height="409.60000610351562"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="B9F-4i-KET"/>
