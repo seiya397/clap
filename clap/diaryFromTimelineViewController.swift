@@ -115,8 +115,10 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
                         print("Error getting documents: \(err)")
                         return
                     } else {
+                        var i = 0
                         for document in querySnapshot!.documents {
 
+                            
                             print("成功成功成功成功成功\(document.documentID) => \(document.data())")
                             
                             self.commentIdArr.append(document.documentID)
@@ -128,8 +130,10 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
                             
                             self.commentUserImageArr.append((documentData["image"] as? String)!)
                             self.commentUserTimeArr.append((documentData["update_at"] as? String)!)
-
+                            
+                            i += 1
                         }
+                        self.commentUserCount.text = "コメント数 \(i)"
                         self.commentUserTableView.reloadData()
                     }
                 }

@@ -1678,7 +1678,7 @@
                                                 <rect key="frame" x="0.0" y="1713" width="374" height="327"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="コメント数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ryz-Xk-4xZ">
-                                                        <rect key="frame" x="8" y="0.0" width="87" height="21"/>
+                                                        <rect key="frame" x="8" y="0.0" width="358" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1729,20 +1729,20 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="1Vi-PT-X89" secondAttribute="bottom" id="69K-Yq-OCZ"/>
-                                                    <constraint firstItem="Ryz-Xk-4xZ" firstAttribute="top" secondItem="3Yx-RF-6zT" secondAttribute="top" id="85b-cr-AJE"/>
                                                     <constraint firstItem="1Vi-PT-X89" firstAttribute="top" secondItem="5Py-qy-ya5" secondAttribute="bottom" constant="8" id="8bC-Iq-FMH"/>
                                                     <constraint firstItem="1Vi-PT-X89" firstAttribute="top" secondItem="AV5-lo-vew" secondAttribute="bottom" constant="8" id="Hvt-7D-9UO"/>
-                                                    <constraint firstItem="Ryz-Xk-4xZ" firstAttribute="leading" secondItem="3Yx-RF-6zT" secondAttribute="leading" constant="8" id="Mjt-vP-GoG"/>
-                                                    <constraint firstItem="5Py-qy-ya5" firstAttribute="top" secondItem="Ryz-Xk-4xZ" secondAttribute="bottom" constant="8" id="OQ7-sp-hhC"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Ryz-Xk-4xZ" secondAttribute="trailing" constant="279" id="Qi8-A8-JS9"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Ryz-Xk-4xZ" secondAttribute="trailing" constant="8" id="Sbh-FD-InV"/>
                                                     <constraint firstAttribute="trailing" secondItem="1Vi-PT-X89" secondAttribute="trailing" id="V3h-8s-Xn5"/>
                                                     <constraint firstItem="4Rs-yP-E3W" firstAttribute="leading" secondItem="AV5-lo-vew" secondAttribute="trailing" constant="2" id="Xds-FU-ah0"/>
                                                     <constraint firstItem="AV5-lo-vew" firstAttribute="leading" secondItem="5Py-qy-ya5" secondAttribute="trailing" constant="8" id="Xte-xO-n1r"/>
                                                     <constraint firstItem="AV5-lo-vew" firstAttribute="centerY" secondItem="4Rs-yP-E3W" secondAttribute="centerY" id="ab3-8z-GgX"/>
                                                     <constraint firstAttribute="trailing" secondItem="4Rs-yP-E3W" secondAttribute="trailing" constant="7" id="apl-ns-ckm"/>
+                                                    <constraint firstItem="Ryz-Xk-4xZ" firstAttribute="top" secondItem="3Yx-RF-6zT" secondAttribute="top" id="fCS-wq-Qzm"/>
                                                     <constraint firstItem="1Vi-PT-X89" firstAttribute="leading" secondItem="3Yx-RF-6zT" secondAttribute="leading" id="gT7-Kd-c0M"/>
                                                     <constraint firstItem="1Vi-PT-X89" firstAttribute="top" secondItem="4Rs-yP-E3W" secondAttribute="bottom" constant="14" id="kEK-EY-DJE"/>
+                                                    <constraint firstItem="Ryz-Xk-4xZ" firstAttribute="leading" secondItem="3Yx-RF-6zT" secondAttribute="leading" constant="8" id="mEZ-p7-ckh"/>
                                                     <constraint firstItem="1Vi-PT-X89" firstAttribute="top" secondItem="AV5-lo-vew" secondAttribute="bottom" constant="8" symbolic="YES" id="qbc-fh-kki"/>
+                                                    <constraint firstItem="5Py-qy-ya5" firstAttribute="top" secondItem="Ryz-Xk-4xZ" secondAttribute="bottom" constant="8" id="wxg-Cm-lan"/>
                                                     <constraint firstItem="5Py-qy-ya5" firstAttribute="leading" secondItem="3Yx-RF-6zT" secondAttribute="leading" constant="8" id="y6f-5F-h5T"/>
                                                 </constraints>
                                             </view>
