@@ -62,7 +62,6 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
         let randomStringToTeamID = self.randomString(length: 20)
         userDefaults.set(randomStringToTeamID, forKey: "teamID")
         userDefaults.synchronize()
-        //let lastMyData: String? = userDefaults.object(forKey: "myData") as? String
         let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)!//teamID取得
         
         //-----------------------------------------------------

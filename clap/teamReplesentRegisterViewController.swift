@@ -91,7 +91,7 @@ class teamReplesentRegisterViewController: UIViewController {
                                      "createDate": dateStr,
                                      "teamID": teamID,
                                      "image": "https:firebasestorage.googleapis.com/v0/b/lily-ios-debug.appspot.com/o/profile%2FzUN6bPT6DwWyq1BIybPsDzE0fd52.jpeg?alt=media&token=c9682120-051f-4fac-9a31-81c077f2d08d"
-                                    ] as [String: Any]
+                                    ] as [String: String]
                                 
                                 let userRegistInfo = ["regist": true, "teamID": teamID] as [String : Any]
                                 self.db.collection("teams").document(teamID).collection("users").document(fireAuthUID).setData(userRegistInfo)

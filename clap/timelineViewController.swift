@@ -70,15 +70,17 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                 }
                 guard let data = document3.data() else { return }
                 
+                self.teamIDFromFirebase = data["teamID"] as? String ?? ""
                 self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: true).getDocuments() { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
+                        return self.arr = [CellData(image:URL(string: "")!, name: "", time: "", title: "")]
                     } else {
                         var i = 0
                         for document in querySnapshot!.documents {
                             self.timelineDocumentIdArr.append(document.documentID)
                             
-                            let documentData = document.data()
+                            guard let documentData: [String: Any] = document.data() else { return }
                             self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
                             self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
                             self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
@@ -93,8 +95,6 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                     }
                 }
             }
-        } else {
-            return arr = [CellData(image:URL(string: "")!, name: "", time: "", title: "")]
         }
     }
     
@@ -121,13 +121,14 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
             self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: true).getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
+                    return self.arr = [CellData(image:URL(string: "")!, name: "", time: "", title: "")]
                 } else {
                     var i = 0
                     for document in querySnapshot!.documents {
                         
                         self.timelineDocumentIdArr.append(document.documentID)
                         
-                        let documentData = document.data()
+                        guard let documentData: [String: Any] = document.data() else { return }
                         self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
                         self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
                         self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
@@ -168,6 +169,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
             self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: false).whereField("userID", isEqualTo: self.fireAuthUID).getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
+                    return self.arr = [CellData(image:URL(string: "")!, name: "", time: "", title: "")]
                 } else {
                     var i = 0
                     for document in querySnapshot!.documents {
@@ -208,12 +210,13 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                 return
             }
             
-            let data = document3.data()
+            guard let data = document3.data() else { return }
             
-            self.teamIDFromFirebase = (data!["teamID"] as? String)!
+            self.teamIDFromFirebase = data["teamID"] as? String ?? ""
             self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: true).whereField("userID", isEqualTo: self.fireAuthUID).getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
+                    return self.arr = [CellData(image:URL(string: "")!, name: "", time: "", title: "")]
                 } else {
                     var i = 0
                     for document in querySnapshot!.documents {
