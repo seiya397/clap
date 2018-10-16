@@ -3,7 +3,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 import FirebaseUI
-
+import SDWebImage
 
 class myPageViewController: UIViewController{
     
@@ -28,8 +28,6 @@ class myPageViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userImage.image = UIImage(named: "weight")
-        
         let user = Auth.auth().currentUser
         if let user = user {
             userEmail.text = user.email
@@ -43,7 +41,7 @@ class myPageViewController: UIViewController{
                 return
             }
             guard let data = document3.data() else { return }
-            self.teamIDLabel.text = data["teamID"] as? String ?? "" //ユーザー名表示
+            self.teamIDLabel.text = data["teamID"] as? String ?? ""
             self.teamIDFromFirebase = data["teamID"] as? String ?? ""
             
             self.db.collection("teams").document(self.teamIDFromFirebase).addSnapshotListener { (snapshot, error) in
@@ -204,7 +202,7 @@ extension myPageViewController: UIImagePickerControllerDelegate, UINavigationCon
                     print("succcess to get a URL")
                     print(getURL ?? " can't get a URL")
                     
-                    self.imageURL = ["image": getURL?.absoluteString ?? "デフォルトの画像をURL形式でset"]
+                    self.imageURL = ["image": getURL?.absoluteString ?? " "]
                     self.db.collection("users").document(UidForPath).updateData(self.imageURL) {
                         err in
                         if err != nil {

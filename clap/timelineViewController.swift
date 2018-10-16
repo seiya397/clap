@@ -2,9 +2,10 @@ import UIKit
 import Firebase
 import FirebaseStorage
 import FirebaseFirestore
+import SDWebImage
 
 struct CellData {
-    var image: UIImage
+    var image: URL
     var name: String
     var time: String
     var title: String
@@ -21,6 +22,8 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
     var teamIDFromFirebase: String = ""
     
     var fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
+    
+    var dataImageFromFirestore = [Any]()
     
     var dataTitleFromFireStore = [Any]()
     
@@ -67,8 +70,6 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                 }
                 guard let data = document3.data() else { return }
                 
-                self.teamIDFromFirebase = data["teamID"] as? String ?? ""
-                
                 self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: true).getDocuments() { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
@@ -81,7 +82,8 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                             self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
                             self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
                             self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
-                            self.arr.append(CellData(image: UIImage(named: "weight")!, name: self.dataNameFromFireStore[i] as? String ?? "", time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? ""))
+                            self.dataImageFromFirestore.append((documentData["image"] as? String)!)
+                            self.arr.append(CellData(image: URL(string: self.dataImageFromFirestore[i] as! String)!, name: self.dataNameFromFireStore[i] as? String ?? "", time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? ""))
                             print(self.arr)
                             
                             i += 1
@@ -92,7 +94,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             }
         } else {
-            return arr = [CellData(image: UIImage(named: "")!, name: "", time: "", title: "")]
+            return arr = [CellData(image:URL(string: "")!, name: "", time: "", title: "")]
         }
     }
     
@@ -129,7 +131,8 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
                         self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
                         self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
-                        self.arr.append(CellData(image: UIImage(named: "weight")!, name: self.dataNameFromFireStore[i] as? String ?? "", time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? ""))
+                        self.dataImageFromFirestore.append((documentData["image"] as? String)!)
+                        self.arr.append(CellData(image: URL(string: self.dataImageFromFirestore[i] as! String)!, name: self.dataNameFromFireStore[i] as? String ?? "", time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? ""))
                         
                         i += 1
                         
@@ -161,6 +164,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
             
             self.teamIDFromFirebase = data["teamID"] as? String ?? ""
             
+           
             self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: false).whereField("userID", isEqualTo: self.fireAuthUID).getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
@@ -175,7 +179,8 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
                         self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
                         self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
-                        self.arr.append(CellData(image: UIImage(named: "weight")!, name: self.dataNameFromFireStore[i] as? String ?? "", time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? ""))
+                        self.dataImageFromFirestore.append((documentData["image"] as? String)!)
+                        self.arr.append(CellData(image: URL(string: self.dataImageFromFirestore[i] as! String)!, name: self.dataNameFromFireStore[i] as? String ?? "", time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? ""))
                         
                         i += 1
                         
@@ -206,7 +211,6 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
             let data = document3.data()
             
             self.teamIDFromFirebase = (data!["teamID"] as? String)!
-            
             self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: true).whereField("userID", isEqualTo: self.fireAuthUID).getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
@@ -221,7 +225,8 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
                         self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
                         self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
-                        self.arr.append(CellData(image: UIImage(named: "weight")!, name: self.dataNameFromFireStore[i] as? String ?? "", time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? ""))
+                        self.dataImageFromFirestore.append((documentData["image"] as? String)!)
+                        self.arr.append(CellData(image: URL(string: self.dataImageFromFirestore[i] as! String)!, name: self.dataNameFromFireStore[i] as? String ?? "", time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? ""))
                         
                         i += 1
                         
@@ -240,7 +245,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = userTable.dequeueReusableCell(withIdentifier: "cellName", for: indexPath) as! userTableViewCell
-        cell.userImage.image = arr[indexPath.row].image
+        cell.userImage.sd_setImage(with: arr[indexPath.row].image)
         cell.userName.text = arr[indexPath.row].name
         cell.userTime.text = arr[indexPath.row].time
         cell.userTitle.text = arr[indexPath.row].title

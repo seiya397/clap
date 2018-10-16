@@ -18,13 +18,10 @@ class teamReplesentRegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func replesentInfoRegisterButtonTapped(_ sender: Any) {
@@ -53,7 +50,6 @@ class teamReplesentRegisterViewController: UIViewController {
             return
         }
         
-        //--------------------------------------- fireAuth
         DispatchQueue.global(qos: .default).async {
             //createUser
             Auth.auth().createUser(withEmail: self.replesentEmail.text!, password: self.replesentPass.text!) { (user, error) in
@@ -72,35 +68,32 @@ class teamReplesentRegisterViewController: UIViewController {
                             self.ShowMessage(messageToDisplay: error.localizedDescription)
                             return
                         }
-                        if let user = user {
+                        if user != nil {
                             print("ログインできました")
                             DispatchQueue.main.async {
                                 //ログインしている現ユーザーUID取得
-                                //ログインの前に先にこれが処理されて、うまく動作しない
-                                //ログアウトしてこのページではno data だが、mypageではしっかりとcurrentUserのUID取得できている。よって問題点は、処理の順番になる。
                                 let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
                                 
-                                print("今度こそ\(fireAuthUID)")
-                                
-                                
-                                
-                                //--------------------------------------- fireAuth
-                                //--------------------------------------- createDate
                                 let dateUnix: TimeInterval = Date().timeIntervalSince1970
                                 let date = Date(timeIntervalSince1970: dateUnix)
-                                // NSDate型を日時文字列に変換するためのNSDateFormatterを生成
+                                
                                 let formatter = DateFormatter()
                                 formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                                // NSDateFormatterを使ってNSDate型 "date" を日時文字列 "dateStr" に変換
+                                
                                 let dateStr: String = formatter.string(from: date) //現在時刻取得
-                                //--------------------------------------- createDate
-                                //--------------------------------------- fireStore
                                 let userDefaults:UserDefaults = UserDefaults.standard
                                 let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)!//teamID取得
                                 
-                                let replesentData = ["name": self.replesentName.text!, "role": self.replesentRole.text!, "grade": self.replesentGrade.text!, "createDate": dateStr, "teamID": teamID] as [String: Any]
+                                let replesentData = [
+                                    "name": self.replesentName.text!,
+                                     "role": self.replesentRole.text!,
+                                     "grade": self.replesentGrade.text!,
+                                     "createDate": dateStr,
+                                     "teamID": teamID,
+                                     "image": "https:firebasestorage.googleapis.com/v0/b/lily-ios-debug.appspot.com/o/profile%2FzUN6bPT6DwWyq1BIybPsDzE0fd52.jpeg?alt=media&token=c9682120-051f-4fac-9a31-81c077f2d08d"
+                                    ] as [String: Any]
+                                
                                 let userRegistInfo = ["regist": true, "teamID": teamID] as [String : Any]
-                                var _: DocumentReference? = nil
                                 self.db.collection("teams").document(teamID).collection("users").document(fireAuthUID).setData(userRegistInfo)
                                 {
                                     err in
@@ -120,12 +113,9 @@ class teamReplesentRegisterViewController: UIViewController {
                                         print(" ")
                                     }
                                 }
-                                //--------------------------------------- fireStore
-                                //--------------------------------------- 移動
+                                
                                 let teamIdGenerationPage = self.storyboard?.instantiateViewController(withIdentifier: "teamIdGenerateViewController") as! teamIdGenerateViewController
                                 self.present(teamIdGenerationPage, animated: true, completion: nil)
-                                //segueで繋いでいる理由は、視覚的にわかりやすくするため
-                                //--------------------------------------- 移動
                             }
                         }
                     }

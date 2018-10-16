@@ -21,11 +21,10 @@ class userInfoRegisterViewController: UIViewController{
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     @IBAction func userRegisterButtonTapped(_ sender: Any) {
-        //---------------------------------------------------- 記入確認
         guard let userNameText = userName.text, !userNameText.isEmpty else {
             self.ShowMessage(messageToDisplay: "ユーザー名を記入してください。")
             return
@@ -46,8 +45,7 @@ class userInfoRegisterViewController: UIViewController{
             self.ShowMessage(messageToDisplay: "役割を記入してください。")
             return
         }
-        //---------------------------------------------------- 記入確認
-        //---------------------------------------------------- fireAuth
+        
         DispatchQueue.global(qos: .default).async {
             Auth.auth().createUser(withEmail: self.userEmail.text!, password: self.userPass.text!) { (user, error) in
                 if let error = error {
@@ -70,26 +68,25 @@ class userInfoRegisterViewController: UIViewController{
                             DispatchQueue.main.async {
                                 //ログインしている現ユーザーUID取得
                                 let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
-                                print("今度こそ\(fireAuthUID)")
-                                
-                                //---------------------------------------------------- fireAuth
-                                //--------------------------------------- createDate
                                 let dateUnix: TimeInterval = Date().timeIntervalSince1970
                                 let date = Date(timeIntervalSince1970: dateUnix)
-                                // NSDate型を日時文字列に変換するためのNSDateFormatterを生成
+                                
                                 let formatter = DateFormatter()
                                 formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                                // NSDateFormatterを使ってNSDate型 "date" を日時文字列 "dateStr" に変換
                                 let dateStr: String = formatter.string(from: date) //現在時刻取得
-                                //--------------------------------------- createDate
-                                //--------------------------------------- fireStore
-                                let userDefaults:UserDefaults = UserDefaults.standard //userDefaultsでチームID取得
+                                let userDefaults:UserDefaults = UserDefaults.standard
                                 let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)!//teamID取得
                                 print("ユーザー登録画面のuserDefaults\(teamID)")
                                 
-                                let registerData = ["name": self.userName.text!, "role": self.userRole.text!, "createDate": dateStr, "teamID": teamID] as [String: Any]
+                                let registerData = [
+                                        "name": self.userName.text!,
+                                        "role": self.userRole.text!,
+                                        "createDate": dateStr,
+                                        "teamID": teamID,
+                                        "image": "https://firebasestorage.googleapis.com/v0/b/lily-ios-debug.appspot.com/o/profile%2FzUN6bPT6DwWyq1BIybPsDzE0fd52.jpeg?alt=media&token=c9682120-051f-4fac-9a31-81c077f2d08d"
+                                    ] as [String: Any]
+                                
                                 let userRegistInfo = ["regist": true, "teamID": teamID] as [String : Any]
-                                var _: DocumentReference? = nil
                                 self.db.collection("teams").document(teamID).collection("users").document(fireAuthUID).setData(userRegistInfo)
                                 {
                                     err in
@@ -108,7 +105,6 @@ class userInfoRegisterViewController: UIViewController{
                                         print("ユーザー情報登録成功")
                                     }
                                 }
-                                //--------------------------------------- fireStore
                             }
                         }
                     }
