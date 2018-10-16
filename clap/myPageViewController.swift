@@ -81,15 +81,17 @@ class myPageViewController: UIViewController{
         
         self.userImage.addGestureRecognizer(tap)
         
-//        let storageReference = Storage.storage().reference()
-//        let profileImageDownloadedURLReference = storageReference.child("users/\(Auth.auth().currentUser?.uid ?? " ")/profileImage.jpg")
-//        let placeholderImage = UIImage(named: "placeholder.jpg")
-//
-//        if profileImageDownloadedURLReference != nil {
-//            userImage.sd_setImage(with: profileImageDownloadedURLReference, placeholderImage: placeholderImage)
-//        } else {
-//            userImage.image = UIImage(named: "weight")
-//        }
+        //display image
+        db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot, error) in
+            guard let document = snapshot else {
+                print("error \(String(describing: error))")
+                return
+            }
+            guard let data = document.data() else { return }
+            let url = data["image"] as? String ?? ""
+                let URLIMAGE = URL(string: url)
+                self.userImage.sd_setImage(with: URLIMAGE)
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -81,7 +81,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                             self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
                             self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
                             self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
-                            self.arr.append(CellData(image: UIImage(named: "weight")!, name: self.dataNameFromFireStore[i] as! String, time: self.dataTimeFromFirestore[i] as! String, title: self.dataTitleFromFireStore[i] as! String))
+                            self.arr.append(CellData(image: UIImage(named: "weight")!, name: self.dataNameFromFireStore[i] as? String ?? "", time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? ""))
                             print(self.arr)
                             
                             i += 1
@@ -129,15 +129,12 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
                         self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
                         self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
-                        self.arr.append(CellData(image: UIImage(named: "weight")!, name: self.dataNameFromFireStore[i] as! String, time: self.dataTimeFromFirestore[i] as! String, title: self.dataTitleFromFireStore[i] as! String))
-//                        self.arr.reverse()
+                        self.arr.append(CellData(image: UIImage(named: "weight")!, name: self.dataNameFromFireStore[i] as? String ?? "", time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? ""))
                         
                         i += 1
                         
                     }
                     self.userTable.reloadData()
-                    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-                    print(self.timelineDocumentIdArr)
                 }
             }
         }
@@ -178,7 +175,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
                         self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
                         self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
-                        self.arr.append(CellData(image: UIImage(named: "weight")!, name: self.dataNameFromFireStore[i] as! String, time: self.dataTimeFromFirestore[i] as! String, title: self.dataTitleFromFireStore[i] as! String))
+                        self.arr.append(CellData(image: UIImage(named: "weight")!, name: self.dataNameFromFireStore[i] as? String ?? "", time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? ""))
                         
                         i += 1
                         
@@ -224,14 +221,12 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
                         self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
                         self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
-                        self.arr.append(CellData(image: UIImage(named: "weight")!, name: self.dataNameFromFireStore[i] as! String, time: self.dataTimeFromFirestore[i] as! String, title: self.dataTitleFromFireStore[i] as! String))
+                        self.arr.append(CellData(image: UIImage(named: "weight")!, name: self.dataNameFromFireStore[i] as? String ?? "", time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? ""))
                         
                         i += 1
                         
                     }
                     self.userTable.reloadData()
-                    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-                    print(self.submitDocumentIdArr)
                 }
             }
         }
@@ -263,24 +258,18 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
             userDefaults.removeObject(forKey: "goTimeline")
             userDefaults.set(self.timelineDocumentIdArr[indexPath.row], forKey: "goTimeline")
             userDefaults.synchronize()
-            print("????????????????????????????")
-            print(self.timelineDocumentIdArr[indexPath.row])
             self.performSegue(withIdentifier: "goTimeline", sender: nil)
         } else if self.selectedNum == 2 {
             let userDefaults:UserDefaults = UserDefaults.standard
             userDefaults.removeObject(forKey: "goDraft")
             userDefaults.set(self.draftDocumentIdArr[indexPath.row], forKey: "goDraft")
             userDefaults.synchronize()
-            print("????????????????????????????")
-            print(self.draftDocumentIdArr[indexPath.row])
             self.performSegue(withIdentifier: "goDraft", sender: nil)
         } else if self.selectedNum == 3 {
             let userDefaults:UserDefaults = UserDefaults.standard
             userDefaults.removeObject(forKey: "goSubmit")
             userDefaults.set(self.submitDocumentIdArr[indexPath.row], forKey: "goSubmit")
             userDefaults.synchronize()
-            print("????????????????????????????")
-            print(self.submitDocumentIdArr[indexPath.row])
             self.performSegue(withIdentifier: "goSubmit", sender: nil)
         }
     }
