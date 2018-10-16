@@ -55,6 +55,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
             self.dataNameFromFireStore = [Any]()
             self.dataTimeFromFirestore = [Any]()
             self.dataTitleFromFireStore = [Any]()
+            self.dataImageFromFirestore = [Any]()
             self.submitDocumentIdArr = [Any]()
             
             self.selectedNum = 1
@@ -104,6 +105,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
         self.dataNameFromFireStore = [Any]()
         self.dataTimeFromFirestore = [Any]()
         self.dataTitleFromFireStore = [Any]()
+        self.dataImageFromFirestore = [Any]()
         self.timelineDocumentIdArr = [Any]()
         
         self.selectedNum = 1
@@ -150,6 +152,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
         self.dataNameFromFireStore = [Any]()
         self.dataTimeFromFirestore = [Any]()
         self.dataTitleFromFireStore = [Any]()
+        self.dataImageFromFirestore = [Any]()
         self.draftDocumentIdArr = [Any]()
         
         self.selectedNum = 2
@@ -199,6 +202,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
         self.dataNameFromFireStore = [Any]()
         self.dataTimeFromFirestore = [Any]()
         self.dataTitleFromFireStore = [Any]()
+        self.dataImageFromFirestore = [Any]()
         self.submitDocumentIdArr = [Any]()
         
         self.selectedNum = 3
