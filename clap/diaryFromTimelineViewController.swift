@@ -3,6 +3,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 import Foundation
+import SDWebImage
 
 class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -23,9 +24,13 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
     
     var commentUserTimeArr = [String]()
     
+    var commentUserImageArr = [String]()
+    
     var commentIdArr = [String]()
     
     var commentedUserName = String()
+    
+    var commentUserImageToFireStore = String()
     
     var userName = String()
     
@@ -79,6 +84,8 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
                 _ = document.data().map(String.init(describing:)) ?? "nil"
                 self.teamID = String(describing: document["teamID"]!)
                 self.commentedUserName = String(describing: document["name"]!)
+                let userURL = URL(string: document["image"] as! String)
+                self.commentUserImage.sd_setImage(with: userURL)
             self.db.collection("diary").document(self.teamID).collection("diaries").document(self.timeline).addSnapshotListener { (snapshot, error) in
                     guard let document = snapshot else {
                         print("erorr2 \(String(describing: error))")
@@ -119,6 +126,7 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
                             self.commentUserNameArr.append((documentData["name"] as? String)!)
                             self.commentUserTextArr.append((documentData["text"] as? String)!)
                             
+                            self.commentUserImageArr.append((documentData["image"] as? String)!)
                             self.commentUserTimeArr.append((documentData["update_at"] as? String)!)
 
                         }
@@ -171,43 +179,56 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
         
         let commentRandomNum = self.randomString(length: 20)
         
-        let commentData = ["id": commentRandomNum, "userID": self.fireAuthUID, "text": self.commentUserTextfield.text!, "edited": false, "name": self.userName, "update_at": submitOrReplyTime] as [String : Any]
-        db.collection("diary").document(self.teamID).collection("diaries").document(self.timeline).collection("comment").document(commentRandomNum).setData(commentData) {
-            err in
-            if err != nil {
-                print("コメントの追加に失敗しました")
+        db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot, err) in
+            guard let document = snapshot else {
+                print("erorr \(String(describing: err))")
                 return
-            } else {
-                print("コメントの追加に成功")
-                self.db.collection("diary").document(self.teamID).collection("diaries").document(self.timeline).collection("comment").document(commentRandomNum).addSnapshotListener { (snapshot3, error) in
-                    guard let document3 = snapshot3 else {
-                        print("erorr2 \(String(describing: error))")
-                        return
+            }
+            
+            guard let data = document.data() else { return }
+            self.commentUserImageToFireStore = data["image"] as? String ?? ""
+            
+            let commentData = ["id": commentRandomNum, "userID": self.fireAuthUID, "text": self.commentUserTextfield.text!, "edited": false, "name": self.userName, "update_at": submitOrReplyTime, "image": self.commentUserImageToFireStore] as [String : Any]
+            self.db.collection("diary").document(self.teamID).collection("diaries").document(self.timeline).collection("comment").document(commentRandomNum).setData(commentData) {
+                err in
+                if err != nil {
+                    print("コメントの追加に失敗しました")
+                    return
+                } else {
+                    print("コメントの追加に成功")
+                    self.db.collection("diary").document(self.teamID).collection("diaries").document(self.timeline).collection("comment").document(commentRandomNum).addSnapshotListener { (snapshot3, error) in
+                        guard let document3 = snapshot3 else {
+                            print("erorr2 \(String(describing: error))")
+                            return
+                        }
+                        
+                        guard let data = document3.data() else { return }
+                        
+                        let textDataFromFirebase = data["text"] as? String ?? ""
+                        
+                        let nameDataFromFirebase = data["name"] as? String ?? ""
+                        
+                        let timeDataFromFirebase = data["update_at"] as? String ?? ""
+                        
+                        let commentIdFromFirebase = data["id"] as? String ?? ""
+                        
+                        let commentImageFromFirebase = data["image"] as? String ?? ""
+                        
+                        self.commentUserTextArr.append(textDataFromFirebase)
+                        
+                        self.commentUserNameArr.append(nameDataFromFirebase)
+                        
+                        self.commentUserTimeArr.append(timeDataFromFirebase)
+                        
+                        self.commentUserImageArr.append(commentImageFromFirebase)
+                        
+                        self.commentIdArr.append(commentIdFromFirebase)
+                        
+                        self.commentUserTableView.reloadData()
                     }
-                    
-                    let data = document3.data()
-                    
-                    let textDataFromFirebase = (data!["text"] as? String)!
-                    
-                    let nameDataFromFirebase = (data!["name"] as? String)!
-                    
-                    let timeDataFromFirebase = (data!["update_at"] as? String)!
-                    
-                    let commentIdFromFirebase = (data!["id"] as? String)!
-                    
-                    self.commentUserTextArr.append(textDataFromFirebase)
-                    
-                    self.commentUserNameArr.append(nameDataFromFirebase)
-                    
-                    self.commentUserTimeArr.append(timeDataFromFirebase)
-                    
-                    self.commentIdArr.append(commentIdFromFirebase)
-                    
-                    self.commentUserTableView.reloadData()
                 }
             }
         }
-        
     }
     
 
@@ -218,7 +239,7 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = commentUserTableView.dequeueReusableCell(withIdentifier: "commentTableViewCell", for: indexPath) as! commentTableViewCell
         
-        cell.commentInit(name: commentUserNameArr[indexPath.item], text: commentUserTextArr[indexPath.item], time: commentUserTimeArr[indexPath.item])
+        cell.commentInit(image: URL(string: commentUserImageArr[indexPath.item]),name: commentUserNameArr[indexPath.item], text: commentUserTextArr[indexPath.item], time: commentUserTimeArr[indexPath.item])
         cell.delegate = self
         cell.commentID = indexPath.item
         return cell

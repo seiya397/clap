@@ -17,7 +17,8 @@ class replyTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func commentInit(name: String?, text: String?, time: String?) {
+    func commentInit(image: URL?, name: String?, text: String?, time: String?) {
+        self.replyUserImage.sd_setImage(with: image)
         self.replyUserName.text = name
         
         self.replyUserText.text = text

@@ -1,4 +1,5 @@
 import UIKit
+import SDWebImage
 
 protocol CommentTableViewCellDelegate : class {
     func didButtonPressed(commentID: Int)
@@ -25,10 +26,13 @@ class commentTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func commentInit(name: String?, text: String?, time: String?) {
+    func commentInit(image: URL?, name: String?, text: String?, time: String?) {
+        self.commentedUserImage.sd_setImage(with: image)
+        
         self.commentedUserName.text = name
         
         self.commentedUserTextField.text = text
+        
         self.commentedUserTime.text = time
     }
     
@@ -37,3 +41,4 @@ class commentTableViewCell: UITableViewCell {
     }
     
 }
+
