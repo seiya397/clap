@@ -1114,6 +1114,35 @@
             </objects>
             <point key="canvasLocation" x="3800" y="735"/>
         </scene>
+        <!--Test Scroll View Controller-->
+        <scene sceneID="Cmq-Sf-fzP">
+            <objects>
+                <viewController id="QY2-Ep-1L4" customClass="testScrollViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aMQ-ja-EcB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kah-ng-J36">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Kah-ng-J36" firstAttribute="leading" secondItem="CSr-sK-23D" secondAttribute="leading" id="8LA-mg-h6D"/>
+                            <constraint firstItem="CSr-sK-23D" firstAttribute="trailing" secondItem="Kah-ng-J36" secondAttribute="trailing" id="D4B-iw-HeI"/>
+                            <constraint firstItem="Kah-ng-J36" firstAttribute="top" secondItem="CSr-sK-23D" secondAttribute="top" id="rRX-c2-nRJ"/>
+                            <constraint firstItem="CSr-sK-23D" firstAttribute="bottom" secondItem="Kah-ng-J36" secondAttribute="bottom" id="t3U-QZ-nFg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CSr-sK-23D"/>
+                    </view>
+                    <connections>
+                        <outlet property="scrollVierw" destination="Kah-ng-J36" id="Q5z-S4-Axf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WSb-c2-aif" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5288" y="2050"/>
+        </scene>
         <!--Comment Reply View Controller-->
         <scene sceneID="NgU-6D-KpK">
             <objects>
