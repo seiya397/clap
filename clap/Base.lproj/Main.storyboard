@@ -1134,6 +1134,9 @@
                                 <rect key="frame" x="131" y="625" width="153" height="30"/>
                                 <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="提出"/>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="QY2-Ep-1L4" eventType="touchUpInside" id="0mJ-8f-esT"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
