@@ -9,6 +9,8 @@ class testScrollViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     var scrollData = [scrollViewDataStruct]()
     
     var viewTagValue = 100
@@ -16,6 +18,10 @@ class testScrollViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.isPagingEnabled = true
         
         scrollView.delegate = self
         
@@ -54,6 +60,8 @@ class testScrollViewController: UIViewController, UIScrollViewDelegate {
             
             i += 1
         }
+        
+
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -90,8 +98,6 @@ class CustomView: UIView {
         textView.topAnchor.constraint(equalTo: self.topAnchor, constant: 100).isActive = true
         textView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
-    
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
