@@ -147,14 +147,21 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
 
 
     @IBAction func timeLineButton(_ sender: Any) {
-        self.arr = [CellData]()
-        self.dataNameFromFireStore = [Any]()
-        self.dataTimeFromFirestore = [Any]()
-        self.dataTitleFromFireStore = [Any]()
-        self.dataImageFromFirestore = [Any]()
-        self.timelineDocumentIdArr = [Any]()
-        self.sections = [TableSection<Date, CellData>]()
-
+//        self.arr = [CellData]()
+//        self.dataNameFromFireStore = [Any]()
+//        self.dataTimeFromFirestore = [Any]()
+//        self.dataTitleFromFireStore = [Any]()
+//        self.dataImageFromFirestore = [Any]()
+//        self.timelineDocumentIdArr = [Any]()
+//        self.sections = [TableSection<Date, CellData>]()
+        self.arr = []
+        self.dataNameFromFireStore = []
+        self.dataTimeFromFirestore = []
+        self.dataTitleFromFireStore = []
+        self.dataImageFromFirestore = []
+        self.timelineDocumentIdArr = []
+        self.sections = []
+        
         self.selectedNum = 1
 
         self.db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot3, error) in
@@ -202,14 +209,22 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
 
 
     @IBAction func subscribeButton(_ sender: Any) {
-        self.arr = [CellData]()
-        self.dataNameFromFireStore = [Any]()
-        self.dataTimeFromFirestore = [Any]()
-        self.dataTitleFromFireStore = [Any]()
-        self.dataImageFromFirestore = [Any]()
-        self.draftDocumentIdArr = [Any]()
-        self.sections = [TableSection<Date, CellData>]()
+//        self.arr = [CellData]()
+//        self.dataNameFromFireStore = [Any]()
+//        self.dataTimeFromFirestore = [Any]()
+//        self.dataTitleFromFireStore = [Any]()
+//        self.dataImageFromFirestore = [Any]()
+//        self.draftDocumentIdArr = [Any]()
+//        self.sections = [TableSection<Date, CellData>]()
 
+        self.arr = []
+        self.dataNameFromFireStore = []
+        self.dataTimeFromFirestore = []
+        self.dataTitleFromFireStore = []
+        self.dataImageFromFirestore = []
+        self.timelineDocumentIdArr = []
+        self.sections = []
+        
         self.selectedNum = 2
 
 
@@ -260,13 +275,21 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
 
 
     @IBAction func submitButton(_ sender: Any) {
-        self.arr = [CellData]()
-        self.dataNameFromFireStore = [Any]()
-        self.dataTimeFromFirestore = [Any]()
-        self.dataTitleFromFireStore = [Any]()
-        self.dataImageFromFirestore = [Any]()
-        self.submitDocumentIdArr = [Any]()
-        self.sections = [TableSection<Date, CellData>]()
+//        self.arr = [CellData]()
+//        self.dataNameFromFireStore = [Any]()
+//        self.dataTimeFromFirestore = [Any]()
+//        self.dataTitleFromFireStore = [Any]()
+//        self.dataImageFromFirestore = [Any]()
+//        self.submitDocumentIdArr = [Any]()
+//        self.sections = [TableSection<Date, CellData>]()
+        
+        self.arr = []
+        self.dataNameFromFireStore = []
+        self.dataTimeFromFirestore = []
+        self.dataTitleFromFireStore = []
+        self.dataImageFromFirestore = []
+        self.timelineDocumentIdArr = []
+        self.sections = []
 
         self.selectedNum = 3
 
