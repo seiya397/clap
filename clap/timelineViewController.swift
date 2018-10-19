@@ -10,6 +10,7 @@ struct CellData {
     var title: String
     var name: String
     var image: URL
+    var diaryID: String
 }
 
 struct TableSection<SectionItem: Comparable&Hashable, RowItem>: Comparable {
@@ -100,7 +101,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
 
             userTable.delegate = self
             userTable.dataSource = self
-            
+
             userTable.register(UINib(nibName: "userTableViewCell", bundle: nil), forCellReuseIdentifier: "cellName")
 
             self.db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot3, error) in
@@ -114,11 +115,12 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                 self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: true).getDocuments() { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
-                        return self.arr = [CellData(date: parseDate(""), time: "", title: "", name: "", image:URL(string: "")!)]
+                        return self.arr = [CellData(date: parseDate(""), time: "", title: "", name: "", image:URL(string: "")!, diaryID: "")]
                     } else {
                         var i = 0
                         for document in querySnapshot!.documents {
-                            self.timelineDocumentIdArr.append(document.documentID)
+
+
 
                             guard let documentData: [String: Any] = document.data() else { return }
                             self.dataTitleFromFireStore.append((documentData["今日のタイトル"] as? String)!)
@@ -126,17 +128,17 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                             self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
                             self.dataImageFromFirestore.append((documentData["image"] as? String)!)
                             self.dataDateFromFiewstore.append((documentData["date"] as? String)!)
-                            
-                            self.arr.append(CellData(date: parseDate(self.dataDateFromFiewstore[i] as! String), time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? "", name: self.dataNameFromFireStore[i] as? String ?? "", image: URL(string: self.dataImageFromFirestore[i] as! String)!))
-                            
+                            self.timelineDocumentIdArr.append((documentData["diaryID"] as? String)!)
+
+                            self.arr.append(CellData(date: parseDate(self.dataDateFromFiewstore[i] as! String), time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? "", name: self.dataNameFromFireStore[i] as? String ?? "", image: URL(string: self.dataImageFromFirestore[i] as! String)!, diaryID: self.timelineDocumentIdArr[i] as! String))
+
+                            i += 1
+
                             self.sections = TableSection.group(rowItems: self.arr, by: { (headline) in
                                 firstDayOfMonth(date: headline.date)
                             })
-                            i += 1
-                            
                         }
                         self.userTable.reloadData()
-                        
                     }
                 }
             }
@@ -168,7 +170,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
             self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: true).getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
-                    return self.arr = [CellData(date: parseDate(""), time: "", title: "", name: "", image:URL(string: "")!)]
+                    return self.arr = [CellData(date: parseDate(""), time: "", title: "", name: "", image:URL(string: "")!, diaryID: "")]
                 } else {
                     var i = 0
                     for document in querySnapshot!.documents {
@@ -180,8 +182,11 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
                         self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
                         self.dataImageFromFirestore.append((documentData["image"] as? String)!)
+                        
                         self.dataDateFromFiewstore.append((documentData["date"] as? String)!)
-                        self.arr.append(CellData(date: parseDate(self.dataDateFromFiewstore[i] as! String), time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? "", name: self.dataNameFromFireStore[i] as? String ?? "", image: URL(string: self.dataImageFromFirestore[i] as! String)!))
+                        self.timelineDocumentIdArr.append((documentData["diaryID"] as? String)!)
+                        
+                        self.arr.append(CellData(date: parseDate(self.dataDateFromFiewstore[i] as! String), time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? "", name: self.dataNameFromFireStore[i] as? String ?? "", image: URL(string: self.dataImageFromFirestore[i] as! String)!, diaryID: self.timelineDocumentIdArr[i] as! String))
 
                         self.sections = TableSection.group(rowItems: self.arr, by: { (headline) in
                             firstDayOfMonth(date: headline.date)
@@ -222,7 +227,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
             self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: false).whereField("userID", isEqualTo: self.fireAuthUID).getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
-                    return self.arr = [CellData(date: parseDate(""), time: "", title: "", name: "", image:URL(string: "")!)]
+                    return self.arr = [CellData(date: parseDate(""), time: "", title: "", name: "", image:URL(string: "")!, diaryID: "")]
                 } else {
                     var i = 0
                     for document in querySnapshot!.documents {
@@ -234,8 +239,12 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
                         self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
                         self.dataImageFromFirestore.append((documentData["image"] as? String)!)
+                        
                         self.dataDateFromFiewstore.append((documentData["date"] as? String)!)
-                        self.arr.append(CellData(date: parseDate(self.dataDateFromFiewstore[i] as! String), time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? "", name: self.dataNameFromFireStore[i] as? String ?? "", image: URL(string: self.dataImageFromFirestore[i] as! String)!))
+                        
+                        self.timelineDocumentIdArr.append((documentData["diaryID"] as? String)!)
+                        
+                        self.arr.append(CellData(date: parseDate(self.dataDateFromFiewstore[i] as! String), time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? "", name: self.dataNameFromFireStore[i] as? String ?? "", image: URL(string: self.dataImageFromFirestore[i] as! String)!, diaryID: self.timelineDocumentIdArr[i] as! String))
 
                         self.sections = TableSection.group(rowItems: self.arr, by: { (headline) in
                             firstDayOfMonth(date: headline.date)
@@ -274,7 +283,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
             self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: true).whereField("userID", isEqualTo: self.fireAuthUID).getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
-                    return self.arr = [CellData(date: parseDate(""), time: "", title: "", name: "", image:URL(string: "")!)]
+                    return self.arr = [CellData(date: parseDate(""), time: "", title: "", name: "", image:URL(string: "")!, diaryID: "")]
                 } else {
                     var i = 0
                     for document in querySnapshot!.documents {
@@ -286,8 +295,12 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         self.dataTimeFromFirestore.append((documentData["time"] as? String)!)
                         self.dataNameFromFireStore.append((documentData["userName"] as? String)!)
                         self.dataImageFromFirestore.append((documentData["image"] as? String)!)
+                        
                         self.dataDateFromFiewstore.append((documentData["date"] as? String)!)
-                        self.arr.append(CellData(date: parseDate(self.dataDateFromFiewstore[i] as! String), time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? "", name: self.dataNameFromFireStore[i] as? String ?? "", image: URL(string: self.dataImageFromFirestore[i] as! String)!))
+                        
+                        self.timelineDocumentIdArr.append((documentData["diaryID"] as? String)!)
+                        
+                        self.arr.append(CellData(date: parseDate(self.dataDateFromFiewstore[i] as! String), time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? "", name: self.dataNameFromFireStore[i] as? String ?? "", image: URL(string: self.dataImageFromFirestore[i] as! String)!, diaryID: self.timelineDocumentIdArr[i] as! String))
 
                         self.sections = TableSection.group(rowItems: self.arr, by: { (headline) in
                             firstDayOfMonth(date: headline.date)
@@ -336,22 +349,24 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = self.sections[indexPath.section]
+        let cellDetail = section.rowItems[indexPath.row]
         if self.selectedNum == 1 {
             let userDefaults:UserDefaults = UserDefaults.standard
             userDefaults.removeObject(forKey: "goTimeline")
-            userDefaults.set(self.timelineDocumentIdArr[indexPath.row], forKey: "goTimeline")
+            userDefaults.set(cellDetail.diaryID, forKey: "goTimeline")
             userDefaults.synchronize()
             self.performSegue(withIdentifier: "goTimeline", sender: nil)
         } else if self.selectedNum == 2 {
             let userDefaults:UserDefaults = UserDefaults.standard
             userDefaults.removeObject(forKey: "goDraft")
-            userDefaults.set(self.draftDocumentIdArr[indexPath.row], forKey: "goDraft")
+            userDefaults.set(cellDetail.diaryID, forKey: "goDraft")
             userDefaults.synchronize()
             self.performSegue(withIdentifier: "goDraft", sender: nil)
         } else if self.selectedNum == 3 {
             let userDefaults:UserDefaults = UserDefaults.standard
             userDefaults.removeObject(forKey: "goSubmit")
-            userDefaults.set(self.submitDocumentIdArr[indexPath.row], forKey: "goSubmit")
+            userDefaults.set(cellDetail.diaryID, forKey: "goSubmit")
             userDefaults.synchronize()
             self.performSegue(withIdentifier: "goSubmit", sender: nil)
         }
