@@ -88,12 +88,13 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
         circleButton = Circle()
 
         if arr != nil {
-            self.arr = []
+            self.arr = [CellData]()
             self.dataNameFromFireStore = [Any]()
             self.dataTimeFromFirestore = [Any]()
             self.dataTitleFromFireStore = [Any]()
             self.dataImageFromFirestore = [Any]()
             self.submitDocumentIdArr = [Any]()
+            self.sections = [TableSection<Date, CellData>]()
 
             self.selectedNum = 1
 
@@ -127,28 +128,30 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                             self.dataDateFromFiewstore.append((documentData["date"] as? String)!)
                             
                             self.arr.append(CellData(date: parseDate(self.dataDateFromFiewstore[i] as! String), time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? "", name: self.dataNameFromFireStore[i] as? String ?? "", image: URL(string: self.dataImageFromFirestore[i] as! String)!))
-
+                            
+                            self.sections = TableSection.group(rowItems: self.arr, by: { (headline) in
+                                firstDayOfMonth(date: headline.date)
+                            })
                             i += 1
-
+                            
                         }
                         self.userTable.reloadData()
+                        
                     }
                 }
             }
         }
-        self.sections = TableSection.group(rowItems: self.arr, by: { (headline) in
-            firstDayOfMonth(date: headline.date)
-        })
     }
 
 
     @IBAction func timeLineButton(_ sender: Any) {
-        self.arr = []
+        self.arr = [CellData]()
         self.dataNameFromFireStore = [Any]()
         self.dataTimeFromFirestore = [Any]()
         self.dataTitleFromFireStore = [Any]()
         self.dataImageFromFirestore = [Any]()
         self.timelineDocumentIdArr = [Any]()
+        self.sections = [TableSection<Date, CellData>]()
 
         self.selectedNum = 1
 
@@ -180,6 +183,9 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         self.dataDateFromFiewstore.append((documentData["date"] as? String)!)
                         self.arr.append(CellData(date: parseDate(self.dataDateFromFiewstore[i] as! String), time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? "", name: self.dataNameFromFireStore[i] as? String ?? "", image: URL(string: self.dataImageFromFirestore[i] as! String)!))
 
+                        self.sections = TableSection.group(rowItems: self.arr, by: { (headline) in
+                            firstDayOfMonth(date: headline.date)
+                        })
                         i += 1
 
                     }
@@ -187,19 +193,17 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             }
         }
-        self.sections = TableSection.group(rowItems: self.arr, by: { (headline) in
-            firstDayOfMonth(date: headline.date)
-        })
     }
 
 
     @IBAction func subscribeButton(_ sender: Any) {
-        self.arr = []
+        self.arr = [CellData]()
         self.dataNameFromFireStore = [Any]()
         self.dataTimeFromFirestore = [Any]()
         self.dataTitleFromFireStore = [Any]()
         self.dataImageFromFirestore = [Any]()
         self.draftDocumentIdArr = [Any]()
+        self.sections = [TableSection<Date, CellData>]()
 
         self.selectedNum = 2
 
@@ -233,6 +237,9 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         self.dataDateFromFiewstore.append((documentData["date"] as? String)!)
                         self.arr.append(CellData(date: parseDate(self.dataDateFromFiewstore[i] as! String), time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? "", name: self.dataNameFromFireStore[i] as? String ?? "", image: URL(string: self.dataImageFromFirestore[i] as! String)!))
 
+                        self.sections = TableSection.group(rowItems: self.arr, by: { (headline) in
+                            firstDayOfMonth(date: headline.date)
+                        })
                         i += 1
 
                     }
@@ -240,19 +247,17 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             }
         }
-        self.sections = TableSection.group(rowItems: self.arr, by: { (headline) in
-            firstDayOfMonth(date: headline.date)
-        })
     }
 
 
     @IBAction func submitButton(_ sender: Any) {
-        self.arr = []
+        self.arr = [CellData]()
         self.dataNameFromFireStore = [Any]()
         self.dataTimeFromFirestore = [Any]()
         self.dataTitleFromFireStore = [Any]()
         self.dataImageFromFirestore = [Any]()
         self.submitDocumentIdArr = [Any]()
+        self.sections = [TableSection<Date, CellData>]()
 
         self.selectedNum = 3
 
@@ -284,6 +289,9 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         self.dataDateFromFiewstore.append((documentData["date"] as? String)!)
                         self.arr.append(CellData(date: parseDate(self.dataDateFromFiewstore[i] as! String), time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? "", name: self.dataNameFromFireStore[i] as? String ?? "", image: URL(string: self.dataImageFromFirestore[i] as! String)!))
 
+                        self.sections = TableSection.group(rowItems: self.arr, by: { (headline) in
+                            firstDayOfMonth(date: headline.date)
+                        })
                         i += 1
 
                     }
@@ -291,9 +299,6 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             }
         }
-        self.sections = TableSection.group(rowItems: self.arr, by: { (headline) in
-            firstDayOfMonth(date: headline.date)
-        })
     }
 
 

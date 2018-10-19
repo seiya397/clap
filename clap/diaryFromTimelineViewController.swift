@@ -123,13 +123,13 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
                             
                             self.commentIdArr.append(document.documentID)
                             
-                            let documentData = document.data()
+                            guard let documentData: [String: Any] = document.data() else { return }
                             
-                            self.commentUserNameArr.append((documentData["name"] as? String)!)
-                            self.commentUserTextArr.append((documentData["text"] as? String)!)
+                            self.commentUserNameArr.append(documentData["name"] as? String ?? "")
+                            self.commentUserTextArr.append(documentData["text"] as? String ?? "")
                             
-                            self.commentUserImageArr.append((documentData["image"] as? String)!)
-                            self.commentUserTimeArr.append((documentData["update_at"] as? String)!)
+                            self.commentUserImageArr.append(documentData["image"] as? String ?? "")
+                            self.commentUserTimeArr.append(documentData["update_at"] as? String ?? "")
                             
                             i += 1
                         }
