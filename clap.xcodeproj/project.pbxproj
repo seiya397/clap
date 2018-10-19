@@ -48,6 +48,7 @@
 		C962474F213D36AA00BC7C69 /* memberEvaluationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */; };
 		C9624751213D383A00BC7C69 /* chatPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9624750213D383A00BC7C69 /* chatPageViewController.swift */; };
 		C963CD5E217640670081C9F5 /* testScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963CD5D217640670081C9F5 /* testScrollViewController.swift */; };
+		C963CD602177246F0081C9F5 /* testSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963CD5F2177246D0081C9F5 /* testSectionViewController.swift */; };
 		C9708B472143DDCD0013FD4C /* teamIdConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9708B462143DDCD0013FD4C /* teamIdConfirmationViewController.swift */; };
 		C99C78E8217047B500B70293 /* commentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C78E6217047B500B70293 /* commentTableViewCell.swift */; };
 		C99C78E9217047B500B70293 /* commentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C99C78E7217047B500B70293 /* commentTableViewCell.xib */; };
@@ -126,6 +127,7 @@
 		C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memberEvaluationViewController.swift; sourceTree = "<group>"; };
 		C9624750213D383A00BC7C69 /* chatPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatPageViewController.swift; sourceTree = "<group>"; };
 		C963CD5D217640670081C9F5 /* testScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testScrollViewController.swift; sourceTree = "<group>"; };
+		C963CD5F2177246D0081C9F5 /* testSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testSectionViewController.swift; sourceTree = "<group>"; };
 		C9708B462143DDCD0013FD4C /* teamIdConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdConfirmationViewController.swift; sourceTree = "<group>"; };
 		C99C78E6217047B500B70293 /* commentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentTableViewCell.swift; sourceTree = "<group>"; };
 		C99C78E7217047B500B70293 /* commentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = commentTableViewCell.xib; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			children = (
 				C9CA480A21632BE700D9C142 /* xib */,
 				BE3C84AD212BF7AB0053EFE2 /* Main.storyboard */,
+				C963CD5F2177246D0081C9F5 /* testSectionViewController.swift */,
 				C963CD5D217640670081C9F5 /* testScrollViewController.swift */,
 				C9104A4D216934EC00FDED0E /* diaryFromTimelineViewController.swift */,
 				C9104A4F2169352000FDED0E /* diarySubmitViewController.swift */,
@@ -571,6 +574,7 @@
 				C9CA480D21632C0B00D9C142 /* userTableViewCell.swift in Sources */,
 				C916969B214D22F6002EECEF /* teamIdConfirmWrongViewController.swift in Sources */,
 				C963CD5E217640670081C9F5 /* testScrollViewController.swift in Sources */,
+				C963CD602177246F0081C9F5 /* testSectionViewController.swift in Sources */,
 				C962474F213D36AA00BC7C69 /* memberEvaluationViewController.swift in Sources */,
 				BE3C84AA212BF7AB0053EFE2 /* AppDelegate.swift in Sources */,
 			);
