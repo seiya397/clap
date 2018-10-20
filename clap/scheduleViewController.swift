@@ -14,7 +14,12 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         
         // デリゲートの設定
         self.calendar.dataSource = self
+        
         self.calendar.delegate = self
+        
+        let currentPickedDate = getDay(Date())
+        
+        pickedDate.text = "\(String(currentPickedDate.1))月\(String(currentPickedDate.2))日\(String(currentPickedDate.3))曜日" //タプル
         
         //ログイン後の処理
         let alert: UIAlertController = UIAlertController(title: "ようこそ！", message: "マイページでチームIDを確認しよう！", preferredStyle:  UIAlertControllerStyle.alert)
@@ -61,16 +66,8 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
         let selectDay = getDay(date)
-        
-        
-        //PickedDateラベルにカレンダーでタップした日付を表示
-        //        pickedDate.text = "\(String(selectDay.0))年\(String(selectDay.1))月\(String(selectDay.2))日" //タプル
         pickedDate.text = "\(String(selectDay.1))月\(String(selectDay.2))日\(String(selectDay.3))曜日" //タプル
-        
-        print(pickedDate.text!) //日付のコンソールプリント
     }
-    
-    
     
     //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -90,19 +87,13 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     
     //予定を追加ボタンで遷移先へ日付の受け渡し
     @IBAction func TapApp(_ sender: Any) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.removeObject(forKey: "pickedDateForSchedule")
+        userDefaults.set(pickedDate?.text, forKey: "pickedDateForSchedule")
+        userDefaults.synchronize()
         let eventShare = self.storyboard?.instantiateViewController(withIdentifier: "planController") as! planController
         self.present(eventShare, animated: true, completion: nil)
     }
-    
-    /// セグエ実行前処理
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let next = segue.destination as? planController
-        let _ = next?.view
-        next?.getStartDate.text = pickedDate.text
-        next?.getEndDate.text = pickedDate.text
-
-    }
-    
     
     // 祝日判定を行い結果を返すメソッド(True:祝日)
     func judgeHoliday(_ date : Date) -> Bool {
@@ -133,22 +124,6 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         
         return (year,month,day,formatter.shortWeekdaySymbols[weekName])
     }
-    
-    //    //曜日判定(日曜日 〜 土曜日)
-    //    func getWeekName(_ date: Date) -> String{
-    //        let tmpCalendar = Calendar(identifier: .gregorian)
-    //        let component = tmpCalendar.component(.weekday, from: date)
-    //        let weekName = component - 1
-    //        let formatter = DateFormatter()
-    //        formatter.locale = Locale(identifier: "ja")
-    //        return formatter.shortWeekdaySymbols[weekName]
-    //    }
-    
-    
-    //
-    //    let weekName = self.getWeekName(date)
-    //    print(weekName) // 2018-06-29 10:35:57 +0000
-    
     
     //曜日判定(日曜日:1 〜 土曜日:7)
     func getWeekIdx(_ date: Date) -> Int{

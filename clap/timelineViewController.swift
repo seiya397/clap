@@ -368,7 +368,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
 
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 79.5
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -7,14 +7,11 @@ var TodoKobetsunonakami = [String]()
 class planController: UIViewController {
     
     var Date = "" //日付の取得
-    
-    
     //テキストフィールドの設定
     @IBOutlet weak var TodoTextField: UITextField!
     
     //タップした日付を取得する(開始日)
     @IBOutlet weak var getStartDate: UITextField!
-    
     
     //タップした日付を取得する(終了日)
     @IBOutlet weak var getEndDate: UITextField!
@@ -24,9 +21,15 @@ class planController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let userDefaults = UserDefaults.standard
+        let getPickedDate = userDefaults.string(forKey: "pickedDateForSchedule")
+        getStartDate.text = getPickedDate
+        getEndDate.text = getPickedDate
+        
         datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
-//        datePicker.locale =
+        datePicker.locale = Locale(identifier: "ja")
         datePicker.addTarget(self, action: #selector(dateChanged(textField: datePicker:)), for: .valueChanged)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
