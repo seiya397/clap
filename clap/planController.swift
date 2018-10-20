@@ -13,29 +13,58 @@ class planController: UIViewController {
     @IBOutlet weak var TodoTextField: UITextField!
     
     //タップした日付を取得する(開始日)
-    @IBOutlet weak var getStartDate: UILabel!
+    @IBOutlet weak var getStartDate: UITextField!
     
     
     //タップした日付を取得する(終了日)
-    @IBOutlet weak var getEndDate: UILabel!
+    @IBOutlet weak var getEndDate: UITextField!
     
-    
+    private var datePicker: UIDatePicker = UIDatePicker()
     
 
-    //最初からあるコード
     override func viewDidLoad() {
         super.viewDidLoad()
+        datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+//        datePicker.locale =
+        datePicker.addTarget(self, action: #selector(dateChanged(textField: datePicker:)), for: .valueChanged)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
+        getStartDate.inputView = datePicker
+        getStartDate.tag = 1
+        getEndDate.inputView = datePicker
+        getEndDate.tag = 2
+        
     }
     
-    //最初からあるコード
+    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    @objc func dateChanged(textField: UITextField, datePicker: UIDatePicker) {
+        if textField.tag == 1 {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yyyy"
+            getStartDate.text = dateFormatter.string(from: datePicker.date)
+            view.endEditing(true)
+        } else {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yyyy"
+            getEndDate.text = dateFormatter.string(from: datePicker.date)
+            view.endEditing(true)
+        }
+    
+        
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
-//        self.presentingViewController?.dismiss(animated: true, completion: nil)
-        navigationController?.popToRootViewController(animated: true)
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {

@@ -11,7 +11,6 @@
 		78E1C79064E17E1EDF597CC0 /* Pods_clapUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0366C950F8733F1171BF265 /* Pods_clapUITests.framework */; };
 		87410ECAF50C11D51448E1AD /* Pods_clap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFCB4A2A527B40ADB768C150 /* Pods_clap.framework */; };
 		BE019DBC215F673E0019A38E /* planController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE019DBB215F673E0019A38E /* planController.swift */; };
-		BE019DC4216268970019A38E /* eventChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE019DC3216268970019A38E /* eventChoiceViewController.swift */; };
 		BE22618D215DFC27006C777F /* XibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE22618C215DFC26006C777F /* XibView.xib */; };
 		BE22618F215DFCFD006C777F /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE22618E215DFCFD006C777F /* XibView.swift */; };
 		BE226194215E108D006C777F /* timelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE226192215E108D006C777F /* timelineViewController.swift */; };
@@ -86,7 +85,6 @@
 		851A3760A22D9BC473BAB1BB /* Pods_clapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98B9F1F6B148D7B56B0484D9 /* Pods-clapUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clapUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-clapUITests/Pods-clapUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BE019DBB215F673E0019A38E /* planController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = planController.swift; sourceTree = "<group>"; };
-		BE019DC3216268970019A38E /* eventChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventChoiceViewController.swift; sourceTree = "<group>"; };
 		BE22618C215DFC26006C777F /* XibView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XibView.xib; sourceTree = "<group>"; };
 		BE22618E215DFCFD006C777F /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		BE226192215E108D006C777F /* timelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timelineViewController.swift; sourceTree = "<group>"; };
@@ -215,7 +213,6 @@
 				C9104A4D216934EC00FDED0E /* diaryFromTimelineViewController.swift */,
 				C9104A4F2169352000FDED0E /* diarySubmitViewController.swift */,
 				C9104A4B216934AE00FDED0E /* diaryEditViewController.swift */,
-				BE019DC3216268970019A38E /* eventChoiceViewController.swift */,
 				BE019DBB215F673E0019A38E /* planController.swift */,
 				BE3C84A9212BF7AB0053EFE2 /* AppDelegate.swift */,
 				C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */,
@@ -565,7 +562,6 @@
 				BEF298A1213F092A00E75472 /* chatViewController.swift in Sources */,
 				BE226194215E108D006C777F /* timelineViewController.swift in Sources */,
 				BE3C84AC212BF7AB0053EFE2 /* ViewController.swift in Sources */,
-				BE019DC4216268970019A38E /* eventChoiceViewController.swift in Sources */,
 				C9624751213D383A00BC7C69 /* chatPageViewController.swift in Sources */,
 				C90648942133C6B80025AD44 /* userInfoRegisterViewController.swift in Sources */,
 				C9104A4E216934EC00FDED0E /* diaryFromTimelineViewController.swift in Sources */,

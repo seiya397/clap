@@ -90,7 +90,8 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     
     //予定を追加ボタンで遷移先へ日付の受け渡し
     @IBAction func TapApp(_ sender: Any) {
-        performSegue(withIdentifier: "eventTypeSelect", sender: nil)
+        let eventShare = self.storyboard?.instantiateViewController(withIdentifier: "planController") as! planController
+        self.present(eventShare, animated: true, completion: nil)
     }
     
     /// セグエ実行前処理
