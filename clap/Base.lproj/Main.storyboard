@@ -473,7 +473,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="addDiaryButton:" destination="IhR-YE-ses" eventType="touchUpInside" id="dZ5-vh-aiB"/>
-                                    <segue destination="G2d-dr-5dS" kind="presentation" identifier="goDiary" id="5Ff-s7-Zgj"/>
+                                    <segue destination="QY2-Ep-1L4" kind="presentation" identifier="goDiary" id="nlP-oQ-wun"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uI4-DC-Itp">
@@ -1203,12 +1203,11 @@
                         <outlet property="textView4" destination="4Ve-td-Psh" id="27Q-ZA-CHC"/>
                         <outlet property="textView5" destination="1ol-Mn-Nkn" id="ERN-PX-I90"/>
                         <outlet property="textView6" destination="jqB-vy-war" id="Uza-xw-tEN"/>
-                        <outlet property="userName" destination="Exr-dt-BBi" id="M1D-aI-0zb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZ5-xy-9l0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3800" y="735"/>
+            <point key="canvasLocation" x="3114" y="1385"/>
         </scene>
         <!--Test Scroll View Controller-->
         <scene sceneID="Cmq-Sf-fzP">
@@ -1218,47 +1217,83 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kah-ng-J36">
-                                <rect key="frame" x="0.0" y="20" width="414" height="540"/>
-                            </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="ale-RM-Uq6">
-                                <rect key="frame" x="164" y="568" width="86" height="37"/>
+                                <rect key="frame" x="164" y="608" width="86" height="37"/>
                                 <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="currentPageIndicatorTintColor" red="0.77177418580000001" green="0.010349462150000001" blue="0.1114921333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaN-RX-lqw">
-                                <rect key="frame" x="131" y="625" width="153" height="30"/>
-                                <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="提出"/>
+                                <rect key="frame" x="130.66666666666666" y="665" width="152.99999999999997" height="30"/>
+                                <color key="backgroundColor" red="0.28375518620000001" green="0.5751196932" blue="0.90372270349999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="153" id="0Z9-Cf-lTH"/>
+                                </constraints>
+                                <state key="normal" title="提出">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <action selector="buttonTapped:" destination="QY2-Ep-1L4" eventType="touchUpInside" id="0mJ-8f-esT"/>
+                                    <action selector="submitButtonTapped:" destination="QY2-Ep-1L4" eventType="touchUpInside" id="JMx-L7-jVA"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOS-Mt-7bA">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="cancel" id="RZU-AF-6Nt">
+                                        <connections>
+                                            <action selector="cancelButtonTapped:" destination="QY2-Ep-1L4" id="Ljb-Ai-avK"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hSu-zH-OjR"/>
+                                    <barButtonItem style="plain" id="bcJ-B3-MmJ">
+                                        <textField key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="Fst-J1-CjM">
+                                            <rect key="frame" x="158.66666666666666" y="7" width="97" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ZcB-at-LwU"/>
+                                    <barButtonItem title="Item" id="CPc-8Q-Snu">
+                                        <connections>
+                                            <action selector="overwriteButtonTapped:" destination="QY2-Ep-1L4" id="clu-IQ-c3q"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kah-ng-J36">
+                                <rect key="frame" x="0.0" y="64" width="414" height="534"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="CSr-sK-23D" firstAttribute="bottom" secondItem="gaN-RX-lqw" secondAttribute="bottom" constant="81" id="1UL-0A-7Eu"/>
-                            <constraint firstItem="Kah-ng-J36" firstAttribute="leading" secondItem="CSr-sK-23D" secondAttribute="leading" id="2xf-xc-tVR"/>
-                            <constraint firstItem="Kah-ng-J36" firstAttribute="trailing" secondItem="CSr-sK-23D" secondAttribute="trailing" id="4M6-Wk-FHy"/>
-                            <constraint firstItem="Kah-ng-J36" firstAttribute="top" secondItem="CSr-sK-23D" secondAttribute="top" id="4WN-V4-h5S"/>
-                            <constraint firstItem="CSr-sK-23D" firstAttribute="trailing" secondItem="gaN-RX-lqw" secondAttribute="trailing" constant="130" id="AbW-iI-FUk"/>
-                            <constraint firstItem="ale-RM-Uq6" firstAttribute="top" secondItem="Kah-ng-J36" secondAttribute="bottom" constant="8" id="Q4V-96-SKx"/>
-                            <constraint firstItem="CSr-sK-23D" firstAttribute="trailing" secondItem="ale-RM-Uq6" secondAttribute="trailing" constant="164" id="ccW-zB-obE"/>
-                            <constraint firstItem="gaN-RX-lqw" firstAttribute="leading" secondItem="CSr-sK-23D" secondAttribute="leading" constant="131" id="gkP-AZ-HZF"/>
-                            <constraint firstItem="gaN-RX-lqw" firstAttribute="top" secondItem="ale-RM-Uq6" secondAttribute="bottom" constant="20" id="v7o-Wx-rxx"/>
-                            <constraint firstItem="ale-RM-Uq6" firstAttribute="leading" secondItem="CSr-sK-23D" secondAttribute="leading" constant="164" id="zYj-bi-Cbw"/>
+                            <constraint firstItem="QOS-Mt-7bA" firstAttribute="leading" secondItem="CSr-sK-23D" secondAttribute="leading" id="3cx-kJ-Y9w"/>
+                            <constraint firstItem="CSr-sK-23D" firstAttribute="trailing" secondItem="ale-RM-Uq6" secondAttribute="trailing" constant="164" id="5be-kT-jI9"/>
+                            <constraint firstItem="gaN-RX-lqw" firstAttribute="leading" secondItem="CSr-sK-23D" secondAttribute="leading" constant="130.5" id="8ff-Cy-KyS"/>
+                            <constraint firstAttribute="bottom" secondItem="ale-RM-Uq6" secondAttribute="bottom" constant="91" id="9P9-gZ-6A4"/>
+                            <constraint firstItem="ale-RM-Uq6" firstAttribute="top" secondItem="Kah-ng-J36" secondAttribute="bottom" constant="10" id="Eyx-ES-n8E"/>
+                            <constraint firstItem="Kah-ng-J36" firstAttribute="leading" secondItem="CSr-sK-23D" secondAttribute="leading" id="QPX-6j-mlA"/>
+                            <constraint firstItem="CSr-sK-23D" firstAttribute="trailing" secondItem="gaN-RX-lqw" secondAttribute="trailing" constant="130.5" id="R2q-Hu-eIE"/>
+                            <constraint firstItem="gaN-RX-lqw" firstAttribute="top" secondItem="ale-RM-Uq6" secondAttribute="bottom" constant="20" id="akk-VP-z0g"/>
+                            <constraint firstItem="Kah-ng-J36" firstAttribute="trailing" secondItem="CSr-sK-23D" secondAttribute="trailing" id="dKv-NR-2kA"/>
+                            <constraint firstItem="Kah-ng-J36" firstAttribute="top" secondItem="QOS-Mt-7bA" secondAttribute="bottom" id="qEx-5C-QYx"/>
+                            <constraint firstItem="ale-RM-Uq6" firstAttribute="leading" secondItem="CSr-sK-23D" secondAttribute="leading" constant="164" id="reN-SZ-WGF"/>
+                            <constraint firstItem="QOS-Mt-7bA" firstAttribute="top" secondItem="CSr-sK-23D" secondAttribute="top" id="xZi-TT-0Af"/>
+                            <constraint firstItem="QOS-Mt-7bA" firstAttribute="trailing" secondItem="CSr-sK-23D" secondAttribute="trailing" id="yao-VL-9Hp"/>
+                            <constraint firstItem="ale-RM-Uq6" firstAttribute="top" secondItem="Kah-ng-J36" secondAttribute="bottom" constant="10" id="znw-og-Fbx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CSr-sK-23D"/>
                     </view>
                     <connections>
-                        <outlet property="button" destination="gaN-RX-lqw" id="zmF-tr-rFY"/>
+                        <outlet property="datePiclerField" destination="Fst-J1-CjM" id="saB-bB-Ijy"/>
                         <outlet property="pageControl" destination="ale-RM-Uq6" id="l0M-Ys-ySz"/>
                         <outlet property="scrollView" destination="Kah-ng-J36" id="DHR-us-0qO"/>
+                        <outlet property="submitButton" destination="gaN-RX-lqw" id="kU9-Fx-Sag"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WSb-c2-aif" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5286.9565217391309" y="2049.4565217391305"/>
+            <point key="canvasLocation" x="3800" y="148"/>
         </scene>
         <!--Comment Reply View Controller-->
         <scene sceneID="NgU-6D-KpK">

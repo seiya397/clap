@@ -36,7 +36,7 @@ class addDiaryViewController: UIViewController, UIScrollViewDelegate, UITextFiel
     
     var teamIDFromFirebase: String = ""
     
-    @IBOutlet weak var userName: UILabel!
+    var userName: UILabel = UILabel()
     
     //今日の日付を代入
     let nowDate = NSDate()

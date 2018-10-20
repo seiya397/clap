@@ -156,16 +156,39 @@ class myPageViewController: UIViewController{
     }
     
     @IBAction func logoutButton(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-            print("ログアウトできました")
-            let fireAuthUID2 = (Auth.auth().currentUser?.uid ?? "no data")
-            print("ログアウト後\(fireAuthUID2)")
-            let loginPage = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-            self.present(loginPage, animated: true, completion: nil)
-        } catch {
-            print("ログアウトできませんでした")
-        }
+        let alert: UIAlertController = UIAlertController(title: "表示", message: "ログアウトしますか？", preferredStyle:  UIAlertControllerStyle.actionSheet)
+        
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
+            
+            (action: UIAlertAction!) -> Void in
+            
+            print("OK")
+            
+            do {
+                try Auth.auth().signOut()
+                print("ログアウトできました")
+                let fireAuthUID2 = (Auth.auth().currentUser?.uid ?? "no data")
+                print("ログアウト後\(fireAuthUID2)")
+                let loginPage = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                self.present(loginPage, animated: true, completion: nil)
+            } catch {
+                print("ログアウトできませんでした")
+            }
+            
+        })
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.cancel, handler:{
+            (action: UIAlertAction!) -> Void in
+            
+            print("Cancel")
+            
+        })
+        
+        alert.addAction(cancelAction)
+        
+        alert.addAction(defaultAction)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     @objc func selectPhoto(_ tap: UITapGestureRecognizer) {
