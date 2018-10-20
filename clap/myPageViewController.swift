@@ -28,6 +28,12 @@ class myPageViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userName.isEnabled = false
+        teamIDLabel.isEnabled = false
+        teamName.isEnabled = false
+        userRole.isEnabled = false
+        userEmail.isEnabled = false
+        
         let user = Auth.auth().currentUser
         if let user = user {
             userEmail.text = user.email
@@ -96,9 +102,24 @@ class myPageViewController: UIViewController{
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func editButtonTapped(_ sender: Any) {
+        userName.isEnabled = true
+        userName.textColor = UIColor.gray
+        userRole.isEnabled = true
+        userRole.textColor = UIColor.gray
+        userEmail.isEnabled = true
+        userEmail.textColor = UIColor.gray
+    }
+    
     @IBAction func saveButtonTapped(_ sender: Any) {
         uploadObject(name: self.userName.text!, role: self.userRole.text!, email: self.userEmail.text!)
         ShowSaveAlert()
+        userName.isEnabled = false
+        userName.textColor = UIColor.black
+        userRole.isEnabled = false
+        userRole.textColor = UIColor.black
+        userEmail.isEnabled = false
+        userEmail.textColor = UIColor.black
     }
     
     
