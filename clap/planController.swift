@@ -12,16 +12,6 @@ class planController: UIViewController {
     //テキストフィールドの設定
     @IBOutlet weak var TodoTextField: UITextField!
     
-    //追加ボタンの設定
-    @IBAction func TodoAddButton(_ sender: Any) {
-        //変数に入力内容を入れる
-        TodoKobetsunonakami.append(TodoTextField.text!)
-        //追加ボタンを押したらフィールドを空にする
-        TodoTextField.text = ""
-        //変数の中身をUDに追加
-        UserDefaults.standard.set( TodoKobetsunonakami, forKey: "TodoList" )
-    }
-    
     //タップした日付を取得する(開始日)
     @IBOutlet weak var getStartDate: UILabel!
     
@@ -43,6 +33,18 @@ class planController: UIViewController {
 
     }
     
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+//        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        navigationController?.popToRootViewController(animated: true)
+    }
     
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        //変数に入力内容を入れる
+        TodoKobetsunonakami.append(TodoTextField.text!)
+        //追加ボタンを押したらフィールドを空にする
+        TodoTextField.text = ""
+        //変数の中身をUDに追加
+        UserDefaults.standard.set( TodoKobetsunonakami, forKey: "TodoList" )
+    }
     
 }

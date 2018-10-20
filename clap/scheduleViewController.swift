@@ -1,4 +1,3 @@
-
 import UIKit
 import Firebase
 import FSCalendar
@@ -9,74 +8,9 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var pickedDate: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBAction func nextTapped(_ sender:UIButton) {
-        calendar.setCurrentPage(getNextMonth(date: calendar.currentPage), animated: true)
-    }
-    @IBAction  func previousTapped(_ sender:UIButton) {
-        calendar.setCurrentPage(getPreviousMonth(date: calendar.currentPage), animated: true)
-    }
-    
-    func getNextMonth(date:Date)->Date {
-        return  Calendar.current.date(byAdding: .month, value: 1, to:date)!
-    }
-    
-    func getPreviousMonth(date:Date)->Date {
-        return  Calendar.current.date(byAdding: .month, value: -1, to:date)!
-    }
-    
-    
-    
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
-        let selectDay = getDay(date)
-        
-        
-        //PickedDateラベルにカレンダーでタップした日付を表示
-        //        pickedDate.text = "\(String(selectDay.0))年\(String(selectDay.1))月\(String(selectDay.2))日" //タプル
-        pickedDate.text = "\(String(selectDay.1))月\(String(selectDay.2))日\(String(selectDay.3))曜日" //タプル
-        
-        print(pickedDate.text!) //日付のコンソールプリント
-    }
-    
-    
-    
-    //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //戻り値の設定(表示するcell数)l
-        return TodoKobetsunonakami.count
-    }
-    
-    //UITableView、cellForRowAtの追加(表示するcellの中身を決める)
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //変数を作る
-        let TodoCell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath)
-        //変数の中身を作る
-        TodoCell.textLabel!.text = TodoKobetsunonakami[indexPath.row]
-        //戻り値の設定（表示する中身)
-        return TodoCell
-    }
-    
-    //予定を追加ボタンで遷移先へ日付の受け渡し
-    @IBAction func TapApp(_ sender: Any) {
-        performSegue(withIdentifier: "nextSegue", sender: nil)
-    }
-    
-    /// セグエ実行前処理
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let next = segue.destination as? planController
-        let _ = next?.view
-        next?.getStartDate.text = pickedDate.text
-        next?.getEndDate.text = pickedDate.text
-        
-    }
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        
         
         // デリゲートの設定
         self.calendar.dataSource = self
@@ -115,6 +49,58 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         formatter.dateFormat = "yyyy-MM-dd(EEE)"
         return formatter
     }()
+    
+    
+    @IBAction func nextTapped(_ sender:UIButton) {
+        calendar.setCurrentPage(getNextMonth(date: calendar.currentPage), animated: true)
+    }
+    
+    @IBAction  func previousTapped(_ sender:UIButton) {
+        calendar.setCurrentPage(getPreviousMonth(date: calendar.currentPage), animated: true)
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
+        let selectDay = getDay(date)
+        
+        
+        //PickedDateラベルにカレンダーでタップした日付を表示
+        //        pickedDate.text = "\(String(selectDay.0))年\(String(selectDay.1))月\(String(selectDay.2))日" //タプル
+        pickedDate.text = "\(String(selectDay.1))月\(String(selectDay.2))日\(String(selectDay.3))曜日" //タプル
+        
+        print(pickedDate.text!) //日付のコンソールプリント
+    }
+    
+    
+    
+    //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //戻り値の設定(表示するcell数)l
+        return TodoKobetsunonakami.count
+    }
+    
+    //UITableView、cellForRowAtの追加(表示するcellの中身を決める)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //変数を作る
+        let TodoCell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath)
+        //変数の中身を作る
+        TodoCell.textLabel!.text = TodoKobetsunonakami[indexPath.row]
+        //戻り値の設定（表示する中身)
+        return TodoCell
+    }
+    
+    //予定を追加ボタンで遷移先へ日付の受け渡し
+    @IBAction func TapApp(_ sender: Any) {
+        performSegue(withIdentifier: "eventTypeSelect", sender: nil)
+    }
+    
+    /// セグエ実行前処理
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let next = segue.destination as? planController
+        let _ = next?.view
+        next?.getStartDate.text = pickedDate.text
+        next?.getEndDate.text = pickedDate.text
+
+    }
     
     
     // 祝日判定を行い結果を返すメソッド(True:祝日)
@@ -190,4 +176,15 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         return nil
     }
     
+    func getNextMonth(date:Date)->Date {
+        return  Calendar.current.date(byAdding: .month, value: 1, to:date)!
+    }
+    
+    func getPreviousMonth(date:Date)->Date {
+        return  Calendar.current.date(byAdding: .month, value: -1, to:date)!
+    }
+    
 }
+
+
+//日付でfirebase探しに行って、その中のスケジュールデータを表示
