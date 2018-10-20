@@ -25,6 +25,8 @@ class myPageViewController: UIViewController{
     
     var imageURL = [String: String]()
     
+    var editFlag = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -109,17 +111,23 @@ class myPageViewController: UIViewController{
         userRole.textColor = UIColor.gray
         userEmail.isEnabled = true
         userEmail.textColor = UIColor.gray
+        self.editFlag = true
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        uploadObject(name: self.userName.text!, role: self.userRole.text!, email: self.userEmail.text!)
-        ShowSaveAlert()
-        userName.isEnabled = false
-        userName.textColor = UIColor.black
-        userRole.isEnabled = false
-        userRole.textColor = UIColor.black
-        userEmail.isEnabled = false
-        userEmail.textColor = UIColor.black
+        if editFlag == false {
+            return
+        } else {
+            uploadObject(name: self.userName.text!, role: self.userRole.text!, email: self.userEmail.text!)
+            ShowSaveAlert()
+            userName.isEnabled = false
+            userName.textColor = UIColor.black
+            userRole.isEnabled = false
+            userRole.textColor = UIColor.black
+            userEmail.isEnabled = false
+            userEmail.textColor = UIColor.black
+            self.editFlag = false
+        }
     }
     
     
