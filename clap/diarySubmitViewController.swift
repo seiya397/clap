@@ -39,6 +39,12 @@ class diarySubmitViewController: UIViewController {
         
         contentView.backgroundColor = UIColor.white
         
+        textView1.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        textView2.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        textView3.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        textView4.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        textView5.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        textView6.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         
         textLabel1.text = "今日のタイトル"
         textLabel2.text = "ここが良かった！今日の自分"
@@ -80,5 +86,14 @@ class diarySubmitViewController: UIViewController {
     }
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension UITextView {
+    func addBorderBottom(height: CGFloat, color: UIColor) {
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: self.frame.height - height, width: self.frame.width, height: height)
+        border.backgroundColor = color.cgColor
+        self.layer.addSublayer(border)
     }
 }

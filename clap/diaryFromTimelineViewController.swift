@@ -67,6 +67,13 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
         
         contentView.backgroundColor = UIColor.white
         
+        textView1.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        textView2.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        textView3.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        textView4.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        textView5.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        textView6.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        
         textLabel1.text = "今日のタイトル"
         textLabel2.text = "ここが良かった！今日の自分"
         textLabel3.text = "監督へのメッセージ"
