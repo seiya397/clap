@@ -41,4 +41,3 @@ class commentTableViewCell: UITableViewCell {
     }
     
 }
-
