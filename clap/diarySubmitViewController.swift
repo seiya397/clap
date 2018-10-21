@@ -37,9 +37,8 @@ class diarySubmitViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        contentView.backgroundColor = UIColor.lightGray
+        contentView.backgroundColor = UIColor.white
         
-        self.view.backgroundColor = UIColor(white: 1, alpha: 0.7)
         
         textLabel1.text = "今日のタイトル"
         textLabel2.text = "ここが良かった！今日の自分"

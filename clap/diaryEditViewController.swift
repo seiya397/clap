@@ -37,9 +37,7 @@ class diaryEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        contentView.backgroundColor = UIColor.lightGray
-        
-        self.view.backgroundColor = UIColor(white: 1, alpha: 0.7)
+        contentView.backgroundColor = UIColor.white
         
         textLabel1.text = "今日のタイトル"
         textLabel2.text = "ここが良かった！今日の自分"
