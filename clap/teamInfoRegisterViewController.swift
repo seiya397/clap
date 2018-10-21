@@ -32,7 +32,7 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     
 //    var pickerForSports = ["野球", "ラグビー", "柔道", "水泳", "サッカー"]
     
-    var accessoryToolbar: UIToolbar {
+    var accessoryToolbarForAttribute: UIToolbar {
         get {
             let toolbarFrame = CGRect(x: 0, y: 0,
                                       width: view.frame.width, height: 44)
@@ -55,6 +55,29 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
         }
     }
     
+//    var accessoryToolbarForSports: UIToolbar {
+//        get {
+//            let toolbarFrame = CGRect(x: 0, y: 0,
+//                                      width: view.frame.width, height: 44)
+//            let accessoryToolbar = UIToolbar(frame: toolbarFrame)
+//            let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+//                                             target: self,
+//                                             action: #selector(onDoneButtonTappedForSports(sender:)))
+//            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+//                                                target: nil,
+//                                                action: nil)
+//            accessoryToolbar.items = [flexibleSpace, doneButton]
+//            accessoryToolbar.barTintColor = UIColor.white
+//            return accessoryToolbar
+//        }
+//    }
+//
+//    @objc func onDoneButtonTappedForSports(sender: UIBarButtonItem) {
+//        if teamSports.isFirstResponder {
+//            teamSports.resignFirstResponder()
+//        }
+//    }
+    
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
@@ -66,13 +89,13 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     
     func setupUI() {
         kindOfPerson.inputView = pickerView
-        kindOfPerson.inputAccessoryView = accessoryToolbar
+        kindOfPerson.inputAccessoryView = accessoryToolbarForAttribute
         kindOfPerson.text = pickerForAttribute[0]
     }
     
 //    func setupUIForSports() {
 //        teamSports.inputView = pickerView
-//        teamSports.inputAccessoryView = accessoryToolbar
+//        teamSports.inputAccessoryView = accessoryToolbarForSports
 //        teamSports.text = pickerForSports[0]
 //    }
     
@@ -189,7 +212,9 @@ extension teamInfoRegisterViewController: UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView,
                     numberOfRowsInComponent component: Int) -> Int {
-        return pickerForAttribute.count
+        
+            return pickerForAttribute.count
+        
     }
     
 }
@@ -199,13 +224,17 @@ extension teamInfoRegisterViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView,
                     titleForRow row: Int,
                     forComponent component: Int) -> String? {
-        return pickerForAttribute[row]
+        
+            return pickerForAttribute[row]
+        
     }
     
     func pickerView(_ pickerView: UIPickerView,
                     didSelectRow row: Int,
                     inComponent component: Int) {
-        kindOfPerson.text = pickerForAttribute[row]
+        
+            return kindOfPerson.text = pickerForAttribute[row]
+        
     }
 }
 

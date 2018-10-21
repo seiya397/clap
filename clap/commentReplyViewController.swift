@@ -83,14 +83,14 @@ class commentReplyViewController: UIViewController {
                             
                             print("成功成功成功成功成功\(document.documentID) => \(document.data())")
                             
-                            let documentData = document.data()
+                            guard let documentData: [String : Any] = document.data() else { return }
                             
-                            self.replyUserNameArr.append((documentData["name"] as? String)!)
-                            self.replyUserTextArr.append((documentData["text"] as? String)!)
+                            self.replyUserNameArr.append(documentData["name"] as? String ?? "")
+                            self.replyUserTextArr.append(documentData["text"] as? String ?? "")
                             
-                            self.replyUserTimeArr.append((documentData["update_at"] as? String)!)
+                            self.replyUserTimeArr.append(documentData["update_at"] as? String ?? "")
                             
-                            self.replyUserImageArr.append((documentData["image"] as? String)!)
+                            self.replyUserImageArr.append(documentData["image"] as? String ?? "")
 
                         }
                         self.replyUserTable.reloadData()

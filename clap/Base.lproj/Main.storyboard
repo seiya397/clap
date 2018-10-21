@@ -1201,7 +1201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZ5-xy-9l0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3114" y="1385"/>
+            <point key="canvasLocation" x="4291" y="4810"/>
         </scene>
         <!--Test Scroll View Controller-->
         <scene sceneID="Cmq-Sf-fzP">

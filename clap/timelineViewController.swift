@@ -194,11 +194,12 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         self.timelineDocumentIdArr.append((documentData["diaryID"] as? String)!)
                         
                         self.arr.append(CellData(date: parseDate(self.dataDateFromFiewstore[i] as! String), time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? "", name: self.dataNameFromFireStore[i] as? String ?? "", image: URL(string: self.dataImageFromFirestore[i] as! String)!, diaryID: self.timelineDocumentIdArr[i] as! String))
+                        i += 1
 
                         self.sections = TableSection.group(rowItems: self.arr, by: { (headline) in
                             firstDayOfMonth(date: headline.date)
                         })
-                        i += 1
+                        
 
                     }
                     self.userTable.reloadData()
@@ -261,10 +262,11 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         
                         self.arr.append(CellData(date: parseDate(self.dataDateFromFiewstore[i] as! String), time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? "", name: self.dataNameFromFireStore[i] as? String ?? "", image: URL(string: self.dataImageFromFirestore[i] as! String)!, diaryID: self.timelineDocumentIdArr[i] as! String))
 
+                        i += 1
                         self.sections = TableSection.group(rowItems: self.arr, by: { (headline) in
                             firstDayOfMonth(date: headline.date)
                         })
-                        i += 1
+                        
 
                     }
                     self.userTable.reloadData()
@@ -325,10 +327,11 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
                         
                         self.arr.append(CellData(date: parseDate(self.dataDateFromFiewstore[i] as! String), time: self.dataTimeFromFirestore[i] as? String ?? "", title: self.dataTitleFromFireStore[i] as? String ?? "", name: self.dataNameFromFireStore[i] as? String ?? "", image: URL(string: self.dataImageFromFirestore[i] as! String)!, diaryID: self.timelineDocumentIdArr[i] as! String))
 
+                        i += 1
                         self.sections = TableSection.group(rowItems: self.arr, by: { (headline) in
                             firstDayOfMonth(date: headline.date)
                         })
-                        i += 1
+                        
 
                     }
                     self.userTable.reloadData()
