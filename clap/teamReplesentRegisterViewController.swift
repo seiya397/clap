@@ -16,8 +16,52 @@ class teamReplesentRegisterViewController: UIViewController {
     
     let db = Firestore.firestore()
     
+    var pickerView: UIPickerView {
+        get {
+            let pickerView = UIPickerView()
+            pickerView.dataSource = self
+            pickerView.delegate = self
+            pickerView.backgroundColor = UIColor.white
+            return pickerView
+        }
+    }
+    
+    var pickerForRole = ["選手", "監督", "マネージャー"]
+    
+    //    var pickerForSports = ["野球", "ラグビー", "柔道", "水泳", "サッカー"]
+    
+    var accessoryToolbar: UIToolbar {
+        get {
+            let toolbarFrame = CGRect(x: 0, y: 0,
+                                      width: view.frame.width, height: 44)
+            let accessoryToolbar = UIToolbar(frame: toolbarFrame)
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                             target: self,
+                                             action: #selector(onDoneButtonTapped(sender:)))
+            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                                target: nil,
+                                                action: nil)
+            accessoryToolbar.items = [flexibleSpace, doneButton]
+            accessoryToolbar.barTintColor = UIColor.white
+            return accessoryToolbar
+        }
+    }
+    
+    @objc func onDoneButtonTapped(sender: UIBarButtonItem) {
+        if replesentRole.isFirstResponder {
+            replesentRole.resignFirstResponder()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    
+    func setupUI() {
+        replesentRole.inputView = pickerView
+        replesentRole.inputAccessoryView = accessoryToolbar
+        replesentRole.text = pickerForRole[0]
     }
     
     override func didReceiveMemoryWarning() {
@@ -135,5 +179,32 @@ class teamReplesentRegisterViewController: UIViewController {
         alertController.addAction(OKAction)
         
         self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension teamReplesentRegisterViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView,
+                    numberOfRowsInComponent component: Int) -> Int {
+        return pickerForRole.count
+    }
+    
+}
+
+
+extension teamReplesentRegisterViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView,
+                    titleForRow row: Int,
+                    forComponent component: Int) -> String? {
+        return pickerForRole[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView,
+                    didSelectRow row: Int,
+                    inComponent component: Int) {
+        replesentRole.text = pickerForRole[row]
     }
 }

@@ -12,11 +12,52 @@ class userInfoRegisterViewController: UIViewController{
     @IBOutlet weak var userPassAgain: UITextField!
     @IBOutlet weak var userRole: UITextField!
     
+    var pickerView: UIPickerView {
+        get {
+            let pickerView = UIPickerView()
+            pickerView.dataSource = self
+            pickerView.delegate = self
+            pickerView.backgroundColor = UIColor.white
+            return pickerView
+        }
+    }
+    
+    let userRoleData = ["選手", "監督", "マネージャー"]
+    
+    var accessoryToolbar: UIToolbar {
+        get {
+            let toolbarFrame = CGRect(x: 0, y: 0,
+                                      width: view.frame.width, height: 44)
+            let accessoryToolbar = UIToolbar(frame: toolbarFrame)
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                             target: self,
+                                             action: #selector(onDoneButtonTapped(sender:)))
+            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                                target: nil,
+                                                action: nil)
+            accessoryToolbar.items = [flexibleSpace, doneButton]
+            accessoryToolbar.barTintColor = UIColor.white
+            return accessoryToolbar
+        }
+    }
+    
+    @objc func onDoneButtonTapped(sender: UIBarButtonItem) {
+        if userRole.isFirstResponder {
+            userRole.resignFirstResponder()
+        }
+    }
     
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    
+    func setupUI() {
+        userRole.inputView = pickerView
+        userRole.inputAccessoryView = accessoryToolbar
+        userRole.text = userRoleData[0]
     }
     
     override func didReceiveMemoryWarning() {
@@ -128,4 +169,31 @@ class userInfoRegisterViewController: UIViewController{
         self.present(alertController, animated: true, completion: nil)
     }
     
+}
+
+extension userInfoRegisterViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView,
+                    numberOfRowsInComponent component: Int) -> Int {
+        return userRoleData.count
+    }
+    
+}
+
+
+extension userInfoRegisterViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView,
+                    titleForRow row: Int,
+                    forComponent component: Int) -> String? {
+        return userRoleData[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView,
+                    didSelectRow row: Int,
+                    inComponent component: Int) {
+        userRole.text = userRoleData[row]
+    }
 }

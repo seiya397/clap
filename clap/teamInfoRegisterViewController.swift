@@ -18,11 +18,63 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     
     @IBOutlet weak var teamSports: UITextField!
     
+    var pickerView: UIPickerView {
+        get {
+            let pickerView = UIPickerView()
+            pickerView.dataSource = self
+            pickerView.delegate = self
+            pickerView.backgroundColor = UIColor.white
+            return pickerView
+        }
+    }
+    
+    var pickerForAttribute = ["社会人", "大学", "高校", "中学"]
+    
+//    var pickerForSports = ["野球", "ラグビー", "柔道", "水泳", "サッカー"]
+    
+    var accessoryToolbar: UIToolbar {
+        get {
+            let toolbarFrame = CGRect(x: 0, y: 0,
+                                      width: view.frame.width, height: 44)
+            let accessoryToolbar = UIToolbar(frame: toolbarFrame)
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                             target: self,
+                                             action: #selector(onDoneButtonTapped(sender:)))
+            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                                target: nil,
+                                                action: nil)
+            accessoryToolbar.items = [flexibleSpace, doneButton]
+            accessoryToolbar.barTintColor = UIColor.white
+            return accessoryToolbar
+        }
+    }
+    
+    @objc func onDoneButtonTapped(sender: UIBarButtonItem) {
+        if kindOfPerson.isFirstResponder {
+            kindOfPerson.resignFirstResponder()
+        }
+    }
+    
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+//        setupUIForSports()
     }
+    
+    func setupUI() {
+        kindOfPerson.inputView = pickerView
+        kindOfPerson.inputAccessoryView = accessoryToolbar
+        kindOfPerson.text = pickerForAttribute[0]
+    }
+    
+//    func setupUIForSports() {
+//        teamSports.inputView = pickerView
+//        teamSports.inputAccessoryView = accessoryToolbar
+//        teamSports.text = pickerForSports[0]
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -129,3 +181,32 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     }
     
 }
+
+extension teamInfoRegisterViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView,
+                    numberOfRowsInComponent component: Int) -> Int {
+        return pickerForAttribute.count
+    }
+    
+}
+
+
+extension teamInfoRegisterViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView,
+                    titleForRow row: Int,
+                    forComponent component: Int) -> String? {
+        return pickerForAttribute[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView,
+                    didSelectRow row: Int,
+                    inComponent component: Int) {
+        kindOfPerson.text = pickerForAttribute[row]
+    }
+}
+
+
