@@ -124,13 +124,12 @@ class testScrollViewController: UIViewController, UIScrollViewDelegate, UITextFi
             i += 1
         }
     }
-    //95行目の@IBAction func buttonTapped(_ sender: Any)を押した時に、viewDidLoad内で生成した6つのtextView.textの値を取得して、81行目でtextViewDataにappendしているのですが、一番最後のページのtextView.textだけ空の状態です(104行目のprint(textViewData)で確認できます)。理由としては、scrollViewのdelegateライフサイクルにあるのだと思います(というのも、最後のページで右にスクロール動作をした後にbuttonTappedを押すと、しっかりと最後のページのtextView.textが取得できているからです)。しかし、他のライフサイクルメソッドで動作確認しても、最後のページで右にスクロールするという作業なしに最後のページの値を取得することができません。解決策を教えていただきたいです。
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == scrollView {
             for i in 0 ..< scrollData.count {
                 let label = scrollView.viewWithTag(i + tagValue) as! UILabel
                 let view = scrollView.viewWithTag(i + viewTagValue) as! CustomView
-                textViewData.append(view.textView.text)
                 let scrollContentOffset = scrollView.contentOffset.x + self.scrollView.frame.width
                 let viewOffset = (view.center.x - scrollView.bounds.width / 4) - scrollContentOffset
                 label.center.x = scrollContentOffset - ((scrollView.bounds.width / 4 - viewOffset) / 2)
@@ -151,6 +150,7 @@ class testScrollViewController: UIViewController, UIScrollViewDelegate, UITextFi
                 self.ShowMessage(messageToDisplay: "項目\(i)を記入してください。")
                 return
             }
+            textViewData.append(view.textView.text)
         }
         let text6 = textViewData.removeLast()
         let text5 = textViewData.removeLast()
