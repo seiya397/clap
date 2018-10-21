@@ -18,6 +18,8 @@ class replyTableViewCell: UITableViewCell {
     }
     
     func commentInit(image: URL?, name: String?, text: String?, time: String?) {
+        
+        self.replyUserText.isEditable = false
         self.replyUserImage.sd_setImage(with: image)
         self.replyUserName.text = name
         

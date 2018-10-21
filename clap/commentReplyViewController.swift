@@ -42,7 +42,7 @@ class commentReplyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let userDefaults: UserDefaults = UserDefaults.standard
         
         timeline = (userDefaults.string(forKey: "goTimeline") ?? "nodata")
@@ -170,6 +170,10 @@ class commentReplyViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func randomString(length: Int) -> String {  //ランダムID

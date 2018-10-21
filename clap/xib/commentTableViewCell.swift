@@ -27,6 +27,9 @@ class commentTableViewCell: UITableViewCell {
     }
     
     func commentInit(image: URL?, name: String?, text: String?, time: String?) {
+        
+        self.commentedUserTextField.isEditable = false
+        
         self.commentedUserImage.sd_setImage(with: image)
         
         self.commentedUserName.text = name
