@@ -12,100 +12,36 @@ import FirebaseFirestore
 import MobileCoreServices
 
 class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    enum PickerAttributeType {
+        case career
+        case sports
+    }
     
     @IBOutlet weak var belongTo: UITextField!
     @IBOutlet weak var kindOfPerson: UITextField!
-    
     @IBOutlet weak var teamSports: UITextField!
     
-    var pickerView: UIPickerView {
-        get {
-            let pickerView = UIPickerView()
-            pickerView.dataSource = self
-            pickerView.delegate = self
-            pickerView.backgroundColor = UIColor.white
-            return pickerView
-        }
-    }
-    
     var pickerForAttribute = ["社会人", "大学", "高校", "中学"]
+    var pickerForSports = ["野球", "ラグビー", "柔道", "水泳", "サッカー"]
     
-//    var pickerForSports = ["野球", "ラグビー", "柔道", "水泳", "サッカー"]
+    let db = Firestore.firestore()
     
-    var accessoryToolbarForAttribute: UIToolbar {
-        get {
-            let toolbarFrame = CGRect(x: 0, y: 0,
-                                      width: view.frame.width, height: 44)
-            let accessoryToolbar = UIToolbar(frame: toolbarFrame)
-            let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
-                                             target: self,
-                                             action: #selector(onDoneButtonTapped(sender:)))
-            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
-                                                target: nil,
-                                                action: nil)
-            accessoryToolbar.items = [flexibleSpace, doneButton]
-            accessoryToolbar.barTintColor = UIColor.white
-            return accessoryToolbar
-        }
-    }
-    
-    @objc func onDoneButtonTapped(sender: UIBarButtonItem) {
+    @objc func onDoneButtonTappedForCareer(sender: UIBarButtonItem) {
         if kindOfPerson.isFirstResponder {
             kindOfPerson.resignFirstResponder()
         }
     }
     
-//    var accessoryToolbarForSports: UIToolbar {
-//        get {
-//            let toolbarFrame = CGRect(x: 0, y: 0,
-//                                      width: view.frame.width, height: 44)
-//            let accessoryToolbar = UIToolbar(frame: toolbarFrame)
-//            let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
-//                                             target: self,
-//                                             action: #selector(onDoneButtonTappedForSports(sender:)))
-//            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
-//                                                target: nil,
-//                                                action: nil)
-//            accessoryToolbar.items = [flexibleSpace, doneButton]
-//            accessoryToolbar.barTintColor = UIColor.white
-//            return accessoryToolbar
-//        }
-//    }
-//
-//    @objc func onDoneButtonTappedForSports(sender: UIBarButtonItem) {
-//        if teamSports.isFirstResponder {
-//            teamSports.resignFirstResponder()
-//        }
-//    }
-    
-    let db = Firestore.firestore()
+    @objc func onDoneButtonTappedForSports(sender: UIBarButtonItem) {
+        if teamSports.isFirstResponder {
+            teamSports.resignFirstResponder()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
-//        setupUIForSports()
-    }
-    
-    func setupUI() {
-        kindOfPerson.inputView = pickerView
-        kindOfPerson.inputAccessoryView = accessoryToolbarForAttribute
-        kindOfPerson.text = pickerForAttribute[0]
-    }
-    
-//    func setupUIForSports() {
-//        teamSports.inputView = pickerView
-//        teamSports.inputAccessoryView = accessoryToolbarForSports
-//        teamSports.text = pickerForSports[0]
-//    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        setupUIForSports()
     }
     
     @IBAction func managerRegisterNextButton(_ sender: Any) { //登録ボタン
@@ -132,15 +68,12 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
         // NSDateFormatterを使ってNSDate型 "date" を日時文字列 "dateStr" に変換
         let dateStr: String = formatter.string(from: date) //現在時刻取得
         
-        //----------------------------------------------------- userDefaults
         let userDefaults:UserDefaults = UserDefaults.standard
         let randomStringToTeamID = self.randomString(length: 20)
         userDefaults.set(randomStringToTeamID, forKey: "teamID")
         userDefaults.synchronize()
         let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)!//teamID取得
         
-        //-----------------------------------------------------
-        //----------------------------------------------------- firestore
         let dateData = [ "createAccount": dateStr, "clap": 3] as [String : Any]
 
         let teamData = ["belong": belongTo.text!, "kind": kindOfPerson.text!, "sports": teamSports.text!] as [String: Any]
@@ -158,15 +91,8 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
                 print("チーム情報登録成功")
             }
         }
-        //-----------------------------------------------------
-        //選択式にすべき！！！！！！！
-        //----------------------------------------------------- teamReplesentPage移動
         let teamPeplesentRegister = self.storyboard?.instantiateViewController(withIdentifier: "teamReplesentRegisterViewController") as! teamReplesentRegisterViewController
         self.present(teamPeplesentRegister, animated: true, completion: nil)
-        //segueで繋いでいる理由は、視覚的にわかりやすくするため
-        //-----------------------------------------------------
-
-
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -205,6 +131,74 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     
 }
 
+
+private extension teamInfoRegisterViewController {
+    var accessoryToolbarForCareer: UIToolbar {
+        get {
+            let toolbarFrame = CGRect(x: 0, y: 0,
+                                      width: view.frame.width, height: 44)
+            let accessoryToolbar = UIToolbar(frame: toolbarFrame)
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                             target: self,
+                                             action: #selector(onDoneButtonTappedForCareer(sender:)))
+            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                                target: nil,
+                                                action: nil)
+            accessoryToolbar.items = [flexibleSpace, doneButton]
+            accessoryToolbar.barTintColor = UIColor.white
+            return accessoryToolbar
+        }
+    }
+    
+    var accessoryToolbarForSports: UIToolbar {
+        get {
+            let toolbarFrame = CGRect(x: 0, y: 0,
+                                      width: view.frame.width, height: 44)
+            let accessoryToolbar = UIToolbar(frame: toolbarFrame)
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                             target: self,
+                                             action: #selector(onDoneButtonTappedForSports(sender:)))
+            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                                target: nil,
+                                                action: nil)
+            accessoryToolbar.items = [flexibleSpace, doneButton]
+            accessoryToolbar.barTintColor = UIColor.white
+            return accessoryToolbar
+        }
+    }
+    
+    func setupUI() {
+        kindOfPerson.inputView = getPickerView(type: .career)
+        kindOfPerson.inputAccessoryView = accessoryToolbarForCareer
+        kindOfPerson.text = pickerForAttribute[0]
+    }
+
+    func setupUIForSports() {
+        teamSports.inputView = getPickerView(type: .sports)
+        teamSports.inputAccessoryView = accessoryToolbarForSports
+        teamSports.text = pickerForSports[0]
+    }
+
+    func getPickerView(type: PickerAttributeType) -> UIPickerView {
+        var pickerView = UIPickerView()
+        switch type {
+        case .career:
+            pickerView = CareerPickerView()
+        case .sports:
+            pickerView = SportsPickerView()
+        }
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        pickerView.backgroundColor = UIColor.white
+        return pickerView
+    }
+}
+
+
+fileprivate class CareerPickerView: UIPickerView {}
+fileprivate class SportsPickerView: UIPickerView {}
+
+
 extension teamInfoRegisterViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -212,11 +206,15 @@ extension teamInfoRegisterViewController: UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView,
                     numberOfRowsInComponent component: Int) -> Int {
-        
+        switch pickerView {
+        case is CareerPickerView:
             return pickerForAttribute.count
-        
+        case is SportsPickerView:
+            return pickerForSports.count
+        default:
+            return pickerForAttribute.count
+        }
     }
-    
 }
 
 
@@ -224,17 +222,27 @@ extension teamInfoRegisterViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView,
                     titleForRow row: Int,
                     forComponent component: Int) -> String? {
-        
+        switch pickerView {
+        case is CareerPickerView:
             return pickerForAttribute[row]
-        
+        case is SportsPickerView:
+            return pickerForSports[row]
+        default:
+            return pickerForAttribute[row]
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView,
                     didSelectRow row: Int,
                     inComponent component: Int) {
-        
+        switch pickerView {
+        case is CareerPickerView:
             return kindOfPerson.text = pickerForAttribute[row]
-        
+        case is SportsPickerView:
+            return teamSports.text = pickerForSports[row]
+        default:
+            return kindOfPerson.text = pickerForAttribute[row]
+        }
     }
 }
 

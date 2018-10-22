@@ -6,6 +6,10 @@ import FirebaseDatabase
 import FirebaseFirestore
 
 class teamReplesentRegisterViewController: UIViewController {
+    enum pickerViewAttribute {
+        case Role
+        case Grade
+    }
     
     @IBOutlet weak var replesentName: UITextField!
     @IBOutlet weak var replesentEmail: UITextField!
@@ -16,52 +20,26 @@ class teamReplesentRegisterViewController: UIViewController {
     
     let db = Firestore.firestore()
     
-    var pickerView: UIPickerView {
-        get {
-            let pickerView = UIPickerView()
-            pickerView.dataSource = self
-            pickerView.delegate = self
-            pickerView.backgroundColor = UIColor.white
-            return pickerView
-        }
-    }
-    
     var pickerForRole = ["選手", "監督", "マネージャー"]
+    var pickerForGrade = [ "--", "1年生", "2年生", "3年生", "4年生"]
     
-    //    var pickerForSports = ["野球", "ラグビー", "柔道", "水泳", "サッカー"]
     
-    var accessoryToolbar: UIToolbar {
-        get {
-            let toolbarFrame = CGRect(x: 0, y: 0,
-                                      width: view.frame.width, height: 44)
-            let accessoryToolbar = UIToolbar(frame: toolbarFrame)
-            let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
-                                             target: self,
-                                             action: #selector(onDoneButtonTapped(sender:)))
-            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
-                                                target: nil,
-                                                action: nil)
-            accessoryToolbar.items = [flexibleSpace, doneButton]
-            accessoryToolbar.barTintColor = UIColor.white
-            return accessoryToolbar
-        }
-    }
-    
-    @objc func onDoneButtonTapped(sender: UIBarButtonItem) {
+    @objc func onDoneButtonTappedForRole(sender: UIBarButtonItem) {
         if replesentRole.isFirstResponder {
             replesentRole.resignFirstResponder()
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
+    @objc func onDoneButtonTappedForGrade(sender: UIBarButtonItem) {
+        if replesentGrade.isFirstResponder {
+            replesentGrade.resignFirstResponder()
+        }
     }
     
-    func setupUI() {
-        replesentRole.inputView = pickerView
-        replesentRole.inputAccessoryView = accessoryToolbar
-        replesentRole.text = pickerForRole[0]
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUIForRole()
+        setupUIForGrade()
     }
     
     override func didReceiveMemoryWarning() {
@@ -182,6 +160,72 @@ class teamReplesentRegisterViewController: UIViewController {
     }
 }
 
+
+private extension teamReplesentRegisterViewController {
+    var accessoryToolbarForRole: UIToolbar {
+        get {
+            let toolbarFrame = CGRect(x: 0, y: 0,
+                                      width: view.frame.width, height: 44)
+            let accessoryToolbar = UIToolbar(frame: toolbarFrame)
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                             target: self,
+                                             action: #selector(onDoneButtonTappedForRole(sender:)))
+            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                                target: nil,
+                                                action: nil)
+            accessoryToolbar.items = [flexibleSpace, doneButton]
+            accessoryToolbar.barTintColor = UIColor.white
+            return accessoryToolbar
+        }
+    }
+    
+    var accessoryToolbarForGrade: UIToolbar {
+        get {
+            let toolbarFrame = CGRect(x: 0, y: 0,
+                                      width: view.frame.width, height: 44)
+            let accessoryToolbar = UIToolbar(frame: toolbarFrame)
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                             target: self,
+                                             action: #selector(onDoneButtonTappedForGrade(sender:)))
+            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                                target: nil,
+                                                action: nil)
+            accessoryToolbar.items = [flexibleSpace, doneButton]
+            accessoryToolbar.barTintColor = UIColor.white
+            return accessoryToolbar
+        }
+    }
+    
+    func setupUIForRole() {
+        replesentRole.inputView = getPickerView(type: .Role)
+        replesentRole.inputAccessoryView = accessoryToolbarForRole
+        replesentRole.text = pickerForRole[0]
+    }
+    
+    func setupUIForGrade() {
+        replesentGrade.inputView = getPickerView(type: .Grade)
+        replesentGrade.inputAccessoryView = accessoryToolbarForGrade
+        replesentGrade.text = pickerForGrade[0]
+    }
+    
+    func getPickerView(type: pickerViewAttribute) -> UIPickerView {
+        var pickerView = UIPickerView()
+        switch type {
+        case .Role:
+            pickerView = RolePickerView()
+        case .Grade:
+            pickerView = GradePickerView()
+        }
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        pickerView.backgroundColor = UIColor.white
+        return pickerView
+    }
+}
+
+fileprivate class RolePickerView: UIPickerView {}
+fileprivate class GradePickerView: UIPickerView {}
+
 extension teamReplesentRegisterViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -189,7 +233,14 @@ extension teamReplesentRegisterViewController: UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView,
                     numberOfRowsInComponent component: Int) -> Int {
-        return pickerForRole.count
+        switch pickerView {
+        case is RolePickerView:
+            return pickerForRole.count
+        case is GradePickerView:
+            return pickerForGrade.count
+        default:
+            return pickerForRole.count
+        }
     }
     
 }
@@ -199,12 +250,27 @@ extension teamReplesentRegisterViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView,
                     titleForRow row: Int,
                     forComponent component: Int) -> String? {
-        return pickerForRole[row]
+        switch pickerView {
+        case is RolePickerView:
+            return pickerForRole[row]
+        case is GradePickerView:
+            return pickerForGrade[row]
+        default:
+            return pickerForRole[row]
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView,
                     didSelectRow row: Int,
                     inComponent component: Int) {
-        replesentRole.text = pickerForRole[row]
+        switch pickerView {
+        case is RolePickerView:
+            return replesentRole.text = pickerForRole[row]
+        case is GradePickerView:
+            return replesentGrade.text = pickerForGrade[row]
+        default:
+            return replesentRole.text = pickerForRole[row]
+        }
+        
     }
 }
