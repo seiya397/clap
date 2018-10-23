@@ -2173,17 +2173,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Jlk-rt-9S7">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="2hn-VV-h1f">
-                                <rect key="frame" x="97" y="293" width="220" height="90"/>
+                                <rect key="frame" x="97" y="319" width="220" height="64"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メールアドレス" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FhA-IV-1en">
-                                        <rect key="frame" x="0.0" y="0.0" width="220" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FhA-IV-1en">
+                                        <rect key="frame" x="0.0" y="0.0" width="220" height="17"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y4o-IO-hNi">
-                                        <rect key="frame" x="0.0" y="60" width="220" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y4o-IO-hNi">
+                                        <rect key="frame" x="0.0" y="47" width="220" height="17"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -2242,22 +2245,8 @@
                                     <action selector="commonLoginButton:" destination="Exz-gh-qmw" eventType="touchUpInside" id="EiG-xw-Puv"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lp1-6D-KIV">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lp1-6D-KIV">
                                 <rect key="frame" x="105" y="184" width="204" height="79"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zQ-Au-x7k">
-                                        <rect key="frame" x="58.33333333333335" y="0.0" width="87.666666666666686" height="50"/>
-                                        <fontDescription key="fontDescription" name="TimesNewRomanPS-ItalicMT" family="Times New Roman" pointSize="45"/>
-                                        <color key="textColor" red="1" green="0.32884336019999999" blue="0.17571469219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="仲間のいいとこ見つけよう" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOP-ka-Hcx">
-                                        <rect key="frame" x="0.0" y="60" width="204" height="19"/>
-                                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2266,12 +2255,17 @@
                             <constraint firstItem="2hn-VV-h1f" firstAttribute="top" secondItem="Lp1-6D-KIV" secondAttribute="bottom" constant="30" id="7f8-NZ-V8S"/>
                             <constraint firstItem="qBa-bc-uRY" firstAttribute="top" secondItem="TxZ-jl-drG" secondAttribute="bottom" constant="10" id="A70-06-aap"/>
                             <constraint firstItem="TxZ-jl-drG" firstAttribute="top" secondItem="2hn-VV-h1f" secondAttribute="bottom" constant="30" id="DlD-Yg-dUH"/>
+                            <constraint firstItem="Jlk-rt-9S7" firstAttribute="top" secondItem="QG4-uV-W90" secondAttribute="top" id="EaU-UQ-ZyN"/>
+                            <constraint firstItem="Jlk-rt-9S7" firstAttribute="trailing" secondItem="dko-z1-IC6" secondAttribute="trailing" id="FiQ-mb-2zK"/>
                             <constraint firstItem="2hn-VV-h1f" firstAttribute="centerX" secondItem="QG4-uV-W90" secondAttribute="centerX" id="KLE-7j-Ld1"/>
                             <constraint firstItem="qBa-bc-uRY" firstAttribute="centerY" secondItem="QG4-uV-W90" secondAttribute="centerY" constant="100" id="SZY-cb-AG8"/>
+                            <constraint firstItem="Jlk-rt-9S7" firstAttribute="leading" secondItem="dko-z1-IC6" secondAttribute="leading" id="eKQ-WM-CwQ"/>
+                            <constraint firstItem="Jlk-rt-9S7" firstAttribute="centerX" secondItem="QG4-uV-W90" secondAttribute="centerX" id="fe2-xK-nX5"/>
                             <constraint firstItem="9oF-Id-cLE" firstAttribute="top" secondItem="qBa-bc-uRY" secondAttribute="bottom" constant="10" id="hFr-vB-kHF"/>
                             <constraint firstItem="Lp1-6D-KIV" firstAttribute="centerX" secondItem="QG4-uV-W90" secondAttribute="centerX" id="iXC-Pi-6bi"/>
                             <constraint firstItem="9oF-Id-cLE" firstAttribute="centerX" secondItem="QG4-uV-W90" secondAttribute="centerX" id="icZ-6S-iAK"/>
                             <constraint firstItem="TxZ-jl-drG" firstAttribute="centerX" secondItem="QG4-uV-W90" secondAttribute="centerX" id="rwd-Gh-XCw"/>
+                            <constraint firstItem="Jlk-rt-9S7" firstAttribute="bottom" secondItem="dko-z1-IC6" secondAttribute="bottom" id="wPd-pH-81m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dko-z1-IC6"/>
                     </view>
@@ -2282,7 +2276,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ar8-CD-spD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4143" y="1189"/>
+            <point key="canvasLocation" x="-4143.4782608695659" y="1188.5869565217392"/>
         </scene>
         <!--Team Id Confirm Again View Controller-->
         <scene sceneID="ieO-3K-LgU">
@@ -3326,6 +3320,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
         <image name="group" width="409.60000610351562" height="409.60000610351562"/>
         <image name="groupInfo" width="270" height="287"/>
         <image name="lock" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="loginBackground" width="375" height="812"/>
         <image name="manager" width="383" height="374"/>
         <image name="weight" width="409.60000610351562" height="409.60000610351562"/>
     </resources>

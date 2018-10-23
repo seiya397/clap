@@ -2,19 +2,36 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
+
+//textfieldの下線追加
+extension UITextField {
+    func addBorderBottom(height: CGFloat, color: UIColor) {
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: self.frame.height - height, width: self.frame.width, height: height)
+        border.backgroundColor = color.cgColor
+        self.layer.addSublayer(border)
+    }
+}
+
 class LoginViewController: UIViewController {
     
+//textfield
     @IBOutlet weak var commonMailaddress: UITextField!
     @IBOutlet weak var commonPassword: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //placeholderの色変更、下線追加
+        commonMailaddress.attributedPlaceholder = NSAttributedString(string: "メールアドレス", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+        commonPassword.attributedPlaceholder = NSAttributedString(string: "パスワード", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+        commonMailaddress.addBorderBottom(height: 1.0, color: UIColor.white)
+        commonPassword.addBorderBottom(height: 1.0, color: UIColor.white)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     @IBAction func commonLoginButton(_ sender: Any) {//ログイン
         guard let userEmailText = commonMailaddress.text, !userEmailText.isEmpty else {
