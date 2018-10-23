@@ -1733,8 +1733,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="TodoTextField" destination="m32-ih-WKE" id="eJQ-2O-Z8I"/>
+                        <outlet property="endTime" destination="Vz4-ld-AAp" id="JfK-yc-Tbj"/>
                         <outlet property="getEndDate" destination="tei-hB-3GF" id="aLU-PK-CvY"/>
                         <outlet property="getStartDate" destination="XP3-TJ-3gM" id="vn0-Sx-OSU"/>
+                        <outlet property="startTime" destination="A5t-Ca-Zj7" id="6NK-YQ-lxR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wrh-xV-EPC" userLabel="First Responder" sceneMemberID="firstResponder"/>

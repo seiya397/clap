@@ -12,34 +12,7 @@ class userInfoRegisterViewController: UIViewController{
     @IBOutlet weak var userPassAgain: UITextField!
     @IBOutlet weak var userRole: UITextField!
     
-    var pickerView: UIPickerView {
-        get {
-            let pickerView = UIPickerView()
-            pickerView.dataSource = self
-            pickerView.delegate = self
-            pickerView.backgroundColor = UIColor.white
-            return pickerView
-        }
-    }
-    
     let userRoleData = ["選手", "監督", "マネージャー"]
-    
-    var accessoryToolbar: UIToolbar {
-        get {
-            let toolbarFrame = CGRect(x: 0, y: 0,
-                                      width: view.frame.width, height: 44)
-            let accessoryToolbar = UIToolbar(frame: toolbarFrame)
-            let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
-                                             target: self,
-                                             action: #selector(onDoneButtonTapped(sender:)))
-            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
-                                                target: nil,
-                                                action: nil)
-            accessoryToolbar.items = [flexibleSpace, doneButton]
-            accessoryToolbar.barTintColor = UIColor.white
-            return accessoryToolbar
-        }
-    }
     
     @objc func onDoneButtonTapped(sender: UIBarButtonItem) {
         if userRole.isFirstResponder {
@@ -52,17 +25,6 @@ class userInfoRegisterViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-    }
-    
-    func setupUI() {
-        userRole.inputView = pickerView
-        userRole.inputAccessoryView = accessoryToolbar
-        userRole.text = userRoleData[0]
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
     }
     
     @IBAction func userRegisterButtonTapped(_ sender: Any) {
@@ -171,6 +133,33 @@ class userInfoRegisterViewController: UIViewController{
     
 }
 
+
+private extension userInfoRegisterViewController {
+    var accessoryToolbar: UIToolbar {
+        get {
+            let toolbarFrame = CGRect(x: 0, y: 0,
+                                      width: view.frame.width, height: 44)
+            let accessoryToolbar = UIToolbar(frame: toolbarFrame)
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                             target: self,
+                                             action: #selector(onDoneButtonTapped(sender:)))
+            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                                target: nil,
+                                                action: nil)
+            accessoryToolbar.items = [flexibleSpace, doneButton]
+            accessoryToolbar.barTintColor = UIColor.white
+            return accessoryToolbar
+        }
+    }
+    
+    func setupUI() {
+        userRole.inputView = pickerView
+        userRole.inputAccessoryView = accessoryToolbar
+        userRole.text = userRoleData[0]
+    }
+}
+
+
 extension userInfoRegisterViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -179,6 +168,16 @@ extension userInfoRegisterViewController: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView,
                     numberOfRowsInComponent component: Int) -> Int {
         return userRoleData.count
+    }
+    
+    var pickerView: UIPickerView {
+        get {
+            let pickerView = UIPickerView()
+            pickerView.dataSource = self
+            pickerView.delegate = self
+            pickerView.backgroundColor = UIColor.white
+            return pickerView
+        }
     }
     
 }

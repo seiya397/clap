@@ -1,23 +1,24 @@
-
 import UIKit
-
-//変数の設置
-var TodoKobetsunonakami = [String]()
+import Firebase
+import FirebaseFirestore
+import FirebaseAuth
 
 class planController: UIViewController {
     
-    var Date = "" //日付の取得
-    //テキストフィールドの設定
+    enum StartAndEnd {
+        case start
+        case end
+    }
+    
+    let db = Firestore.firestore()
+    
+    private var timePicker = UIDatePicker()
+    
     @IBOutlet weak var TodoTextField: UITextField!
-    
-    //タップした日付を取得する(開始日)
     @IBOutlet weak var getStartDate: UITextField!
-    
-    //タップした日付を取得する(終了日)
     @IBOutlet weak var getEndDate: UITextField!
-    
-    private var datePicker: UIDatePicker = UIDatePicker()
-    
+    @IBOutlet weak var startTime: UITextField!
+    @IBOutlet weak var endTime: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,43 +28,34 @@ class planController: UIViewController {
         getStartDate.text = getPickedDate
         getEndDate.text = getPickedDate
         
-        datePicker = UIDatePicker()
-        datePicker.datePickerMode = .date
-        datePicker.locale = Locale(identifier: "ja")
-        datePicker.addTarget(self, action: #selector(dateChanged(textField: datePicker:)), for: .valueChanged)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
-        view.addGestureRecognizer(tapGesture)
-        getStartDate.inputView = datePicker
-        getStartDate.tag = 1
-        getEndDate.inputView = datePicker
-        getEndDate.tag = 2
-        
+        setupUIForStart()
+        setupUIForEnd()
+    }
+    
+    func setupUIForStart() {
+        getStartDate.inputView = datePickerSet(type: .start)
+    }
+    
+    func setupUIForEnd() {
+        getEndDate.inputView = datePickerSet(type: .end)
+    }
+    
+    @objc func startDateChanged(startDatePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy年MM月dd日"
+        getStartDate.text = dateFormatter.string(from: startDatePicker.date)
+        view.endEditing(true)
+    }
+    
+    @objc func endDateChanged(endDatePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy年MM月dd日"
+        getEndDate.text = dateFormatter.string(from: endDatePicker.date)
+        view.endEditing(true)
     }
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
-    }
-    
-    @objc func dateChanged(textField: UITextField, datePicker: UIDatePicker) {
-        if textField.tag == 1 {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM/dd/yyyy"
-            getStartDate.text = dateFormatter.string(from: datePicker.date)
-            view.endEditing(true)
-        } else {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM/dd/yyyy"
-            getEndDate.text = dateFormatter.string(from: datePicker.date)
-            view.endEditing(true)
-        }
-    
-        
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -71,12 +63,35 @@ class planController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        //変数に入力内容を入れる
-        TodoKobetsunonakami.append(TodoTextField.text!)
-        //追加ボタンを押したらフィールドを空にする
-        TodoTextField.text = ""
-        //変数の中身をUDに追加
-        UserDefaults.standard.set( TodoKobetsunonakami, forKey: "TodoList" )
+        
     }
     
 }
+
+
+private extension planController {// enum, 関数名変更、#selector変更
+    func datePickerSet(type: StartAndEnd) -> UIDatePicker {
+        var datePicker: UIDatePicker = UIDatePicker()
+        switch type {
+        case .start:
+            datePicker = StartPicker()
+            datePicker.datePickerMode = .date
+            datePicker.locale = Locale(identifier: "ja")
+            datePicker.addTarget(self, action: #selector(startDateChanged(startDatePicker:)), for: .valueChanged)
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
+            view.addGestureRecognizer(tapGesture)
+        case .end:
+            datePicker = EndPicker()
+            datePicker.datePickerMode = .date
+            datePicker.locale = Locale(identifier: "ja")
+            datePicker.addTarget(self, action: #selector(endDateChanged(endDatePicker:)), for: .valueChanged)
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
+            view.addGestureRecognizer(tapGesture)
+        }
+        return datePicker
+    }
+}
+
+fileprivate class StartPicker: UIDatePicker {}
+fileprivate class EndPicker: UIDatePicker {}
+
