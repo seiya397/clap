@@ -12,6 +12,10 @@ class planController: UIViewController {
     
     let db = Firestore.firestore()
     
+    var fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
+    
+    var teamIDFromFirebase: String = String()
+    
     @IBOutlet weak var TodoTextField: UITextField!
     @IBOutlet weak var getStartDate: UITextField!
     @IBOutlet weak var getEndDate: UITextField!
@@ -87,9 +91,78 @@ class planController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        
+        guard let todoText = TodoTextField.text, !todoText.isEmpty else {
+            self.ShowMessage(messageToDisplay: "スケジュールを記入してください。")
+            return
+        }
+        guard let startTime = startTime.text, !startTime.isEmpty else {
+            self.ShowMessage(messageToDisplay: "開始時間を選択してください。")
+            return
+        }
+        guard let endTime = endTime.text, !endTime.isEmpty else {
+            self.ShowMessage(messageToDisplay: "終了時間を選択してください。")
+            return
+        }
+        db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot, error) in
+            guard let document = snapshot else {
+                print("erorr2 \(String(describing: error))")
+                return
+            }
+            
+            guard let data = document.data() else { return }
+            
+            self.teamIDFromFirebase = data["teamID"] as? String ?? ""
+            
+            let scheduleID = self.randomString(length: 20)
+            
+            let scheduleData = [
+                "id": scheduleID,
+                "date_start": self.getStartDate.text!,
+                "date_end": self.getEndDate.text!,
+                "time_start": self.startTime.text!,
+                "time_end": self.endTime.text!,
+                "event_title": self.TodoTextField.text!,
+                ] as [String : Any]
+            self.db.collection("teams").document(self.teamIDFromFirebase).collection("schedule").document(scheduleID).setData(scheduleData) { (err) in
+                if err != nil {
+                    print("scheduleを登録できません")
+                    return
+                }
+                print("scheduleの登録に成功")
+                self.presentingViewController?.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
+    //認証用関数
+    public func ShowMessage(messageToDisplay: String) {
+        let alertController = UIAlertController(title: "Alert Title", message: messageToDisplay, preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "ok", style: .default) { (action: UIAlertAction!) in
+            print("ok button tapped!!")
+        }
+        
+        alertController.addAction(OKAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    //scheduleID用
+    func randomString(length: Int) -> String {
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = UInt32(letters.length)
+        
+        var randomString = ""
+        
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+        
+        return randomString
+    }
 }
 
 

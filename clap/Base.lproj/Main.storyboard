@@ -1491,7 +1491,7 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tic-O3-RUw">
                                 <rect key="frame" x="0.0" y="403" width="414" height="30"/>
-                                <color key="backgroundColor" red="0.062745098040000002" green="0.20000000000000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.28375518620000001" green="0.5751196932" blue="0.90372270349999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="予定を追加">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -1588,7 +1588,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="保存" id="foe-JH-4lf">
                                             <connections>
-                                                <action selector="saveButtonTapped:" destination="mjR-jd-ZQQ" id="qBK-td-5j4"/>
+                                                <action selector="saveButtonTapped:" destination="mjR-jd-ZQQ" id="3Fv-fl-ili"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1617,7 +1617,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="13:00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vz4-ld-AAp">
                                 <rect key="frame" x="191" y="146" width="58.333333333333343" height="26"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -1733,10 +1733,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="TodoTextField" destination="m32-ih-WKE" id="eJQ-2O-Z8I"/>
-                        <outlet property="endTime" destination="Vz4-ld-AAp" id="JfK-yc-Tbj"/>
+                        <outlet property="endTime" destination="Vz4-ld-AAp" id="eqy-4M-mHR"/>
                         <outlet property="getEndDate" destination="tei-hB-3GF" id="aLU-PK-CvY"/>
                         <outlet property="getStartDate" destination="XP3-TJ-3gM" id="vn0-Sx-OSU"/>
-                        <outlet property="startTime" destination="A5t-Ca-Zj7" id="6NK-YQ-lxR"/>
+                        <outlet property="startTime" destination="A5t-Ca-Zj7" id="BwJ-QR-SeV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wrh-xV-EPC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2995,7 +2995,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="競技項目" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="dKQ-VV-D6r">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="競技項目" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="dKQ-VV-D6r">
                                         <rect key="frame" x="0.0" y="76" width="214" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -3168,7 +3168,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="学年" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="qSj-Dm-zKc">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="学年" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="qSj-Dm-zKc">
                                         <rect key="frame" x="0.0" y="190.00000000000006" width="214" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
