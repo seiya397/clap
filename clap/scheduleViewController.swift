@@ -3,7 +3,7 @@ import Firebase
 import FSCalendar
 import CalculateCalendarLogic
 
-class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance,UITableViewDelegate, UITableViewDataSource{
+class scheduleViewController: UIViewController {
     
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var pickedDate: UILabel!
@@ -12,40 +12,15 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // デリゲートの設定
-        self.calendar.dataSource = self
+        calendar.dataSource = self
+        calendar.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
         
-        self.calendar.delegate = self
+        currentDate(pickedDate)
         
-        let currentPickedDate = getDay(Date())
-        
-        pickedDate.text = "\(String(currentPickedDate.1))月\(String(currentPickedDate.2))日\(String(currentPickedDate.3))曜日" //タプル
-        
-        //ログイン後の処理
-        let alert: UIAlertController = UIAlertController(title: "ようこそ！", message: "マイページでチームIDを確認しよう！", preferredStyle:  UIAlertControllerStyle.alert)
-        
-        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
-            // ボタンが押された時の処理を書く（クロージャ実装）
-            (action: UIAlertAction!) -> Void in
-            print("OK")
-        })
-        
-        alert.addAction(defaultAction)
-        
-        present(alert, animated: true, completion: nil)
-        
-        
-        //追加画面で入力した内容を取得する
-        if UserDefaults.standard.object(forKey: "TodoList") != nil {
-            var hairetu: [String] = UserDefaults.standard.object(forKey: "TodoList") as! [String]
-        }
+        beginAlert()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
     fileprivate lazy var dateFormatter: DateFormatter = {
@@ -64,35 +39,32 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         calendar.setCurrentPage(getPreviousMonth(date: calendar.currentPage), animated: true)
     }
     
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
-        let selectDay = getDay(date)
-        pickedDate.text = "\(String(selectDay.1))月\(String(selectDay.2))日\(String(selectDay.3))曜日" //タプル
+    @IBAction func TapApp(_ sender: Any) {
+        let eventShare = self.storyboard?.instantiateViewController(withIdentifier: "planController") as! planController
+        self.present(eventShare, animated: true, completion: nil)
     }
+}
+
+
+extension scheduleViewController: UITableViewDelegate, UITableViewDataSource {
     
-    //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //戻り値の設定(表示するcell数)l
         return 1
     }
     
-    //UITableView、cellForRowAtの追加(表示するcellの中身を決める)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //変数を作る
         let TodoCell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath)
-        //変数の中身を作る
         TodoCell.textLabel!.text = ["1","1"][indexPath.row]
-        //戻り値の設定（表示する中身)
         return TodoCell
     }
+}
+
+
+extension scheduleViewController: FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance {
     
-    //予定を追加ボタンで遷移先へ日付の受け渡し
-    @IBAction func TapApp(_ sender: Any) {
-        let userDefaults = UserDefaults.standard
-        userDefaults.removeObject(forKey: "pickedDateForSchedule")
-        userDefaults.set(pickedDate?.text, forKey: "pickedDateForSchedule")
-        userDefaults.synchronize()
-        let eventShare = self.storyboard?.instantiateViewController(withIdentifier: "planController") as! planController
-        self.present(eventShare, animated: true, completion: nil)
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
+        let selectDay = getDay(date)
+        pickedDate.text = "\(String(selectDay.1))月\(String(selectDay.2))日\(String(selectDay.3))曜日" //タプル
     }
     
     // 祝日判定を行い結果を返すメソッド(True:祝日)
@@ -162,5 +134,27 @@ class scheduleViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     
 }
 
+
+private extension scheduleViewController {
+    
+    func currentDate(_ currentTet: UILabel) {
+        let currentPickedDate = getDay(Date())
+        currentTet.text = "\(String(currentPickedDate.1))月\(String(currentPickedDate.2))日\(String(currentPickedDate.3))曜日"
+    }
+    
+    func beginAlert() {
+        let alert: UIAlertController = UIAlertController(title: "ようこそ！", message: "マイページでチームIDを確認しよう！", preferredStyle:  UIAlertControllerStyle.alert)
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
+            (action: UIAlertAction!) -> Void in
+            print("OK")
+        })
+        alert.addAction(defaultAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func getScheDuleDate() {
+        
+    }
+}
 
 //日付でfirebase探しに行って、その中のスケジュールデータを表示
