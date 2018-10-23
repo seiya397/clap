@@ -16,6 +16,7 @@ class planController: UIViewController {
     
     var teamIDFromFirebase: String = String()
     
+    
     @IBOutlet weak var TodoTextField: UITextField!
     @IBOutlet weak var getStartDate: UITextField!
     @IBOutlet weak var getEndDate: UITextField!
@@ -25,10 +26,11 @@ class planController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let userDefaults = UserDefaults.standard
-        let getPickedDate = userDefaults.string(forKey: "pickedDateForSchedule")
-        getStartDate.text = getPickedDate
-        getEndDate.text = getPickedDate
+        let currentPickedDate = getDay(Date())
+        
+        getStartDate.text = "\(String(currentPickedDate.0))年\(String(currentPickedDate.1))月\(String(currentPickedDate.2))日"
+        
+        getEndDate.text = "\(String(currentPickedDate.0))年\(String(currentPickedDate.1))月\(String(currentPickedDate.2))日"
         
         setupUIForStart()
         setupUIForEnd()
@@ -186,6 +188,21 @@ private extension planController {// enum, 関数名変更、#selector変更
             view.addGestureRecognizer(tapGesture)
         }
         return datePicker
+    }
+    
+    func getDay(_ date:Date) -> (Int,Int,Int,String){
+        let tmpCalendar = Calendar(identifier: .gregorian)
+        //曜日追加
+        let Component = tmpCalendar.component(.weekday, from: date)
+        let weekName = Component - 1
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ja")
+        
+        let year = tmpCalendar.component(.year, from: date)
+        let month = tmpCalendar.component(.month, from: date)
+        let day = tmpCalendar.component(.day, from: date)
+        
+        return (year,month,day,formatter.shortWeekdaySymbols[weekName])
     }
 }
 
