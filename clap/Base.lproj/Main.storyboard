@@ -2272,6 +2272,7 @@
                     <connections>
                         <outlet property="commonMailaddress" destination="FhA-IV-1en" id="BCr-iZ-YD4"/>
                         <outlet property="commonPassword" destination="y4o-IO-hNi" id="YTC-lr-d1M"/>
+                        <outlet property="loginButton" destination="TxZ-jl-drG" id="nYC-UY-jOk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ar8-CD-spD" userLabel="First Responder" sceneMemberID="firstResponder"/>

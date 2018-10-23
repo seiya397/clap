@@ -15,22 +15,33 @@ extension UITextField {
 
 class LoginViewController: UIViewController {
     
-//textfield
+
     @IBOutlet weak var commonMailaddress: UITextField!
     @IBOutlet weak var commonPassword: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //placeholderの色変更、下線追加
         commonMailaddress.attributedPlaceholder = NSAttributedString(string: "メールアドレス", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         commonPassword.attributedPlaceholder = NSAttributedString(string: "パスワード", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         commonMailaddress.addBorderBottom(height: 1.0, color: UIColor.white)
         commonPassword.addBorderBottom(height: 1.0, color: UIColor.white)
+        
+        // ボタンの装飾
+        let rgba = UIColor(red: 254/255, green: 238/255, blue: 38/255, alpha: 1.0) // ボタン背景色設定
+        let loginText = UIColor(red: 191/255, green: 189/255, blue: 192/255, alpha: 1.0) // ボタンテキスト色設定
+        loginButton.backgroundColor = rgba // 背景色
+        loginButton.layer.cornerRadius = 15.0 // 角丸のサイズ
+        loginButton.setTitleColor(loginText, for: UIControlState.normal) // タイトルの色
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     
     @IBAction func commonLoginButton(_ sender: Any) {//ログイン
