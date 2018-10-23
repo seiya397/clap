@@ -12,8 +12,6 @@ class planController: UIViewController {
     
     let db = Firestore.firestore()
     
-    private var timePicker = UIDatePicker()
-    
     @IBOutlet weak var TodoTextField: UITextField!
     @IBOutlet weak var getStartDate: UITextField!
     @IBOutlet weak var getEndDate: UITextField!
@@ -30,6 +28,8 @@ class planController: UIViewController {
         
         setupUIForStart()
         setupUIForEnd()
+        setupTimeUIForStart()
+        setupTimeUIForEnd()
     }
     
     func setupUIForStart() {
@@ -54,9 +54,33 @@ class planController: UIViewController {
         view.endEditing(true)
     }
     
+    
+    func setupTimeUIForStart() {
+        startTime.inputView = timePickerSet(type: .start)
+    }
+    
+    func setupTimeUIForEnd() {
+        endTime.inputView = timePickerSet(type: .end)
+    }
+    
+    @objc func startTimeChanged(startTimePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        startTime.text = dateFormatter.string(from: startTimePicker.date)
+        view.endEditing(true)
+    }
+    
+    @objc func endTimeChanged(endTimePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        endTime.text = dateFormatter.string(from: endTimePicker.date)
+        view.endEditing(true)
+    }
+    
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
     }
+    
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
@@ -95,3 +119,29 @@ private extension planController {// enum, 関数名変更、#selector変更
 fileprivate class StartPicker: UIDatePicker {}
 fileprivate class EndPicker: UIDatePicker {}
 
+
+private extension planController {
+    func timePickerSet(type: StartAndEnd) -> UIDatePicker {
+        var timePicker = UIDatePicker()
+        switch type {
+        case .start:
+            timePicker = StartTimePicker()
+            timePicker.datePickerMode = .time
+            timePicker.locale = Locale(identifier: "ja")
+            timePicker.addTarget(self, action: #selector(startTimeChanged(startTimePicker:)), for: .valueChanged)
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
+            view.addGestureRecognizer(tapGesture)
+        case .end:
+            timePicker = EndTimePicker()
+            timePicker.datePickerMode = .time
+            timePicker.locale = Locale(identifier: "ja")
+            timePicker.addTarget(self, action: #selector(endTimeChanged(endTimePicker:)), for: .valueChanged)
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
+            view.addGestureRecognizer(tapGesture)
+        }
+        return timePicker
+    }
+}
+
+fileprivate class StartTimePicker: UIDatePicker {}
+fileprivate class EndTimePicker: UIDatePicker {}
