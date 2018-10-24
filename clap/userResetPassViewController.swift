@@ -1,11 +1,41 @@
 import UIKit
 import FirebaseAuth
 
+
+
+//textfieldの下線追加
+extension UITextField {
+    func plusBorderBottom(height: CGFloat, color: UIColor) {
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: self.frame.height - height, width: self.frame.width, height: height)
+        border.backgroundColor = color.cgColor
+        self.layer.addSublayer(border)
+    }
+}
+
+
 class userResetPassViewController: UIViewController {
 
     @IBOutlet weak var userEmailForResetPass: UITextField!
+    @IBOutlet weak var renewButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        //placeholderの色変更、下線追加
+        userEmailForResetPass.attributedPlaceholder = NSAttributedString(string: "endo@clap.com", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+        userEmailForResetPass.addBorderBottom(height: 1.0, color: UIColor.white)
+        
+        // 更新ボタンの装飾
+        let rgba = UIColor(red: 255/255, green: 212/255, blue: 24/255, alpha: 1.0) // ボタン背景色設定
+        let renewText = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0) // ボタンタイトル色設定
+        renewButton.frame = CGRect(x: 0, y: 0, width: 0, height: 46) //ボタンサイズ設定
+        renewButton.backgroundColor = rgba // 背景色
+        renewButton.layer.cornerRadius = 15.0 // 角丸のサイズ
+        renewButton.setTitleColor(renewText, for: UIControlState.normal) // タイトルの色
+        
 
         // Do any additional setup after loading the view.
     }

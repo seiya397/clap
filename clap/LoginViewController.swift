@@ -30,8 +30,8 @@ class LoginViewController: UIViewController {
         commonPassword.addBorderBottom(height: 1.0, color: UIColor.white)
         
         // ボタンの装飾
-        let rgba = UIColor(red: 254/255, green: 238/255, blue: 38/255, alpha: 1.0) // ボタン背景色設定
-        let loginText = UIColor(red: 191/255, green: 189/255, blue: 192/255, alpha: 1.0) // ボタンテキスト色設定
+        let rgba = UIColor(red: 255/255, green: 212/255, blue: 24/255, alpha: 1.0) // ボタン背景色設定
+        let loginText = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0) // ボタンタイトル色設定
         loginButton.frame = CGRect(x: 0, y: 0, width: 0, height: 46) //ボタンサイズ設定
         loginButton.backgroundColor = rgba // 背景色
         loginButton.layer.cornerRadius = 15.0 // 角丸のサイズ
