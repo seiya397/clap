@@ -38,6 +38,8 @@
 		C923A4202130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4212130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4232130F23D0007D784 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923A4222130F23D0007D784 /* LoginViewController.swift */; };
+		C92C5010217F6CB00064F3D8 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92C500E217F6CB00064F3D8 /* ScheduleTableViewCell.swift */; };
+		C92C5011217F6CB00064F3D8 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C92C500F217F6CB00064F3D8 /* ScheduleTableViewCell.xib */; };
 		C9338E91215BE1C40008D2B5 /* profileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9338E90215BE1C40008D2B5 /* profileEditViewController.swift */; };
 		C9344D282130CFFD004931F1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE3C84CB212BF7AD0053EFE2 /* Info.plist */; };
 		C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D86592130808D00EDB3F2 /* registerViewController.swift */; };
@@ -116,6 +118,8 @@
 		C916969A214D22F6002EECEF /* teamIdConfirmWrongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdConfirmWrongViewController.swift; sourceTree = "<group>"; };
 		C923A41D2130D7E70007D784 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C923A4222130F23D0007D784 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C92C500E217F6CB00064F3D8 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		C92C500F217F6CB00064F3D8 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		C9338E90215BE1C40008D2B5 /* profileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileEditViewController.swift; sourceTree = "<group>"; };
 		C93D86592130808D00EDB3F2 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
 		C96247452139D5C000BC7C69 /* mainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainPageViewController.swift; sourceTree = "<group>"; };
@@ -271,6 +275,8 @@
 				C99C78E7217047B500B70293 /* commentTableViewCell.xib */,
 				C9B9438821731E8D00A3B43A /* replyTableViewCell.swift */,
 				C9B9438921731E8D00A3B43A /* replyTableViewCell.xib */,
+				C92C500E217F6CB00064F3D8 /* ScheduleTableViewCell.swift */,
+				C92C500F217F6CB00064F3D8 /* ScheduleTableViewCell.xib */,
 				BE22618E215DFCFD006C777F /* XibView.swift */,
 				BE22618C215DFC26006C777F /* XibView.xib */,
 			);
@@ -399,6 +405,7 @@
 				BE3C84B1212BF7AD0053EFE2 /* Assets.xcassets in Resources */,
 				BE3C84AF212BF7AB0053EFE2 /* Main.storyboard in Resources */,
 				C99C78E9217047B500B70293 /* commentTableViewCell.xib in Resources */,
+				C92C5011217F6CB00064F3D8 /* ScheduleTableViewCell.xib in Resources */,
 				BE22618D215DFC27006C777F /* XibView.xib in Resources */,
 				C9CA480E21632C0B00D9C142 /* userTableViewCell.xib in Resources */,
 				C923A41E2130D7E80007D784 /* GoogleService-Info.plist in Resources */,
@@ -564,6 +571,7 @@
 				C9104A4E216934EC00FDED0E /* diaryFromTimelineViewController.swift in Sources */,
 				C9708B472143DDCD0013FD4C /* teamIdConfirmationViewController.swift in Sources */,
 				BE22618F215DFCFD006C777F /* XibView.swift in Sources */,
+				C92C5010217F6CB00064F3D8 /* ScheduleTableViewCell.swift in Sources */,
 				C9CA480D21632C0B00D9C142 /* userTableViewCell.swift in Sources */,
 				C916969B214D22F6002EECEF /* teamIdConfirmWrongViewController.swift in Sources */,
 				C963CD5E217640670081C9F5 /* testScrollViewController.swift in Sources */,

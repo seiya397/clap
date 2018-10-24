@@ -9,6 +9,20 @@ class scheduleViewController: UIViewController {
     @IBOutlet weak var pickedDate: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    let db = Firestore.firestore()
+    
+    var fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
+    
+    var teamIDFromFirebase: String = String()
+    
+    var startTimeArrForStart = [Any]()
+    var endTimeArrForStart = [Any]()
+    var scheduleArrForStart = [Any]()
+    
+    var startTimeArrForEnd = [Any]()
+    var endTimeArrForEnd = [Any]()
+    var scheduleArrForEnd = [Any]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -16,6 +30,8 @@ class scheduleViewController: UIViewController {
         calendar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "scheduleCell")
         
         currentDate(pickedDate)
         
@@ -53,9 +69,18 @@ extension scheduleViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let TodoCell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath)
-        TodoCell.textLabel!.text = ["1","1"][indexPath.row]
-        return TodoCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleTableViewCell
+        if startTimeArrForStart.isEmpty && endTimeArrForStart.isEmpty {
+            cell.commonInit(start: "", end: "", schedule: "")
+            return cell
+        } else {
+            cell.commonInit(start: startTimeArrForStart[indexPath.row] as! String, end: endTimeArrForStart[indexPath.row] as! String, schedule: scheduleArrForStart[indexPath.row] as! String)
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
 }
 
@@ -64,27 +89,25 @@ extension scheduleViewController: FSCalendarDelegate,FSCalendarDataSource,FSCale
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
         let selectDay = getDay(date)
-        pickedDate.text = "\(String(selectDay.1))月\(String(selectDay.2))日\(String(selectDay.3))曜日" //タプル
+        pickedDate.text = "\(String(selectDay.1))月\(String(selectDay.2))日\(String(selectDay.3))曜日"
+        let scheduleForDate = "\(String(selectDay.0))年\(String(selectDay.1))月\(String(selectDay.2))日"
+        getScheduleDate(date: scheduleForDate)
     }
     
-    // 祝日判定を行い結果を返すメソッド(True:祝日)
+    
     func judgeHoliday(_ date : Date) -> Bool {
-        //祝日判定用のカレンダークラスのインスタンス
         let tmpCalendar = Calendar(identifier: .gregorian)
         
-        // 祝日判定を行う日にちの年、月、日を取得
         let year = tmpCalendar.component(.year, from: date)
         let month = tmpCalendar.component(.month, from: date)
         let day = tmpCalendar.component(.day, from: date)
         
-        // CalculateCalendarLogic()：祝日判定のインスタンスの生成
         let holiday = CalculateCalendarLogic()
         return holiday.judgeJapaneseHoliday(year: year, month: month, day: day)
     }
-    // date型 -> 年月日をIntで取得
+    
     func getDay(_ date:Date) -> (Int,Int,Int,String){
         let tmpCalendar = Calendar(identifier: .gregorian)
-        //曜日追加
         let Component = tmpCalendar.component(.weekday, from: date)
         let weekName = Component - 1
         let formatter = DateFormatter()
@@ -97,27 +120,23 @@ extension scheduleViewController: FSCalendarDelegate,FSCalendarDataSource,FSCale
         return (year,month,day,formatter.shortWeekdaySymbols[weekName])
     }
     
-    //曜日判定(日曜日:1 〜 土曜日:7)
     func getWeekIdx(_ date: Date) -> Int{
         let tmpCalendar = Calendar(identifier: .gregorian)
         return tmpCalendar.component(.weekday, from: date)
     }
     
-    // 土日や祝日の日の文字色を変える
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         
-        //祝日判定をする（祝日は赤色で表示する）
         if self.judgeHoliday(date){
             return UIColor.red
         }
         
-        //土日の判定を行う（土曜日は青色、日曜日は赤色で表示する）
         let weekday = self.getWeekIdx(date)
-        if weekday == 1 {   //日曜日
+        if weekday == 1 {
             return UIColor.red
             
         }
-        else if weekday == 7 {  //土曜日
+        else if weekday == 7 {
             return UIColor.blue
         }
         
@@ -152,9 +171,70 @@ private extension scheduleViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func getScheDuleDate() {
+    func getScheduleDate(date: Any) {
         
+        startTimeArrForStart = []
+        endTimeArrForStart = []
+        scheduleArrForStart = []
+        
+//        startTimeArrForEnd = []
+//        endTimeArrForEnd = []
+//        scheduleArrForEnd = []
+        
+        self.db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot, error) in
+            guard let document = snapshot else {
+                print("erorr2 \(String(describing: error))")
+                return
+            }
+            guard let data = document.data() else { return }
+            self.teamIDFromFirebase = data["teamID"] as? String ?? ""
+            self.db
+                .collection("teams")
+                .document(self.teamIDFromFirebase)
+                .collection("schedule")
+                .whereField("date_start", isEqualTo: date)
+                .getDocuments() { (querySnapshot, err) in
+                if err != nil {
+                    print("scheduleを取得できませんでした")
+                    return
+                } else {
+                    for document in querySnapshot!.documents {
+                        guard let dataFromFirebase: [String : Any] = document.data() else { return }
+                        let startTimeFromFirebase = dataFromFirebase["time_start"] ?? ""
+                        let endTimeFromFirebase = dataFromFirebase["time_end"] ?? ""
+                        let scheduleFromFirebase = dataFromFirebase["event_title"] ?? ""
+                        self.startTimeArrForStart.append(startTimeFromFirebase)
+                        self.endTimeArrForStart.append(endTimeFromFirebase)
+                        self.scheduleArrForStart.append(scheduleFromFirebase)
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+            
+//            self.db
+//                .collection("teams")
+//                .document(self.teamIDFromFirebase)
+//                .collection("schedule")
+//                .whereField("date_end", isEqualTo: date)
+//                .getDocuments() { (querySnapshot, err) in
+//                    if err != nil {
+//                        print("scheduleを取得できませんでした")
+//                        return
+//                    } else {
+//                        for document in querySnapshot!.documents {
+//                            guard let dataFromFirebase: [String : Any] = document.data() else { return }
+//                            let startTimeFromFirebase = dataFromFirebase["time_start"] ?? ""
+//                            let endTimeFromFirebase = dataFromFirebase["time_end"] ?? ""
+//                            let scheduleFromFirebase = dataFromFirebase["event_title"] ?? ""
+//                            self.startTimeArrForEnd.append(startTimeFromFirebase)
+//                            self.endTimeArrForEnd.append(endTimeFromFirebase)
+//                            self.scheduleArrForEnd.append(scheduleFromFirebase)
+//                            self.tableView.reloadData()
+//                        }
+//                    }
+//            }
+        }
     }
 }
 
-//日付でfirebase探しに行って、その中のスケジュールデータを表示
+
