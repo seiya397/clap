@@ -15,8 +15,10 @@ class ScheduleTableViewCell: UITableViewCell {
 
     }
     
-    func commonInit(schedule: String) {
+    func commonInit(schedule: String, startTime: String, endTime: String) {
         self.scheduleLabel.text = schedule
+        self.startTime.text = startTime
+        self.endTime.text = endTime
     }
 }
 
