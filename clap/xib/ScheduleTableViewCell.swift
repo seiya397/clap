@@ -1,10 +1,10 @@
 import UIKit
 
 class ScheduleTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var startTime: UILabel!
     @IBOutlet weak var endTime: UILabel!
-    @IBOutlet weak var schedule: UILabel!
+    @IBOutlet weak var scheduleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -15,10 +15,16 @@ class ScheduleTableViewCell: UITableViewCell {
 
     }
     
-    func commonInit(start: String, end: String, schedule: String) {
-        
-        self.startTime.text = start
-        self.endTime.text = end
-        self.schedule.text = schedule
+    func commonInit(schedule: String) {
+        self.scheduleLabel.text = schedule
     }
 }
+
+
+
+
+
+
+
+
+

@@ -3,28 +3,36 @@ import Firebase
 import FSCalendar
 import CalculateCalendarLogic
 
+struct DisplayEvent {
+    var event: String?
+}
+
 class scheduleViewController: UIViewController {
     
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var pickedDate: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    var startTimeArrForStart = [Any]()
+    var endTimeArrForStart = [Any]()
+    var scheduleArrForStart = [Any]()
+    
     let db = Firestore.firestore()
+    
+    var events = [DisplayEvent]()
     
     var fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
     
     var teamIDFromFirebase: String = String()
     
-    var startTimeArrForStart = [Any]()
-    var endTimeArrForStart = [Any]()
-    var scheduleArrForStart = [Any]()
-    
-    var startTimeArrForEnd = [Any]()
-    var endTimeArrForEnd = [Any]()
-    var scheduleArrForEnd = [Any]()
+    var timeIntervalArray: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
         
         calendar.dataSource = self
         calendar.delegate = self
@@ -42,7 +50,7 @@ class scheduleViewController: UIViewController {
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ja_JP")
-        formatter.dateFormat = "yyyy-MM-dd(EEE)"
+        formatter.dateFormat = "yyyy年MM月dd日"
         return formatter
     }()
     
@@ -65,18 +73,21 @@ class scheduleViewController: UIViewController {
 extension scheduleViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return scheduleArrForStart.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleTableViewCell
-        if startTimeArrForStart.isEmpty && endTimeArrForStart.isEmpty {
-            cell.commonInit(start: "", end: "", schedule: "")
-            return cell
+        if self.events.isEmpty {
+            print("empty")
+            events = [DisplayEvent(event: "スクジュールがありません")]
+            let nonSchedule = events[indexPath.row].event
+            cell.commonInit(schedule: nonSchedule!)
         } else {
-            cell.commonInit(start: startTimeArrForStart[indexPath.row] as! String, end: endTimeArrForStart[indexPath.row] as! String, schedule: scheduleArrForStart[indexPath.row] as! String)
-            return cell
+            let resultEvents = events[indexPath.row].event
+            cell.commonInit(schedule: resultEvents as! String)
         }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -92,6 +103,7 @@ extension scheduleViewController: FSCalendarDelegate,FSCalendarDataSource,FSCale
         pickedDate.text = "\(String(selectDay.1))月\(String(selectDay.2))日\(String(selectDay.3))曜日"
         let scheduleForDate = "\(String(selectDay.0))年\(String(selectDay.1))月\(String(selectDay.2))日"
         getScheduleDate(date: scheduleForDate)
+        tableView.reloadData()
     }
     
     
@@ -151,6 +163,12 @@ extension scheduleViewController: FSCalendarDelegate,FSCalendarDataSource,FSCale
         return  Calendar.current.date(byAdding: .month, value: -1, to:date)!
     }
     
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        let dateString = dateFormatter.string(from: date)
+//        getScheduleDate(date: dateString)
+        return 0
+    }
+    
 }
 
 
@@ -171,15 +189,23 @@ private extension scheduleViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func getScheduleDate(date: Any) {
-        
+    func generateTimeRange(date: String) -> [String]? {
+        var result: [String] = []
+        guard var startTime = dateFormatter.date(from: date) else { return nil }
+        guard let endTime = dateFormatter.date(from: date) else { return nil }
+
+        while startTime <= endTime {
+            result.append(dateFormatter.string(from: startTime))
+            startTime = Calendar.current.date(byAdding: .day, value: 1, to: startTime)!
+        }
+        return result
+    }
+    
+    func getScheduleDate(date: String) {
+        events = []
         startTimeArrForStart = []
         endTimeArrForStart = []
         scheduleArrForStart = []
-        
-//        startTimeArrForEnd = []
-//        endTimeArrForEnd = []
-//        scheduleArrForEnd = []
         
         self.db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot, error) in
             guard let document = snapshot else {
@@ -188,6 +214,7 @@ private extension scheduleViewController {
             }
             guard let data = document.data() else { return }
             self.teamIDFromFirebase = data["teamID"] as? String ?? ""
+            
             self.db
                 .collection("teams")
                 .document(self.teamIDFromFirebase)
@@ -198,43 +225,28 @@ private extension scheduleViewController {
                     print("scheduleを取得できませんでした")
                     return
                 } else {
+                    var i = 0
                     for document in querySnapshot!.documents {
-                        guard let dataFromFirebase: [String : Any] = document.data() else { return }
-                        let startTimeFromFirebase = dataFromFirebase["time_start"] ?? ""
-                        let endTimeFromFirebase = dataFromFirebase["time_end"] ?? ""
+                        print("????????????????????????")
+                        let dataFromFirebase: [String : Any] = document.data()
+                        print(dataFromFirebase)
+                        let startTimeFromFirebase = dataFromFirebase["date_start"] ?? ""
+                        let endTimeFromFirebase = dataFromFirebase["date_end"] ?? ""
                         let scheduleFromFirebase = dataFromFirebase["event_title"] ?? ""
                         self.startTimeArrForStart.append(startTimeFromFirebase)
                         self.endTimeArrForStart.append(endTimeFromFirebase)
-                        self.scheduleArrForStart.append(scheduleFromFirebase)
+                        self.scheduleArrForStart.append(scheduleFromFirebase as! String)
+                        self.events.append(DisplayEvent(event: self.scheduleArrForStart[i] as! String))
                         self.tableView.reloadData()
+                        i += 1
+                        print(self.events)
                     }
                 }
             }
-            
-//            self.db
-//                .collection("teams")
-//                .document(self.teamIDFromFirebase)
-//                .collection("schedule")
-//                .whereField("date_end", isEqualTo: date)
-//                .getDocuments() { (querySnapshot, err) in
-//                    if err != nil {
-//                        print("scheduleを取得できませんでした")
-//                        return
-//                    } else {
-//                        for document in querySnapshot!.documents {
-//                            guard let dataFromFirebase: [String : Any] = document.data() else { return }
-//                            let startTimeFromFirebase = dataFromFirebase["time_start"] ?? ""
-//                            let endTimeFromFirebase = dataFromFirebase["time_end"] ?? ""
-//                            let scheduleFromFirebase = dataFromFirebase["event_title"] ?? ""
-//                            self.startTimeArrForEnd.append(startTimeFromFirebase)
-//                            self.endTimeArrForEnd.append(endTimeFromFirebase)
-//                            self.scheduleArrForEnd.append(scheduleFromFirebase)
-//                            self.tableView.reloadData()
-//                        }
-//                    }
-//            }
         }
     }
 }
+
+
 
 
