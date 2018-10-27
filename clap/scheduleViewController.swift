@@ -22,25 +22,21 @@ class scheduleViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     //開始日タップ用
+    var startEvents = [StartEvent]()
     var startTimeArrForStart = [Any]()
     var endTimeArrForStart = [Any]()
     var scheduleArrForStart = [Any]()
     //終了日タップ用
+    var endEvents = [EndEvent]()
     var startTimeArrForEnd = [Any]()
     var endTimeArrForEnd = [Any]()
     var scheduleArrForEnd = [Any]()
     
     let db = Firestore.firestore()
-    
-    var startEvents = [StartEvent]()
-    
-    var endEvents = [EndEvent]()
-    
     var fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
-    
     var teamIDFromFirebase: String = String()
-    
     var timeIntervalArray: [String] = []
+    var dotDisplayArr = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,7 +118,7 @@ extension scheduleViewController: FSCalendarDelegate,FSCalendarDataSource,FSCale
         pickedDate.text = "\(String(selectDay.1))月\(String(selectDay.2))日\(String(selectDay.3))曜日"
         let scheduleForDate = "\(String(selectDay.0))年\(String(selectDay.1))月\(String(selectDay.2))日"
         getStartScheduleDate(date: scheduleForDate)
-        getEndScheduleDate(date: scheduleForDate)
+//        getEndScheduleDate(date: scheduleForDate)
         tableView.reloadData()
     }
     
@@ -184,10 +180,10 @@ extension scheduleViewController: FSCalendarDelegate,FSCalendarDataSource,FSCale
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let dateString = dateFormatter.string(from: date)
+        var dateForDot = dateFormatter.string(from: date)
+        getScheduleDot(date: dateForDot)
         return 0
     }
-    
 }
 
 
@@ -219,6 +215,50 @@ private extension scheduleViewController {
         }
         return result
     }
+    
+    func getScheduleDot(date: String) -> () -> Int {
+        self.db
+            .collection("users")
+            .document(fireAuthUID)
+            .addSnapshotListener { (snapshot, error) in
+            guard let document = snapshot else {
+                print("erorr2 \(String(describing: error))")
+                return
+            }
+            guard let data = document.data() else { return }
+            self.teamIDFromFirebase = data["teamID"] as? String ?? ""
+            
+            func getReturn() {
+                self.db
+                    .collection("teams")
+                    .document(self.teamIDFromFirebase)
+                    .collection("schedule")
+                    .whereField("date_start", isEqualTo: date)
+                    .getDocuments() { (querySnapshot, err) -> Int in
+                    if err != nil {
+                        print("scheduleを取得できませんでした")
+                        return
+                    } else {
+                        var i = 0
+                        for document in querySnapshot!.documents {
+                            let dataFromFirebase: [String : Any] = document.data()
+                            let startDateFromFirebase = dataFromFirebase["date_start"] ?? ""
+                            self.dotDisplayArr.append(startDateFromFirebase as! String)
+                            i += 1
+                        }
+                    }
+                    for dateString in self.dotDisplayArr {
+                        if date == dateString {
+                            return 1
+                        } else {
+                            return 0
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     
     func getStartScheduleDate(date: String) {
         startEvents = []
@@ -261,60 +301,58 @@ private extension scheduleViewController {
                         self.startEvents.append(StartEvent(event: self.scheduleArrForStart[i] as! String, startTime: self.startTimeArrForStart[i] as! String, endTime: self.endTimeArrForStart[i] as! String))
                         self.tableView.reloadData()
                         i += 1
-                        print("======================")
-                        print(self.startEvents)
                     }
                 }
             }
         }
     }
     
-    func getEndScheduleDate(date: String) {
-        endEvents = []
-        startTimeArrForStart = []
-        endTimeArrForStart = []
-        scheduleArrForStart = []
-        
-        self.db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot, error) in
-            guard let document = snapshot else {
-                print("erorr2 \(String(describing: error))")
-                return
-            }
-            guard let data = document.data() else { return }
-            self.teamIDFromFirebase = data["teamID"] as? String ?? ""
-            
-            self.db
-                .collection("teams")
-                .document(self.teamIDFromFirebase)
-                .collection("schedule")
-                .whereField("date_start", isEqualTo: date)
-                .getDocuments() { (querySnapshot, err) in
-                    if err != nil {
-                        print("scheduleを取得できませんでした")
-                        return
-                } else {
-                    var i = 0
-                    for document in querySnapshot!.documents {
-                        let dataFromFirebase: [String : Any] = document.data()
-                        let startTimeFromFirebase = dataFromFirebase["time_start"] ?? ""
-                        let endTimeFromFirebase = dataFromFirebase["time_end"] ?? ""
-                        let scheduleFromFirebase = dataFromFirebase["event_title"] ?? ""
-                        self.startTimeArrForEnd.append(startTimeFromFirebase)
-                        self.endTimeArrForStart.append(endTimeFromFirebase)
-                        self.endTimeArrForEnd.append(scheduleFromFirebase as! String)
-                        print("~~~~~~~~~~~~~~~~~~~~")
-                        print(self.startTimeArrForEnd)
-                        print(self.scheduleArrForEnd)
-                        self.endEvents.append(EndEvent(event: self.scheduleArrForEnd[i] as! String, startTime: self.startTimeArrForEnd[i] as! String, endTime: self.endTimeArrForEnd[i] as! String))
-                        self.tableView.reloadData()
-                        i += 1
-                        print("??????????????????/")
-                        print(self.endEvents)
-                    }
-                }
-            }
-        }
-    }
+//    func getEndScheduleDate(date: String) {
+//        endEvents = []
+//        startTimeArrForStart = []
+//        endTimeArrForStart = []
+//        scheduleArrForStart = []
+//
+//        self.db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot, error) in
+//            guard let document = snapshot else {
+//                print("erorr2 \(String(describing: error))")
+//                return
+//            }
+//            guard let data = document.data() else { return }
+//            self.teamIDFromFirebase = data["teamID"] as? String ?? ""
+//
+//            self.db
+//                .collection("teams")
+//                .document(self.teamIDFromFirebase)
+//                .collection("schedule")
+//                .whereField("date_start", isEqualTo: date)
+//                .getDocuments() { (querySnapshot, err) in
+//                    if err != nil {
+//                        print("scheduleを取得できませんでした")
+//                        return
+//                } else {
+//                    var i = 0
+//                    for document in querySnapshot!.documents {
+//                        let dataFromFirebase: [String : Any] = document.data()
+//                        let startTimeFromFirebase = dataFromFirebase["time_start"] ?? ""
+//                        let endTimeFromFirebase = dataFromFirebase["time_end"] ?? ""
+//                        let scheduleFromFirebase = dataFromFirebase["event_title"] ?? ""
+//                        self.startTimeArrForEnd.append(startTimeFromFirebase)
+//                        self.endTimeArrForStart.append(endTimeFromFirebase)
+//                        self.endTimeArrForEnd.append(scheduleFromFirebase as! String)
+//                        print("~~~~~~~~~~~~~~~~~~~~")
+//                        print(self.startTimeArrForEnd)
+//                        print(self.scheduleArrForEnd)
+//                        self.endEvents.append(EndEvent(event: self.scheduleArrForEnd[i] as! String, startTime: self.startTimeArrForEnd[i] as! String, endTime: self.endTimeArrForEnd[i] as! String))
+//                        self.tableView.reloadData()
+//                        i += 1
+//                        print("??????????????????/")
+//                        print(self.endEvents)
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
 
 
