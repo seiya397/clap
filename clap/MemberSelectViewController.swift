@@ -6,13 +6,13 @@ class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.gray
         
         let collectionView = UICollectionView(frame: CGRect(x: 0, y: statusBsr, width: self.view.frame.width, height: self.view.frame.size.height - statusBsr), collectionViewLayout: UICollectionViewFlowLayout())
         
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = UIColor.gray
         
-        let nibName = UINib(nibName: "memberCell", bundle: nil)
+        let nibName = UINib(nibName: "memberCollectionViewCell", bundle: nil)
         collectionView.register(nibName, forCellWithReuseIdentifier: "memberCell")
         
         collectionView.delegate = self
@@ -43,10 +43,11 @@ class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memberCell", for: indexPath) as! memberCollectionViewCell
+//        cell.backgroundColor = UIColor.white
+//        for subview in cell.contentView.subviews {
+//            subview.removeFromSuperview()
+//        }
         cell.backgroundColor = UIColor.white
-        for subview in cell.contentView.subviews {
-            subview.removeFromSuperview()
-        }
         cell.memberImage.image = UIImage(named: "weight")
         cell.memberTitle.text = "Item \(indexPath.row)"
         return cell
