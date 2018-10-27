@@ -38,6 +38,8 @@ class scheduleViewController: UIViewController {
     var timeIntervalArray: [String] = []
     var dotDisplayArr = [String]()
     
+    let userDefaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +51,7 @@ class scheduleViewController: UIViewController {
         calendar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+        userDefaults.removeSuite(named: "arrForDotDisplay")
         
         tableView.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "scheduleCell")
         
@@ -181,7 +184,13 @@ extension scheduleViewController: FSCalendarDelegate,FSCalendarDataSource,FSCale
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         var dateForDot = dateFormatter.string(from: date)
-        getScheduleDot(date: dateForDot)
+            self.getScheduleDot(date: dateForDot)
+                let dotArr = self.userDefaults.array(forKey: "arrForDotDisplay") as! [String]
+            for dateString in dotArr {
+                if dateForDot == dateString {
+                    return 1
+                }
+            }
         return 0
     }
 }
@@ -216,7 +225,7 @@ private extension scheduleViewController {
         return result
     }
     
-    func getScheduleDot(date: String) -> () -> Int {
+    func getScheduleDot(date: String) {
         self.db
             .collection("users")
             .document(fireAuthUID)
@@ -228,32 +237,28 @@ private extension scheduleViewController {
             guard let data = document.data() else { return }
             self.teamIDFromFirebase = data["teamID"] as? String ?? ""
             
-            func getReturn() {
-                self.db
-                    .collection("teams")
-                    .document(self.teamIDFromFirebase)
-                    .collection("schedule")
-                    .whereField("date_start", isEqualTo: date)
-                    .getDocuments() { (querySnapshot, err) -> Int in
-                    if err != nil {
-                        print("scheduleを取得できませんでした")
-                        return
-                    } else {
-                        var i = 0
-                        for document in querySnapshot!.documents {
-                            let dataFromFirebase: [String : Any] = document.data()
-                            let startDateFromFirebase = dataFromFirebase["date_start"] ?? ""
-                            self.dotDisplayArr.append(startDateFromFirebase as! String)
-                            i += 1
-                        }
+            self.db
+                .collection("teams")
+                .document(self.teamIDFromFirebase)
+                .collection("schedule")
+                .whereField("date_start", isEqualTo: date)
+                .getDocuments() { (querySnapshot, err) in
+                if err != nil {
+                    print("scheduleを取得できませんでした")
+                    return
+                } else {
+                    var i = 0
+                    for document in querySnapshot!.documents {
+                        let dataFromFirebase: [String : Any] = document.data()
+                        let startDateFromFirebase = dataFromFirebase["date_start"] ?? ""
+                        let endDateFromFirebase = dataFromFirebase["date_end"] ?? ""
+                        self.dotDisplayArr.append(startDateFromFirebase as! String)
+                        self.dotDisplayArr.append(endDateFromFirebase as! String)
+                        i += 1
                     }
-                    for dateString in self.dotDisplayArr {
-                        if date == dateString {
-                            return 1
-                        } else {
-                            return 0
-                        }
-                    }
+                    self.dotDisplayArr as NSArray
+                    self.userDefaults.set(self.dotDisplayArr, forKey: "arrForDotDisplay")
+                    self.userDefaults.synchronize()
                 }
             }
         }

@@ -36,6 +36,10 @@ class planController: UIViewController {
         setupUIForEnd()
         setupTimeUIForStart()
         setupTimeUIForEnd()
+        
+        let userDefaults = UserDefaults.standard
+        print("222222222222222")
+        print(userDefaults.array(forKey: "arrForDotDisplay") as! [String])
     }
     
     func setupUIForStart() {
