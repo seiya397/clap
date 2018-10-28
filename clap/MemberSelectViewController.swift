@@ -37,7 +37,7 @@ class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 24
+        return memberData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -58,9 +58,11 @@ class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memberCell", for: indexPath) as! memberCollectionViewCell
+        if indexPath.row < memberData.count {
             let cellData = memberData[indexPath.row]
             cell.memberImage.sd_setImage(with: cellData.image)
             cell.memberTitle.text = cellData.text
+        }
         return cell
     }
 }
@@ -87,6 +89,7 @@ private extension MemberSelectViewController {
                         self.memberTextArr.append((documentData["name"] as? String)!)
                         self.memberData.append(MemberData(image: URL(string: self.memberImageArr[i] as! String), text: self.memberTextArr[i] as! String))
                         i += 1
+                        collectionView.reloadData()
                     }
                 }
             }
