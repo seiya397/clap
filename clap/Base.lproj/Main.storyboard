@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jjl-pa-X0B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Exz-gh-qmw">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -315,6 +315,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yEa-v9-Vvx">
+                                <rect key="frame" x="286" y="611" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="group:" destination="rBC-2k-Vg1" eventType="touchUpInside" id="dAm-WS-X8N"/>
+                                    <segue destination="jjl-pa-X0B" kind="presentation" identifier="group" id="mwd-WU-TFP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -326,6 +336,7 @@
                             <constraint firstItem="u5E-8V-Azk" firstAttribute="leading" secondItem="KUY-xQ-ckj" secondAttribute="leading" constant="40" id="5fs-L4-LTT"/>
                             <constraint firstItem="Vpb-OQ-ZCc" firstAttribute="top" secondItem="WlU-C0-IAx" secondAttribute="bottom" constant="20" id="5kf-JM-SW9"/>
                             <constraint firstItem="itP-Rn-CeO" firstAttribute="leading" secondItem="UIb-48-vFE" secondAttribute="leading" constant="20" id="5q2-hR-CvM"/>
+                            <constraint firstItem="KUY-xQ-ckj" firstAttribute="trailing" secondItem="yEa-v9-Vvx" secondAttribute="trailing" constant="82" id="7h2-z6-wrm"/>
                             <constraint firstItem="itP-Rn-CeO" firstAttribute="top" secondItem="Vpb-OQ-ZCc" secondAttribute="bottom" constant="20" id="85m-24-dSC"/>
                             <constraint firstAttribute="trailing" secondItem="x4p-4O-dfz" secondAttribute="trailing" constant="20" id="9F1-dc-Yut"/>
                             <constraint firstItem="x4p-4O-dfz" firstAttribute="leading" secondItem="UIb-48-vFE" secondAttribute="leading" constant="20" id="Afc-PA-gQF"/>
@@ -369,6 +380,7 @@
                             <constraint firstItem="WlU-C0-IAx" firstAttribute="top" secondItem="u5E-8V-Azk" secondAttribute="bottom" constant="20" id="uP7-eH-oZy"/>
                             <constraint firstItem="lGu-XE-jU4" firstAttribute="leading" secondItem="KUY-xQ-ckj" secondAttribute="leading" constant="40" id="vvo-FT-e3t"/>
                             <constraint firstItem="vof-Lp-ig9" firstAttribute="leading" secondItem="UIb-48-vFE" secondAttribute="leading" constant="20" id="wY1-G9-t15"/>
+                            <constraint firstItem="KUY-xQ-ckj" firstAttribute="bottom" secondItem="yEa-v9-Vvx" secondAttribute="bottom" constant="46" id="yop-rw-iGB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KUY-xQ-ckj"/>
                     </view>
@@ -1323,7 +1335,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tdc-kK-BKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4189" y="979"/>
+            <point key="canvasLocation" x="2358" y="580"/>
         </scene>
         <!--Comment Reply View Controller-->
         <scene sceneID="NgU-6D-KpK">
@@ -3344,7 +3356,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
         <image name="weight" width="409.60000610351562" height="409.60000610351562"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="B9F-4i-KET"/>
+        <segue reference="tD7-by-SRa"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

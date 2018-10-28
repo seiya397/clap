@@ -203,6 +203,9 @@ class myPageViewController: UIViewController{
         self.present(imagePicker, animated: true, completion: nil)
     }
     
+    @IBAction func group(_ sender: Any) {
+        performSegue(withIdentifier: "group", sender: nil)
+    }
 }
 
 extension myPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
