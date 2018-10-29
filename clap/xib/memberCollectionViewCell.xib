@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mtK-6i-Dqd">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SyP-sw-7M8">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SyP-sw-7M8">
                                 <rect key="frame" x="20" y="8" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="DdG-mv-t3w"/>
@@ -50,15 +50,32 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDl-6r-fS9">
+                                <rect key="frame" x="20" y="8" width="60" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="TAQ-eQ-vPd"/>
+                                    <constraint firstAttribute="height" constant="60" id="bpK-qe-OMj"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SyP-sw-7M8" firstAttribute="leading" secondItem="mtK-6i-Dqd" secondAttribute="leading" constant="20" id="0Mu-sy-Ozq"/>
                             <constraint firstAttribute="height" constant="100" id="1TC-sa-FWn"/>
                             <constraint firstItem="ece-1U-xiq" firstAttribute="leading" secondItem="mtK-6i-Dqd" secondAttribute="leading" constant="20" id="8fD-Q9-wrh"/>
+                            <constraint firstAttribute="trailing" secondItem="lDl-6r-fS9" secondAttribute="trailing" constant="20" id="C1e-MN-c2p"/>
+                            <constraint firstItem="ece-1U-xiq" firstAttribute="top" secondItem="lDl-6r-fS9" secondAttribute="bottom" constant="8" id="J8I-f3-gvG"/>
                             <constraint firstItem="ece-1U-xiq" firstAttribute="top" secondItem="SyP-sw-7M8" secondAttribute="bottom" constant="8" id="Zlz-0T-ScL"/>
                             <constraint firstAttribute="width" constant="100" id="gWb-kG-pga"/>
                             <constraint firstAttribute="trailing" secondItem="SyP-sw-7M8" secondAttribute="trailing" constant="20" id="gcw-hR-eXZ"/>
+                            <constraint firstItem="lDl-6r-fS9" firstAttribute="top" secondItem="mtK-6i-Dqd" secondAttribute="top" constant="8" id="o2s-yU-hVF"/>
+                            <constraint firstItem="lDl-6r-fS9" firstAttribute="leading" secondItem="mtK-6i-Dqd" secondAttribute="leading" constant="20" id="qAc-qf-e2h"/>
                             <constraint firstItem="bdX-sG-pji" firstAttribute="leading" secondItem="mtK-6i-Dqd" secondAttribute="leading" id="w42-xX-FuJ"/>
                             <constraint firstItem="bdX-sG-pji" firstAttribute="top" secondItem="mtK-6i-Dqd" secondAttribute="top" constant="67" id="w7n-v9-Lxy"/>
                             <constraint firstItem="SyP-sw-7M8" firstAttribute="top" secondItem="mtK-6i-Dqd" secondAttribute="top" constant="8" id="yYf-vB-Pz0"/>
@@ -75,6 +92,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
+                <outlet property="WrappingImage" destination="lDl-6r-fS9" id="0qH-Rj-OGT"/>
                 <outlet property="memberImage" destination="SyP-sw-7M8" id="GO7-2e-AK8"/>
                 <outlet property="memberTitle" destination="ece-1U-xiq" id="g3Y-l3-lLS"/>
                 <outlet property="memberView" destination="mtK-6i-Dqd" id="Cxa-tc-aV3"/>

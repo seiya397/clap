@@ -12,6 +12,7 @@ struct MemberData {
 class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     let statusBsr = UIApplication.shared.statusBarFrame.height
     
+    @IBOutlet weak var collectionView: UICollectionView!
     let db = Firestore.firestore()
     var teamIDFromFirebase: String = ""
     var fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
@@ -23,16 +24,12 @@ class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: statusBsr, width: self.view.frame.width, height: self.view.frame.size.height - statusBsr), collectionViewLayout: UICollectionViewFlowLayout())
-        
+        self.view.backgroundColor = UIColor.white
+        collectionView.backgroundColor = UIColor.white
         let nibName = UINib(nibName: "memberCollectionViewCell", bundle: nil)
         collectionView.register(nibName, forCellWithReuseIdentifier: "memberCell")
-        
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        self.view.addSubview(collectionView)
         getMemberData(collectionView: collectionView)
     }
     
@@ -62,6 +59,7 @@ class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UI
             let cellData = memberData[indexPath.row]
             cell.memberImage.sd_setImage(with: cellData.image)
             cell.memberTitle.text = cellData.text
+            cell.defaultColor()
         }
         return cell
     }

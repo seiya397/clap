@@ -22,10 +22,9 @@ class planController: UIViewController {
     @IBOutlet weak var getEndDate: UITextField!
     @IBOutlet weak var startTime: UITextField!
     @IBOutlet weak var endTime: UITextField!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let currentPickedDate = getDay(Date())
         
         getStartDate.text = "\(String(currentPickedDate.0))年\(String(currentPickedDate.1))月\(String(currentPickedDate.2))日"
