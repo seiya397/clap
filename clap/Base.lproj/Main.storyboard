@@ -1390,6 +1390,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="IZy-Me-mbm" id="glM-Gb-qy2"/>
+                        <outlet property="memberAddButton" destination="nKj-qk-nX5" id="XPu-Xf-UlK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tdc-kK-BKP" userLabel="First Responder" sceneMemberID="firstResponder"/>

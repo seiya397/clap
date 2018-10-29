@@ -14,6 +14,8 @@ class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UI
     let statusBsr = UIApplication.shared.statusBarFrame.height
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var memberAddButton: UIButton!
+    
     let db = Firestore.firestore()
     var teamIDFromFirebase: String = ""
     var fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
@@ -33,6 +35,7 @@ class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UI
         collectionView.register(nibName, forCellWithReuseIdentifier: "memberCell")
         collectionView.delegate = self
         collectionView.dataSource = self
+        memberAddButton.isHidden = true
         getMemberData(collectionView: collectionView)
     }
     
@@ -71,6 +74,7 @@ class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UI
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memberCell", for: indexPath) as! memberCollectionViewCell
         selectedCellData.append(memberData[indexPath.row].userID as! String)
+        memberAddButton.isHidden = false
         if selectedCellData.count > 1 {
             cell.isSelected = false
             return
