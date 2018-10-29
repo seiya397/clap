@@ -7,6 +7,7 @@ import SDWebImage
 struct MemberData {
     var image: URL?
     var text: String?
+    var userID: String?
 }
 
 class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -17,10 +18,12 @@ class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UI
     var teamIDFromFirebase: String = ""
     var fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
     var memberData = [MemberData]()
+    var bottomSafeAreaHeight: CGFloat = 0
     
     var memberImageArr = [Any]()
     var memberTextArr = [Any]()
     var memberUserIDArr = [Any]()
+    var selectedCellData = [Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,9 +62,21 @@ class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UI
             let cellData = memberData[indexPath.row]
             cell.memberImage.sd_setImage(with: cellData.image)
             cell.memberTitle.text = cellData.text
+            cell.userID.text = cellData.userID
             cell.defaultColor()
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memberCell", for: indexPath) as! memberCollectionViewCell
+        selectedCellData.append(memberData[indexPath.row].userID as! String)
+        if selectedCellData.count > 1 {
+            cell.isSelected = false
+            return
+        }
+        print(selectedCellData)
+        
     }
 }
 
@@ -85,7 +100,8 @@ private extension MemberSelectViewController {
                         guard var documentData: [String: Any] = document.data() else { return }
                         self.memberImageArr.append((documentData["image"] as? String)!)
                         self.memberTextArr.append((documentData["name"] as? String)!)
-                        self.memberData.append(MemberData(image: URL(string: self.memberImageArr[i] as! String), text: self.memberTextArr[i] as! String))
+                        self.memberUserIDArr.append((documentData["userID"] as? String)!)
+                        self.memberData.append(MemberData(image: URL(string: self.memberImageArr[i] as! String), text: self.memberTextArr[i] as! String, userID: self.memberUserIDArr[i] as! String))
                         i += 1
                         collectionView.reloadData()
                     }
