@@ -76,8 +76,12 @@ class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UI
             return
         }
         print(selectedCellData)
-        
     }
+    
+    @IBAction func memberAddButtonTapped(_ sender: Any) {
+        setMemberData(member: selectedCellData as! [String])
+    }
+    
 }
 
 
@@ -105,6 +109,33 @@ private extension MemberSelectViewController {
                         i += 1
                         collectionView.reloadData()
                     }
+                }
+            }
+        }
+    }
+    
+    private func setMemberData(member: [String]) {
+        let memberIDPerse = member[0]
+        
+        self.db.collection("users").document(memberIDPerse).addSnapshotListener { (snapshot3, error) in
+            guard let document3 = snapshot3 else {
+                print("erorr2 \(String(describing: error))")
+                return
+            }
+            guard let data = document3.data() else { return }
+            self.teamIDFromFirebase = data["teamID"] as? String ?? ""
+            let memberImage = data["image"] as? String ?? ""
+            let memberName = data["name"] as? String ?? ""
+            let setData = [
+                "image": memberImage,
+                "userID": memberIDPerse,
+                "name": memberName,
+            ]
+            self.db.collection("group").document(self.teamIDFromFirebase).collection(self.fireAuthUID).document(memberIDPerse).setData(setData) { err in
+                if err != nil {
+                    return
+                } else {
+                    print("success")
                 }
             }
         }
