@@ -27,15 +27,15 @@ class LoginViewController: UIViewController {
         //placeholderの色変更、下線追加
         commonMailaddress.attributedPlaceholder = NSAttributedString(string: "メールアドレス", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         commonPassword.attributedPlaceholder = NSAttributedString(string: "パスワード", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
-        commonMailaddress.addBorderBottom(height: 1.0, color: UIColor.white)
-        commonPassword.addBorderBottom(height: 1.0, color: UIColor.white)
+        commonMailaddress.addBorderBottom(height: 0.5, color: UIColor.white)
+        commonPassword.addBorderBottom(height: 0.5, color: UIColor.white)
         
         // ボタンの装飾
-        let rgba = UIColor(red: 255/255, green: 212/255, blue: 24/255, alpha: 1.0) // ボタン背景色設定
+        let rgba = UIColor(red: 255/255, green: 189/255, blue: 0/255, alpha: 1.0) // ボタン背景色設定
         let loginText = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0) // ボタンタイトル色設定
         loginButton.frame = CGRect(x: 0, y: 0, width: 0, height: 46) //ボタンサイズ設定
         loginButton.backgroundColor = rgba // 背景色
-        loginButton.layer.cornerRadius = 15.0 // 角丸のサイズ
+        loginButton.layer.cornerRadius = 27.0 // 角丸のサイズ
         loginButton.setTitleColor(loginText, for: UIControlState.normal) // タイトルの色
     }
     
