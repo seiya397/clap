@@ -12,8 +12,12 @@ class memberCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    func defaultColor() {
+    func memberSelectDefaultColor() {
         WrappingImage.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.4)
+    }
+    
+    func groupDefaultColor() {
+        WrappingImage.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0)
     }
 
     override var isSelected: Bool {

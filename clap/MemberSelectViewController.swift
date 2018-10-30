@@ -66,7 +66,7 @@ class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UI
             cell.memberImage.sd_setImage(with: cellData.image)
             cell.memberTitle.text = cellData.text
             cell.userID.text = cellData.userID
-            cell.defaultColor()
+            cell.memberSelectDefaultColor()
         }
         return cell
     }
@@ -84,6 +84,7 @@ class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UI
     
     @IBAction func memberAddButtonTapped(_ sender: Any) {
         setMemberData(member: selectedCellData as! [String])
+        performSegue(withIdentifier: "goGroup", sender: nil)
     }
     
 }

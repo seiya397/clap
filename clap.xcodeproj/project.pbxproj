@@ -34,6 +34,7 @@
 		C9169697214CDE85002EECEF /* teamReplesentRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9169696214CDE85002EECEF /* teamReplesentRegisterViewController.swift */; };
 		C9169699214D229B002EECEF /* teamIdConfirmAgainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9169698214D229A002EECEF /* teamIdConfirmAgainViewController.swift */; };
 		C916969B214D22F6002EECEF /* teamIdConfirmWrongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C916969A214D22F6002EECEF /* teamIdConfirmWrongViewController.swift */; };
+		C91C48D821885B3800F75697 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91C48D721885B3800F75697 /* GroupViewController.swift */; };
 		C923A41E2130D7E80007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4202130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4212130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
@@ -119,6 +120,7 @@
 		C9169696214CDE85002EECEF /* teamReplesentRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamReplesentRegisterViewController.swift; sourceTree = "<group>"; };
 		C9169698214D229A002EECEF /* teamIdConfirmAgainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdConfirmAgainViewController.swift; sourceTree = "<group>"; };
 		C916969A214D22F6002EECEF /* teamIdConfirmWrongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdConfirmWrongViewController.swift; sourceTree = "<group>"; };
+		C91C48D721885B3800F75697 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		C923A41D2130D7E70007D784 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C923A4222130F23D0007D784 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C92C500E217F6CB00064F3D8 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			children = (
 				C9CA480A21632BE700D9C142 /* xib */,
 				BE3C84AD212BF7AB0053EFE2 /* Main.storyboard */,
+				C91C48D721885B3800F75697 /* GroupViewController.swift */,
 				C9DAB2712184ADBA00D0659F /* MemberSelectViewController.swift */,
 				C963CD5D217640670081C9F5 /* testScrollViewController.swift */,
 				C9104A4D216934EC00FDED0E /* diaryFromTimelineViewController.swift */,
@@ -576,6 +579,7 @@
 				BEF298A1213F092A00E75472 /* chatViewController.swift in Sources */,
 				BE226194215E108D006C777F /* timelineViewController.swift in Sources */,
 				BE3C84AC212BF7AB0053EFE2 /* ViewController.swift in Sources */,
+				C91C48D821885B3800F75697 /* GroupViewController.swift in Sources */,
 				C9624751213D383A00BC7C69 /* chatPageViewController.swift in Sources */,
 				C90648942133C6B80025AD44 /* userInfoRegisterViewController.swift in Sources */,
 				C9104A4E216934EC00FDED0E /* diaryFromTimelineViewController.swift in Sources */,
