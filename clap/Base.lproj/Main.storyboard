@@ -2280,7 +2280,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login" translatesAutoresizingMaskIntoConstraints="NO" id="HgD-Qn-UGx">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="HgD-Qn-UGx">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="2hn-VV-h1f">
@@ -2353,16 +2353,21 @@
                                     <action selector="commonLoginButton:" destination="Exz-gh-qmw" eventType="touchUpInside" id="EiG-xw-Puv"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clapLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Xok-lR-s4q">
+                                <rect key="frame" x="124.5" y="210.5" width="165" height="87"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qBa-bc-uRY" firstAttribute="centerX" secondItem="QG4-uV-W90" secondAttribute="centerX" id="3sO-xC-mWL"/>
                             <constraint firstAttribute="bottom" secondItem="HgD-Qn-UGx" secondAttribute="bottom" id="J92-97-tsD"/>
                             <constraint firstItem="2hn-VV-h1f" firstAttribute="centerX" secondItem="QG4-uV-W90" secondAttribute="centerX" id="KLE-7j-Ld1"/>
+                            <constraint firstItem="Xok-lR-s4q" firstAttribute="centerX" secondItem="QG4-uV-W90" secondAttribute="centerX" id="Lq2-kL-zeu"/>
                             <constraint firstItem="TxZ-jl-drG" firstAttribute="top" secondItem="qBa-bc-uRY" secondAttribute="bottom" constant="113" id="MMg-vj-Vc3"/>
                             <constraint firstItem="HgD-Qn-UGx" firstAttribute="centerX" secondItem="QG4-uV-W90" secondAttribute="centerX" id="P8q-Me-9vd"/>
                             <constraint firstItem="HgD-Qn-UGx" firstAttribute="top" secondItem="QG4-uV-W90" secondAttribute="top" id="Q38-G7-FIc"/>
                             <constraint firstItem="9oF-Id-cLE" firstAttribute="top" secondItem="TxZ-jl-drG" secondAttribute="bottom" constant="17" id="QbS-cz-QTF"/>
+                            <constraint firstItem="Xok-lR-s4q" firstAttribute="centerY" secondItem="QG4-uV-W90" secondAttribute="centerY" constant="-194" id="SH9-m9-jeE"/>
                             <constraint firstItem="dko-z1-IC6" firstAttribute="bottom" secondItem="9oF-Id-cLE" secondAttribute="bottom" constant="63" id="Unm-Dh-ioV"/>
                             <constraint firstItem="HgD-Qn-UGx" firstAttribute="leading" secondItem="dko-z1-IC6" secondAttribute="leading" id="W7D-Ib-msR"/>
                             <constraint firstItem="2hn-VV-h1f" firstAttribute="centerY" secondItem="QG4-uV-W90" secondAttribute="centerY" constant="30" id="i50-OR-nGW"/>
@@ -3018,7 +3023,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                             <constraint firstAttribute="width" constant="150" id="qtL-dl-Aby"/>
                                         </constraints>
                                         <color key="tintColor" red="1" green="0.83137254900000002" blue="0.094117647060000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="joinButton">
+                                        <state key="normal" image="teamJoingButton">
                                             <color key="titleShadowColor" red="1" green="0.83137254900000002" blue="0.094117647060000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -3072,6 +3077,9 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="vSV-IH-obQ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gLS-NP-8GF">
                                 <rect key="frame" x="100" y="498.5" width="214" height="106"/>
                                 <subviews>
@@ -3188,22 +3196,34 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                     <action selector="cancelButtonTapped:" destination="Vsl-Ot-XyV" eventType="touchUpInside" id="6vD-5W-Xo9"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="teamRegBar" translatesAutoresizingMaskIntoConstraints="NO" id="ngL-1F-mkk">
+                                <rect key="frame" x="0.0" y="78" width="414" height="48"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="dYR-V2-uNM" firstAttribute="trailing" secondItem="vSV-IH-obQ" secondAttribute="trailing" id="63e-S4-qi0"/>
+                            <constraint firstItem="dYR-V2-uNM" firstAttribute="trailing" secondItem="ngL-1F-mkk" secondAttribute="trailing" id="6Ff-52-TeW"/>
                             <constraint firstItem="TfS-pd-Rl9" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="78f-1b-vBU"/>
+                            <constraint firstItem="ngL-1F-mkk" firstAttribute="top" secondItem="dYR-V2-uNM" secondAttribute="top" constant="137" id="BAc-YV-ahN"/>
+                            <constraint firstItem="vSV-IH-obQ" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="Bn3-5H-ak1"/>
+                            <constraint firstItem="vSV-IH-obQ" firstAttribute="leading" secondItem="dYR-V2-uNM" secondAttribute="leading" id="CDB-ng-UYA"/>
                             <constraint firstItem="17g-vB-zdz" firstAttribute="top" secondItem="TfS-pd-Rl9" secondAttribute="bottom" constant="8" symbolic="YES" id="Cwy-EX-qKc"/>
                             <constraint firstItem="upm-43-XTO" firstAttribute="top" secondItem="Hhx-zk-WO2" secondAttribute="bottom" constant="35" id="G7j-L0-8tX"/>
                             <constraint firstItem="dYR-V2-uNM" firstAttribute="trailing" secondItem="gLS-NP-8GF" secondAttribute="trailing" constant="100" id="J2l-jl-4G8"/>
                             <constraint firstItem="gLS-NP-8GF" firstAttribute="top" secondItem="vdk-kx-u5E" secondAttribute="bottom" constant="40" id="N9e-sK-p0I"/>
+                            <constraint firstItem="vSV-IH-obQ" firstAttribute="centerY" secondItem="lLC-3b-Ke4" secondAttribute="centerY" id="UQd-d8-A61"/>
+                            <constraint firstItem="ngL-1F-mkk" firstAttribute="leading" secondItem="dYR-V2-uNM" secondAttribute="leading" id="WGA-Wt-9gy"/>
                             <constraint firstItem="vdk-kx-u5E" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="ZB3-am-lRn"/>
                             <constraint firstItem="TfS-pd-Rl9" firstAttribute="top" secondItem="dYR-V2-uNM" secondAttribute="top" constant="65" id="dcm-ya-qs7"/>
                             <constraint firstItem="vdk-kx-u5E" firstAttribute="top" secondItem="17g-vB-zdz" secondAttribute="bottom" constant="20" id="dz9-DX-FwX"/>
                             <constraint firstItem="gLS-NP-8GF" firstAttribute="leading" secondItem="dYR-V2-uNM" secondAttribute="leading" constant="100" id="eDt-LD-zWg"/>
                             <constraint firstItem="vdk-kx-u5E" firstAttribute="centerY" secondItem="lLC-3b-Ke4" secondAttribute="centerY" id="gFf-7h-aza"/>
+                            <constraint firstItem="ngL-1F-mkk" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="jyg-06-g7Z"/>
                             <constraint firstItem="Hhx-zk-WO2" firstAttribute="top" secondItem="gLS-NP-8GF" secondAttribute="bottom" constant="30" id="rMn-Mt-EKN"/>
                             <constraint firstItem="upm-43-XTO" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="rSH-QY-653"/>
                             <constraint firstItem="17g-vB-zdz" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="sFR-DS-j4s"/>
+                            <constraint firstItem="vSV-IH-obQ" firstAttribute="top" secondItem="lLC-3b-Ke4" secondAttribute="top" id="wuk-DS-DKZ"/>
                             <constraint firstItem="Hhx-zk-WO2" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="zfJ-Tf-DIh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dYR-V2-uNM"/>
@@ -3408,13 +3428,14 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
         <image name="athleteInfo" width="226" height="309"/>
         <image name="avatardefault_92824" width="512" height="512"/>
         <image name="background" width="375" height="812"/>
+        <image name="clapLogo" width="165" height="87"/>
         <image name="coach" width="409.60000610351562" height="409.60000610351562"/>
         <image name="group" width="409.60000610351562" height="409.60000610351562"/>
         <image name="groupInfo" width="270" height="287"/>
-        <image name="joinButton" width="150" height="150"/>
         <image name="lock" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="login" width="375" height="812"/>
         <image name="manager" width="383" height="374"/>
+        <image name="teamJoingButton" width="150" height="150"/>
+        <image name="teamRegBar" width="375" height="48"/>
         <image name="teamRegButton" width="151" height="150"/>
         <image name="weight" width="409.60000610351562" height="409.60000610351562"/>
     </resources>
