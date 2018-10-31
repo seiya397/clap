@@ -35,6 +35,7 @@
 		C9169699214D229B002EECEF /* teamIdConfirmAgainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9169698214D229A002EECEF /* teamIdConfirmAgainViewController.swift */; };
 		C916969B214D22F6002EECEF /* teamIdConfirmWrongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C916969A214D22F6002EECEF /* teamIdConfirmWrongViewController.swift */; };
 		C91C48D821885B3800F75697 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91C48D721885B3800F75697 /* GroupViewController.swift */; };
+		C91C48DA2189328D00F75697 /* SubmitedNewDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91C48D92189328D00F75697 /* SubmitedNewDiaryViewController.swift */; };
 		C923A41E2130D7E80007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4202130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
 		C923A4212130D86A0007D784 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C923A41D2130D7E70007D784 /* GoogleService-Info.plist */; };
@@ -121,6 +122,7 @@
 		C9169698214D229A002EECEF /* teamIdConfirmAgainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdConfirmAgainViewController.swift; sourceTree = "<group>"; };
 		C916969A214D22F6002EECEF /* teamIdConfirmWrongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamIdConfirmWrongViewController.swift; sourceTree = "<group>"; };
 		C91C48D721885B3800F75697 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		C91C48D92189328D00F75697 /* SubmitedNewDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitedNewDiaryViewController.swift; sourceTree = "<group>"; };
 		C923A41D2130D7E70007D784 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C923A4222130F23D0007D784 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C92C500E217F6CB00064F3D8 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			children = (
 				C9CA480A21632BE700D9C142 /* xib */,
 				BE3C84AD212BF7AB0053EFE2 /* Main.storyboard */,
+				C91C48D92189328D00F75697 /* SubmitedNewDiaryViewController.swift */,
 				C91C48D721885B3800F75697 /* GroupViewController.swift */,
 				C9DAB2712184ADBA00D0659F /* MemberSelectViewController.swift */,
 				C963CD5D217640670081C9F5 /* testScrollViewController.swift */,
@@ -592,6 +595,7 @@
 				C9DAB2792184C08200D0659F /* memberCollectionViewCell.swift in Sources */,
 				C963CD5E217640670081C9F5 /* testScrollViewController.swift in Sources */,
 				C962474F213D36AA00BC7C69 /* memberEvaluationViewController.swift in Sources */,
+				C91C48DA2189328D00F75697 /* SubmitedNewDiaryViewController.swift in Sources */,
 				BE3C84AA212BF7AB0053EFE2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

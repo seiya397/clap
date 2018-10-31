@@ -79,12 +79,19 @@ class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UI
             cell.isSelected = false
             return
         }
-        print(selectedCellData)
     }
     
     @IBAction func memberAddButtonTapped(_ sender: Any) {
-        setMemberData(member: selectedCellData as! [String])
-        performSegue(withIdentifier: "goGroup", sender: nil)
+        DispatchQueue.global(qos: .default).async {
+            self.setMemberData(member: self.selectedCellData as! [String])
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

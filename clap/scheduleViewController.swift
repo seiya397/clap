@@ -121,7 +121,9 @@ extension scheduleViewController: FSCalendarDelegate,FSCalendarDataSource,FSCale
         pickedDate.text = "\(String(selectDay.1))月\(String(selectDay.2))日\(String(selectDay.3))曜日"
         let scheduleForDate = "\(String(selectDay.0))年\(String(selectDay.1))月\(String(selectDay.2))日"
         getStartScheduleDate(date: scheduleForDate)
-//        getEndScheduleDate(date: scheduleForDate)
+//        getScheduleDate(date: scheduleForDate) { (<#[Any]#>, <#[Any]#>) in
+//            <#code#>
+//        }
         tableView.reloadData()
     }
     
@@ -213,15 +215,17 @@ private extension scheduleViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func generateTimeRange(date: String) -> [String]? {
+    func generateTimeRange(startDate: String, endDate: String) -> [String]? {
         var result: [String] = []
-        guard var startTime = dateFormatter.date(from: date) else { return nil }
-        guard let endTime = dateFormatter.date(from: date) else { return nil }
+        guard var start = dateFormatter.date(from: startDate) else { return nil }
+        guard let end = dateFormatter.date(from: endDate) else { return nil }
 
-        while startTime <= endTime {
-            result.append(dateFormatter.string(from: startTime))
-            startTime = Calendar.current.date(byAdding: .day, value: 1, to: startTime)!
+        while start <= end {
+            result.append(dateFormatter.string(from: start))
+            start = Calendar.current.date(byAdding: .day, value: 1, to: start)!
         }
+        print("???????????")
+        print(result)
         return result
     }
     
@@ -308,6 +312,41 @@ private extension scheduleViewController {
                         i += 1
                     }
                 }
+            }
+        }
+    }
+    
+    func getScheduleDate(date: Any, completion: @escaping ([Any], [Any])-> Void) {
+        self.db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot, error) in
+            guard let document = snapshot else {
+                print("erorr2 \(String(describing: error))")
+                return
+            }
+            guard let data = document.data() else { return }
+            self.teamIDFromFirebase = data["teamID"] as? String ?? ""
+            self.db
+                .collection("teams")
+                .document(self.teamIDFromFirebase)
+                .collection("schedule")
+                .whereField("date_start", isEqualTo: date)
+                .getDocuments() { (querySnapshot, err) in
+                    var startTime = [Any]()
+                    var endTime = [Any]()
+                    if err != nil {
+                        print("scheduleを取得できませんでした")
+                        return
+                    } else {
+                        for document in querySnapshot!.documents {
+                            guard let dataFromFirebase: [String : Any] = document.data() else { return }
+                            let startTimeFromFirebase = dataFromFirebase["date_start"] ?? ""
+                            let endTimeFromFirebase = dataFromFirebase["date_end"] ?? ""
+                            let scheduleFromFirebase = dataFromFirebase["event_title"] ?? ""
+                            startTime.append(startTimeFromFirebase)
+                            endTime.append(endTimeFromFirebase)
+                            self.tableView.reloadData()
+                        }
+                    }
+                    completion (startTime, endTime)
             }
         }
     }
