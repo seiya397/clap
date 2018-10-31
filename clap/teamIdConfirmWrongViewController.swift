@@ -10,6 +10,16 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
+//textfieldの下線追加
+extension UITextField {
+    func idBorderBottom(height: CGFloat, color: UIColor) {
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: self.frame.height - height, width: self.frame.width, height: height)
+        border.backgroundColor = color.cgColor
+        self.layer.addSublayer(border)
+    }
+}
+
 class teamIdConfirmWrongViewController: UIViewController {
 
     @IBOutlet weak var confirmTextAgain: UITextField!

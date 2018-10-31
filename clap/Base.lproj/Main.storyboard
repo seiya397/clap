@@ -71,7 +71,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teamRegIdBar" translatesAutoresizingMaskIntoConstraints="NO" id="V1l-hm-qwg">
-                                <rect key="frame" x="0.0" y="108" width="414" height="48"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="48"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="BYa-pB-dIq">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -2521,7 +2521,7 @@
                                     <constraint firstAttribute="height" constant="46" id="5a1-ZG-Vh3"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="252" id="sPb-l6-UaU"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="更新する">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -2536,7 +2536,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Osp-JR-RGi">
                                 <rect key="frame" x="156" y="763" width="102" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="キャンセル">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2546,14 +2546,14 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="passResetBar" translatesAutoresizingMaskIntoConstraints="NO" id="nSM-qH-M9O">
-                                <rect key="frame" x="0.0" y="144" width="414" height="52"/>
+                                <rect key="frame" x="0.0" y="114" width="414" height="52"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xaO-9Y-w0F" firstAttribute="trailing" secondItem="0rm-aT-4xj" secondAttribute="trailing" id="05I-9o-jJ8"/>
                             <constraint firstItem="wZd-Xz-Kph" firstAttribute="centerX" secondItem="nIs-Io-GoK" secondAttribute="centerX" id="89D-vg-xCL"/>
-                            <constraint firstItem="nSM-qH-M9O" firstAttribute="top" secondItem="xaO-9Y-w0F" secondAttribute="top" constant="100" id="8i9-qo-6AY"/>
+                            <constraint firstItem="nSM-qH-M9O" firstAttribute="top" secondItem="xaO-9Y-w0F" secondAttribute="top" constant="70" id="8i9-qo-6AY"/>
                             <constraint firstAttribute="bottom" secondItem="0rm-aT-4xj" secondAttribute="bottom" id="K7a-bU-2PS"/>
                             <constraint firstItem="nSM-qH-M9O" firstAttribute="leading" secondItem="xaO-9Y-w0F" secondAttribute="leading" id="M4S-9g-OVM"/>
                             <constraint firstItem="0rm-aT-4xj" firstAttribute="centerX" secondItem="nIs-Io-GoK" secondAttribute="centerX" id="OWl-Xt-Emz"/>
@@ -2618,7 +2618,7 @@
                                     <constraint firstAttribute="width" constant="220" id="3dd-1P-uG9"/>
                                     <constraint firstAttribute="height" constant="30" id="70E-5s-41Y"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="新規登録">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -2649,7 +2649,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="46" id="nDG-bT-aCR"/>
                                     <constraint firstAttribute="width" constant="252" id="tVq-eF-8Tv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="ログイン">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -2833,19 +2833,22 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="FCf-NU-P2r">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="チームID" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="b5k-QM-NHd">
-                                <rect key="frame" x="100" y="518.5" width="214" height="30"/>
-                                <nil key="textColor"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="b5k-QM-NHd">
+                                <rect key="frame" x="132" y="518.5" width="150" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="vXX-94-pqg"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3g-Wb-pXN">
-                                <rect key="frame" x="157" y="578.5" width="100" height="30"/>
+                                <rect key="frame" x="81" y="567.5" width="252" height="39"/>
                                 <color key="backgroundColor" red="0.28375518620000001" green="0.5751196932" blue="0.90372270349999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="NUx-sv-PlZ"/>
-                                    <constraint firstAttribute="height" constant="30" id="wQ5-4t-RTg"/>
+                                    <constraint firstAttribute="width" constant="252" id="lUO-Xj-MMh"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="確定する">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -2869,7 +2872,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUT-oG-pk7">
-                                <rect key="frame" x="168.5" y="643.5" width="77" height="30"/>
+                                <rect key="frame" x="168.5" y="641.5" width="77" height="30"/>
                                 <state key="normal" title="キャンセル">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -2878,7 +2881,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teamJoinBar" translatesAutoresizingMaskIntoConstraints="NO" id="cAT-yv-Eql">
-                                <rect key="frame" x="0.0" y="108" width="414" height="47"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="47"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="チームIDを入力してください" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhA-s5-kWr">
                                 <rect key="frame" x="62.5" y="238.5" width="289.5" height="27"/>
@@ -2891,7 +2894,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                         <constraints>
                             <constraint firstItem="cAT-yv-Eql" firstAttribute="centerX" secondItem="NTp-Ob-XUV" secondAttribute="centerX" id="3my-yz-ntD"/>
                             <constraint firstItem="d3g-Wb-pXN" firstAttribute="centerX" secondItem="NTp-Ob-XUV" secondAttribute="centerX" id="46l-Er-xFu"/>
-                            <constraint firstItem="X5r-NF-tzh" firstAttribute="trailing" secondItem="b5k-QM-NHd" secondAttribute="trailing" constant="100" id="6N0-OQ-d26"/>
+                            <constraint firstItem="b5k-QM-NHd" firstAttribute="centerX" secondItem="NTp-Ob-XUV" secondAttribute="centerX" id="6TD-hH-CBE"/>
                             <constraint firstItem="cAT-yv-Eql" firstAttribute="top" secondItem="X5r-NF-tzh" secondAttribute="top" constant="20" id="74P-cq-Z0p"/>
                             <constraint firstItem="cAT-yv-Eql" firstAttribute="leading" secondItem="X5r-NF-tzh" secondAttribute="leading" id="8vz-Bb-Wrf"/>
                             <constraint firstItem="zUT-oG-pk7" firstAttribute="centerX" secondItem="NTp-Ob-XUV" secondAttribute="centerX" id="Aoi-yy-Spk"/>
@@ -2906,18 +2909,18 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                             <constraint firstItem="X5r-NF-tzh" firstAttribute="trailing" secondItem="cAT-yv-Eql" secondAttribute="trailing" id="laX-WA-djk"/>
                             <constraint firstItem="qhA-s5-kWr" firstAttribute="centerX" secondItem="NTp-Ob-XUV" secondAttribute="centerX" id="noR-2F-Dd7"/>
                             <constraint firstItem="b5k-QM-NHd" firstAttribute="top" secondItem="dtI-DY-RDn" secondAttribute="bottom" constant="40" id="rLz-ct-CDo"/>
-                            <constraint firstItem="b5k-QM-NHd" firstAttribute="leading" secondItem="X5r-NF-tzh" secondAttribute="leading" constant="100" id="yKB-Gi-cEj"/>
                             <constraint firstItem="dtI-DY-RDn" firstAttribute="centerX" secondItem="NTp-Ob-XUV" secondAttribute="centerX" id="zLm-oa-SE2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X5r-NF-tzh"/>
                     </view>
                     <connections>
                         <outlet property="confirmTeamID" destination="b5k-QM-NHd" id="o2e-sP-EaP"/>
+                        <outlet property="confirmTeamIdButton" destination="d3g-Wb-pXN" id="Hzz-ZG-Kwy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mq8-Se-hwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3065" y="374"/>
+            <point key="canvasLocation" x="-3065.217391304348" y="373.66071428571428"/>
         </scene>
         <!--Team Id Confirm Wrong View Controller-->
         <scene sceneID="UAg-lu-CF8">
@@ -2930,14 +2933,14 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="e55-S4-Rxc">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="チームID" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="TEr-uS-Of3">
-                                <rect key="frame" x="100" y="508.5" width="214" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="チームID" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="TEr-uS-Of3">
+                                <rect key="frame" x="100" y="508.5" width="214" height="19"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bng-O9-QfT">
-                                <rect key="frame" x="157" y="568.5" width="100" height="30"/>
+                                <rect key="frame" x="157" y="557.5" width="100" height="30"/>
                                 <color key="backgroundColor" red="0.28375518620000001" green="0.5751196932" blue="0.90372270349999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="HEE-Fg-Bbi"/>
@@ -2964,7 +2967,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHA-mX-T5p">
-                                <rect key="frame" x="168.5" y="633.5" width="77" height="30"/>
+                                <rect key="frame" x="168.5" y="622.5" width="77" height="30"/>
                                 <state key="normal" title="キャンセル">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -3165,7 +3168,6 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                         </state>
                                         <connections>
                                             <action selector="userRegisterButton:" destination="TL9-xb-bEe" eventType="touchUpInside" id="3L9-OP-xkQ"/>
-                                            <segue destination="4RP-ae-gf9" kind="show" id="c0o-W4-3W9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltn-i3-6N5">
@@ -3178,7 +3180,6 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                         <state key="normal" image="teamRegButton"/>
                                         <connections>
                                             <action selector="teamIdRegisterButton:" destination="TL9-xb-bEe" eventType="touchUpInside" id="x6q-OC-xWc"/>
-                                            <segue destination="Vsl-Ot-XyV" kind="show" id="wPI-9u-Hab"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -3279,7 +3280,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teamRegBar" translatesAutoresizingMaskIntoConstraints="NO" id="ngL-1F-mkk">
-                                <rect key="frame" x="0.0" y="108" width="414" height="48"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="48"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3396,7 +3397,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teamRegUserBar" translatesAutoresizingMaskIntoConstraints="NO" id="9Df-n3-r4g">
-                                <rect key="frame" x="0.0" y="108" width="414" height="48"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="48"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

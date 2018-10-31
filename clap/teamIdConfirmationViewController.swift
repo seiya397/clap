@@ -2,20 +2,46 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
+//textfieldの下線追加
+extension UITextField {
+    func tBorderBottom(height: CGFloat, color: UIColor) {
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: self.frame.height - height, width: self.frame.width, height: height)
+        border.backgroundColor = color.cgColor
+        self.layer.addSublayer(border)
+    }
+}
 
 class teamIdConfirmationViewController: UIViewController {
 
     @IBOutlet weak var confirmTeamID: UITextField!
+    @IBOutlet weak var confirmTeamIdButton: UIButton!
     
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
+   
+    //placeholderの色変更、下線追加
+    confirmTeamID.attributedPlaceholder = NSAttributedString(string: "チームID", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
 
+    confirmTeamID.tBorderBottom(height: 0.5, color: UIColor.white)
+        
+    // ボタンの装飾
+    let rgba = UIColor(red: 255/255, green: 189/255, blue: 0/255, alpha: 1.0) // ボタン背景色設定
+    let loginText = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0) // ボタンタイトル色設定
+    confirmTeamIdButton.frame = CGRect(x: 0, y: 0, width: 0, height: 46) //ボタンサイズ設定
+    confirmTeamIdButton.backgroundColor = rgba // 背景色
+    confirmTeamIdButton.layer.cornerRadius = 20.0 // 角丸のサイズ
+    confirmTeamIdButton.setTitleColor(loginText, for: UIControlState.normal) // タイトルの色
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
     
     
     @IBAction func confirmTreamIdButtonTapped(_ sender: Any) {
