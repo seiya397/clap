@@ -40,7 +40,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         let loginText = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0) // ボタンタイトル色設定
         loginButton.frame = CGRect(x: 0, y: 0, width: 0, height: 46) //ボタンサイズ設定
         loginButton.backgroundColor = rgba // 背景色
-        loginButton.layer.cornerRadius = 27.0 // 角丸のサイズ
+        loginButton.layer.cornerRadius = 22.0 // 角丸のサイズ
         loginButton.setTitleColor(loginText, for: UIControlState.normal) // タイトルの色
     }
     

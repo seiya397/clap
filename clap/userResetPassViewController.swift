@@ -35,7 +35,7 @@ class userResetPassViewController: UIViewController, UITextFieldDelegate {
         let renewText = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0) // ボタンタイトル色設定
         renewButton.frame = CGRect(x: 0, y: 0, width: 0, height: 46) //ボタンサイズ設定
         renewButton.backgroundColor = rgba // 背景色
-        renewButton.layer.cornerRadius = 27.0 // 角丸のサイズ
+        renewButton.layer.cornerRadius = 22.0 // 角丸のサイズ
         renewButton.setTitleColor(renewText, for: UIControlState.normal) // タイトルの色
         
 
