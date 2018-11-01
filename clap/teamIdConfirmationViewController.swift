@@ -10,6 +10,7 @@ extension UITextField {
         border.backgroundColor = color.cgColor
         self.layer.addSublayer(border)
     }
+    
 }
 
 class teamIdConfirmationViewController: UIViewController {
@@ -21,7 +22,7 @@ class teamIdConfirmationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        
     //placeholderの色変更、下線追加
     confirmTeamID.attributedPlaceholder = NSAttributedString(string: "チームID", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
 

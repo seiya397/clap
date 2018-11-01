@@ -11,9 +11,10 @@ extension UITextField {
         border.backgroundColor = color.cgColor
         self.layer.addSublayer(border)
     }
+    
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate{
     
 
     @IBOutlet weak var commonMailaddress: UITextField!
@@ -22,6 +23,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //キーボードreturnでAction
+        commonMailaddress.delegate = self
+        commonPassword.delegate = self
+        
         self.view.backgroundColor = UIColor.lightGray
         
         //placeholderの色変更、下線追加
@@ -37,6 +42,19 @@ class LoginViewController: UIViewController {
         loginButton.backgroundColor = rgba // 背景色
         loginButton.layer.cornerRadius = 27.0 // 角丸のサイズ
         loginButton.setTitleColor(loginText, for: UIControlState.normal) // タイトルの色
+    }
+    
+    //キーボードreturnで次のtextfieldへ
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if(textField == commonMailaddress) {
+            commonPassword.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        
+        return true
     }
     
     override func didReceiveMemoryWarning() {

@@ -14,7 +14,7 @@ extension UITextField {
 }
 
 
-class userResetPassViewController: UIViewController {
+class userResetPassViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var userEmailForResetPass: UITextField!
     @IBOutlet weak var renewButton: UIButton!
@@ -22,6 +22,8 @@ class userResetPassViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //キーボードreturnでAction
+        userEmailForResetPass.delegate = self
         
         
         //placeholderの色変更、下線追加
@@ -38,6 +40,12 @@ class userResetPassViewController: UIViewController {
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    //キーボードdoneでキーボード閉じる
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
 
     override func didReceiveMemoryWarning() {
