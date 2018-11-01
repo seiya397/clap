@@ -13,7 +13,7 @@ extension UITextField {
     
 }
 
-class teamIdConfirmationViewController: UIViewController {
+class teamIdConfirmationViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var confirmTeamID: UITextField!
     @IBOutlet weak var confirmTeamIdButton: UIButton!
@@ -22,6 +22,8 @@ class teamIdConfirmationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //キーボードreturnでAction
+        confirmTeamID.delegate = self
         
     //placeholderの色変更、下線追加
     confirmTeamID.attributedPlaceholder = NSAttributedString(string: "チームID", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
@@ -36,6 +38,12 @@ class teamIdConfirmationViewController: UIViewController {
     confirmTeamIdButton.layer.cornerRadius = 20.0 // 角丸のサイズ
     confirmTeamIdButton.setTitleColor(loginText, for: UIControlState.normal) // タイトルの色
         
+    }
+    
+    //キーボードdoneでhide処理
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
     
     override func didReceiveMemoryWarning() {

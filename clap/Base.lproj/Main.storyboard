@@ -2840,7 +2840,7 @@
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3g-Wb-pXN">
                                 <rect key="frame" x="81" y="567.5" width="252" height="39"/>
@@ -3011,6 +3011,7 @@ s+ODkOODvOOBqw1JROOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAgg
                         <viewLayoutGuide key="safeArea" id="OJO-kT-I1o"/>
                     </view>
                     <connections>
+                        <outlet property="confirmButton" destination="bng-O9-QfT" id="IGR-js-7qt"/>
                         <outlet property="confirmTextAgain" destination="TEr-uS-Of3" id="2dX-86-Zfo"/>
                     </connections>
                 </viewController>
