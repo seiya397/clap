@@ -23,6 +23,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         //キーボードreturnでAction
         commonMailaddress.delegate = self
         commonPassword.delegate = self
@@ -44,6 +45,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         loginButton.setTitleColor(loginText, for: UIControlState.normal) // タイトルの色
     }
     
+    
+    @objc func keyboardWillDisappear(_ notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
     //キーボードreturnで次のtextfieldへ
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -61,9 +71,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
+
     @IBAction func commonLoginButton(_ sender: Any) {//ログイン
         guard let userEmailText = commonMailaddress.text, !userEmailText.isEmpty else {
             self.ShowMessage(messageToDisplay: "メールアドレスを記入してください。")
