@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "パスワードリセットバー.png",
+      "filename" : "passResetBar.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "パスワードリセットバー@2x.png",
+      "filename" : "passResetBar@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "パスワードリセットバー@3x.png",
+      "filename" : "passResetBar@3x.png",
       "scale" : "3x"
     }
   ],

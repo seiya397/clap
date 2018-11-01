@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "clapロゴ.png",
+      "filename" : "clapLogo.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "clapロゴ@2x.png",
+      "filename" : "clapLogo@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "clapロゴ@3x.png",
+      "filename" : "clapLogo@3x.png",
       "scale" : "3x"
     }
   ],

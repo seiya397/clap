@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ユーザー登録バー.png",
+      "filename" : "teamJoinUserBar.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ユーザー登録バー@2x.png",
+      "filename" : "teamJoinUserBar@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ユーザー登録バー@3x.png",
+      "filename" : "teamJoinUserBar@3x.png",
       "scale" : "3x"
     }
   ],
