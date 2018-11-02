@@ -57,9 +57,9 @@ class SubmitedNewDiaryViewController: UIViewController, UITableViewDelegate, UIT
         commentUserTableView.register(nibName, forCellReuseIdentifier: "commentTableViewCell")
         
         let userDefaults:UserDefaults = UserDefaults.standard
-        if let propertylistSongs = UserDefaults.standard.array(forKey: "MyDiaryData") as? [[String:String]] {
-            diary = propertylistSongs.flatMap{ DiaryData(dictionary: $0) } as! String
-        }
+        let result = userDefaults.object(forKey: "MyDiaryData")
+        print("=============")
+        print(result ?? "aa")
     }
     
     
