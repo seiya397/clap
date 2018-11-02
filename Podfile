@@ -19,6 +19,7 @@ pod 'ChameleonFramework'
 pod 'FSCalendar'
 pod 'CalculateCalendarLogic'
 pod 'FlexiblePageControl'
+pod 'RealmSwift'
 
   target 'clapTests' do
     inherit! :search_paths

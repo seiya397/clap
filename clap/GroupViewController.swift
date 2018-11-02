@@ -163,10 +163,14 @@ private extension GroupViewController {
                         i += 1
                     }
                     self.memberCollection.reloadData()
+                    //提出しているかしていないかを写真の下の名前のところに表示したい　そのために必要なこと
+                    //１、単純にここでもう一度passを通して取りに行く
+                    //２、usersの中に日付: diaryIDとsetして一緒に取る
                 }
             })
         }
     }
+    //diaryIDを取得して、それで次のページで呼び出す
     
     func getDiaryData(userID: String) {
         self.db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot3, error) in
