@@ -9,7 +9,17 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>BoringSSL.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>CalculateCalendarLogic.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>CalculateCalendarLogic.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
@@ -19,7 +29,17 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>ChameleonFramework.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>FSCalendar.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
+		<key>FSCalendar.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>11</integer>
@@ -29,7 +49,17 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>FirebaseAuth.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>FirebaseCore.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>FirebaseCore.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>5</integer>
@@ -39,7 +69,17 @@
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
+		<key>FirebaseDatabase.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>FirebaseFirestore.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>FirebaseFirestore.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>7</integer>
@@ -49,7 +89,17 @@
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
+		<key>FirebaseStorage.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>FirebaseUI.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>FirebaseUI.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>9</integer>
@@ -59,7 +109,17 @@
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
+		<key>FlexiblePageControl.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
 		<key>GTMSessionFetcher.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>18</integer>
+		</dict>
+		<key>GTMSessionFetcher.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>18</integer>
@@ -69,7 +129,17 @@
 			<key>orderHint</key>
 			<integer>12</integer>
 		</dict>
+		<key>GoogleUtilities.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
 		<key>Pods-clap.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>21</integer>
+		</dict>
+		<key>Pods-clap.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>21</integer>
@@ -79,7 +149,17 @@
 			<key>orderHint</key>
 			<integer>22</integer>
 		</dict>
+		<key>Pods-clapTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>22</integer>
+		</dict>
 		<key>Pods-clapUITests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>23</integer>
+		</dict>
+		<key>Pods-clapUITests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>23</integer>
@@ -89,17 +169,47 @@
 			<key>orderHint</key>
 			<integer>24</integer>
 		</dict>
+		<key>Protobuf.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>24</integer>
+		</dict>
+		<key>Realm.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>25</integer>
+		</dict>
+		<key>RealmSwift.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>26</integer>
+		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>25</integer>
+		</dict>
+		<key>SDWebImage.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>27</integer>
 		</dict>
 		<key>SVProgressHUD.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>26</integer>
 		</dict>
+		<key>SVProgressHUD.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>28</integer>
+		</dict>
 		<key>gRPC-Core.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
+		<key>gRPC-Core.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>14</integer>
@@ -109,7 +219,17 @@
 			<key>orderHint</key>
 			<integer>16</integer>
 		</dict>
+		<key>gRPC-ProtoRPC.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
 		<key>gRPC-RxLibrary.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
+		<key>gRPC-RxLibrary.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>17</integer>
@@ -119,7 +239,17 @@
 			<key>orderHint</key>
 			<integer>15</integer>
 		</dict>
+		<key>gRPC-gRPCCertificates.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
 		<key>gRPC.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
+		<key>gRPC.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>13</integer>
@@ -129,7 +259,17 @@
 			<key>orderHint</key>
 			<integer>19</integer>
 		</dict>
+		<key>leveldb-library.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>19</integer>
+		</dict>
 		<key>nanopb.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>20</integer>
+		</dict>
+		<key>nanopb.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>20</integer>

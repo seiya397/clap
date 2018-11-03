@@ -27,8 +27,8 @@ class userResetPassViewController: UIViewController, UITextFieldDelegate {
         
         
         //placeholderの色変更、下線追加
-        userEmailForResetPass.attributedPlaceholder = NSAttributedString(string: "endo@clap.com", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
-        userEmailForResetPass.addBorderBottom(height: 1.0, color: UIColor.white)
+        userEmailForResetPass.attributedPlaceholder = NSAttributedString(string: "endo@clap.com", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        userEmailForResetPass.addBorderBottom(height: 1.0, color: UIColor.white.withAlphaComponent(0.5))
         
         // 更新ボタンの装飾
         let rgba = UIColor(red: 255/255, green: 189/255, blue: 0/255, alpha: 1.0) // ボタン背景色設定

@@ -31,10 +31,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         self.view.backgroundColor = UIColor.lightGray
         
         //placeholderの色変更、下線追加
-        commonMailaddress.attributedPlaceholder = NSAttributedString(string: "メールアドレス", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
-        commonPassword.attributedPlaceholder = NSAttributedString(string: "パスワード", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
-        commonMailaddress.addBorderBottom(height: 0.5, color: UIColor.white)
-        commonPassword.addBorderBottom(height: 0.5, color: UIColor.white)
+        commonMailaddress.attributedPlaceholder = NSAttributedString(string: "メールアドレス", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        commonPassword.attributedPlaceholder = NSAttributedString(string: "パスワード", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        commonMailaddress.addBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
+        commonPassword.addBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
         
         // ボタンの装飾
         let rgba = UIColor(red: 255/255, green: 189/255, blue: 0/255, alpha: 1.0) // ボタン背景色設定

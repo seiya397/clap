@@ -32,9 +32,9 @@ class teamIdConfirmWrongViewController: UIViewController, UITextFieldDelegate  {
         super.viewDidLoad()
         
         //placeholderの色変更、下線追加
-        confirmTextAgain.attributedPlaceholder = NSAttributedString(string: "チームID", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+        confirmTextAgain.attributedPlaceholder = NSAttributedString(string: "チームID", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
         
-        confirmTextAgain.tBorderBottom(height: 0.5, color: UIColor.white)
+        confirmTextAgain.tBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
         
         // ボタンの装飾
         let rgba = UIColor(red: 255/255, green: 189/255, blue: 0/255, alpha: 1.0) // ボタン背景色設定

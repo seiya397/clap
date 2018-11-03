@@ -26,9 +26,9 @@ class teamIdConfirmationViewController: UIViewController, UITextFieldDelegate {
         confirmTeamID.delegate = self
         
     //placeholderの色変更、下線追加
-    confirmTeamID.attributedPlaceholder = NSAttributedString(string: "チームID", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+    confirmTeamID.attributedPlaceholder = NSAttributedString(string: "チームID", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
 
-    confirmTeamID.tBorderBottom(height: 0.5, color: UIColor.white)
+    confirmTeamID.tBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
         
     // ボタンの装飾
     let rgba = UIColor(red: 255/255, green: 189/255, blue: 0/255, alpha: 1.0) // ボタン背景色設定

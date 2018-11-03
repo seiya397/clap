@@ -3,6 +3,17 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 
+//textfieldの下線追加
+extension UITextField {
+    func textBorderBottom(height: CGFloat, color: UIColor) {
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: self.frame.height - height, width: self.frame.width, height: height)
+        border.backgroundColor = color.cgColor
+        self.layer.addSublayer(border)
+    }
+    
+}
+
 class userInfoRegisterViewController: UIViewController{
     
     
@@ -11,9 +22,11 @@ class userInfoRegisterViewController: UIViewController{
     @IBOutlet weak var userPass: UITextField!
     @IBOutlet weak var userPassAgain: UITextField!
     @IBOutlet weak var userRole: UITextField!
+    @IBOutlet weak var userRegisterButton: UIButton!
     
     let userRoleData = ["選手", "監督", "マネージャー"]
     
+    //userRole選択pickerviewでdonew押して閉じる処理
     @objc func onDoneButtonTapped(sender: UIBarButtonItem) {
         if userRole.isFirstResponder {
             userRole.resignFirstResponder()
@@ -24,6 +37,33 @@ class userInfoRegisterViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //placeholderの色変更、下線追加
+        userName.attributedPlaceholder = NSAttributedString(string: "名前", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        userName.addBorderBottom(height: 1.0, color: UIColor.white.withAlphaComponent(0.5))
+        
+        userEmail.attributedPlaceholder = NSAttributedString(string: "メールアドレス", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        userEmail.addBorderBottom(height: 1.0, color: UIColor.white.withAlphaComponent(0.5))
+        
+        userPass.attributedPlaceholder = NSAttributedString(string: "パスワード", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        userPass.addBorderBottom(height: 1.0, color: UIColor.white.withAlphaComponent(0.5))
+        
+        userPassAgain.attributedPlaceholder = NSAttributedString(string: "パスワードの確認", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        userPassAgain.addBorderBottom(height: 1.0, color: UIColor.white.withAlphaComponent(0.5))
+        
+        userRole.attributedPlaceholder = NSAttributedString(string: "役割", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        userRole.addBorderBottom(height: 1.0, color: UIColor.white.withAlphaComponent(0.5))
+        
+        // ボタンの装飾
+        let rgba = UIColor(red: 255/255, green: 189/255, blue: 0/255, alpha: 1.0) // ボタン背景色設定
+        let loginText = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0) // ボタンタイトル色設定
+        userRegisterButton.frame = CGRect(x: 0, y: 0, width: 0, height: 46) //ボタンサイズ設定
+        userRegisterButton.backgroundColor = rgba // 背景色
+        userRegisterButton.layer.cornerRadius = 20.0 // 角丸のサイズ
+        userRegisterButton.setTitleColor(loginText, for: UIControlState.normal) // タイトルの色
+    
+        
+        
         setupUI()
     }
     
@@ -116,7 +156,11 @@ class userInfoRegisterViewController: UIViewController{
             }
         }
         
-        
+    }
+    
+    //キーボードhide処理
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     //認証用関数
@@ -197,3 +241,5 @@ extension userInfoRegisterViewController: UIPickerViewDelegate {
         userRole.text = userRoleData[row]
     }
 }
+
+
