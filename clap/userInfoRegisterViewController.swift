@@ -61,7 +61,31 @@ class userInfoRegisterViewController: UIViewController{
         userRegisterButton.backgroundColor = rgba // 背景色
         userRegisterButton.layer.cornerRadius = 20.0 // 角丸のサイズ
         userRegisterButton.setTitleColor(loginText, for: UIControlState.normal) // タイトルの色
-    
+        
+        //キーボードreturnでAction
+        userName.delegate = self as? UITextFieldDelegate
+        userEmail.delegate = self as? UITextFieldDelegate
+        userPass.delegate = self as? UITextFieldDelegate
+        userPassAgain.delegate = self as? UITextFieldDelegate
+        userRole.delegate = self as? UITextFieldDelegate
+        
+        //キーボードreturnで次のtextfieldへ
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.resignFirstResponder()
+            
+            if(textField == userName) {
+                userEmail.becomeFirstResponder()
+            } else if (textField == userEmail){
+                userPass.resignFirstResponder()
+            } else if (textField == userPass){
+                userPassAgain.resignFirstResponder()
+            } else if (textField == userPassAgain) {
+                userRole.resignFirstResponder()
+            } else {
+                userRole.resignFirstResponder()
+            }
+            return true
+            }
         
         
         setupUI()
