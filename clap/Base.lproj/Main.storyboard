@@ -3234,42 +3234,46 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="vSV-IH-obQ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gLS-NP-8GF">
-                                <rect key="frame" x="100" y="475" width="214" height="106"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="gLS-NP-8GF">
+                                <rect key="frame" x="57" y="330" width="300" height="146"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="チーム名" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="pPR-Cx-9oy">
-                                        <rect key="frame" x="0.0" y="0.0" width="214" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="pPR-Cx-9oy">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" textContentType="organization"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="種別" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="axb-yB-soi">
-                                        <rect key="frame" x="0.0" y="38" width="214" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="axb-yB-soi">
+                                        <rect key="frame" x="0.0" y="62" width="300" height="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="競技項目" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="dKQ-VV-D6r">
-                                        <rect key="frame" x="0.0" y="76" width="214" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="dKQ-VV-D6r">
+                                        <rect key="frame" x="0.0" y="124" width="300" height="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
                                     </textField>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="E0l-Lm-g1z"/>
+                                </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="チーム情報を登録してください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdk-kx-u5E">
                                 <rect key="frame" x="51" y="239" width="312.5" height="26.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.74117647058823533" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hhx-zk-WO2">
-                                <rect key="frame" x="157" y="611" width="100" height="30"/>
+                                <rect key="frame" x="81" y="756" width="252" height="46"/>
                                 <color key="backgroundColor" red="0.28375518620000001" green="0.5751196932" blue="0.90372270349999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="LsR-xl-dCW"/>
-                                    <constraint firstAttribute="height" constant="30" id="oTR-3K-4gW"/>
+                                    <constraint firstAttribute="width" constant="252" id="LsR-xl-dCW"/>
+                                    <constraint firstAttribute="height" constant="46" id="oTR-3K-4gW"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="登録する">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -3284,7 +3288,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upm-43-XTO">
-                                <rect key="frame" x="168.5" y="676" width="77" height="30"/>
+                                <rect key="frame" x="156" y="817" width="102" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="キャンセル">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -3298,22 +3303,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="gLS-NP-8GF" firstAttribute="centerY" secondItem="lLC-3b-Ke4" secondAttribute="centerY" constant="80" id="51Q-j3-yTS"/>
+                            <constraint firstItem="gLS-NP-8GF" firstAttribute="centerY" secondItem="lLC-3b-Ke4" secondAttribute="centerY" constant="-45" id="51Q-j3-yTS"/>
                             <constraint firstItem="dYR-V2-uNM" firstAttribute="trailing" secondItem="vSV-IH-obQ" secondAttribute="trailing" id="63e-S4-qi0"/>
                             <constraint firstItem="dYR-V2-uNM" firstAttribute="trailing" secondItem="ngL-1F-mkk" secondAttribute="trailing" id="6Ff-52-TeW"/>
                             <constraint firstItem="vSV-IH-obQ" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="Bn3-5H-ak1"/>
                             <constraint firstItem="vSV-IH-obQ" firstAttribute="leading" secondItem="dYR-V2-uNM" secondAttribute="leading" id="CDB-ng-UYA"/>
                             <constraint firstItem="vdk-kx-u5E" firstAttribute="centerY" secondItem="lLC-3b-Ke4" secondAttribute="centerY" constant="-196" id="CzC-FT-yEi"/>
-                            <constraint firstItem="upm-43-XTO" firstAttribute="top" secondItem="Hhx-zk-WO2" secondAttribute="bottom" constant="35" id="G7j-L0-8tX"/>
+                            <constraint firstItem="upm-43-XTO" firstAttribute="top" secondItem="Hhx-zk-WO2" secondAttribute="bottom" constant="15" id="G7j-L0-8tX"/>
                             <constraint firstItem="ngL-1F-mkk" firstAttribute="top" secondItem="dYR-V2-uNM" secondAttribute="top" constant="20" id="Ihx-23-8ik"/>
-                            <constraint firstItem="dYR-V2-uNM" firstAttribute="trailing" secondItem="gLS-NP-8GF" secondAttribute="trailing" constant="100" id="J2l-jl-4G8"/>
+                            <constraint firstItem="gLS-NP-8GF" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="MEd-eA-hVn"/>
                             <constraint firstItem="vSV-IH-obQ" firstAttribute="centerY" secondItem="lLC-3b-Ke4" secondAttribute="centerY" id="UQd-d8-A61"/>
                             <constraint firstItem="ngL-1F-mkk" firstAttribute="leading" secondItem="dYR-V2-uNM" secondAttribute="leading" id="WGA-Wt-9gy"/>
                             <constraint firstItem="ngL-1F-mkk" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="WMd-C2-aBQ"/>
                             <constraint firstItem="vdk-kx-u5E" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="ZB3-am-lRn"/>
-                            <constraint firstItem="gLS-NP-8GF" firstAttribute="leading" secondItem="dYR-V2-uNM" secondAttribute="leading" constant="100" id="eDt-LD-zWg"/>
                             <constraint firstItem="ngL-1F-mkk" firstAttribute="leading" secondItem="dYR-V2-uNM" secondAttribute="leading" id="hsh-nZ-FDm"/>
-                            <constraint firstItem="Hhx-zk-WO2" firstAttribute="top" secondItem="gLS-NP-8GF" secondAttribute="bottom" constant="30" id="rMn-Mt-EKN"/>
+                            <constraint firstItem="dYR-V2-uNM" firstAttribute="bottom" secondItem="Hhx-zk-WO2" secondAttribute="bottom" constant="60" id="kJe-GC-ADT"/>
                             <constraint firstItem="upm-43-XTO" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="rSH-QY-653"/>
                             <constraint firstItem="vSV-IH-obQ" firstAttribute="top" secondItem="lLC-3b-Ke4" secondAttribute="top" id="wuk-DS-DKZ"/>
                             <constraint firstItem="Hhx-zk-WO2" firstAttribute="centerX" secondItem="lLC-3b-Ke4" secondAttribute="centerX" id="zfJ-Tf-DIh"/>
@@ -3324,6 +3328,7 @@
                     <connections>
                         <outlet property="belongTo" destination="pPR-Cx-9oy" id="Zbw-js-07J"/>
                         <outlet property="kindOfPerson" destination="axb-yB-soi" id="lDl-Hh-nUg"/>
+                        <outlet property="managerRegister" destination="Hhx-zk-WO2" id="uAF-ou-hNv"/>
                         <outlet property="teamSports" destination="dKQ-VV-D6r" id="RND-0a-o39"/>
                     </connections>
                 </viewController>

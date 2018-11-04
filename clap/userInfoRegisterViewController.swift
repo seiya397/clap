@@ -14,7 +14,7 @@ extension UITextField {
     
 }
 
-class userInfoRegisterViewController: UIViewController{
+class userInfoRegisterViewController: UIViewController, UITextFieldDelegate{
     
     
     @IBOutlet weak var userName: UITextField!
@@ -26,7 +26,7 @@ class userInfoRegisterViewController: UIViewController{
     
     let userRoleData = ["選手", "監督", "マネージャー"]
     
-    //userRole選択pickerviewでdonew押して閉じる処理
+    //userRole選択pickerviewでdone押して閉じる処理
     @objc func onDoneButtonTapped(sender: UIBarButtonItem) {
         if userRole.isFirstResponder {
             userRole.resignFirstResponder()
@@ -37,6 +37,12 @@ class userInfoRegisterViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        //キーボードreturnでAction
+        userName.delegate = self
+        userEmail.delegate = self
+
         
         //placeholderの色変更、下線追加
         userName.attributedPlaceholder = NSAttributedString(string: "名前", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
@@ -62,30 +68,31 @@ class userInfoRegisterViewController: UIViewController{
         userRegisterButton.layer.cornerRadius = 20.0 // 角丸のサイズ
         userRegisterButton.setTitleColor(loginText, for: UIControlState.normal) // タイトルの色
         
-        //キーボードreturnでAction
-        userName.delegate = self as? UITextFieldDelegate
-        userEmail.delegate = self as? UITextFieldDelegate
-        userPass.delegate = self as? UITextFieldDelegate
-        userPassAgain.delegate = self as? UITextFieldDelegate
-        userRole.delegate = self as? UITextFieldDelegate
-        
+
         //キーボードreturnで次のtextfieldへ
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             textField.resignFirstResponder()
             
             if(textField == userName) {
                 userEmail.becomeFirstResponder()
-            } else if (textField == userEmail){
-                userPass.resignFirstResponder()
-            } else if (textField == userPass){
-                userPassAgain.resignFirstResponder()
-            } else if (textField == userPassAgain) {
-                userRole.resignFirstResponder()
             } else {
-                userRole.resignFirstResponder()
+                textField.resignFirstResponder()
             }
+            
             return true
-            }
+        }
+//
+//        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//            textField.resignFirstResponder()
+//
+//            if(textField == userName) {
+//                userEmail.becomeFirstResponder()
+//            } else {
+//                textField.resignFirstResponder()
+//            }
+//
+//            return true
+//        }
         
         
         setupUI()

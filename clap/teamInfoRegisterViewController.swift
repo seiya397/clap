@@ -11,6 +11,17 @@ import FirebaseDatabase
 import FirebaseFirestore
 import MobileCoreServices
 
+//textfieldの下線追加
+extension UITextField {
+    func oBorderBottom(height: CGFloat, color: UIColor) {
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: self.frame.height - height, width: self.frame.width, height: height)
+        border.backgroundColor = color.cgColor
+        self.layer.addSublayer(border)
+    }
+    
+}
+
 class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     enum PickerAttributeType {
         case career
@@ -20,6 +31,8 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     @IBOutlet weak var belongTo: UITextField!
     @IBOutlet weak var kindOfPerson: UITextField!
     @IBOutlet weak var teamSports: UITextField!
+    @IBOutlet weak var managerRegister: UIButton!
+    
     
     var pickerForAttribute = ["社会人", "大学", "高校", "中学"]
     var pickerForSports = ["野球", "ラグビー", "柔道", "水泳", "サッカー"]
@@ -40,6 +53,23 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //placeholderの色変更、下線追加
+        belongTo.attributedPlaceholder = NSAttributedString(string: "チーム名", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        kindOfPerson.attributedPlaceholder = NSAttributedString(string: "学年", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        teamSports.attributedPlaceholder = NSAttributedString(string: "競技", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        belongTo.oBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
+        kindOfPerson.oBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
+        teamSports.oBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
+        
+        // ボタンの装飾
+        let rgba = UIColor(red: 255/255, green: 189/255, blue: 0/255, alpha: 1.0) // ボタン背景色設定
+        let loginText = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0) // ボタンタイトル色設定
+        managerRegister.frame = CGRect(x: 0, y: 0, width: 0, height: 46) //ボタンサイズ設定
+        managerRegister.backgroundColor = rgba // 背景色
+        managerRegister.layer.cornerRadius = 22.0 // 角丸のサイズ
+        managerRegister.setTitleColor(loginText, for: UIControlState.normal) // タイトルの色
+        
         setupUI()
         setupUIForSports()
     }
