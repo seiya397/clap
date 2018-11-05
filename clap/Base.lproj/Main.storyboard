@@ -2834,12 +2834,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="b5k-QM-NHd">
-                                <rect key="frame" x="132" y="393.5" width="150" height="19"/>
+                                <rect key="frame" x="57" y="392" width="300" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="vXX-94-pqg"/>
+                                    <constraint firstAttribute="width" constant="300" id="vXX-94-pqg"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3g-Wb-pXN">
@@ -3347,46 +3347,49 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="e86-W8-Ysc">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="AFf-ky-UIR">
-                                <rect key="frame" x="100" y="305.5" width="214" height="220"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="AFf-ky-UIR">
+                                <rect key="frame" x="57" y="305.5" width="300" height="232"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="名前" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="q8R-yv-9ri">
-                                        <rect key="frame" x="0.0" y="0.0" width="214" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="q8R-yv-9ri">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="22"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="next" textContentType="name"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メールアドレス" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="XDa-0O-dIA">
-                                        <rect key="frame" x="0.0" y="38" width="214" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="XDa-0O-dIA">
+                                        <rect key="frame" x="0.0" y="42" width="300" height="22"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next" textContentType="email"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="tcI-9O-sRX">
-                                        <rect key="frame" x="0.0" y="76" width="214" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="tcI-9O-sRX">
+                                        <rect key="frame" x="0.0" y="84" width="300" height="22"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" textContentType="password"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワードの確認" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="5Ih-cv-m3s">
-                                        <rect key="frame" x="0.0" y="114" width="214" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="5Ih-cv-m3s">
+                                        <rect key="frame" x="0.0" y="126" width="300" height="22"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" textContentType="password"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="役割" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="JpZ-C4-6bx">
-                                        <rect key="frame" x="0.0" y="152" width="214" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="JpZ-C4-6bx">
+                                        <rect key="frame" x="0.0" y="168" width="300" height="22"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="学年" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="qSj-Dm-zKc">
-                                        <rect key="frame" x="0.0" y="190" width="214" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="qSj-Dm-zKc">
+                                        <rect key="frame" x="0.0" y="210" width="300" height="22"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
                                     </textField>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="dbd-ax-tQr"/>
+                                </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ユーザー情報を登録してください。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xS1-8u-0Q2">
                                 <rect key="frame" x="28.5" y="239" width="357" height="26.5"/>
@@ -3395,12 +3398,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsj-m2-F9V">
-                                <rect key="frame" x="157" y="555.5" width="100" height="30"/>
+                                <rect key="frame" x="81" y="756" width="252" height="46"/>
                                 <color key="backgroundColor" red="0.28375518620000001" green="0.5751196932" blue="0.90372270349999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="6eP-j8-Sek"/>
-                                    <constraint firstAttribute="width" constant="100" id="Fo5-tc-Y0Y"/>
+                                    <constraint firstAttribute="height" constant="46" id="6eP-j8-Sek"/>
+                                    <constraint firstAttribute="width" constant="252" id="Fo5-tc-Y0Y"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="確定">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -3423,12 +3427,11 @@
                             <constraint firstItem="9Df-n3-r4g" firstAttribute="trailing" secondItem="zDI-B4-XcP" secondAttribute="trailing" id="0bK-Rk-Yt5"/>
                             <constraint firstItem="AFf-ky-UIR" firstAttribute="centerX" secondItem="QRz-dq-TCR" secondAttribute="centerX" id="1gg-l9-hqi"/>
                             <constraint firstItem="zDI-B4-XcP" firstAttribute="trailing" secondItem="e86-W8-Ysc" secondAttribute="trailing" id="7M1-ib-cnT"/>
-                            <constraint firstItem="rsj-m2-F9V" firstAttribute="top" secondItem="AFf-ky-UIR" secondAttribute="bottom" constant="30" id="Adr-bK-Kgm"/>
-                            <constraint firstItem="AFf-ky-UIR" firstAttribute="leading" secondItem="zDI-B4-XcP" secondAttribute="leading" constant="100" id="B1u-oQ-iHk"/>
                             <constraint firstItem="xS1-8u-0Q2" firstAttribute="centerY" secondItem="QRz-dq-TCR" secondAttribute="centerY" constant="-196" id="KMu-h9-Zar"/>
                             <constraint firstItem="AFf-ky-UIR" firstAttribute="top" secondItem="xS1-8u-0Q2" secondAttribute="bottom" constant="40" id="UZ3-bI-R2v"/>
                             <constraint firstItem="e86-W8-Ysc" firstAttribute="leading" secondItem="zDI-B4-XcP" secondAttribute="leading" id="WO0-G6-WJx"/>
                             <constraint firstItem="e86-W8-Ysc" firstAttribute="centerX" secondItem="QRz-dq-TCR" secondAttribute="centerX" id="XQU-Gx-VCH"/>
+                            <constraint firstItem="zDI-B4-XcP" firstAttribute="bottom" secondItem="rsj-m2-F9V" secondAttribute="bottom" constant="60" id="ekL-LK-Xfa"/>
                             <constraint firstItem="xS1-8u-0Q2" firstAttribute="centerX" secondItem="QRz-dq-TCR" secondAttribute="centerX" id="hbK-KS-aqR"/>
                             <constraint firstItem="9Df-n3-r4g" firstAttribute="centerX" secondItem="QRz-dq-TCR" secondAttribute="centerX" id="ntc-eF-Ip1"/>
                             <constraint firstItem="9Df-n3-r4g" firstAttribute="top" secondItem="zDI-B4-XcP" secondAttribute="top" constant="20" id="qhe-ky-gCY"/>
@@ -3442,6 +3445,7 @@
                     <connections>
                         <outlet property="replesentEmail" destination="XDa-0O-dIA" id="Si6-SE-o7w"/>
                         <outlet property="replesentGrade" destination="qSj-Dm-zKc" id="c9j-gZ-q2b"/>
+                        <outlet property="replesentInfoResisterButton" destination="rsj-m2-F9V" id="6Ue-QE-laX"/>
                         <outlet property="replesentName" destination="q8R-yv-9ri" id="pqK-8o-f7s"/>
                         <outlet property="replesentPass" destination="tcI-9O-sRX" id="o2A-9U-OjJ"/>
                         <outlet property="replesentPassAgain" destination="5Ih-cv-m3s" id="DOK-qB-ATr"/>

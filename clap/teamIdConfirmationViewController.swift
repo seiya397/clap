@@ -91,7 +91,7 @@ class teamIdConfirmationViewController: UIViewController, UITextFieldDelegate {
     public func ShowMessage(messageToDisplay: String) { //認証用関数
         let alertController = UIAlertController(title: "Alert Title", message: messageToDisplay, preferredStyle: .alert)
         
-        let OKAction = UIAlertAction(title: "ok", style: .default) { (action: UIAlertAction!) in
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction!) in
             print("ok button tapped!!")
         }
         

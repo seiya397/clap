@@ -24,7 +24,7 @@ class userInfoRegisterViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var userRole: UITextField!
     @IBOutlet weak var userRegisterButton: UIButton!
     
-    let userRoleData = ["選手", "監督", "マネージャー"]
+    let userRoleData = ["役割を選んでください","選手", "監督", "マネージャー"]
     
     //userRole選択pickerviewでdone押して閉じる処理
     @objc func onDoneButtonTapped(sender: UIBarButtonItem) {

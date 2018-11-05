@@ -5,6 +5,17 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseFirestore
 
+//textfieldの下線追加
+extension UITextField {
+    func trBorderBottom(height: CGFloat, color: UIColor) {
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: self.frame.height - height, width: self.frame.width, height: height)
+        border.backgroundColor = color.cgColor
+        self.layer.addSublayer(border)
+    }
+    
+}
+
 class teamReplesentRegisterViewController: UIViewController {
     enum pickerViewAttribute {
         case Role
@@ -17,6 +28,7 @@ class teamReplesentRegisterViewController: UIViewController {
     @IBOutlet weak var replesentPassAgain: UITextField!
     @IBOutlet weak var replesentRole: UITextField!
     @IBOutlet weak var replesentGrade: UITextField!
+    @IBOutlet weak var replesentInfoResisterButton: UIButton!
     
     let db = Firestore.firestore()
     
@@ -38,6 +50,32 @@ class teamReplesentRegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //placeholderの色変更、下線追加
+        replesentName.attributedPlaceholder = NSAttributedString(string: "名前", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        replesentEmail.attributedPlaceholder = NSAttributedString(string: "メールアドレス", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        replesentPass.attributedPlaceholder = NSAttributedString(string: "パスワード", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        replesentPassAgain.attributedPlaceholder = NSAttributedString(string: "パスワードの確認", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        replesentRole.attributedPlaceholder = NSAttributedString(string: "役割", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        replesentGrade.attributedPlaceholder = NSAttributedString(string: "学年", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        
+        replesentName.trBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
+        replesentEmail.trBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
+        replesentPass.trBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
+        replesentPassAgain.trBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
+        replesentRole.trBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
+        replesentGrade.trBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
+        
+        // ボタンの装飾
+        let rgba = UIColor(red: 255/255, green: 189/255, blue: 0/255, alpha: 1.0) // ボタン背景色設定
+        let loginText = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0) // ボタンタイトル色設定
+        replesentInfoResisterButton.frame = CGRect(x: 0, y: 0, width: 0, height: 46) //ボタンサイズ設定
+        replesentInfoResisterButton.backgroundColor = rgba // 背景色
+        replesentInfoResisterButton.layer.cornerRadius = 22.0 // 角丸のサイズ
+        replesentInfoResisterButton.setTitleColor(loginText, for: UIControlState.normal) // タイトルの色
+        
+        
+        
         setupUIForRole()
         setupUIForGrade()
     }
