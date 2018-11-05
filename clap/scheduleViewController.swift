@@ -43,6 +43,10 @@ class scheduleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+   //ナビゲーションバーの背景、タイトル色指定
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0/255, green: 82/255, blue: 212/255, alpha: 100)
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings

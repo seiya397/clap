@@ -13,6 +13,7 @@ struct CellData {
     var diaryID: String
 }
 
+
 //バグ内容
 //SectionHeaderのバグです。
 //具体的にいうと、日記登録画面で提出ボタンをタップすると、確かに日記は登録されるのですが、日付な並び順がおかしくなります(例　11月5日に提出すると、10月20日の提出として表示される)。しかし、もう一度ログインし直すと、表示が正常の状態になります。恐らくSectionHeaderを定義しているこの行目からが問題だと思うのですが、ご意見をいただきたいです。
@@ -89,8 +90,11 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        circleButton = Circle()
+            
+            //ナビゲーションバーの背景、タイトル色指定
+            navigationController?.navigationBar.barTintColor = UIColor(red: 0/255, green: 82/255, blue: 212/255, alpha: 100)
+            self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+            
 
         if arr != nil {
             self.arr = [CellData]()
