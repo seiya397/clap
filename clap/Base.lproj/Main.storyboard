@@ -111,7 +111,7 @@
         <scene sceneID="mQ3-ku-52x">
             <objects>
                 <navigationController id="y8v-HQ-XbP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="マイページ" id="D2S-XF-DdB">
+                    <tabBarItem key="tabBarItem" title="マイページ" image="users" selectedImage="users" id="D2S-XF-DdB">
                         <color key="badgeColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="X0a-ZX-8RO">
@@ -340,7 +340,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KUY-xQ-ckj"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="z5D-Tg-xue"/>
+                    <tabBarItem key="tabBarItem" title="マイページ" selectedImage="users" id="z5D-Tg-xue"/>
                     <navigationItem key="navigationItem" title="プロフィール" id="4Yq-tz-663">
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="Eue-uJ-SX4">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uAT-M1-9Wu">
@@ -374,7 +374,7 @@
         <scene sceneID="x6X-pp-tVA">
             <objects>
                 <navigationController id="Qpr-bW-eT2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="日誌" id="r1o-MX-xfX">
+                    <tabBarItem key="tabBarItem" title="日誌" image="journal" selectedImage="journal" id="r1o-MX-xfX">
                         <color key="badgeColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -1341,7 +1341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yge-7z-Dst" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2002.8985507246377" y="618.75"/>
+            <point key="canvasLocation" x="2913.04347826087" y="618.75"/>
         </scene>
         <!--Submited New Diary View Controller-->
         <scene sceneID="xUA-LO-rJ6">
@@ -1618,7 +1618,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HyN-xA-Si4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3786" y="1317"/>
+            <point key="canvasLocation" x="4695.652173913044" y="1316.5178571428571"/>
         </scene>
         <!--Member Select View Controller-->
         <scene sceneID="AcL-vF-dqt">
@@ -1697,7 +1697,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tdc-kK-BKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2916" y="619"/>
+            <point key="canvasLocation" x="3826.0869565217395" y="618.75"/>
         </scene>
         <!--Comment Reply View Controller-->
         <scene sceneID="NgU-6D-KpK">
@@ -1949,7 +1949,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3QL-1j-NTG"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="スケジュール" id="7tR-Qy-ONR">
+                    <tabBarItem key="tabBarItem" title="カレンダー" selectedImage="calendar" id="7tR-Qy-ONR">
                         <color key="badgeColor" name="controlDarkShadowColor" catalog="System" colorSpace="catalog"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="スケジュール" id="7s2-Uv-wJK"/>
@@ -2447,11 +2447,11 @@
             </objects>
             <point key="canvasLocation" x="4989.8550724637689" y="-1221.1956521739132"/>
         </scene>
-        <!--スケジュール-->
+        <!--カレンダー-->
         <scene sceneID="fua-im-Lv3">
             <objects>
                 <navigationController id="jiz-D1-RkI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="スケジュール" id="ScO-GO-qtY">
+                    <tabBarItem key="tabBarItem" title="カレンダー" image="calendar" selectedImage="calendar" id="ScO-GO-qtY">
                         <color key="badgeColor" name="controlDarkShadowColor" catalog="System" colorSpace="catalog"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="asR-BW-G3q"/>
@@ -2476,7 +2476,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3fP-No-Ldr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="jiz-D1-RkI" kind="relationship" relationship="viewControllers" id="3uG-dj-Q6X"/>
@@ -2572,6 +2573,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xaO-9Y-w0F"/>
                     </view>
+                    <navigationItem key="navigationItem" id="y56-Fz-QWg">
+                        <barButtonItem key="leftBarButtonItem" title="back" id="J7e-0Q-tK7"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="renewButton" destination="hvz-Rb-R6R" id="E3G-w2-rab"/>
                         <outlet property="userEmailForResetPass" destination="wZd-Xz-Kph" id="Wgz-rU-d7f"/>
@@ -2579,7 +2583,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OMW-0l-HB8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6470" y="1188"/>
+            <point key="canvasLocation" x="-3974" y="1188"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="v2B-7L-1kT">
@@ -2629,7 +2633,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="userRegisterButtonTapped:" destination="Exz-gh-qmw" eventType="touchUpInside" id="lZE-ie-siV"/>
-                                    <segue destination="jWq-cI-XYo" kind="show" id="oVJ-hp-yDS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBa-bc-uRY">
@@ -2639,7 +2642,6 @@
                                 </state>
                                 <connections>
                                     <action selector="resetPassButtontapped:" destination="Exz-gh-qmw" eventType="touchUpInside" id="4Km-M9-6f8"/>
-                                    <segue destination="NXO-M7-a3m" kind="show" id="3cw-N8-NuR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TxZ-jl-drG">
@@ -2695,7 +2697,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ar8-CD-spD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5368" y="1188"/>
+            <point key="canvasLocation" x="-3065" y="1188"/>
         </scene>
         <!--Team Id Confirm Again View Controller-->
         <scene sceneID="ieO-3K-LgU">
@@ -2805,22 +2807,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOU-J9-luY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3349.275362318841" y="-351.5625"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="buw-Wg-p9r">
-            <objects>
-                <navigationController id="jWq-cI-XYo" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WVl-dZ-Ygw">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="TL9-xb-bEe" kind="relationship" relationship="rootViewController" id="ASB-5M-iVQ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="H8U-e6-eLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-4146" y="1188"/>
         </scene>
         <!--Team Id Confirmation View Controller-->
         <scene sceneID="hNX-jY-GXh">
@@ -3221,7 +3207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dII-f4-Zta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3065.217391304348" y="1187.9464285714284"/>
+            <point key="canvasLocation" x="-2155.072463768116" y="1187.9464285714284"/>
         </scene>
         <!--Team Info Register View Controller-->
         <scene sceneID="2rB-u7-UG3">
@@ -3460,7 +3446,9 @@
     <resources>
         <image name="avatardefault_92824" width="512" height="512"/>
         <image name="background" width="375" height="812"/>
+        <image name="calendar" width="26" height="26"/>
         <image name="clapLogo" width="165" height="87"/>
+        <image name="journal" width="28" height="24"/>
         <image name="passResetBar" width="375" height="52"/>
         <image name="teamJoinBar" width="375" height="47"/>
         <image name="teamJoinIdBar" width="375" height="47"/>
@@ -3470,6 +3458,7 @@
         <image name="teamRegButton" width="151" height="150"/>
         <image name="teamRegIdBar" width="375" height="48"/>
         <image name="teamRegUserBar" width="375" height="48"/>
+        <image name="users" width="28" height="26"/>
         <image name="weight" width="409.60000610351562" height="409.60000610351562"/>
     </resources>
     <inferredMetricsTieBreakers>

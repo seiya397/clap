@@ -95,10 +95,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         }
     }
     
-    @IBAction func userRegisterButtonTapped(_ sender: Any) {//新規登録
+    @IBAction func userRegisterButtonTapped(_ sender: Any) {
+        
+        //新規登録
         let selectPage = self.storyboard?.instantiateViewController(withIdentifier: "topSelectPageViewController") as! topSelectPageViewController
+        
+        //ボタン押すとアニメーション発動
+        selectPage.modalTransitionStyle  = .crossDissolve
         self.present(selectPage, animated: true, completion: nil)
+        
     }
+    
     //segueで繋いでいる理由は、視覚的にわかりやすくするため
     
     @IBAction func resetPassButtontapped(_ sender: Any) {//パスワード忘れた人
