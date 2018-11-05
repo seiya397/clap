@@ -73,13 +73,13 @@ class scheduleViewController: UIViewController {
     }()
     
     
-    @IBAction func nextTapped(_ sender:UIButton) {
-        calendar.setCurrentPage(getNextMonth(date: calendar.currentPage), animated: true)
-    }
-    
-    @IBAction  func previousTapped(_ sender:UIButton) {
-        calendar.setCurrentPage(getPreviousMonth(date: calendar.currentPage), animated: true)
-    }
+//    @IBAction func nextTapped(_ sender:UIButton) {
+//        calendar.setCurrentPage(getNextMonth(date: calendar.currentPage), animated: true)
+//    }
+//
+//    @IBAction  func previousTapped(_ sender:UIButton) {
+//        calendar.setCurrentPage(getPreviousMonth(date: calendar.currentPage), animated: true)
+//    }
     
     @IBAction func TapApp(_ sender: Any) {
         let eventShare = self.storyboard?.instantiateViewController(withIdentifier: "planController") as! planController
