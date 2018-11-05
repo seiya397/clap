@@ -27,6 +27,11 @@ class myPageViewController: UIViewController{
     
     var editFlag = false
     
+    //キーボードhide処理
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -102,6 +107,7 @@ class myPageViewController: UIViewController{
                 let URLIMAGE = URL(string: url)
                 self.userImage.sd_setImage(with: URLIMAGE)
         }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -302,4 +308,5 @@ class CircleImageViewForMypage: UIImageView {
             clipsToBounds = true
         }
     }
+
 }
