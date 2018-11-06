@@ -89,9 +89,9 @@ class testScrollViewController: UIViewController, UIScrollViewDelegate, UITextFi
                 }
         
         scrollData = [
-            scrollViewDataStruct(title: "ここが良かった!今日の自分", placeHolder: ""),
-            scrollViewDataStruct(title: "メンバーのここを褒めたい", placeHolder: ""),
-            scrollViewDataStruct(title: "考えました明日の課題", placeHolder: ""),
+            scrollViewDataStruct(title: "よかった点", placeHolder: ""),
+            scrollViewDataStruct(title: "今日の反省", placeHolder: ""),
+            scrollViewDataStruct(title: "明日の課題", placeHolder: ""),
             scrollViewDataStruct(title: "こんな練習してみたい", placeHolder: ""),
             scrollViewDataStruct(title: "監督へのメッセージ", placeHolder: ""),
             scrollViewDataStruct(title: "今日のタイトル", placeHolder: ""),
@@ -116,7 +116,7 @@ class testScrollViewController: UIViewController, UIScrollViewDelegate, UITextFi
             if i == 0 {
                 label.center.x = view.center.x
             } else {
-                label.center.x = view.center.x - self.scrollView.frame.width / 5
+                label.center.x = view.center.x - self.scrollView.frame.width / 7
             }
             label.textColor = UIColor.gray
             self.scrollView.addSubview(label)
