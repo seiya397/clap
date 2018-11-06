@@ -39,8 +39,8 @@ class GroupViewController: UIViewController, UICollectionViewDelegate, UICollect
         getGroupData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         memberCollection.reloadData()
     }
     
