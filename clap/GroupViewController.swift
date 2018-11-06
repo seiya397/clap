@@ -35,6 +35,7 @@ class GroupViewController: UIViewController, UICollectionViewDelegate, UICollect
         memberCollection.register(nibName, forCellWithReuseIdentifier: "memberCell")
         memberCollection.delegate = self
         memberCollection.dataSource = self
+        navColor()
         getGroupData()
     }
     
@@ -82,6 +83,11 @@ class GroupViewController: UIViewController, UICollectionViewDelegate, UICollect
         performSegue(withIdentifier: "goMemberSelect", sender: nil)
     }
     
+//    @IBAction func diaryButtonTapped(_ sender: Any) {
+//        let eventShare = self.storyboard?.instantiateViewController(withIdentifier: "timelineViewController") as! timelineViewController
+//        self.present(eventShare, animated: true, completion: nil)
+//    }
+    
 }
 
 private extension GroupViewController {
@@ -118,6 +124,7 @@ private extension GroupViewController {
     }
     
     func getDiaryData(userID: String) {
+       self.memberNewDiaryID = []
         self.db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot3, error) in
             guard let document3 = snapshot3 else {
                 print(String(describing: error))
@@ -138,6 +145,7 @@ private extension GroupViewController {
                     }
                     self.userDefaults.removeObject(forKey: "MyDiaryData")
                     if self.memberNewDiaryID.isEmpty {
+                        self.ShowMessage(messageToDisplay: "新着日記はありません。")
                         return
                     } else {
                         self.userDefaults.removeObject(forKey: "MyDiaryData")
@@ -150,10 +158,28 @@ private extension GroupViewController {
             })
         }
     }
+    
     func getNewSubmitDate() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy年MM月dd日"
         let now = Date()
         return formatter.string(from: now)
+    }
+    
+    private func ShowMessage(messageToDisplay: String) { //確認用
+        let alertController = UIAlertController(title: "Alert Title", message: messageToDisplay, preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "ok", style: .default) { (action: UIAlertAction!) in
+            print("ok button tapped!!")
+        }
+        
+        alertController.addAction(OKAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func navColor() {
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0/255, green: 82/255, blue: 212/255, alpha: 100)
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
 }
