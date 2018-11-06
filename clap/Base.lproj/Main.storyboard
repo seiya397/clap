@@ -107,11 +107,12 @@
             </objects>
             <point key="canvasLocation" x="-3065.217391304348" y="3556.4732142857142"/>
         </scene>
-        <!--マイページ-->
+        <!--Navigation Controller-->
         <scene sceneID="mQ3-ku-52x">
             <objects>
                 <navigationController id="y8v-HQ-XbP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="マイページ" image="users" selectedImage="users" id="D2S-XF-DdB">
+                    <tabBarItem key="tabBarItem" title="" image="users" selectedImage="users" id="D2S-XF-DdB">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-15"/>
                         <color key="badgeColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="X0a-ZX-8RO">
@@ -339,7 +340,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KUY-xQ-ckj"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="マイページ" selectedImage="users" id="z5D-Tg-xue"/>
+                    <tabBarItem key="tabBarItem" title="" selectedImage="users" id="z5D-Tg-xue">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-15"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" title="プロフィール" id="4Yq-tz-663">
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="Eue-uJ-SX4">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uAT-M1-9Wu">
@@ -369,11 +372,12 @@
             </objects>
             <point key="canvasLocation" x="2318.840579710145" y="-183.42391304347828"/>
         </scene>
-        <!--日誌-->
+        <!--Navigation Controller-->
         <scene sceneID="x6X-pp-tVA">
             <objects>
                 <navigationController id="Qpr-bW-eT2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="日誌" image="journal" selectedImage="journal" id="r1o-MX-xfX">
+                    <tabBarItem key="tabBarItem" title="" image="journal" selectedImage="journal" id="r1o-MX-xfX">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-15"/>
                         <color key="badgeColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -1949,7 +1953,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3QL-1j-NTG"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="カレンダー" selectedImage="calendar" id="7tR-Qy-ONR">
+                    <tabBarItem key="tabBarItem" title="" selectedImage="calendar" id="7tR-Qy-ONR">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-15"/>
                         <color key="badgeColor" name="controlDarkShadowColor" catalog="System" colorSpace="catalog"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="カレンダー" id="7s2-Uv-wJK"/>
@@ -2447,11 +2452,13 @@
             </objects>
             <point key="canvasLocation" x="4989.8550724637689" y="-1221.1956521739132"/>
         </scene>
-        <!--カレンダー-->
+        <!--Navigation Controller-->
         <scene sceneID="fua-im-Lv3">
             <objects>
                 <navigationController id="jiz-D1-RkI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="カレンダー" image="calendar" selectedImage="calendar" id="ScO-GO-qtY">
+                    <tabBarItem key="tabBarItem" title="" image="calendar" selectedImage="calendar" id="ScO-GO-qtY">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-15"/>
+                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                         <color key="badgeColor" name="controlDarkShadowColor" catalog="System" colorSpace="catalog"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="asR-BW-G3q"/>
@@ -2597,7 +2604,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="2hn-VV-h1f">
-                                <rect key="frame" x="57" y="361" width="300" height="84"/>
+                                <rect key="frame" x="57" y="366" width="300" height="84"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FhA-IV-1en">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="22"/>
@@ -2665,7 +2672,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clapLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Xok-lR-s4q">
-                                <rect key="frame" x="124.5" y="210.5" width="165" height="87"/>
+                                <rect key="frame" x="124.5" y="199.5" width="165" height="87"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2677,12 +2684,12 @@
                             <constraint firstItem="HgD-Qn-UGx" firstAttribute="centerX" secondItem="QG4-uV-W90" secondAttribute="centerX" id="P8q-Me-9vd"/>
                             <constraint firstItem="HgD-Qn-UGx" firstAttribute="top" secondItem="QG4-uV-W90" secondAttribute="top" id="Q38-G7-FIc"/>
                             <constraint firstItem="9oF-Id-cLE" firstAttribute="top" secondItem="TxZ-jl-drG" secondAttribute="bottom" constant="15" id="QbS-cz-QTF"/>
-                            <constraint firstItem="Xok-lR-s4q" firstAttribute="centerY" secondItem="QG4-uV-W90" secondAttribute="centerY" constant="-194" id="SH9-m9-jeE"/>
+                            <constraint firstItem="Xok-lR-s4q" firstAttribute="centerY" secondItem="QG4-uV-W90" secondAttribute="centerY" constant="-205" id="SH9-m9-jeE"/>
                             <constraint firstItem="HgD-Qn-UGx" firstAttribute="leading" secondItem="dko-z1-IC6" secondAttribute="leading" id="W7D-Ib-msR"/>
                             <constraint firstItem="dko-z1-IC6" firstAttribute="bottom" secondItem="TxZ-jl-drG" secondAttribute="bottom" constant="60" id="ex3-BY-SaH"/>
-                            <constraint firstItem="2hn-VV-h1f" firstAttribute="centerY" secondItem="QG4-uV-W90" secondAttribute="centerY" constant="-45" id="i50-OR-nGW"/>
+                            <constraint firstItem="2hn-VV-h1f" firstAttribute="centerY" secondItem="QG4-uV-W90" secondAttribute="centerY" constant="-40" id="i50-OR-nGW"/>
                             <constraint firstItem="9oF-Id-cLE" firstAttribute="centerX" secondItem="QG4-uV-W90" secondAttribute="centerX" id="icZ-6S-iAK"/>
-                            <constraint firstItem="qBa-bc-uRY" firstAttribute="top" secondItem="2hn-VV-h1f" secondAttribute="bottom" constant="20" id="mV1-Jq-E27"/>
+                            <constraint firstItem="qBa-bc-uRY" firstAttribute="top" secondItem="2hn-VV-h1f" secondAttribute="bottom" constant="15" id="mV1-Jq-E27"/>
                             <constraint firstItem="dko-z1-IC6" firstAttribute="trailing" secondItem="HgD-Qn-UGx" secondAttribute="trailing" id="rnp-6H-hlL"/>
                             <constraint firstItem="TxZ-jl-drG" firstAttribute="centerX" secondItem="QG4-uV-W90" secondAttribute="centerX" id="rwd-Gh-XCw"/>
                             <constraint firstItem="HgD-Qn-UGx" firstAttribute="centerY" secondItem="QG4-uV-W90" secondAttribute="centerY" id="s46-3u-TBs"/>
@@ -3379,7 +3386,7 @@
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ユーザー情報を登録してください。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xS1-8u-0Q2">
                                 <rect key="frame" x="28.5" y="239" width="357" height="26.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.74117647060000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
