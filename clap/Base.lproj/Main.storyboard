@@ -1260,14 +1260,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1e-D1-Yv3">
-                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
-                                <items>
-                                    <navigationItem id="T25-fd-sHA"/>
-                                </items>
-                            </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UYP-Xj-rGL">
-                                <rect key="frame" x="0.0" y="132" width="414" height="681"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sny-fa-IAC">
                                     <size key="itemSize" width="50" height="50"/>
@@ -1311,14 +1305,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jpn-K1-QAT" firstAttribute="trailing" secondItem="ogn-Iz-twW" secondAttribute="trailing" constant="15" id="2a7-qI-zT0"/>
-                            <constraint firstItem="k1e-D1-Yv3" firstAttribute="top" secondItem="jpn-K1-QAT" secondAttribute="top" id="8To-tv-acs"/>
                             <constraint firstItem="UYP-Xj-rGL" firstAttribute="bottom" secondItem="jpn-K1-QAT" secondAttribute="bottom" id="9Kx-1W-DEb"/>
-                            <constraint firstItem="k1e-D1-Yv3" firstAttribute="leading" secondItem="jpn-K1-QAT" secondAttribute="leading" id="CjP-Yu-o6Z"/>
-                            <constraint firstItem="k1e-D1-Yv3" firstAttribute="trailing" secondItem="jpn-K1-QAT" secondAttribute="trailing" id="ClZ-tk-sq9"/>
                             <constraint firstItem="jpn-K1-QAT" firstAttribute="bottom" secondItem="ogn-Iz-twW" secondAttribute="bottom" constant="25" id="Tev-gx-kan"/>
                             <constraint firstItem="UYP-Xj-rGL" firstAttribute="trailing" secondItem="jpn-K1-QAT" secondAttribute="trailing" id="abl-Gs-laD"/>
                             <constraint firstItem="UYP-Xj-rGL" firstAttribute="leading" secondItem="jpn-K1-QAT" secondAttribute="leading" id="dd7-Hv-h8D"/>
-                            <constraint firstItem="UYP-Xj-rGL" firstAttribute="top" secondItem="k1e-D1-Yv3" secondAttribute="bottom" id="zCq-oh-YrB"/>
+                            <constraint firstItem="UYP-Xj-rGL" firstAttribute="top" secondItem="jpn-K1-QAT" secondAttribute="top" id="wjh-nr-SU7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jpn-K1-QAT"/>
                     </view>
@@ -1335,7 +1326,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yge-7z-Dst" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2970" y="-763"/>
+            <point key="canvasLocation" x="2969.5652173913045" y="-763.39285714285711"/>
         </scene>
         <!--Submited New Diary View Controller-->
         <scene sceneID="xUA-LO-rJ6">
