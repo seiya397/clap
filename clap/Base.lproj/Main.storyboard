@@ -1336,7 +1336,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yge-7z-Dst" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2913.04347826087" y="618.75"/>
+            <point key="canvasLocation" x="2735" y="832"/>
         </scene>
         <!--Submited New Diary View Controller-->
         <scene sceneID="xUA-LO-rJ6">
@@ -1692,7 +1692,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tdc-kK-BKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3826.0869565217395" y="618.75"/>
+            <point key="canvasLocation" x="3743" y="889"/>
         </scene>
         <!--Comment Reply View Controller-->
         <scene sceneID="NgU-6D-KpK">

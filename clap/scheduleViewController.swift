@@ -188,17 +188,17 @@ extension scheduleViewController: FSCalendarDelegate,FSCalendarDataSource,FSCale
         return  Calendar.current.date(byAdding: .month, value: -1, to:date)!
     }
     
-//    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-//        var dateForDot = dateFormatter.string(from: date)
-//            self.getScheduleDot(date: dateForDot)
-//                let dotArr = self.userDefaults.array(forKey: "arrForDotDisplay") as! [String]
-//            for dateString in dotArr {
-//                if dateForDot == dateString {
-//                    return 1
-//                }
-//            }
-//        return 0
-//    }
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        var dateForDot = dateFormatter.string(from: date)
+            self.getScheduleDot(date: dateForDot)
+                let dotArr = self.userDefaults.array(forKey: "arrForDotDisplay") as? [String] ?? [""]
+            for dateString in dotArr {
+                if dateForDot == dateString {
+                    return 1
+                }
+            }
+        return 0
+    }
 }
 
 

@@ -13,11 +13,6 @@ struct CellData {
     var diaryID: String
 }
 
-
-//バグ内容
-//SectionHeaderのバグです。
-//具体的にいうと、日記登録画面で提出ボタンをタップすると、確かに日記は登録されるのですが、日付な並び順がおかしくなります(例　11月5日に提出すると、10月20日の提出として表示される)。しかし、もう一度ログインし直すと、表示が正常の状態になります。恐らくSectionHeaderを定義しているこの行目からが問題だと思うのですが、ご意見をいただきたいです。
-
 struct TableSection<SectionItem: Comparable&Hashable, RowItem>: Comparable {
     var sectionItem: SectionItem
     var rowItems: [RowItem]
@@ -55,36 +50,24 @@ fileprivate func firstDayOfMonth(date: Date) -> Date {
 class timelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     var arr = [CellData]()
-
     let db = Firestore.firestore()
-    
+    var fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
     var sections = [TableSection<Date, CellData>]()
 
-    var teamIDFromFirebase: String = ""
-
-    var fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
-
-    var dataImageFromFirestore = [Any]()
-
-    var dataTitleFromFireStore = [Any]()
-
-    var dataTimeFromFirestore = [Any]()
-
-    var dataNameFromFireStore = [Any]()
     
+    var teamIDFromFirebase: String = ""
+    var dataImageFromFirestore = [Any]()
+    var dataTitleFromFireStore = [Any]()
+    var dataTimeFromFirestore = [Any]()
+    var dataNameFromFireStore = [Any]()
     var dataDateFromFiewstore = [Any]()
-
     var timelineDocumentIdArr = [Any]()
-
     var draftDocumentIdArr = [Any]()
-
     var submitDocumentIdArr = [Any]()
 
     var selectedNum = 0
 
-
     @IBOutlet weak var circleButton: UIButton!
-
     @IBOutlet weak var userTable: UITableView!
 
 
@@ -102,6 +85,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
             self.dataTimeFromFirestore = [Any]()
             self.dataTitleFromFireStore = [Any]()
             self.dataImageFromFirestore = [Any]()
+            self.dataDateFromFiewstore = [Any]()
             self.submitDocumentIdArr = [Any]()
             self.sections = [TableSection<Date, CellData>]()
 
@@ -155,14 +139,13 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
 
 
     @IBAction func timeLineButton(_ sender: Any) {
-        //日記詳細画面の”内容”についてのバグです。
-        //tableViewに表示されているcellをタップした時に、その詳細を見れるページを用意しています。ログインをして日記ページに行き、タイムラインとして表示されている日記をどれでもいいのでタップすると、その時はしっかりと想定内の内容が詳細画面として表示されるのですが、問題はこのあとです。例えば、日記ページ上に"タイムライン", "下書き", "提出済"ボタンがあるのですが、"下書き"をタップして、その後"タイムライン"に戻りtableViewのcellをタップすると想定外の内容が表示されます(一つ一つの日記にdiaryIDを設定しているのですが、恐らくこのdiaryIDがズレている可能性があります)。アドバイスをいただきたいです。
         self.arr = []
         self.dataNameFromFireStore = []
         self.dataTimeFromFirestore = []
         self.dataTitleFromFireStore = []
         self.dataImageFromFirestore = []
         self.timelineDocumentIdArr = []
+        self.dataDateFromFiewstore = []
         self.sections = []
         
         self.selectedNum = 1
@@ -220,6 +203,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
         self.dataTitleFromFireStore = []
         self.dataImageFromFirestore = []
         self.timelineDocumentIdArr = []
+        self.dataDateFromFiewstore = []
         self.sections = []
         
         self.selectedNum = 2
@@ -280,6 +264,7 @@ class timelineViewController: UIViewController, UITableViewDelegate, UITableView
         self.dataTitleFromFireStore = []
         self.dataImageFromFirestore = []
         self.timelineDocumentIdArr = []
+        self.dataDateFromFiewstore = []
         self.sections = []
 
         self.selectedNum = 3
