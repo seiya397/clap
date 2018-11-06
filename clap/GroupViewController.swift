@@ -98,7 +98,6 @@ private extension GroupViewController {
                     print(String(describing: err))
                     return
                 } else {
-                    
                     var i = 0
                     for document in querySnapshot!.documents {
                         guard var documentData: [String: Any] = document.data() else { return }
@@ -141,6 +140,7 @@ private extension GroupViewController {
                     if self.memberNewDiaryID.isEmpty {
                         return
                     } else {
+                        self.userDefaults.removeObject(forKey: "MyDiaryData")
                         self.userDefaults.set(self.memberNewDiaryID[0], forKey: "MyDiaryData")
                         self.userDefaults.synchronize()
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SubmitedNewDiaryViewController") as! SubmitedNewDiaryViewController

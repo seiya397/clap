@@ -179,9 +179,7 @@ class SubmitedNewDiaryViewController: UIViewController, UIScrollViewDelegate, UI
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        let userDefaults: UserDefaults = UserDefaults.standard
-        userDefaults.removeObject(forKey: "MyDiaryData")
-        self.dismiss(animated: true, completion: nil)
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func commentUserButtonTapped(_ sender: Any) {
