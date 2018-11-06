@@ -1345,7 +1345,7 @@
                                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckR-Oy-DC0">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                                 <items>
-                                                    <navigationItem title="Title" id="XHH-cc-gGB">
+                                                    <navigationItem title="新着日記" id="XHH-cc-gGB">
                                                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="2ye-Zc-7hL">
                                                             <connections>
                                                                 <action selector="cancelButtonTapped:" destination="U3L-WX-VzT" id="8gg-1B-Hhr"/>

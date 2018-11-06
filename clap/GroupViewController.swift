@@ -39,6 +39,11 @@ class GroupViewController: UIViewController, UICollectionViewDelegate, UICollect
         getGroupData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        memberCollection.reloadData()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return groupData.count
     }

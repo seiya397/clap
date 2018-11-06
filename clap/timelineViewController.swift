@@ -146,7 +146,7 @@ class timelineViewController: UIViewController {
     @IBAction func addDiaryButton(_ sender: Any) {
         self.performSegue(withIdentifier: "goDiary", sender: nil)
     }
-
+    
 }
 
 
