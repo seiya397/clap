@@ -142,10 +142,7 @@ class timelineViewController: UIViewController {
         
         displaySubmitOrSubscriptInfo(bool: true)
     }
-
-
     
-
     @IBAction func addDiaryButton(_ sender: Any) {
         self.performSegue(withIdentifier: "goDiary", sender: nil)
     }
@@ -157,6 +154,7 @@ extension timelineViewController: UITableViewDelegate, UITableViewDataSource {
     
     func mustSbscribe() {
         userTable.delegate = self
+        
         userTable.dataSource = self
         
         userTable.register(UINib(nibName: "userTableViewCell", bundle: nil), forCellReuseIdentifier: "cellName")
@@ -168,25 +166,37 @@ extension timelineViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let section = self.sections[section]
+        
         let date = section.sectionItem
+        
         let dateFormatter = DateFormatter()
+        
         dateFormatter.dateFormat = "yyyy年MM月dd日"
+        
         return dateFormatter.string(from: date)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = self.sections[section]
+        
         return section.rowItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = userTable.dequeueReusableCell(withIdentifier: "cellName", for: indexPath) as! userTableViewCell
+        
         let section = self.sections[indexPath.section]
+        
         let cellDetail = section.rowItems[indexPath.row]
+        
         cell.userTitle.text = cellDetail.title
+        
         cell.userName.text = cellDetail.name
+        
         cell.userTime.text = cellDetail.time
+        
         cell.userImage.sd_setImage(with: cellDetail.image)
+        
         return cell
     }
     
@@ -197,25 +207,21 @@ extension timelineViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = self.sections[indexPath.section]
+        
         let cellDetail = section.rowItems[indexPath.row]
+        
         if self.selectedNum == 1 {
-            let userDefaults:UserDefaults = UserDefaults.standard
-            userDefaults.removeObject(forKey: "goTimeline")
-            userDefaults.set(cellDetail.diaryID, forKey: "goTimeline")
-            userDefaults.synchronize()
-            self.performSegue(withIdentifier: "goTimeline", sender: nil)
+            
+            Destination(segue: "goTimeline", cellDetail: cellDetail)
+            
         } else if self.selectedNum == 2 {
-            let userDefaults:UserDefaults = UserDefaults.standard
-            userDefaults.removeObject(forKey: "goDraft")
-            userDefaults.set(cellDetail.diaryID, forKey: "goDraft")
-            userDefaults.synchronize()
-            self.performSegue(withIdentifier: "goDraft", sender: nil)
+            
+            Destination(segue: "goDraft", cellDetail: cellDetail)
+            
         } else if self.selectedNum == 3 {
-            let userDefaults:UserDefaults = UserDefaults.standard
-            userDefaults.removeObject(forKey: "goSubmit")
-            userDefaults.set(cellDetail.diaryID, forKey: "goSubmit")
-            userDefaults.synchronize()
-            self.performSegue(withIdentifier: "goSubmit", sender: nil)
+            
+            Destination(segue: "goSubmit", cellDetail: cellDetail)
+            
         }
     }
 }
@@ -299,8 +305,6 @@ private extension timelineViewController {
                         self.sections = TableSection.group(rowItems: self.arr, by: { (headline) in
                             firstDayOfMonth(date: headline.date)
                         })
-                        
-                        
                     }
                     self.userTable.reloadData()
                 }
@@ -308,8 +312,20 @@ private extension timelineViewController {
         }
     }
     
+    func Destination(segue: String, cellDetail: CellData) {
+        let userDefaults:UserDefaults = UserDefaults.standard
+        
+        userDefaults.removeObject(forKey: segue)
+        
+        userDefaults.set(cellDetail.diaryID, forKey: segue)
+        
+        userDefaults.synchronize()
+        
+        self.performSegue(withIdentifier: segue, sender: nil)
+    }
+    
+    
     func navColor() {
-        //ナビゲーションバーの背景、タイトル色指定
         navigationController?.navigationBar.barTintColor = UIColor(red: 0/255, green: 82/255, blue: 212/255, alpha: 100)
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
