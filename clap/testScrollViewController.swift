@@ -319,9 +319,9 @@ class CustomView: UIView {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.backgroundColor = UIColor.clear
-        textView.layer.borderColor = UIColor.gray.cgColor
-        textView.layer.borderWidth = 2
-        textView.layer.cornerRadius = 10
+//        textView.layer.borderColor = UIColor.gray.cgColor
+//        textView.layer.borderWidth = 2
+//        textView.layer.cornerRadius = 10
         return textView
     }()
     

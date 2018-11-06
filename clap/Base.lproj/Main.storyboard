@@ -1355,7 +1355,13 @@
                                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckR-Oy-DC0">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                                 <items>
-                                                    <navigationItem title="Title" id="XHH-cc-gGB"/>
+                                                    <navigationItem title="Title" id="XHH-cc-gGB">
+                                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="2ye-Zc-7hL">
+                                                            <connections>
+                                                                <action selector="cancelButtonTapped:" destination="U3L-WX-VzT" id="8gg-1B-Hhr"/>
+                                                            </connections>
+                                                        </barButtonItem>
+                                                    </navigationItem>
                                                 </items>
                                             </navigationBar>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k78-jj-Rpt">
@@ -1489,6 +1495,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xe3-2i-tJ2">
                                                         <rect key="frame" x="368" y="43" width="31" height="30"/>
                                                         <state key="normal" title="投稿"/>
+                                                        <connections>
+                                                            <action selector="commentUserButtonTapped:" destination="U3L-WX-VzT" eventType="touchUpInside" id="naG-Js-kts"/>
+                                                        </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jxz-h2-1iI">
                                                         <rect key="frame" x="70.5" y="73" width="273" height="1"/>
@@ -1592,23 +1601,23 @@
                     </view>
                     <size key="freeformSize" width="414" height="2100"/>
                     <connections>
-                        <outlet property="commentUserCount" destination="5Wo-lb-YZf" id="5jX-sP-Ibk"/>
-                        <outlet property="commentUserImage" destination="GDJ-Oo-qry" id="wWy-gE-N5L"/>
-                        <outlet property="commentUserTableView" destination="3EV-yQ-kNL" id="FoU-s4-7C8"/>
-                        <outlet property="commentUserTextfield" destination="eoO-F6-D82" id="6s9-Oc-4z3"/>
-                        <outlet property="contentView" destination="cVG-1S-F1j" id="Z0o-ej-ZGd"/>
-                        <outlet property="textLabel1" destination="k78-jj-Rpt" id="2Sf-bf-lRd"/>
-                        <outlet property="textLabel2" destination="zLg-sD-hPB" id="Sn7-IC-3wI"/>
-                        <outlet property="textLabel3" destination="gUn-R4-Ofz" id="e5l-ec-pKI"/>
-                        <outlet property="textLabel4" destination="flI-8Y-vxd" id="Ntd-1r-OVk"/>
-                        <outlet property="textLabel5" destination="BHa-4G-GDJ" id="j2A-Tb-pwH"/>
-                        <outlet property="textLabel6" destination="I6R-u6-bxb" id="Zqk-cu-Rp0"/>
-                        <outlet property="textView1" destination="ap5-k2-udk" id="hY7-P3-Wfw"/>
-                        <outlet property="textView2" destination="0bo-0R-C1H" id="0Ms-uI-D78"/>
-                        <outlet property="textView3" destination="44w-fz-fhH" id="Qjk-n6-Q89"/>
-                        <outlet property="textView4" destination="D29-g8-oUf" id="V1G-o3-UJU"/>
-                        <outlet property="textView5" destination="ECf-w6-Yzh" id="XpE-jA-RyQ"/>
-                        <outlet property="textView6" destination="5Gw-54-d1W" id="3NB-Sl-jkG"/>
+                        <outlet property="commentUserCount" destination="5Wo-lb-YZf" id="Z6c-KQ-nxC"/>
+                        <outlet property="commentUserImage" destination="GDJ-Oo-qry" id="9Uf-Wx-qsY"/>
+                        <outlet property="commentUserTableView" destination="3EV-yQ-kNL" id="DnT-Oo-Ok8"/>
+                        <outlet property="commentUserTextfield" destination="eoO-F6-D82" id="Qam-wj-v3l"/>
+                        <outlet property="contentView" destination="cVG-1S-F1j" id="KVj-WY-kRb"/>
+                        <outlet property="textLabel1" destination="k78-jj-Rpt" id="gZn-vX-sdL"/>
+                        <outlet property="textLabel2" destination="zLg-sD-hPB" id="MWG-Vt-anf"/>
+                        <outlet property="textLabel3" destination="gUn-R4-Ofz" id="trZ-D5-GDT"/>
+                        <outlet property="textLabel4" destination="flI-8Y-vxd" id="bzN-Gr-9XG"/>
+                        <outlet property="textLabel5" destination="BHa-4G-GDJ" id="q3T-a6-U6g"/>
+                        <outlet property="textLabel6" destination="I6R-u6-bxb" id="Ntq-0g-PTx"/>
+                        <outlet property="textView1" destination="ap5-k2-udk" id="xD6-kt-xKw"/>
+                        <outlet property="textView2" destination="0bo-0R-C1H" id="s7h-16-J96"/>
+                        <outlet property="textView3" destination="44w-fz-fhH" id="SPI-te-YB2"/>
+                        <outlet property="textView4" destination="D29-g8-oUf" id="GuJ-W8-0Jh"/>
+                        <outlet property="textView5" destination="ECf-w6-Yzh" id="HvV-Pc-ljw"/>
+                        <outlet property="textView6" destination="5Gw-54-d1W" id="Kvv-iZ-qTI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HyN-xA-Si4" userLabel="First Responder" sceneMemberID="firstResponder"/>

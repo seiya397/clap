@@ -53,15 +53,12 @@ class GroupViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let cellData = groupData[indexPath.row]
+        
         let userID = cellData.userID
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SubmitedNewDiaryViewController") as! SubmitedNewDiaryViewController
-        DispatchQueue.global(qos: .default).async {
-            self.getDiaryData(userID: userID!)
-            DispatchQueue.main.async {
-                self.present(vc, animated: true, completion: nil)
-            }
-        }
+        
+        self.getDiaryData(userID: userID!)
         
     }
     
@@ -120,7 +117,6 @@ private extension GroupViewController {
             })
         }
     }
-    //diaryIDを取得して、それで次のページで呼び出す
     
     func getDiaryData(userID: String) {
         self.db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot3, error) in
@@ -141,12 +137,14 @@ private extension GroupViewController {
                         self.memberNewDiaryID.append(documentData["diaryID"] as? String ?? "NO DATA")
                         i += 1
                     }
+                    self.userDefaults.removeObject(forKey: "MyDiaryData")
                     if self.memberNewDiaryID.isEmpty {
-                        print("値が何も入っていないので、遷移しません")
                         return
                     } else {
                         self.userDefaults.set(self.memberNewDiaryID[0], forKey: "MyDiaryData")
                         self.userDefaults.synchronize()
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SubmitedNewDiaryViewController") as! SubmitedNewDiaryViewController
+                        self.present(vc, animated: true, completion: nil)
                     }
                 }
             })
