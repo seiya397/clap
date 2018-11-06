@@ -82,12 +82,6 @@ class GroupViewController: UIViewController, UICollectionViewDelegate, UICollect
     @IBAction func memberAddButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "goMemberSelect", sender: nil)
     }
-    
-//    @IBAction func diaryButtonTapped(_ sender: Any) {
-//        let eventShare = self.storyboard?.instantiateViewController(withIdentifier: "timelineViewController") as! timelineViewController
-//        self.present(eventShare, animated: true, completion: nil)
-//    }
-    
 }
 
 private extension GroupViewController {
