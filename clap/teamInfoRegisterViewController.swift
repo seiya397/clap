@@ -166,6 +166,7 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     
 }
 
+//pickerviewツールバー
 
 private extension teamInfoRegisterViewController {
     var accessoryToolbarForCareer: UIToolbar {
@@ -180,7 +181,7 @@ private extension teamInfoRegisterViewController {
                                                 target: nil,
                                                 action: nil)
             accessoryToolbar.items = [flexibleSpace, doneButton]
-            accessoryToolbar.barTintColor = UIColor.white
+            accessoryToolbar.barTintColor = UIColor.black.withAlphaComponent(0.2)
             return accessoryToolbar
         }
     }
@@ -197,7 +198,7 @@ private extension teamInfoRegisterViewController {
                                                 target: nil,
                                                 action: nil)
             accessoryToolbar.items = [flexibleSpace, doneButton]
-            accessoryToolbar.barTintColor = UIColor.white
+            accessoryToolbar.barTintColor = UIColor.black.withAlphaComponent(0.2)
             return accessoryToolbar
         }
     }
@@ -213,7 +214,8 @@ private extension teamInfoRegisterViewController {
         teamSports.inputAccessoryView = accessoryToolbarForSports
         teamSports.text = pickerForSports[0]
     }
-
+    
+    //pickerview本体
     func getPickerView(type: PickerAttributeType) -> UIPickerView {
         var pickerView = UIPickerView()
         switch type {
@@ -224,7 +226,7 @@ private extension teamInfoRegisterViewController {
         }
         pickerView.dataSource = self
         pickerView.delegate = self
-        pickerView.backgroundColor = UIColor.white
+        pickerView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         return pickerView
     }
 }
