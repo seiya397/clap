@@ -21,17 +21,13 @@ struct EndEvent {
 
 
 
-//実装したいこと
-//1, 日付をタップして、もしその日にイベントを登録していればイベントをTableViewに表示するということを実現したいです。
-//2, 現段階での進捗は感覚値35％ほどです。
-//3, 具体的にいうと、イベント開始日に対してはTableViewにイベントを表示することができています。しかし終了日に対してはイベントを表示できません。GGAに向けて最低でも開始日、終了日に対してのイベント表示まで達成したいです(理想は、開始日と終了日の間の日に対してもイベントを表示することです。例　開始日11月6日,終了日11月10日,イベント名”全国大会”,と登録すれば、11月6日〜11月10日までのどの日付をタップしてもTableViewに"全国大会"と表示することです)。
-//4, 一番下にコメントアウトした関数(getEndScheduleDate)がありますが、これが終了日に対してイベントを表示するために関数です。しかし、getStartScheduleDateと共存ができません。
-//今回お聞きしたいことは、getEndScheduleDateとgetStartScheduleDateのコード内での共存方法、またよろしければ3についてのベストプラクティスも教えていただけたらと思います。
+
 class scheduleViewController: UIViewController {
     
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var pickedDate: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var newDiaryLabel: UILabel!
     
     //開始日タップ用
     var startEvents = [StartEvent]()
@@ -49,6 +45,7 @@ class scheduleViewController: UIViewController {
     var teamIDFromFirebase: String = String()
     var timeIntervalArray: [String] = []
     var dotDisplayArr = [String]()
+    var newSubmitDiaryForToday = [Any]()
     
     let userDefaults = UserDefaults.standard
     
@@ -62,6 +59,7 @@ class scheduleViewController: UIViewController {
         currentDate(pickedDate)
         beginAlert()
         navColor()
+        getTodayDiary()
     }
     
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
@@ -166,6 +164,7 @@ extension scheduleViewController: FSCalendarDelegate,FSCalendarDataSource,FSCale
         pickedDate.text = "\(String(selectDay.1))月\(String(selectDay.2))日\(String(selectDay.3))曜日"
         
         let scheduleForDate = "\(String(selectDay.0))年\(String(selectDay.1))月\(String(selectDay.2))日"
+        print(scheduleForDate)
         
         getStartScheduleDate(date: scheduleForDate)
         
@@ -529,52 +528,51 @@ private extension scheduleViewController {
         }
     }
     
-//    func getEndScheduleDate(date: String) {
-//        endEvents = []
-//        startTimeArrForStart = []
-//        endTimeArrForStart = []
-//        scheduleArrForStart = []
-//
-//        self.db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot, error) in
-//            guard let document = snapshot else {
-//                print("erorr2 \(String(describing: error))")
-//                return
-//            }
-//            guard let data = document.data() else { return }
-//            self.teamIDFromFirebase = data["teamID"] as? String ?? ""
-//
-//            self.db
-//                .collection("teams")
-//                .document(self.teamIDFromFirebase)
-//                .collection("schedule")
-//                .whereField("date_start", isEqualTo: date)
-//                .getDocuments() { (querySnapshot, err) in
-//                    if err != nil {
-//                        print("scheduleを取得できませんでした")
-//                        return
-//                } else {
-//                    var i = 0
-//                    for document in querySnapshot!.documents {
-//                        let dataFromFirebase: [String : Any] = document.data()
-//                        let startTimeFromFirebase = dataFromFirebase["time_start"] ?? ""
-//                        let endTimeFromFirebase = dataFromFirebase["time_end"] ?? ""
-//                        let scheduleFromFirebase = dataFromFirebase["event_title"] ?? ""
-//                        self.startTimeArrForEnd.append(startTimeFromFirebase)
-//                        self.endTimeArrForStart.append(endTimeFromFirebase)
-//                        self.endTimeArrForEnd.append(scheduleFromFirebase as! String)
-//                        print("~~~~~~~~~~~~~~~~~~~~")
-//                        print(self.startTimeArrForEnd)
-//                        print(self.scheduleArrForEnd)
-//                        self.endEvents.append(EndEvent(event: self.scheduleArrForEnd[i] as! String, startTime: self.startTimeArrForEnd[i] as! String, endTime: self.endTimeArrForEnd[i] as! String))
-//                        self.tableView.reloadData()
-//                        i += 1
-//                        print("??????????????????/")
-//                        print(self.endEvents)
-//                    }
-//                }
-//            }
-//        }
-//    }
+    func getTodayDiary() {
+        self.db
+            .collection("users")
+            .document(fireAuthUID)
+            .addSnapshotListener { (snapshot, error) in
+                
+                guard let document = snapshot else {
+                    
+                    print("erorr2 \(String(describing: error))")
+                    
+                    return
+                    
+                }
+                guard let data = document.data() else { return }
+                
+                self.teamIDFromFirebase = data["teamID"] as? String ?? ""
+                
+                let today = self.getNewSubmitDate()
+                self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("submit", isEqualTo: true).whereField("userID", isEqualTo: self.fireAuthUID).whereField("date", isEqualTo: today).getDocuments(completion: { (query, err) in
+                    if err != nil {
+                        return
+                    } else {
+                        var i = 0
+                        for document in query!.documents {
+                            guard var documentData: [String: Any] = document.data() else { return }
+                            self.newSubmitDiaryForToday.append(documentData["title"] as? String ?? "新着なし")
+                            i += 1
+                        }
+                        if self.newSubmitDiaryForToday.isEmpty {
+                            self.newDiaryLabel.text = "新着なし"
+                        } else {
+                            self.newDiaryLabel.text = self.newSubmitDiaryForToday[0] as! String
+                        }
+                        
+                    }
+                })
+        }
+    }
+    
+    func getNewSubmitDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy年MM月dd日"
+        let now = Date()
+        return formatter.string(from: now)
+    }
 }
 
 

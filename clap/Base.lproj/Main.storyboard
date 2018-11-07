@@ -1865,7 +1865,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z4p-gG-Vg6">
-                                <rect key="frame" x="0.0" y="543" width="414" height="299"/>
+                                <rect key="frame" x="0.0" y="581" width="414" height="261"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="wOm-Kt-aHB" id="IW5-vW-Khu"/>
@@ -1917,6 +1917,16 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEs-de-cbk">
+                                <rect key="frame" x="0.0" y="543" width="414" height="38"/>
+                                <color key="backgroundColor" red="0.87039766038914035" green="0.88219273328275682" blue="0.94257136317073997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="Me6-Hb-VzF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1924,18 +1934,23 @@
                             <constraint firstItem="z4p-gG-Vg6" firstAttribute="centerX" secondItem="4ge-du-E4E" secondAttribute="centerX" id="3zL-Ja-1yP"/>
                             <constraint firstItem="29U-2u-HD5" firstAttribute="leading" secondItem="3QL-1j-NTG" secondAttribute="leading" id="5Qe-Yv-1VY"/>
                             <constraint firstItem="qyP-Ow-pVy" firstAttribute="centerX" secondItem="4ge-du-E4E" secondAttribute="centerX" id="5km-uc-Mew"/>
+                            <constraint firstItem="LEs-de-cbk" firstAttribute="leading" secondItem="3QL-1j-NTG" secondAttribute="leading" id="8C5-Jh-rbw"/>
                             <constraint firstItem="qyP-Ow-pVy" firstAttribute="top" secondItem="29U-2u-HD5" secondAttribute="bottom" id="9Do-VJ-ewe"/>
+                            <constraint firstItem="z4p-gG-Vg6" firstAttribute="top" secondItem="LEs-de-cbk" secondAttribute="bottom" id="FjN-xh-a4L"/>
                             <constraint firstItem="z4p-gG-Vg6" firstAttribute="leading" secondItem="3QL-1j-NTG" secondAttribute="leading" id="Jf7-6u-rc6"/>
                             <constraint firstItem="tic-O3-RUw" firstAttribute="trailing" secondItem="3QL-1j-NTG" secondAttribute="trailing" constant="-10" id="Tba-KN-lRw"/>
                             <constraint firstItem="3QL-1j-NTG" firstAttribute="bottom" secondItem="tic-O3-RUw" secondAttribute="bottom" constant="15" id="ViO-wI-jUl"/>
                             <constraint firstItem="29U-2u-HD5" firstAttribute="trailing" secondItem="3QL-1j-NTG" secondAttribute="trailing" id="VvP-LM-PX1"/>
                             <constraint firstItem="3QL-1j-NTG" firstAttribute="trailing" secondItem="z4p-gG-Vg6" secondAttribute="trailing" id="acn-AY-P3A"/>
                             <constraint firstItem="qyP-Ow-pVy" firstAttribute="centerY" secondItem="4ge-du-E4E" secondAttribute="centerY" constant="80" id="cAe-KC-xkR"/>
+                            <constraint firstItem="LEs-de-cbk" firstAttribute="trailing" secondItem="3QL-1j-NTG" secondAttribute="trailing" id="d8t-hX-Gih"/>
                             <constraint firstItem="3QL-1j-NTG" firstAttribute="trailing" secondItem="qyP-Ow-pVy" secondAttribute="trailing" id="fHh-g0-5Ps"/>
                             <constraint firstItem="29U-2u-HD5" firstAttribute="top" secondItem="3QL-1j-NTG" secondAttribute="top" id="fj7-yS-U1Q"/>
+                            <constraint firstItem="LEs-de-cbk" firstAttribute="centerX" secondItem="4ge-du-E4E" secondAttribute="centerX" id="iFJ-Up-caA"/>
                             <constraint firstItem="qyP-Ow-pVy" firstAttribute="leading" secondItem="3QL-1j-NTG" secondAttribute="leading" id="jLx-bh-T7X"/>
-                            <constraint firstItem="z4p-gG-Vg6" firstAttribute="top" secondItem="qyP-Ow-pVy" secondAttribute="bottom" id="l7c-Ns-AhJ"/>
+                            <constraint firstItem="z4p-gG-Vg6" firstAttribute="top" secondItem="qyP-Ow-pVy" secondAttribute="bottom" constant="38" id="l7c-Ns-AhJ"/>
                             <constraint firstItem="3QL-1j-NTG" firstAttribute="bottom" secondItem="z4p-gG-Vg6" secondAttribute="bottom" constant="-29" id="lwF-cr-8ER"/>
+                            <constraint firstItem="LEs-de-cbk" firstAttribute="top" secondItem="qyP-Ow-pVy" secondAttribute="bottom" id="xX9-36-2Fk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3QL-1j-NTG"/>
                     </view>
@@ -1947,13 +1962,14 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="calendar" destination="29U-2u-HD5" id="06K-0S-zMU"/>
+                        <outlet property="newDiaryLabel" destination="LEs-de-cbk" id="B8V-Zh-7e7"/>
                         <outlet property="pickedDate" destination="qyP-Ow-pVy" id="uw4-9V-mFT"/>
                         <outlet property="tableView" destination="z4p-gG-Vg6" id="4Hg-7m-snQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PX1-dn-BUY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2540.579710144928" y="-1538.3152173913045"/>
+            <point key="canvasLocation" x="2540.579710144928" y="-1538.8392857142856"/>
         </scene>
         <!--イベントを追加-->
         <scene sceneID="5Is-1Z-nPX">
