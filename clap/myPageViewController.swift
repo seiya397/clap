@@ -281,7 +281,7 @@ extension myPageViewController: UIImagePickerControllerDelegate, UINavigationCon
     public func ShowSaveAlert() {
         let alertController = UIAlertController(title: "Alert", message: "保存完了", preferredStyle: .alert)
         
-        let OKAction = UIAlertAction(title: "ok", style: .default) { (action: UIAlertAction!) in
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction!) in
             print("ok button tapped!!")
         }
         

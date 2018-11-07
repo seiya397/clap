@@ -1293,7 +1293,7 @@
                                     <constraint firstAttribute="width" constant="80" id="wbg-r2-T0p"/>
                                     <constraint firstAttribute="height" constant="80" id="zzy-v2-kAZ"/>
                                 </constraints>
-                                <state key="normal" image="writeButton">
+                                <state key="normal" image="addmember">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -1924,11 +1924,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEs-de-cbk">
-                                <rect key="frame" x="0.0" y="543" width="414" height="38"/>
-                                <color key="backgroundColor" red="0.87039766038914035" green="0.88219273328275682" blue="0.94257136317073997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="Me6-Hb-VzF"/>
-                                </constraints>
+                                <rect key="frame" x="15" y="543" width="399" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1940,7 +1936,7 @@
                             <constraint firstItem="z4p-gG-Vg6" firstAttribute="centerX" secondItem="4ge-du-E4E" secondAttribute="centerX" id="3zL-Ja-1yP"/>
                             <constraint firstItem="29U-2u-HD5" firstAttribute="leading" secondItem="3QL-1j-NTG" secondAttribute="leading" id="5Qe-Yv-1VY"/>
                             <constraint firstItem="qyP-Ow-pVy" firstAttribute="centerX" secondItem="4ge-du-E4E" secondAttribute="centerX" id="5km-uc-Mew"/>
-                            <constraint firstItem="LEs-de-cbk" firstAttribute="leading" secondItem="3QL-1j-NTG" secondAttribute="leading" id="8C5-Jh-rbw"/>
+                            <constraint firstItem="LEs-de-cbk" firstAttribute="leading" secondItem="3QL-1j-NTG" secondAttribute="leading" constant="15" id="8C5-Jh-rbw"/>
                             <constraint firstItem="qyP-Ow-pVy" firstAttribute="top" secondItem="29U-2u-HD5" secondAttribute="bottom" id="9Do-VJ-ewe"/>
                             <constraint firstItem="z4p-gG-Vg6" firstAttribute="top" secondItem="LEs-de-cbk" secondAttribute="bottom" id="FjN-xh-a4L"/>
                             <constraint firstItem="z4p-gG-Vg6" firstAttribute="leading" secondItem="3QL-1j-NTG" secondAttribute="leading" id="Jf7-6u-rc6"/>
@@ -1952,7 +1948,6 @@
                             <constraint firstItem="LEs-de-cbk" firstAttribute="trailing" secondItem="3QL-1j-NTG" secondAttribute="trailing" id="d8t-hX-Gih"/>
                             <constraint firstItem="3QL-1j-NTG" firstAttribute="trailing" secondItem="qyP-Ow-pVy" secondAttribute="trailing" id="fHh-g0-5Ps"/>
                             <constraint firstItem="29U-2u-HD5" firstAttribute="top" secondItem="3QL-1j-NTG" secondAttribute="top" id="fj7-yS-U1Q"/>
-                            <constraint firstItem="LEs-de-cbk" firstAttribute="centerX" secondItem="4ge-du-E4E" secondAttribute="centerX" id="iFJ-Up-caA"/>
                             <constraint firstItem="qyP-Ow-pVy" firstAttribute="leading" secondItem="3QL-1j-NTG" secondAttribute="leading" id="jLx-bh-T7X"/>
                             <constraint firstItem="z4p-gG-Vg6" firstAttribute="top" secondItem="qyP-Ow-pVy" secondAttribute="bottom" constant="38" id="l7c-Ns-AhJ"/>
                             <constraint firstItem="3QL-1j-NTG" firstAttribute="bottom" secondItem="z4p-gG-Vg6" secondAttribute="bottom" constant="-29" id="lwF-cr-8ER"/>
@@ -3460,6 +3455,7 @@
     </scenes>
     <resources>
         <image name="addButton" width="74" height="74"/>
+        <image name="addmember" width="74" height="74"/>
         <image name="avatardefault_92824" width="512" height="512"/>
         <image name="background" width="375" height="812"/>
         <image name="calendar" width="26" height="26"/>

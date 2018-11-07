@@ -287,7 +287,7 @@ private extension scheduleViewController {
         
         let currentPickedDate = getDay(Date())
         
-        currentTet.text = "\(String(currentPickedDate.1))月\(String(currentPickedDate.2))日\(String(currentPickedDate.3))曜日"
+        currentTet.text =  "\(String(currentPickedDate.1))月\(String(currentPickedDate.2))日\(String(currentPickedDate.3))曜日"
         
     }
     

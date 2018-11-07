@@ -135,7 +135,14 @@ class testScrollViewController: UIViewController, UIScrollViewDelegate, UITextFi
                 label.center.x = scrollContentOffset - ((scrollView.bounds.width / 4 - viewOffset) / 2)
             }
         }
+        
     }
+   
+    //キーボードhide処理
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
@@ -338,6 +345,8 @@ class CustomView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+
     
 }
 
