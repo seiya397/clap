@@ -39,6 +39,8 @@ class MemberSelectViewController: UIViewController, UICollectionViewDelegate, UI
         getMemberData(collectionView: collectionView)
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memberData.count
     }
