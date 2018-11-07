@@ -158,7 +158,7 @@ class userInfoRegisterViewController: UIViewController, UITextFieldDelegate{
                                         "createDate": dateStr,
                                         "teamID": teamID,
                                         "userID": fireAuthUID,
-                                        "image": "https://firebasestorage.googleapis.com/v0/b/lily-ios-debug.appspot.com/o/profile%2FzUN6bPT6DwWyq1BIybPsDzE0fd52.jpeg?alt=media&token=c9682120-051f-4fac-9a31-81c077f2d08d"
+                                        "image": "https://st3.depositphotos.com/7486768/17949/v/1600/depositphotos_179490486-stock-illustration-profile-anonymous-face-icon-gray.jpg"
                                     ] as [String: Any]
                                 
                                 let userRegistInfo = ["regist": true, "teamID": teamID] as [String : Any]
