@@ -32,8 +32,8 @@ class teamReplesentRegisterViewController: UIViewController {
     
     let db = Firestore.firestore()
     
-    var pickerForRole = ["選手", "監督", "マネージャー"]
-    var pickerForGrade = [ "--", "1年生", "2年生", "3年生", "4年生"]
+    var pickerForRole = ["役割を選んでください","選手", "監督", "マネージャー"]
+    var pickerForGrade = [ "学年を選んでください", "1年生", "2年生", "3年生", "4年生"]
     
     
     @objc func onDoneButtonTappedForRole(sender: UIBarButtonItem) {

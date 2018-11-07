@@ -34,8 +34,8 @@ class teamInfoRegisterViewController: UIViewController,UIImagePickerControllerDe
     @IBOutlet weak var managerRegister: UIButton!
     
     
-    var pickerForAttribute = ["社会人", "大学", "高校", "中学"]
-    var pickerForSports = ["野球", "ラグビー", "柔道", "水泳", "サッカー"]
+    var pickerForAttribute = ["学年を選んでください","社会人", "大学", "高校", "中学"]
+    var pickerForSports = ["種目を選んでください","野球", "ラグビー", "柔道", "水泳", "サッカー"]
     
     let db = Firestore.firestore()
     
@@ -181,7 +181,7 @@ private extension teamInfoRegisterViewController {
                                                 target: nil,
                                                 action: nil)
             accessoryToolbar.items = [flexibleSpace, doneButton]
-            accessoryToolbar.barTintColor = UIColor.black.withAlphaComponent(0.2)
+            accessoryToolbar.barTintColor = UIColor.white.withAlphaComponent(0.2)
             return accessoryToolbar
         }
     }
@@ -198,7 +198,7 @@ private extension teamInfoRegisterViewController {
                                                 target: nil,
                                                 action: nil)
             accessoryToolbar.items = [flexibleSpace, doneButton]
-            accessoryToolbar.barTintColor = UIColor.black.withAlphaComponent(0.2)
+            accessoryToolbar.barTintColor = UIColor.white.withAlphaComponent(0.2)
             return accessoryToolbar
         }
     }
@@ -226,7 +226,7 @@ private extension teamInfoRegisterViewController {
         }
         pickerView.dataSource = self
         pickerView.delegate = self
-        pickerView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        pickerView.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         return pickerView
     }
 }

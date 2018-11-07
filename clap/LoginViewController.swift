@@ -108,7 +108,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     //segueで繋いでいる理由は、視覚的にわかりやすくするため
     
-    @IBAction func resetPassButtontapped(_ sender: Any) {//パスワード忘れた人
+    @IBAction func resetPassButtontapped(_ sender: Any) {
+        //パスワード忘れた人
+        
+        let selectPage = self.storyboard?.instantiateViewController(withIdentifier: "userResetPassViewController") as! userResetPassViewController
+        
+        //ボタン押すとアニメーション発動
+        selectPage.modalTransitionStyle  = .crossDissolve
+        self.present(selectPage, animated: true, completion: nil)
+        
+        
+        
+        
     }
     
     public func ShowMessage(messageToDisplay: String) { //確認用
