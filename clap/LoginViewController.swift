@@ -3,19 +3,7 @@ import Firebase
 import FirebaseAuth
 
 
-//textfieldの下線追加
-extension UITextField {
-    func addBorderBottom(height: CGFloat, color: UIColor) {
-        let border = CALayer()
-        border.frame = CGRect(x: 0, y: self.frame.height - height, width: self.frame.width, height: height)
-        border.backgroundColor = color.cgColor
-        self.layer.addSublayer(border)
-    }
-    
-}
-
-class LoginViewController: UIViewController, UITextFieldDelegate{
-    
+class LoginViewController: UIViewController {
 
     @IBOutlet weak var commonMailaddress: UITextField!
     @IBOutlet weak var commonPassword: UITextField!
@@ -23,38 +11,38 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //キーボードreturnでAction
-        commonMailaddress.delegate = self
-        commonPassword.delegate = self
-        
-        self.view.backgroundColor = UIColor.lightGray
-        
-        //placeholderの色変更、下線追加
-        commonMailaddress.attributedPlaceholder = NSAttributedString(string: "メールアドレス", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
-        commonPassword.attributedPlaceholder = NSAttributedString(string: "パスワード", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
-        commonMailaddress.addBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
-        commonPassword.addBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
-        
-        // ボタンの装飾
-        let rgba = UIColor(red: 255/255, green: 189/255, blue: 0/255, alpha: 1.0) // ボタン背景色設定
-        let loginText = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0) // ボタンタイトル色設定
-        loginButton.frame = CGRect(x: 0, y: 0, width: 0, height: 46) //ボタンサイズ設定
-        loginButton.backgroundColor = rgba // 背景色
-        loginButton.layer.cornerRadius = 22.0 // 角丸のサイズ
-        loginButton.setTitleColor(loginText, for: UIControlState.normal) // タイトルの色
+        basicInfo()
+        ornemant()
     }
     
-    
     @objc func keyboardWillDisappear(_ notification: NSNotification) {
-        
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0{
                 self.view.frame.origin.y += keyboardSize.height
             }
         }
     }
-    //キーボードreturnで次のtextfieldへ
+
+    @IBAction func commonLoginButton(_ sender: Any) {
+        loginContent()
+    }
+    
+    @IBAction func userRegisterButtonTapped(_ sender: Any) {
+        topPageSegue()
+    }
+    
+    @IBAction func resetPassButtontapped(_ sender: Any) {
+        resetPageSegue()
+    }
+}
+
+
+extension LoginViewController: UITextFieldDelegate {
+    func basicInfo() {
+        commonMailaddress.delegate = self
+        commonPassword.delegate = self
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
@@ -66,13 +54,44 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
         return true
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+}
 
-    @IBAction func commonLoginButton(_ sender: Any) {//ログイン
+
+extension LoginViewController {
+    
+    func topPageSegue() {
+        let selectPage = self.storyboard?.instantiateViewController(withIdentifier: "topSelectPageViewController") as! topSelectPageViewController
+        
+        selectPage.modalTransitionStyle  = .crossDissolve
+        self.present(selectPage, animated: true, completion: nil)
+    }
+    
+    func resetPageSegue() {
+        let selectPage = self.storyboard?.instantiateViewController(withIdentifier: "UserResetPassViewController") as! UserResetPassViewController
+        
+        selectPage.modalTransitionStyle  = .crossDissolve
+        self.present(selectPage, animated: true, completion: nil)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    private func ornemant() {
+        commonMailaddress.attributedPlaceholder = NSAttributedString(string: "メールアドレス", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        commonPassword.attributedPlaceholder = NSAttributedString(string: "パスワード", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        commonMailaddress.addBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
+        commonPassword.addBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
+        
+        let rgba = UIColor(red: 255/255, green: 189/255, blue: 0/255, alpha: 1.0)
+        let loginText = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
+        loginButton.frame = CGRect(x: 0, y: 0, width: 0, height: 46)
+        loginButton.backgroundColor = rgba
+        loginButton.layer.cornerRadius = 22.0
+        loginButton.setTitleColor(loginText, for: UIControlState.normal)
+    }
+    
+    func loginContent() {
         guard let userEmailText = commonMailaddress.text, !userEmailText.isEmpty else {
             self.ShowMessage(messageToDisplay: "メールアドレスを記入してください。")
             return
@@ -82,47 +101,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             return
         }
         Auth.auth().signIn(withEmail: commonMailaddress.text!, password: commonPassword.text!) { (user, error) in
-            if let error = error {
+            if error != nil {
                 self.ShowMessage(messageToDisplay: "ログイン出来ません")
-                print("ログイン出来ひん！！！！！")
+                
                 return
-            } else if let user = user {
-                print("ログインできました。\(user)")
-//                self.performSegue(withIdentifier: "aaaaa", sender: nil)
-                    let mainPage = self.storyboard?.instantiateViewController(withIdentifier: "navi")
-                    self.present(mainPage!, animated: true, completion: nil)
+            } else if user != nil {
+                
+                let mainPage = self.storyboard?.instantiateViewController(withIdentifier: "navi")
+                self.present(mainPage!, animated: true, completion: nil)
             }
         }
     }
     
-    @IBAction func userRegisterButtonTapped(_ sender: Any) {
-        
-        //新規登録
-        let selectPage = self.storyboard?.instantiateViewController(withIdentifier: "topSelectPageViewController") as! topSelectPageViewController
-        
-        //ボタン押すとアニメーション発動
-        selectPage.modalTransitionStyle  = .crossDissolve
-        self.present(selectPage, animated: true, completion: nil)
-        
-    }
-    
-    //segueで繋いでいる理由は、視覚的にわかりやすくするため
-    
-    @IBAction func resetPassButtontapped(_ sender: Any) {
-        //パスワード忘れた人
-        
-        let selectPage = self.storyboard?.instantiateViewController(withIdentifier: "userResetPassViewController") as! userResetPassViewController
-        
-        //ボタン押すとアニメーション発動
-        selectPage.modalTransitionStyle  = .crossDissolve
-        self.present(selectPage, animated: true, completion: nil)
-        
-        
-        
-        
-    }
-    
-    public func ShowMessage(messageToDisplay: String) { //確認用
+    public func ShowMessage(messageToDisplay: String) {
         let alertController = UIAlertController(title: "Alert Title", message: messageToDisplay, preferredStyle: .alert)
         
         let OKAction = UIAlertAction(title: "ok", style: .default) { (action: UIAlertAction!) in
@@ -133,10 +124,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    //キーボードhide処理
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+}
+
+
+extension UITextField {
+    func addBorderBottom(height: CGFloat, color: UIColor) {
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: self.frame.height - height, width: self.frame.width, height: height)
+        border.backgroundColor = color.cgColor
+        self.layer.addSublayer(border)
     }
-    
 }
