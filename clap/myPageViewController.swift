@@ -200,7 +200,7 @@ extension myPageViewController {
             
             do {
                 try Auth.auth().signOut()
-                let fireAuthUID2 = (Auth.auth().currentUser?.uid ?? "no data")
+                _ = (Auth.auth().currentUser?.uid ?? "no data")
                 let loginPage = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
                 self.present(loginPage, animated: true, completion: nil)
             } catch {
