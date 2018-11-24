@@ -5,32 +5,22 @@ import FirebaseAuth
 import Foundation
 import SDWebImage
 
-class SubmitedNewDiaryViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
+class SubmitedNewDiaryViewController: UIViewController, UIScrollViewDelegate {
     
     let db = Firestore.firestore()
     
     let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
     
     var teamID = String()
-    
     var timeline = String()
-    
     var userNameFromFirebase = String()
-    
     var commentUserTextArr = [String]()
-    
     var commentUserNameArr = [String]()
-    
     var commentUserTimeArr = [String]()
-    
     var commentUserImageArr = [String]()
-    
     var commentIdArr = [String]()
-    
     var commentedUserName = String()
-    
     var commentUserImageToFireStore = String()
-    
     var userName = String()
     
     @IBOutlet weak var contentView: UIView!
@@ -87,6 +77,26 @@ class SubmitedNewDiaryViewController: UIViewController, UIScrollViewDelegate, UI
         textLabel5.text = "メンバーのここを褒めたい"
         textLabel6.text = "こんな練習してみたい"
         
+        displayDiary()
+        displayComment()
+        basicInfo()
+        getUserName()
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func commentUserButtonTapped(_ sender: Any) {
+        comment()
+    }
+}
+
+
+
+
+extension SubmitedNewDiaryViewController {
+    func displayDiary() {
         let userDefaults: UserDefaults = UserDefaults.standard
         timeline = (userDefaults.string(forKey: "MyDiaryData") ?? "nodata")
         
@@ -114,9 +124,9 @@ class SubmitedNewDiaryViewController: UIViewController, UIScrollViewDelegate, UI
                 print("Document does not exist")
             }
         }
-        
-        //コメント表示
-        
+    }
+    
+    func displayComment() {
         self.db.collection("users").document(fireAuthUID).getDocument { (document, error) in
             if let document = document, document.exists {
                 _ = document.data().map(String.init(describing:)) ?? "nil"
@@ -152,16 +162,9 @@ class SubmitedNewDiaryViewController: UIViewController, UIScrollViewDelegate, UI
                 print("Document does not exist")
             }
         }
-        
-        //コメント機能
-        commentUserTableView.delegate = self
-        commentUserTableView.dataSource = self
-        
-        let nibName = UINib(nibName: "commentTableViewCell", bundle: nil)
-        
-        commentUserTableView.register(nibName, forCellReuseIdentifier: "commentTableViewCell")
-        
-        //ユーザーの名前取得
+    }
+    
+    func getUserName() {
         db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot2, error) in
             guard let document2 = snapshot2 else {
                 print("erorr2 \(String(describing: error))")
@@ -173,17 +176,7 @@ class SubmitedNewDiaryViewController: UIViewController, UIScrollViewDelegate, UI
         }
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func commentUserButtonTapped(_ sender: Any) {
-        //submit or 保存ボタン押した時の時刻取得
+    func comment() {
         let now = NSDate()
         
         let formatter = DateFormatter()
@@ -246,6 +239,34 @@ class SubmitedNewDiaryViewController: UIViewController, UIScrollViewDelegate, UI
         }
     }
     
+    func randomString(length: Int) -> String {
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = UInt32(letters.length)
+        
+        var randomString = ""
+        
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+        return randomString
+    }
+}
+
+
+
+
+extension SubmitedNewDiaryViewController: UITableViewDelegate, UITableViewDataSource {
+    func basicInfo() {
+        commentUserTableView.delegate = self
+        commentUserTableView.dataSource = self
+        
+        let nibName = UINib(nibName: "commentTableViewCell", bundle: nil)
+        
+        commentUserTableView.register(nibName, forCellReuseIdentifier: "commentTableViewCell")
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return commentUserTextArr.count
@@ -263,25 +284,10 @@ class SubmitedNewDiaryViewController: UIViewController, UIScrollViewDelegate, UI
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
     }
-    
-    
-    
-    
-    func randomString(length: Int) -> String {  //ランダムID
-        
-        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        let len = UInt32(letters.length)
-        
-        var randomString = ""
-        
-        for _ in 0 ..< length {
-            let rand = arc4random_uniform(len)
-            var nextChar = letters.character(at: Int(rand))
-            randomString += NSString(characters: &nextChar, length: 1) as String
-        }
-        return randomString
-    }
 }
+
+
+
 
 extension SubmitedNewDiaryViewController: CommentTableViewCellDelegate {
     func didButtonPressed(commentID: Int) {

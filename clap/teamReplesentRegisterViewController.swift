@@ -5,22 +5,12 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseFirestore
 
-//textfieldの下線追加
-extension UITextField {
-    func trBorderBottom(height: CGFloat, color: UIColor) {
-        let border = CALayer()
-        border.frame = CGRect(x: 0, y: self.frame.height - height, width: self.frame.width, height: height)
-        border.backgroundColor = color.cgColor
-        self.layer.addSublayer(border)
-    }
-    
+enum pickerViewAttribute {
+    case Role
+    case Grade
 }
 
 class teamReplesentRegisterViewController: UIViewController {
-    enum pickerViewAttribute {
-        case Role
-        case Grade
-    }
     
     @IBOutlet weak var replesentName: UITextField!
     @IBOutlet weak var replesentEmail: UITextField!
@@ -35,10 +25,78 @@ class teamReplesentRegisterViewController: UIViewController {
     var pickerForRole = ["役割を選んでください","選手", "監督", "マネージャー"]
     var pickerForGrade = [ "学年を選んでください", "1年生", "2年生", "3年生", "4年生"]
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        placeholder(field: replesentName, string: "名前")
+        placeholder(field: replesentEmail, string: "メールアドレス")
+        placeholder(field: replesentPass, string: "パスワード")
+        placeholder(field: replesentPassAgain, string: "パスワードの確認")
+        placeholder(field: replesentRole, string: "役割")
+        placeholder(field: replesentGrade, string: "学年")
+        
+        borderOnement(field: replesentName)
+        borderOnement(field: replesentEmail)
+        borderOnement(field: replesentPass)
+        borderOnement(field: replesentPassAgain)
+        borderOnement(field: replesentRole)
+        borderOnement(field: replesentGrade)
+        
+        ornement()
+        setupUIForRole()
+        setupUIForGrade()
+    }
+    
+    @IBAction func replesentInfoRegisterButtonTapped(_ sender: Any) {
+        confirm()
+        regist()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+}
+
+
+
+
+private extension teamReplesentRegisterViewController {
+    var accessoryToolbarForRole: UIToolbar {
+        get {
+            let toolbarFrame = CGRect(x: 0, y: 0,
+                                      width: view.frame.width, height: 44)
+            let accessoryToolbar = UIToolbar(frame: toolbarFrame)
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                             target: self,
+                                             action: #selector(onDoneButtonTappedForRole(sender:)))
+            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                                target: nil,
+                                                action: nil)
+            accessoryToolbar.items = [flexibleSpace, doneButton]
+            accessoryToolbar.barTintColor = UIColor.white
+            return accessoryToolbar
+        }
+    }
     
     @objc func onDoneButtonTappedForRole(sender: UIBarButtonItem) {
         if replesentRole.isFirstResponder {
             replesentRole.resignFirstResponder()
+        }
+    }
+    
+    var accessoryToolbarForGrade: UIToolbar {
+        get {
+            let toolbarFrame = CGRect(x: 0, y: 0,
+                                      width: view.frame.width, height: 44)
+            let accessoryToolbar = UIToolbar(frame: toolbarFrame)
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                             target: self,
+                                             action: #selector(onDoneButtonTappedForGrade(sender:)))
+            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                                target: nil,
+                                                action: nil)
+            accessoryToolbar.items = [flexibleSpace, doneButton]
+            accessoryToolbar.barTintColor = UIColor.white
+            return accessoryToolbar
         }
     }
     
@@ -48,43 +106,51 @@ class teamReplesentRegisterViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //placeholderの色変更、下線追加
-        replesentName.attributedPlaceholder = NSAttributedString(string: "名前", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
-        replesentEmail.attributedPlaceholder = NSAttributedString(string: "メールアドレス", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
-        replesentPass.attributedPlaceholder = NSAttributedString(string: "パスワード", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
-        replesentPassAgain.attributedPlaceholder = NSAttributedString(string: "パスワードの確認", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
-        replesentRole.attributedPlaceholder = NSAttributedString(string: "役割", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
-        replesentGrade.attributedPlaceholder = NSAttributedString(string: "学年", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
-        
-        replesentName.trBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
-        replesentEmail.trBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
-        replesentPass.trBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
-        replesentPassAgain.trBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
-        replesentRole.trBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
-        replesentGrade.trBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
-        
-        // ボタンの装飾
-        let rgba = UIColor(red: 255/255, green: 189/255, blue: 0/255, alpha: 1.0) // ボタン背景色設定
-        let loginText = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0) // ボタンタイトル色設定
-        replesentInfoResisterButton.frame = CGRect(x: 0, y: 0, width: 0, height: 46) //ボタンサイズ設定
-        replesentInfoResisterButton.backgroundColor = rgba // 背景色
-        replesentInfoResisterButton.layer.cornerRadius = 22.0 // 角丸のサイズ
-        replesentInfoResisterButton.setTitleColor(loginText, for: UIControlState.normal) // タイトルの色
-        
-        
-        
-        setupUIForRole()
-        setupUIForGrade()
+    func setupUIForRole() {
+        replesentRole.inputView = getPickerView(type: .Role)
+        replesentRole.inputAccessoryView = accessoryToolbarForRole
+        replesentRole.text = pickerForRole[0]
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    func setupUIForGrade() {
+        replesentGrade.inputView = getPickerView(type: .Grade)
+        replesentGrade.inputAccessoryView = accessoryToolbarForGrade
+        replesentGrade.text = pickerForGrade[0]
     }
     
-    @IBAction func replesentInfoRegisterButtonTapped(_ sender: Any) {
+    func getPickerView(type: pickerViewAttribute) -> UIPickerView {
+        var pickerView = UIPickerView()
+        switch type {
+        case .Role:
+            pickerView = RolePickerView()
+        case .Grade:
+            pickerView = GradePickerView()
+        }
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        pickerView.backgroundColor = UIColor.white
+        return pickerView
+    }
+    
+    func placeholder(field: UITextField, string: String) {
+        field.attributedPlaceholder = NSAttributedString(string: string, attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        field.addBorderBottom(height: 1.0, color: UIColor.white.withAlphaComponent(0.5))
+    }
+    
+    func borderOnement(field: UITextField) {
+        field.oBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
+    }
+    
+    func ornement() {
+        let rgba = UIColor(red: 255/255, green: 189/255, blue: 0/255, alpha: 1.0)
+        let loginText = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
+        replesentInfoResisterButton.frame = CGRect(x: 0, y: 0, width: 0, height: 46)
+        replesentInfoResisterButton.backgroundColor = rgba
+        replesentInfoResisterButton.layer.cornerRadius = 22.0
+        replesentInfoResisterButton.setTitleColor(loginText, for: UIControlState.normal)
+    }
+    
+    func confirm() {
         guard let nameText = replesentName.text, !nameText.isEmpty else {
             self.ShowMessage(messageToDisplay: "名前を記入してください。")
             return
@@ -109,9 +175,10 @@ class teamReplesentRegisterViewController: UIViewController {
             self.ShowMessage(messageToDisplay: "学年を記入してください。")
             return
         }
-        
+    }
+    
+    func regist() {
         DispatchQueue.global(qos: .default).async {
-            //createUser
             Auth.auth().createUser(withEmail: self.replesentEmail.text!, password: self.replesentPass.text!) { (user, error) in
                 if let error = error {
                     print("新規登録できませんでした")
@@ -120,8 +187,6 @@ class teamReplesentRegisterViewController: UIViewController {
                 }
                 if user != nil {
                     print("新規登録できました")
-                    
-                    //login
                     Auth.auth().signIn(withEmail: self.replesentEmail.text!, password: self.replesentPass.text!) { (user, error) in
                         if let error = error {
                             print("ログインに失敗しました")
@@ -131,7 +196,6 @@ class teamReplesentRegisterViewController: UIViewController {
                         if user != nil {
                             print("ログインできました")
                             DispatchQueue.main.async {
-                                //ログインしている現ユーザーUID取得
                                 let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
                                 
                                 let dateUnix: TimeInterval = Date().timeIntervalSince1970
@@ -139,19 +203,17 @@ class teamReplesentRegisterViewController: UIViewController {
                                 
                                 let formatter = DateFormatter()
                                 formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                                
-                                let dateStr: String = formatter.string(from: date) //現在時刻取得
+                                let dateStr: String = formatter.string(from: date)
                                 let userDefaults:UserDefaults = UserDefaults.standard
-                                let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)!//teamID取得
-                                
+                                let teamID: String = (userDefaults.object(forKey: "teamID")! as? String)!
                                 let replesentData = [
                                     "name": self.replesentName.text!,
-                                     "role": self.replesentRole.text!,
-                                     "grade": self.replesentGrade.text!,
-                                     "createDate": dateStr,
-                                     "teamID": teamID,
-                                     "userID": fireAuthUID,
-                                     "image": "https://st3.depositphotos.com/7486768/17949/v/1600/depositphotos_179490486-stock-illustration-profile-anonymous-face-icon-gray.jpg"
+                                    "role": self.replesentRole.text!,
+                                    "grade": self.replesentGrade.text!,
+                                    "createDate": dateStr,
+                                    "teamID": teamID,
+                                    "userID": fireAuthUID,
+                                    "image": "https://st3.depositphotos.com/7486768/17949/v/1600/depositphotos_179490486-stock-illustration-profile-anonymous-face-icon-gray.jpg"
                                     ] as [String: String]
                                 
                                 let userRegistInfo = ["regist": true, "teamID": teamID] as [String : Any]
@@ -183,10 +245,9 @@ class teamReplesentRegisterViewController: UIViewController {
                 }
             }
         }
-        
     }
     
-    public func ShowMessage(messageToDisplay: String) { //認証用関数
+    func ShowMessage(messageToDisplay: String) {
         let alertController = UIAlertController(title: "Alert Title", message: messageToDisplay, preferredStyle: .alert)
         
         let OKAction = UIAlertAction(title: "ok", style: .default) { (action: UIAlertAction!) in
@@ -197,78 +258,16 @@ class teamReplesentRegisterViewController: UIViewController {
         
         self.present(alertController, animated: true, completion: nil)
     }
-    //キーボードhide処理
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
 }
 
 
 
-private extension teamReplesentRegisterViewController {
-    var accessoryToolbarForRole: UIToolbar {
-        get {
-            let toolbarFrame = CGRect(x: 0, y: 0,
-                                      width: view.frame.width, height: 44)
-            let accessoryToolbar = UIToolbar(frame: toolbarFrame)
-            let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
-                                             target: self,
-                                             action: #selector(onDoneButtonTappedForRole(sender:)))
-            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
-                                                target: nil,
-                                                action: nil)
-            accessoryToolbar.items = [flexibleSpace, doneButton]
-            accessoryToolbar.barTintColor = UIColor.white
-            return accessoryToolbar
-        }
-    }
-    
-    var accessoryToolbarForGrade: UIToolbar {
-        get {
-            let toolbarFrame = CGRect(x: 0, y: 0,
-                                      width: view.frame.width, height: 44)
-            let accessoryToolbar = UIToolbar(frame: toolbarFrame)
-            let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
-                                             target: self,
-                                             action: #selector(onDoneButtonTappedForGrade(sender:)))
-            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
-                                                target: nil,
-                                                action: nil)
-            accessoryToolbar.items = [flexibleSpace, doneButton]
-            accessoryToolbar.barTintColor = UIColor.white
-            return accessoryToolbar
-        }
-    }
-    
-    func setupUIForRole() {
-        replesentRole.inputView = getPickerView(type: .Role)
-        replesentRole.inputAccessoryView = accessoryToolbarForRole
-        replesentRole.text = pickerForRole[0]
-    }
-    
-    func setupUIForGrade() {
-        replesentGrade.inputView = getPickerView(type: .Grade)
-        replesentGrade.inputAccessoryView = accessoryToolbarForGrade
-        replesentGrade.text = pickerForGrade[0]
-    }
-    
-    func getPickerView(type: pickerViewAttribute) -> UIPickerView {
-        var pickerView = UIPickerView()
-        switch type {
-        case .Role:
-            pickerView = RolePickerView()
-        case .Grade:
-            pickerView = GradePickerView()
-        }
-        pickerView.dataSource = self
-        pickerView.delegate = self
-        pickerView.backgroundColor = UIColor.white
-        return pickerView
-    }
-}
 
 fileprivate class RolePickerView: UIPickerView {}
 fileprivate class GradePickerView: UIPickerView {}
+
+
+
 
 extension teamReplesentRegisterViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -288,6 +287,8 @@ extension teamReplesentRegisterViewController: UIPickerViewDataSource {
     }
     
 }
+
+
 
 
 extension teamReplesentRegisterViewController: UIPickerViewDelegate {
@@ -315,6 +316,17 @@ extension teamReplesentRegisterViewController: UIPickerViewDelegate {
         default:
             return replesentRole.text = pickerForRole[row]
         }
-        
+    }
+}
+
+
+
+
+extension UITextField {
+    func trBorderBottom(height: CGFloat, color: UIColor) {
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: self.frame.height - height, width: self.frame.width, height: height)
+        border.backgroundColor = color.cgColor
+        self.layer.addSublayer(border)
     }
 }

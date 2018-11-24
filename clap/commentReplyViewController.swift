@@ -6,7 +6,7 @@ class commentReplyViewController: UIViewController {
     
     let db = Firestore.firestore()
     
-    let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")//画像取得のため,teamID取得のため
+    let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
     
     var teamID = String()
     
@@ -69,7 +69,7 @@ class commentReplyViewController: UIViewController {
                 }
             }
         }
-        //reply表示
+        
         self.db.collection("users").document(fireAuthUID).getDocument { (document, error) in
             if let document = document, document.exists {
                 _ = document.data().map(String.init(describing:)) ?? "nil"

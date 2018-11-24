@@ -2,18 +2,8 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-//textfieldの下線追加
-extension UITextField {
-    func tBorderBottom(height: CGFloat, color: UIColor) {
-        let border = CALayer()
-        border.frame = CGRect(x: 0, y: self.frame.height - height, width: self.frame.width, height: height)
-        border.backgroundColor = color.cgColor
-        self.layer.addSublayer(border)
-    }
-    
-}
 
-class teamIdConfirmationViewController: UIViewController, UITextFieldDelegate {
+class teamIdConfirmationViewController: UIViewController {
 
     @IBOutlet weak var confirmTeamID: UITextField!
     @IBOutlet weak var confirmTeamIdButton: UIButton!
@@ -22,38 +12,39 @@ class teamIdConfirmationViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //キーボードreturnでAction
-        confirmTeamID.delegate = self
-        
-    //placeholderの色変更、下線追加
-    confirmTeamID.attributedPlaceholder = NSAttributedString(string: "チームID", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
-
-    confirmTeamID.tBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
-        
-    // ボタンの装飾
-    let rgba = UIColor(red: 255/255, green: 189/255, blue: 0/255, alpha: 1.0) // ボタン背景色設定
-    let loginText = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0) // ボタンタイトル色設定
-    confirmTeamIdButton.frame = CGRect(x: 0, y: 0, width: 0, height: 46) //ボタンサイズ設定
-    confirmTeamIdButton.backgroundColor = rgba // 背景色
-    confirmTeamIdButton.layer.cornerRadius = 20.0 // 角丸のサイズ
-    confirmTeamIdButton.setTitleColor(loginText, for: UIControlState.normal) // タイトルの色
-        
+        ornemant()
     }
-    
-    //キーボードdoneでhide処理
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return false
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    
-    
     
     @IBAction func confirmTreamIdButtonTapped(_ sender: Any) {
+        confirm()
+    }
+    
+    @IBAction func cancelbuttonTapped(_ sender: Any) {
+        cancel()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+}
+
+
+
+
+extension teamIdConfirmationViewController {
+    func ornemant() {
+        confirmTeamID.attributedPlaceholder = NSAttributedString(string: "チームID", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        confirmTeamID.tBorderBottom(height: 0.5, color: UIColor.white.withAlphaComponent(0.5))
+        let rgba = UIColor(red: 255/255, green: 189/255, blue: 0/255, alpha: 1.0)
+        let loginText = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
+        confirmTeamIdButton.frame = CGRect(x: 0, y: 0, width: 0, height: 46)
+        confirmTeamIdButton.backgroundColor = rgba
+        confirmTeamIdButton.layer.cornerRadius = 20.0
+        confirmTeamIdButton.setTitleColor(loginText, for: UIControlState.normal)
+    }
+    
+    func confirm() {
         guard let confirmText = confirmTeamID.text, !confirmText.isEmpty else {
             self.ShowMessage(messageToDisplay: "チームIDを記入してください。")
             return
@@ -71,11 +62,9 @@ class teamIdConfirmationViewController: UIViewController, UITextFieldDelegate {
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                print("成功した場合\(document)")
                 let againConfirm = self.storyboard?.instantiateViewController(withIdentifier: "teamIdConfirmAgainViewController") as! teamIdConfirmAgainViewController
                 self.present(againConfirm, animated: true, completion: nil)
             } else {
-                print("失敗した場合\(String(describing: error))")
                 let wrongConfirm = self.storyboard?.instantiateViewController(withIdentifier: "teamIdConfirmWrongViewController") as! teamIdConfirmWrongViewController
                 self.present(wrongConfirm, animated: true, completion: nil)
                 
@@ -83,26 +72,47 @@ class teamIdConfirmationViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func cancelbuttonTapped(_ sender: Any) {
+    func cancel() {
         let loginPage = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         self.present(loginPage, animated: true, completion: nil)
     }
     
-    public func ShowMessage(messageToDisplay: String) { //認証用関数
+    public func ShowMessage(messageToDisplay: String) {
         let alertController = UIAlertController(title: "Alert Title", message: messageToDisplay, preferredStyle: .alert)
         
         let OKAction = UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction!) in
-            print("ok button tapped!!")
+            print("tapped")
         }
         
         alertController.addAction(OKAction)
         
         self.present(alertController, animated: true, completion: nil)
     }
+}
+
+
+
+
+extension teamIdConfirmationViewController: UITextFieldDelegate {
+    func basicInfo() {
+        confirmTeamID.delegate = self
+    }
     
-    //キーボードhide処理
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+}
+
+
+
+
+extension UITextField {
+    func tBorderBottom(height: CGFloat, color: UIColor) {
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: self.frame.height - height, width: self.frame.width, height: height)
+        border.backgroundColor = color.cgColor
+        self.layer.addSublayer(border)
     }
     
 }

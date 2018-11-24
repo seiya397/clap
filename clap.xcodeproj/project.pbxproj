@@ -45,8 +45,8 @@
 		C9338E91215BE1C40008D2B5 /* profileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9338E90215BE1C40008D2B5 /* profileEditViewController.swift */; };
 		C9344D282130CFFD004931F1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE3C84CB212BF7AD0053EFE2 /* Info.plist */; };
 		C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D86592130808D00EDB3F2 /* registerViewController.swift */; };
+		C955CE6821A85AC300DBBF01 /* UserResetPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955CE6721A85AC300DBBF01 /* UserResetPassViewController.swift */; };
 		C96247462139D5C000BC7C69 /* mainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96247452139D5C000BC7C69 /* mainPageViewController.swift */; };
-		C962474B213B895C00BC7C69 /* userResetPassViewController.temp_caseinsensitive_rename.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962474A213B895C00BC7C69 /* userResetPassViewController.temp_caseinsensitive_rename.swift */; };
 		C962474D213B9D1D00BC7C69 /* topSelectPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */; };
 		C962474F213D36AA00BC7C69 /* memberEvaluationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */; };
 		C9624751213D383A00BC7C69 /* chatPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9624750213D383A00BC7C69 /* chatPageViewController.swift */; };
@@ -129,8 +129,8 @@
 		C92C500F217F6CB00064F3D8 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		C9338E90215BE1C40008D2B5 /* profileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileEditViewController.swift; sourceTree = "<group>"; };
 		C93D86592130808D00EDB3F2 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
+		C955CE6721A85AC300DBBF01 /* UserResetPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResetPassViewController.swift; sourceTree = "<group>"; };
 		C96247452139D5C000BC7C69 /* mainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainPageViewController.swift; sourceTree = "<group>"; };
-		C962474A213B895C00BC7C69 /* userResetPassViewController.temp_caseinsensitive_rename.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userResetPassViewController.temp_caseinsensitive_rename.swift; sourceTree = "<group>"; };
 		C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = topSelectPageViewController.swift; sourceTree = "<group>"; };
 		C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memberEvaluationViewController.swift; sourceTree = "<group>"; };
 		C9624750213D383A00BC7C69 /* chatPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatPageViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +221,7 @@
 				C9CA480A21632BE700D9C142 /* xib */,
 				BE3C84AD212BF7AB0053EFE2 /* Main.storyboard */,
 				C91C48D92189328D00F75697 /* SubmitedNewDiaryViewController.swift */,
+				C955CE6721A85AC300DBBF01 /* UserResetPassViewController.swift */,
 				C91C48D721885B3800F75697 /* GroupViewController.swift */,
 				C9DAB2712184ADBA00D0659F /* MemberSelectViewController.swift */,
 				C963CD5D217640670081C9F5 /* testScrollViewController.swift */,
@@ -245,7 +246,6 @@
 				BE3C84B5212BF7AD0053EFE2 /* Info.plist */,
 				C923A41D2130D7E70007D784 /* GoogleService-Info.plist */,
 				C96247452139D5C000BC7C69 /* mainPageViewController.swift */,
-				C962474A213B895C00BC7C69 /* userResetPassViewController.temp_caseinsensitive_rename.swift */,
 				C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */,
 				BEF298A0213F092A00E75472 /* chatViewController.swift */,
 				C9624750213D383A00BC7C69 /* chatPageViewController.swift */,
@@ -578,7 +578,6 @@
 				C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */,
 				C90648962133E2B20025AD44 /* teamIdGenerateViewController.swift in Sources */,
 				C96247462139D5C000BC7C69 /* mainPageViewController.swift in Sources */,
-				C962474B213B895C00BC7C69 /* userResetPassViewController.temp_caseinsensitive_rename.swift in Sources */,
 				C9B9438A21731E8D00A3B43A /* replyTableViewCell.swift in Sources */,
 				C99DE78D2150E3D4002EBF89 /* myPageViewController.swift in Sources */,
 				BE019DBC215F673E0019A38E /* planController.swift in Sources */,
@@ -592,6 +591,7 @@
 				C9104A4E216934EC00FDED0E /* diaryFromTimelineViewController.swift in Sources */,
 				C9708B472143DDCD0013FD4C /* teamIdConfirmationViewController.swift in Sources */,
 				BE22618F215DFCFD006C777F /* XibView.swift in Sources */,
+				C955CE6821A85AC300DBBF01 /* UserResetPassViewController.swift in Sources */,
 				C92C5010217F6CB00064F3D8 /* ScheduleTableViewCell.swift in Sources */,
 				C9DAB2722184ADBA00D0659F /* MemberSelectViewController.swift in Sources */,
 				C9CA480D21632C0B00D9C142 /* userTableViewCell.swift in Sources */,

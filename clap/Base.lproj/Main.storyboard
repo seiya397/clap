@@ -2509,7 +2509,7 @@
         <!--User Reset Pass View Controller-->
         <scene sceneID="O5W-s2-Nm8">
             <objects>
-                <viewController storyboardIdentifier="userResetPassViewController" id="NXO-M7-a3m" customClass="userResetPassViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userResetPassViewController" id="NXO-M7-a3m" customClass="UserResetPassViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nIs-Io-GoK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

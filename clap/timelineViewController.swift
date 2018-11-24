@@ -4,7 +4,6 @@ import FirebaseStorage
 import FirebaseFirestore
 import SDWebImage
 
-
 struct CellData {
     var date: Date
     var time: String
@@ -14,50 +13,12 @@ struct CellData {
     var diaryID: String
 }
 
-
-struct TableSection<SectionItem: Comparable&Hashable, RowItem>: Comparable {
-    var sectionItem: SectionItem
-    var rowItems: [RowItem]
-    
-    static func < (lhs: TableSection, rhs: TableSection) -> Bool {
-        return lhs.sectionItem > rhs.sectionItem
-    }
-    
-    static func == (lhs: TableSection, rhs: TableSection) -> Bool {
-        return lhs.sectionItem == rhs.sectionItem
-    }
-    
-    static func group(rowItems : [RowItem], by criteria : (RowItem) -> SectionItem ) -> [TableSection<SectionItem, RowItem>] {
-        let groups = Dictionary(grouping: rowItems, by: criteria)
-        return groups.map(TableSection.init(sectionItem:rowItems:)).sorted()
-    }
-}
-
-
-fileprivate func parseDate(_ str: String) -> Date {
-    let dateFormat = DateFormatter()
-    dateFormat.dateFormat = "yyyy年MM月dd日"
-    return dateFormat.date(from: str)!
-}
-
-
-fileprivate func firstDayOfMonth(date: Date) -> Date {
-    let calendar = Calendar.current
-    let components = calendar.dateComponents([.year, .month, .day], from: date)
-    return calendar.date(from: components)!
-}
-
-
-
-
-
 class timelineViewController: UIViewController {
 
     var arr = [CellData]()
     let db = Firestore.firestore()
     var fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
     var sections = [TableSection<Date, CellData>]()
-
     
     var teamIDFromFirebase: String = ""
     var dataImageFromFirestore = [Any]()
@@ -344,4 +305,43 @@ class Circle: UIButton {
             clipsToBounds = true
         }
     }
+}
+
+
+
+
+struct TableSection<SectionItem: Comparable&Hashable, RowItem>: Comparable {
+    var sectionItem: SectionItem
+    var rowItems: [RowItem]
+    
+    static func < (lhs: TableSection, rhs: TableSection) -> Bool {
+        return lhs.sectionItem > rhs.sectionItem
+    }
+    
+    static func == (lhs: TableSection, rhs: TableSection) -> Bool {
+        return lhs.sectionItem == rhs.sectionItem
+    }
+    
+    static func group(rowItems : [RowItem], by criteria : (RowItem) -> SectionItem ) -> [TableSection<SectionItem, RowItem>] {
+        let groups = Dictionary(grouping: rowItems, by: criteria)
+        return groups.map(TableSection.init(sectionItem:rowItems:)).sorted()
+    }
+}
+
+
+
+
+fileprivate func parseDate(_ str: String) -> Date {
+    let dateFormat = DateFormatter()
+    dateFormat.dateFormat = "yyyy年MM月dd日"
+    return dateFormat.date(from: str)!
+}
+
+
+
+
+fileprivate func firstDayOfMonth(date: Date) -> Date {
+    let calendar = Calendar.current
+    let components = calendar.dateComponents([.year, .month, .day], from: date)
+    return calendar.date(from: components)!
 }

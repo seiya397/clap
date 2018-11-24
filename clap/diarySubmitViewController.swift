@@ -3,6 +3,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 
+
 class diarySubmitViewController: UIViewController {
 
     let db = Firestore.firestore()
@@ -10,7 +11,6 @@ class diarySubmitViewController: UIViewController {
     let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
     
     var teamID = String()
-    
     var timeline = String()
     
     @IBOutlet weak var contentView: UIView!
@@ -53,6 +53,19 @@ class diarySubmitViewController: UIViewController {
         textLabel5.text = "メンバーのここを褒めたい"
         textLabel6.text = "こんな練習してみたい"
         
+        displayDialy()
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+
+
+
+extension diarySubmitViewController {
+    func displayDialy() {
         let userDefaults: UserDefaults = UserDefaults.standard
         timeline = (userDefaults.object(forKey: "goSubmit")! as? String)!
         
@@ -78,14 +91,6 @@ class diarySubmitViewController: UIViewController {
                 print("Document does not exist")
             }
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
     }
 }
 

@@ -3,6 +3,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 
+
 class diaryEditViewController: UIViewController {
 
     let db = Firestore.firestore()
@@ -10,7 +11,6 @@ class diaryEditViewController: UIViewController {
     let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
     
     var teamID = String()
-    
     var timeline = String()
     
     @IBOutlet weak var contentView: UIView!
@@ -38,13 +38,12 @@ class diaryEditViewController: UIViewController {
         super.viewDidLoad()
         
         contentView.backgroundColor = UIColor.white
-        
-        textView1.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-        textView2.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-        textView3.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-        textView4.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-        textView5.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-        textView6.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        borderBottom(field: textView1)
+        borderBottom(field: textView2)
+        borderBottom(field: textView3)
+        borderBottom(field: textView4)
+        borderBottom(field: textView5)
+        borderBottom(field: textView6)
         
         textLabel1.text = "今日のタイトル"
         textLabel2.text = "ここが良かった！今日の自分"
@@ -53,6 +52,33 @@ class diaryEditViewController: UIViewController {
         textLabel5.text = "メンバーのここを褒めたい"
         textLabel6.text = "こんな練習してみたい"
         
+        displayDiary()
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func draftButtonTapped(_ sender: Any) {
+        confirm()
+        draft()
+    }
+    
+    @IBAction func submitButtonTapped(_ sender: Any) {
+        confirm()
+        submit()
+    }
+}
+
+
+
+
+extension diaryEditViewController {
+    func borderBottom(field: UITextView) {
+        field.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+    }
+    
+    func displayDiary() {
         let userDefaults: UserDefaults = UserDefaults.standard
         timeline = (userDefaults.object(forKey: "goDraft")! as? String)!
         
@@ -80,15 +106,7 @@ class diaryEditViewController: UIViewController {
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func draftButtonTapped(_ sender: Any) {
+    func confirm() {
         guard let textView1IsEmpty = textView1.text, !textView1IsEmpty.isEmpty else {
             self.ShowMessage(messageToDisplay: "項目2を記入してください。")
             return
@@ -113,7 +131,9 @@ class diaryEditViewController: UIViewController {
             self.ShowMessage(messageToDisplay: "項目6を記入してください。")
             return
         }
-        
+    }
+    
+    func draft() {
         self.db.collection("diary")
             .document(self.teamID)
             .collection("diaries")
@@ -126,42 +146,17 @@ class diaryEditViewController: UIViewController {
                 "考えました明日の課題": self.textView4.text!,
                 "メンバーのここを褒めたい": self.textView5.text!,
                 "こんな練習してみたい": self.textView6.text!])
-        { err in
-            if let err = err {
-                print("Error updating document: \(err)")
-            } else {
-                print("draftの書き換え成功")
-                self.dismiss(animated: true, completion: nil)
-            }
+            { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("draftの書き換え成功")
+                    self.dismiss(animated: true, completion: nil)
+                }
         }
     }
     
-    @IBAction func submitButtonTapped(_ sender: Any) {
-        guard let textView1IsEmpty = textView1.text, !textView1IsEmpty.isEmpty else {
-            self.ShowMessage(messageToDisplay: "項目2を記入してください。")
-            return
-        }
-        guard let textView2IsEmpty = textView2.text, !textView2IsEmpty.isEmpty else {
-            self.ShowMessage(messageToDisplay: "項目2を記入してください。")
-            return
-        }
-        guard let textView3IsEmpty = textView3.text, !textView3IsEmpty.isEmpty else {
-            self.ShowMessage(messageToDisplay: "項目3を記入してください。")
-            return
-        }
-        guard let textView4IsEmpty = textView4.text, !textView4IsEmpty.isEmpty else {
-            self.ShowMessage(messageToDisplay: "項目4を記入してください。")
-            return
-        }
-        guard let textView5IsEmpty = textView5.text, !textView5IsEmpty.isEmpty else {
-            self.ShowMessage(messageToDisplay: "項目5を記入してください。")
-            return
-        }
-        guard let textView6IsEmpty = textView6.text, !textView6IsEmpty.isEmpty else {
-            self.ShowMessage(messageToDisplay: "項目6を記入してください。")
-            return
-        }
-        
+    func submit() {
         self.db.collection("diary")
             .document(self.teamID)
             .collection("diaries")
@@ -174,18 +169,17 @@ class diaryEditViewController: UIViewController {
                 "考えました明日の課題": self.textView4.text!,
                 "メンバーのここを褒めたい": self.textView5.text!,
                 "こんな練習してみたい": self.textView6.text!])
-        { err in
-            if let err = err {
-                print("Error updating document: \(err)")
-            } else {
-                print("提出の書き換え成功")
-                self.dismiss(animated: true, completion: nil)
-            }
-            
+            { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("提出の書き換え成功")
+                    self.dismiss(animated: true, completion: nil)
+                }
         }
     }
     
-    public func ShowMessage(messageToDisplay: String) { //認証用関数
+    func ShowMessage(messageToDisplay: String) {
         let alertController = UIAlertController(title: "Alert Title", message: messageToDisplay, preferredStyle: .alert)
         
         let OKAction = UIAlertAction(title: "ok", style: .default) { (action: UIAlertAction!) in

@@ -5,33 +5,23 @@ import FirebaseAuth
 import Foundation
 import SDWebImage
 
-class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
+
+class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate {
     
     let db = Firestore.firestore()
     
     let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
     
     var teamID = String()
-    
     var timeline = String()
-    
     var userNameFromFirebase = String()
-    
-    
     var commentUserTextArr = [String]()
-    
     var commentUserNameArr = [String]()
-    
     var commentUserTimeArr = [String]()
-    
     var commentUserImageArr = [String]()
-    
     var commentIdArr = [String]()
-    
     var commentedUserName = String()
-    
     var commentUserImageToFireStore = String()
-    
     var userName = String()
     
     @IBOutlet weak var contentView: UIView!
@@ -67,19 +57,19 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
         
         contentView.backgroundColor = UIColor.white
         
-        textView1.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-        textView2.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-        textView3.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-        textView4.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-        textView5.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-        textView6.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        borderBottom(field: textView1)
+        borderBottom(field: textView2)
+        borderBottom(field: textView3)
+        borderBottom(field: textView4)
+        borderBottom(field: textView5)
+        borderBottom(field: textView6)
         
-        textView1.isEditable = false
-        textView2.isEditable = false
-        textView3.isEditable = false
-        textView4.isEditable = false
-        textView5.isEditable = false
-        textView6.isEditable = false
+        endEditing(field: textView1)
+        endEditing(field: textView2)
+        endEditing(field: textView3)
+        endEditing(field: textView4)
+        endEditing(field: textView5)
+        endEditing(field: textView6)
         
         textLabel1.text = "今日のタイトル"
         textLabel2.text = "ここが良かった！今日の自分"
@@ -88,6 +78,80 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
         textLabel5.text = "メンバーのここを褒めたい"
         textLabel6.text = "こんな練習してみたい"
         
+        displayDiary()
+        displayComment()
+        basicInfo()
+        
+        getUserName()
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func commentUserButtonTapped(_ sender: Any) {
+        commentRegister()
+    }
+}
+
+
+
+
+extension diaryFromTimelineViewController: CommentTableViewCellDelegate {
+    func didButtonPressed(commentID: Int) {
+        let userDefaults:UserDefaults = UserDefaults.standard
+        userDefaults.removeObject(forKey: "goReply")
+        userDefaults.set(self.commentIdArr[commentID], forKey: "goReply")
+        userDefaults.synchronize()
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "commentReplyViewController") as! commentReplyViewController
+            self.present(vc, animated: true, completion: nil)
+    }
+}
+
+
+
+
+extension diaryFromTimelineViewController: UITableViewDelegate, UITableViewDataSource {
+    func basicInfo() {
+        commentUserTableView.delegate = self
+        commentUserTableView.dataSource = self
+        
+        let nibName = UINib(nibName: "commentTableViewCell", bundle: nil)
+        
+        commentUserTableView.register(nibName, forCellReuseIdentifier: "commentTableViewCell")
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return commentUserTextArr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = commentUserTableView.dequeueReusableCell(withIdentifier: "commentTableViewCell", for: indexPath) as! commentTableViewCell
+        
+        cell.commentInit(image: URL(string: commentUserImageArr[indexPath.item]),name: commentUserNameArr[indexPath.item], text: commentUserTextArr[indexPath.item], time: commentUserTimeArr[indexPath.item])
+        cell.delegate = self
+        cell.commentID = indexPath.item
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
+}
+
+
+
+
+extension diaryFromTimelineViewController {
+    func borderBottom(field: UITextView) {
+        field.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+    }
+    
+    func endEditing(field: UITextView) {
+        field.isEditable = false
+    }
+    
+    func displayDiary() {
         let userDefaults: UserDefaults = UserDefaults.standard
         timeline = (userDefaults.string(forKey: "goTimeline") ?? "nodata")
         
@@ -98,7 +162,7 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
                 self.commentedUserName = String(describing: document["name"]!)
                 let userURL = URL(string: document["image"] as! String)
                 self.commentUserImage.sd_setImage(with: userURL)
-            self.db.collection("diary").document(self.teamID).collection("diaries").document(self.timeline).addSnapshotListener { (snapshot, error) in
+                self.db.collection("diary").document(self.teamID).collection("diaries").document(self.timeline).addSnapshotListener { (snapshot, error) in
                     guard let document = snapshot else {
                         print("erorr2 \(String(describing: error))")
                         return
@@ -115,9 +179,9 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
                 print("Document does not exist")
             }
         }
-        
-        //コメント表示
-        
+    }
+    
+    func displayComment() {
         self.db.collection("users").document(fireAuthUID).getDocument { (document, error) in
             if let document = document, document.exists {
                 _ = document.data().map(String.init(describing:)) ?? "nil"
@@ -129,7 +193,7 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
                     } else {
                         var i = 0
                         for document in querySnapshot!.documents {
-
+                            
                             
                             print("成功成功成功成功成功\(document.documentID) => \(document.data())")
                             
@@ -153,19 +217,11 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
                 print("Document does not exist")
             }
         }
-
-        //コメント機能
-        commentUserTableView.delegate = self
-        commentUserTableView.dataSource = self
-        
-        let nibName = UINib(nibName: "commentTableViewCell", bundle: nil)
-        
-        commentUserTableView.register(nibName, forCellReuseIdentifier: "commentTableViewCell")
-        
-        //ユーザーの名前取得
+    }
+    
+    func getUserName() {
         db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot2, error) in
             guard let document2 = snapshot2 else {
-                print("erorr2 \(String(describing: error))")
                 return
             }
             let data = document2.data()
@@ -174,17 +230,7 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
         }
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func commentUserButtonTapped(_ sender: Any) {
-        //submit or 保存ボタン押した時の時刻取得
+    func commentRegister() {
         let now = NSDate()
         
         let formatter = DateFormatter()
@@ -247,28 +293,7 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
         }
     }
     
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return commentUserTextArr.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = commentUserTableView.dequeueReusableCell(withIdentifier: "commentTableViewCell", for: indexPath) as! commentTableViewCell
-        
-        cell.commentInit(image: URL(string: commentUserImageArr[indexPath.item]),name: commentUserNameArr[indexPath.item], text: commentUserTextArr[indexPath.item], time: commentUserTimeArr[indexPath.item])
-        cell.delegate = self
-        cell.commentID = indexPath.item
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
-    }
-    
-
-    
-    
-    func randomString(length: Int) -> String {  //ランダムID
+    func randomString(length: Int) -> String {
         
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         let len = UInt32(letters.length)
@@ -281,22 +306,5 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate, U
             randomString += NSString(characters: &nextChar, length: 1) as String
         }
         return randomString
-    }
-}
-
-extension diaryFromTimelineViewController: CommentTableViewCellDelegate {
-    func didButtonPressed(commentID: Int) {
-        
-        let userDefaults:UserDefaults = UserDefaults.standard
-        
-        userDefaults.removeObject(forKey: "goReply")
-        
-        userDefaults.set(self.commentIdArr[commentID], forKey: "goReply")
-        
-        userDefaults.synchronize()
-        
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "commentReplyViewController") as! commentReplyViewController
-        
-            self.present(vc, animated: true, completion: nil)
     }
 }

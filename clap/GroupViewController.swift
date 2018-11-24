@@ -10,8 +10,7 @@ struct GroupData {
     var userID: String?
 }
 
-
-class GroupViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class GroupViewController: UIViewController {
     
     let db = Firestore.firestore()
     var teamIDFromFirebase: String = ""
@@ -22,19 +21,13 @@ class GroupViewController: UIViewController, UICollectionViewDelegate, UICollect
     var groupImageArr = [Any]()
     var groupTextArr = [Any]()
     var groupUserIDArr = [Any]()
-    
     var memberNewDiaryID = [Any]()
     
     @IBOutlet weak var memberCollection: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
-        memberCollection.backgroundColor = UIColor.white
-        let nibName = UINib(nibName: "memberCollectionViewCell", bundle: nil)
-        memberCollection.register(nibName, forCellWithReuseIdentifier: "memberCell")
-        memberCollection.delegate = self
-        memberCollection.dataSource = self
+        basicInfo()
         navColor()
         getGroupData()
     }
@@ -44,50 +37,13 @@ class GroupViewController: UIViewController, UICollectionViewDelegate, UICollect
         memberCollection.reloadData()
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return groupData.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = memberCollection.dequeueReusableCell(withReuseIdentifier: "memberCell", for: indexPath) as! memberCollectionViewCell
-        let cellData = groupData[indexPath.row]
-        cell.memberImage.sd_setImage(with: cellData.image)
-        cell.memberTitle.text = cellData.text
-        cell.userID.text = cellData.userID
-        cell.groupDefaultColor()
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let cellData = groupData[indexPath.row]
-        
-        let userID = cellData.userID
-        
-        self.getDiaryData(userID: userID!)
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = self.view.frame.size.width / 4
-        return CGSize(width: size, height: size)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
-        let inset =  (self.view.frame.width / 4) / 5
-        
-        return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return (self.view.frame.width / 4) / 5
-    }
-    
     @IBAction func memberAddButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "goMemberSelect", sender: nil)
     }
 }
+
+
+
 
 private extension GroupViewController {
     private func getGroupData() {
@@ -110,13 +66,10 @@ private extension GroupViewController {
                         self.groupImageArr.append((documentData["image"] as? String)!)
                         self.groupTextArr.append((documentData["name"] as? String)!)
                         self.groupUserIDArr.append((documentData["userID"] as? String)!)
-                        self.groupData.append(GroupData(image: URL(string: self.groupImageArr[i] as! String), text: self.groupTextArr[i] as! String, userID: self.groupUserIDArr[i] as! String))
+                        self.groupData.append(GroupData(image: URL(string: self.groupImageArr[i] as! String), text: (self.groupTextArr[i] as! String), userID: (self.groupUserIDArr[i] as! String)))
                         i += 1
                     }
                     self.memberCollection.reloadData()
-                    //提出しているかしていないかを写真の下の名前のところに表示したい　そのために必要なこと
-                    //１、単純にここでもう一度passを通して取りに行く
-                    //２、usersの中に日付: diaryIDとsetして一緒に取る
                 }
             })
         }
@@ -180,5 +133,59 @@ private extension GroupViewController {
     func navColor() {
         navigationController?.navigationBar.barTintColor = UIColor(red: 0/255, green: 82/255, blue: 212/255, alpha: 100)
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+}
+
+
+
+
+extension GroupViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func basicInfo() {
+        self.view.backgroundColor = UIColor.white
+        memberCollection.backgroundColor = UIColor.white
+        let nibName = UINib(nibName: "memberCollectionViewCell", bundle: nil)
+        memberCollection.register(nibName, forCellWithReuseIdentifier: "memberCell")
+        memberCollection.delegate = self
+        memberCollection.dataSource = self
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return groupData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = memberCollection.dequeueReusableCell(withReuseIdentifier: "memberCell", for: indexPath) as! memberCollectionViewCell
+        let cellData = groupData[indexPath.row]
+        cell.memberImage.sd_setImage(with: cellData.image)
+        cell.memberTitle.text = cellData.text
+        cell.userID.text = cellData.userID
+        cell.groupDefaultColor()
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cellData = groupData[indexPath.row]
+        
+        let userID = cellData.userID
+        
+        self.getDiaryData(userID: userID!)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = self.view.frame.size.width / 4
+        return CGSize(width: size, height: size)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        let inset =  (self.view.frame.width / 4) / 5
+        
+        return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return (self.view.frame.width / 4) / 5
     }
 }
