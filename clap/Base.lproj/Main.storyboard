@@ -2506,10 +2506,10 @@
             </objects>
             <point key="canvasLocation" x="746" y="-665"/>
         </scene>
-        <!--User Reset Pass View Controller-->
+        <!--Reset View Controller-->
         <scene sceneID="O5W-s2-Nm8">
             <objects>
-                <viewController storyboardIdentifier="userResetPassViewController" id="NXO-M7-a3m" customClass="UserResetPassViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserResetPassViewController" id="NXO-M7-a3m" customClass="ResetViewController" customModule="clap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nIs-Io-GoK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2549,7 +2549,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="resetPassButtonTapped:" destination="NXO-M7-a3m" eventType="touchUpInside" id="dwV-Q2-fVI"/>
+                                    <action selector="resetTapped:" destination="NXO-M7-a3m" eventType="touchUpInside" id="crP-87-Ywa"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="passResetBar" translatesAutoresizingMaskIntoConstraints="NO" id="nSM-qH-M9O">
@@ -2563,7 +2563,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="usercancelButtonTapped:" destination="NXO-M7-a3m" eventType="touchUpInside" id="if5-pF-82Y"/>
+                                    <action selector="cancelTapped:" destination="NXO-M7-a3m" eventType="touchUpInside" id="hug-k2-Of3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2594,8 +2594,8 @@
                         <barButtonItem key="leftBarButtonItem" title="back" id="J7e-0Q-tK7"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="renewButton" destination="hvz-Rb-R6R" id="E3G-w2-rab"/>
-                        <outlet property="userEmailForResetPass" destination="wZd-Xz-Kph" id="Wgz-rU-d7f"/>
+                        <outlet property="emailForResetPass" destination="wZd-Xz-Kph" id="Ja4-S4-9BH"/>
+                        <outlet property="renewButton" destination="hvz-Rb-R6R" id="Ved-Is-j8B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OMW-0l-HB8" userLabel="First Responder" sceneMemberID="firstResponder"/>
