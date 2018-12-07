@@ -5,6 +5,7 @@ import FirebaseAuth
 import FirebaseUI
 import SDWebImage
 
+
 class myPageViewController: UIViewController{
     
     @IBOutlet weak var userName: UITextField!
@@ -14,30 +15,17 @@ class myPageViewController: UIViewController{
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userEmail: UITextField!
     
-    
     let imagePicker = UIImagePickerController()
-    
     var selectedPhoto = UIImage()
-    
     let db = Firestore.firestore()
-    
     var teamIDFromFirebase: String = ""
-    
     var imageURL = [String: String]()
-    
     var editFlag = false
-    
-    //キーボードhide処理
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //ナビゲーションバーの背景、タイトル色指定
-        navigationController?.navigationBar.barTintColor = UIColor(red: 0/255, green: 82/255, blue: 212/255, alpha: 100)
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        ornement()
         
         userName.isEnabled = false
         teamIDLabel.isEnabled = false
@@ -45,11 +33,44 @@ class myPageViewController: UIViewController{
         userRole.isEnabled = false
         userEmail.isEnabled = false
         
+        displayEmail()
+        displayUserContent()
+    }
+    
+    @IBAction func editButtonTapped(_ sender: Any) {
+        edit()
+    }
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        save()
+    }
+    
+    @IBAction func logoutButton(_ sender: Any) {
+        logout()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+}
+
+
+
+
+extension myPageViewController {
+    func ornement() {
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0/255, green: 82/255, blue: 212/255, alpha: 100)
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+    
+    func displayEmail() {
         let user = Auth.auth().currentUser
         if let user = user {
             userEmail.text = user.email
         }
-
+    }
+    
+    func displayUserContent() {
         let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
         
         db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot3, error) in
@@ -104,17 +125,24 @@ class myPageViewController: UIViewController{
             }
             guard let data = document.data() else { return }
             let url = data["image"] as? String ?? ""
-                let URLIMAGE = URL(string: url)
-                self.userImage.sd_setImage(with: URLIMAGE)
+            let URLIMAGE = URL(string: url)
+            self.userImage.sd_setImage(with: URLIMAGE)
         }
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
-    @IBAction func editButtonTapped(_ sender: Any) {
+    @objc func selectPhoto(_ tap: UITapGestureRecognizer) {
+        self.imagePicker.delegate = self
+        self.imagePicker.isEditing = true
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            self.imagePicker.sourceType = .camera
+        } else {
+            self.imagePicker.sourceType = .photoLibrary
+        }
+        
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func edit() {
         userName.isEnabled = true
         userName.textColor = UIColor.gray
         userRole.isEnabled = true
@@ -124,7 +152,7 @@ class myPageViewController: UIViewController{
         self.editFlag = true
     }
     
-    @IBAction func saveButtonTapped(_ sender: Any) {
+    func save() {
         if editFlag == false {
             return
         } else {
@@ -140,14 +168,12 @@ class myPageViewController: UIViewController{
         }
     }
     
-    
     func uploadObject(name: String, role: String, email: String) {
         
         let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
         
         db.collection("users").document(fireAuthUID).updateData(["name": name, "role": role]) { (error) in
-            if let error = error {
-                print("アップデートに失敗しました\(error.localizedDescription)")
+            if error != nil {
                 return
             } else {
                 print("アップデートに成功しました")
@@ -156,16 +182,14 @@ class myPageViewController: UIViewController{
         
         Auth.auth().currentUser?.updateEmail(to: email, completion: { (error) in
             if let _ = error {
-                print("メールアドレスの更新に失敗しました")
                 return
             } else {
                 print("メールアドレスの更新に成功しました")
             }
         })
-        
     }
     
-    @IBAction func logoutButton(_ sender: Any) {
+    func logout() {
         let alert: UIAlertController = UIAlertController(title: "表示", message: "ログアウトしますか？", preferredStyle:  UIAlertControllerStyle.actionSheet)
         
         let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
@@ -176,9 +200,7 @@ class myPageViewController: UIViewController{
             
             do {
                 try Auth.auth().signOut()
-                print("ログアウトできました")
-                let fireAuthUID2 = (Auth.auth().currentUser?.uid ?? "no data")
-                print("ログアウト後\(fireAuthUID2)")
+                _ = (Auth.auth().currentUser?.uid ?? "no data")
                 let loginPage = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
                 self.present(loginPage, animated: true, completion: nil)
             } catch {
@@ -200,19 +222,10 @@ class myPageViewController: UIViewController{
         
         present(alert, animated: true, completion: nil)
     }
-    
-    @objc func selectPhoto(_ tap: UITapGestureRecognizer) {
-        self.imagePicker.delegate = self
-        self.imagePicker.isEditing = true
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            self.imagePicker.sourceType = .camera
-        } else {
-            self.imagePicker.sourceType = .photoLibrary
-        }
-        
-        self.present(imagePicker, animated: true, completion: nil)
-    }
 }
+
+
+
 
 extension myPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -257,17 +270,13 @@ extension myPageViewController: UIImagePickerControllerDelegate, UINavigationCon
                 print("画像のアップロードに成功\(String(describing: metaData))")
                 profileImageRef.downloadURL(completion: { (getURL, err) in
                     if err != nil {
-                        print("failed to get a downloadData")
                         return
                     }
-                    print("succcess to get a URL")
-                    print(getURL ?? " can't get a URL")
                     
                     self.imageURL = ["image": getURL?.absoluteString ?? " "]
                     self.db.collection("users").document(UidForPath).updateData(self.imageURL) {
                         err in
                         if err != nil {
-                            print("firestoreにURLをsetできませんでした")
                             return
                         }
                         print("firestoreにURLをsetできました")
@@ -290,6 +299,9 @@ extension myPageViewController: UIImagePickerControllerDelegate, UINavigationCon
         self.present(alertController, animated: true, completion: nil)
     }
 }
+
+
+
 
 class CircleImageViewForMypage: UIImageView {
     @IBInspectable var borderColor :  UIColor = UIColor.black

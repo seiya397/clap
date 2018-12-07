@@ -2,47 +2,52 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
+
 class commentReplyViewController: UIViewController {
     
     let db = Firestore.firestore()
-    
     let fireAuthUID = (Auth.auth().currentUser?.uid ?? "no data")
-    
     var teamID = String()
-    
     var userName = String()
-    
     var commentID = String()
-    
     var timeline = String()
     
     
     var replyUserImageToFirebase = String()
-    
     var replyUserNameArr = [String]()
-    
     var replyUserTextArr = [String]()
-    
     var replyUserTimeArr = [String]()
-    
     var replyUserImageArr = [String]()
     
     
     @IBOutlet weak var commentedUserImage: UIImageView!
-    
     @IBOutlet weak var commentedUserText: UITextView!
-    
     @IBOutlet weak var replyUserTable: UITableView!
-    
     @IBOutlet weak var replyUserImage: UIImageView!
-    
     @IBOutlet weak var replyUserText: UITextView!
-    
     @IBOutlet weak var replyUserButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        displayComment()
+        displayReply()
+        delegate()
+    }
+    
+    @IBAction func replyButtonTapped(_ sender: Any) {
+        replyTap()
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+
+
+
+extension commentReplyViewController {
+    func displayComment() {
         let userDefaults: UserDefaults = UserDefaults.standard
         
         timeline = (userDefaults.string(forKey: "goTimeline") ?? "nodata")
@@ -69,7 +74,9 @@ class commentReplyViewController: UIViewController {
                 }
             }
         }
-        
+    }
+    
+    func displayReply() {
         self.db.collection("users").document(fireAuthUID).getDocument { (document, error) in
             if let document = document, document.exists {
                 _ = document.data().map(String.init(describing:)) ?? "nil"
@@ -81,8 +88,6 @@ class commentReplyViewController: UIViewController {
                     } else {
                         for document in querySnapshot!.documents {
                             
-                            print("成功成功成功成功成功\(document.documentID) => \(document.data())")
-                            
                             guard let documentData: [String : Any] = document.data() else { return }
                             
                             self.replyUserNameArr.append(documentData["name"] as? String ?? "")
@@ -91,7 +96,7 @@ class commentReplyViewController: UIViewController {
                             self.replyUserTimeArr.append(documentData["update_at"] as? String ?? "")
                             
                             self.replyUserImageArr.append(documentData["image"] as? String ?? "")
-
+                            
                         }
                         self.replyUserTable.reloadData()
                     }
@@ -100,19 +105,9 @@ class commentReplyViewController: UIViewController {
                 print("Document does not exist")
             }
         }
-        
-        //コメント機能
-        replyUserTable.delegate = self
-        replyUserTable.dataSource = self
-        
-        let nibName = UINib(nibName: "replyTableViewCell", bundle: nil)
-        
-        replyUserTable.register(nibName, forCellReuseIdentifier: "replyTableViewCell")
-        
-        
     }
     
-    @IBAction func replyButtonTapped(_ sender: Any) {
+    func replyTap() {
         db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot, error) in
             guard let document = snapshot else {
                 print("erorr2 \(String(describing: error))")
@@ -130,8 +125,8 @@ class commentReplyViewController: UIViewController {
             
             
             let replyRandomNum = self.randomString(length: 20)
-        
-        
+            
+            
             let replyData = ["id": replyRandomNum,"commonID": self.commentID,  "userID": self.fireAuthUID, "text": self.replyUserText.text!, "name": self.userName, "update_at": submitOrReplyTime, "image": self.replyUserImageToFirebase] as [String : Any]
             
             self.db.collection("diary").document(self.teamID).collection("diaries").document(self.timeline).collection("reply").document(replyRandomNum).setData(replyData) {
@@ -172,11 +167,7 @@ class commentReplyViewController: UIViewController {
         }
     }
     
-    @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func randomString(length: Int) -> String {  //ランダムID
+    func randomString(length: Int) -> String {
         
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         let len = UInt32(letters.length)
@@ -191,10 +182,23 @@ class commentReplyViewController: UIViewController {
         
         return randomString
     }
-    
 }
 
+
+
+
 extension commentReplyViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func delegate() {
+        replyUserTable.delegate = self
+        replyUserTable.dataSource = self
+        
+        let nibName = UINib(nibName: "replyTableViewCell", bundle: nil)
+        
+        replyUserTable.register(nibName, forCellReuseIdentifier: "replyTableViewCell")
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return replyUserTextArr.count
     }

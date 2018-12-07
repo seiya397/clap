@@ -66,6 +66,7 @@ private extension GroupViewController {
                         self.groupImageArr.append((documentData["image"] as? String)!)
                         self.groupTextArr.append((documentData["name"] as? String)!)
                         self.groupUserIDArr.append((documentData["userID"] as? String)!)
+                        //if文でからなら定型文字 
                         self.groupData.append(GroupData(image: URL(string: self.groupImageArr[i] as! String), text: (self.groupTextArr[i] as! String), userID: (self.groupUserIDArr[i] as! String)))
                         i += 1
                     }
@@ -118,7 +119,7 @@ private extension GroupViewController {
         return formatter.string(from: now)
     }
     
-    private func ShowMessage(messageToDisplay: String) { //確認用
+    private func ShowMessage(messageToDisplay: String) {
         let alertController = UIAlertController(title: "Alert Title", message: messageToDisplay, preferredStyle: .alert)
         
         let OKAction = UIAlertAction(title: "ok", style: .default) { (action: UIAlertAction!) in

@@ -67,7 +67,7 @@ extension LoginViewController {
     }
     
     func resetPageSegue() {
-        let selectPage = self.storyboard?.instantiateViewController(withIdentifier: "UserResetPassViewController") as! UserResetPassViewController
+        let selectPage = self.storyboard?.instantiateViewController(withIdentifier: "UserResetPassViewController") as! ResetViewController
         
         selectPage.modalTransitionStyle  = .crossDissolve
         self.present(selectPage, animated: true, completion: nil)

@@ -1,11 +1,3 @@
-//
-//  topSelectPageViewController.swift
-//  clap
-//
-//  Created by オムラユウキ on 2018/09/02.
-//  Copyright © 2018年 Seiya. All rights reserved.
-//
-
 import UIKit
 
 class topSelectPageViewController: UIViewController {
