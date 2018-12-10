@@ -102,6 +102,8 @@ extension testScrollViewController {
             self.userName.text = data["name"] as? String ?? ""
         }
         
+        //スクロールビューの中身の質問内容
+        
         scrollData = [
             scrollViewDataStruct(title: "よかった点", placeHolder: ""),
             scrollViewDataStruct(title: "今日の反省", placeHolder: ""),
@@ -110,6 +112,8 @@ extension testScrollViewController {
             scrollViewDataStruct(title: "監督へのメッセージ", placeHolder: ""),
             scrollViewDataStruct(title: "今日のタイトル", placeHolder: ""),
         ]
+        
+        //スクロールビューの表示サイズ
         
         scrollView.contentSize.width = self.scrollView.frame.width * CGFloat(scrollData.count)
         
