@@ -119,12 +119,30 @@ extension GroupDiaryViewController {
     }
     
     func save() {
-        validate(textView: diaryText1, message: "項目1を記入してください。")
-        validate(textView: diaryText2, message: "項目2を記入してください。")
-        validate(textView: diaryText3, message: "項目3を記入してください。")
-        validate(textView: diaryText4, message: "項目4を記入してください。")
-        validate(textView: diaryText5, message: "項目5を記入してください。")
-        validate(textView: diaryText6, message: "項目6を記入してください。")
+        guard let text1 = diaryText1.text, !text1.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目1を記入してください。")
+            return
+        }
+        guard let text2 = diaryText2.text, !text2.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目2を記入してください。")
+            return
+        }
+        guard let text3 = diaryText3.text, !text3.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目3を記入してください。")
+            return
+        }
+        guard let text4 = diaryText4.text, !text4.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目4を記入してください。")
+            return
+        }
+        guard let text5 = diaryText5.text, !text5.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目5を記入してください。")
+            return
+        }
+        guard let text6 = diaryText6.text, !text6.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目6を記入してください。")
+            return
+        }
         
         db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot3, error) in
             guard let document3 = snapshot3 else {
@@ -173,12 +191,30 @@ extension GroupDiaryViewController {
     }
     
     func overwrite() {
-        validate(textView: diaryText1, message: "項目1を記入してください。")
-        validate(textView: diaryText2, message: "項目2を記入してください。")
-        validate(textView: diaryText3, message: "項目3を記入してください。")
-        validate(textView: diaryText4, message: "項目4を記入してください。")
-        validate(textView: diaryText5, message: "項目5を記入してください。")
-        validate(textView: diaryText6, message: "項目6を記入してください。")
+        guard let text1 = diaryText1.text, !text1.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目1を記入してください。")
+            return
+        }
+        guard let text2 = diaryText2.text, !text2.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目2を記入してください。")
+            return
+        }
+        guard let text3 = diaryText3.text, !text3.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目3を記入してください。")
+            return
+        }
+        guard let text4 = diaryText4.text, !text4.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目4を記入してください。")
+            return
+        }
+        guard let text5 = diaryText5.text, !text5.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目5を記入してください。")
+            return
+        }
+        guard let text6 = diaryText6.text, !text6.isEmpty else {
+            self.ShowMessage(messageToDisplay: "項目6を記入してください。")
+            return
+        }
         
         db.collection("users").document(fireAuthUID).addSnapshotListener { (snapshot3, error) in
             guard let document3 = snapshot3 else {
@@ -237,13 +273,6 @@ extension GroupDiaryViewController {
         alertController.addAction(OKAction)
         
         self.present(alertController, animated: true, completion: nil)
-    }
-    
-    func validate(textView: UITextView, message: String) {
-        guard let todoText = textView.text, !todoText.isEmpty else {
-            self.ShowMessage(messageToDisplay: message)
-            return
-        }
     }
     
     func randomString(length: Int) -> String {
