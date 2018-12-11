@@ -13,6 +13,29 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         basicInfo()
         ornemant()
+        func showRange(between startDate: Date, and endDate: Date) {
+            // Make sure startDate is smaller, than endDate
+            guard startDate < endDate else { return }
+            
+            // Get the current calendar, i think in your case it should some fscalendar instance
+            let calendar = Calendar.current
+            // Calculate the endDate for your current calendar
+            let calendarEndDate = calendar.startOfDay(for: endDate)
+            
+            // Lets create a variable, what we can increase day by day
+            var currentDate = calendar.startOfDay(for: startDate)
+            
+            // Run a loop until we reach the end date
+            while(currentDate <= calendarEndDate) {
+                // Print the current date
+                print(currentDate)
+                // Add one day at the time
+                currentDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
+            }
+        }
+        let today = Date()
+        let tenDaysLater = Calendar.current.date(byAdding: .day, value: 10, to: today)!
+        showRange(between: today, and: tenDaysLater)
     }
     
     @objc func keyboardWillDisappear(_ notification: NSNotification) {

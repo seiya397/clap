@@ -15,6 +15,7 @@ class MemberSelectViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var memberAddButton: UIButton!
+    @IBOutlet weak var toolBar: UINavigationBar!
     
     let db = Firestore.firestore()
     var teamIDFromFirebase: String = ""
@@ -29,6 +30,7 @@ class MemberSelectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        toolBar.clipsToBounds = true
         basicInfo()
         delegate()
         memberAddButton.isHidden = true

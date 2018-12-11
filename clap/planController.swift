@@ -21,9 +21,11 @@ class planController: UIViewController {
     @IBOutlet weak var getEndDate: UITextField!
     @IBOutlet weak var startTime: UITextField!
     @IBOutlet weak var endTime: UITextField!
+    @IBOutlet weak var ToolBar: UINavigationBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ToolBar.clipsToBounds = true
         displayDate()
         setupUIForStart()
         setupUIForEnd()

@@ -44,6 +44,7 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var textLabel6: UILabel!
     @IBOutlet weak var textView6: UITextView!
     
+    @IBOutlet weak var toolBar: UINavigationBar!
     
     
     @IBOutlet weak var commentUserCount: UILabel!
@@ -56,6 +57,7 @@ class diaryFromTimelineViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         contentView.backgroundColor = UIColor.white
+        toolBar.clipsToBounds = true
         
         borderBottom(field: textView1)
         borderBottom(field: textView2)

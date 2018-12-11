@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -53,10 +53,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDl-6r-fS9">
                                 <rect key="frame" x="20" y="8" width="60" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="TAQ-eQ-vPd"/>
-                                    <constraint firstAttribute="height" constant="60" id="bpK-qe-OMj"/>
-                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="30"/>
@@ -68,14 +64,18 @@
                         <constraints>
                             <constraint firstItem="SyP-sw-7M8" firstAttribute="leading" secondItem="mtK-6i-Dqd" secondAttribute="leading" constant="20" id="0Mu-sy-Ozq"/>
                             <constraint firstAttribute="height" constant="100" id="1TC-sa-FWn"/>
+                            <constraint firstItem="lDl-6r-fS9" firstAttribute="top" secondItem="mtK-6i-Dqd" secondAttribute="top" constant="8" id="75d-OB-edu"/>
                             <constraint firstItem="ece-1U-xiq" firstAttribute="leading" secondItem="mtK-6i-Dqd" secondAttribute="leading" constant="20" id="8fD-Q9-wrh"/>
                             <constraint firstAttribute="trailing" secondItem="lDl-6r-fS9" secondAttribute="trailing" constant="20" id="C1e-MN-c2p"/>
+                            <constraint firstAttribute="trailing" secondItem="lDl-6r-fS9" secondAttribute="trailing" constant="20" id="DeN-j7-TVL"/>
+                            <constraint firstItem="lDl-6r-fS9" firstAttribute="leading" secondItem="mtK-6i-Dqd" secondAttribute="leading" constant="20" id="EFM-hi-h9C"/>
                             <constraint firstItem="ece-1U-xiq" firstAttribute="top" secondItem="lDl-6r-fS9" secondAttribute="bottom" constant="8" id="J8I-f3-gvG"/>
                             <constraint firstItem="ece-1U-xiq" firstAttribute="top" secondItem="SyP-sw-7M8" secondAttribute="bottom" constant="8" id="Zlz-0T-ScL"/>
                             <constraint firstAttribute="width" constant="100" id="gWb-kG-pga"/>
                             <constraint firstAttribute="trailing" secondItem="SyP-sw-7M8" secondAttribute="trailing" constant="20" id="gcw-hR-eXZ"/>
                             <constraint firstItem="lDl-6r-fS9" firstAttribute="top" secondItem="mtK-6i-Dqd" secondAttribute="top" constant="8" id="o2s-yU-hVF"/>
                             <constraint firstItem="lDl-6r-fS9" firstAttribute="leading" secondItem="mtK-6i-Dqd" secondAttribute="leading" constant="20" id="qAc-qf-e2h"/>
+                            <constraint firstItem="ece-1U-xiq" firstAttribute="top" secondItem="lDl-6r-fS9" secondAttribute="bottom" constant="8" id="tHl-Y9-rGK"/>
                             <constraint firstItem="bdX-sG-pji" firstAttribute="leading" secondItem="mtK-6i-Dqd" secondAttribute="leading" id="w42-xX-FuJ"/>
                             <constraint firstItem="bdX-sG-pji" firstAttribute="top" secondItem="mtK-6i-Dqd" secondAttribute="top" constant="67" id="w7n-v9-Lxy"/>
                             <constraint firstItem="SyP-sw-7M8" firstAttribute="top" secondItem="mtK-6i-Dqd" secondAttribute="top" constant="8" id="yYf-vB-Pz0"/>

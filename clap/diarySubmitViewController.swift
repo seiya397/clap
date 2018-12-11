@@ -33,11 +33,14 @@ class diarySubmitViewController: UIViewController {
     @IBOutlet weak var textLabel6: UILabel!
     @IBOutlet weak var textView6: UITextView!
     
+    @IBOutlet weak var toolBar: UINavigationBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         contentView.backgroundColor = UIColor.white
+        
+        toolBar.clipsToBounds = true
         
         textView1.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         textView2.addBorderBottom(height: 1.0, color: UIColor.lightGray)

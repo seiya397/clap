@@ -45,6 +45,7 @@
 		C9338E91215BE1C40008D2B5 /* profileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9338E90215BE1C40008D2B5 /* profileEditViewController.swift */; };
 		C9344D282130CFFD004931F1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE3C84CB212BF7AD0053EFE2 /* Info.plist */; };
 		C93D865A2130808D00EDB3F2 /* registerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D86592130808D00EDB3F2 /* registerViewController.swift */; };
+		C94E122221BFAB8600EB7EAE /* GroupDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94E122121BFAB8600EB7EAE /* GroupDiaryViewController.swift */; };
 		C96247462139D5C000BC7C69 /* mainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96247452139D5C000BC7C69 /* mainPageViewController.swift */; };
 		C962474D213B9D1D00BC7C69 /* topSelectPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */; };
 		C962474F213D36AA00BC7C69 /* memberEvaluationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */; };
@@ -129,6 +130,7 @@
 		C92C500F217F6CB00064F3D8 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		C9338E90215BE1C40008D2B5 /* profileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileEditViewController.swift; sourceTree = "<group>"; };
 		C93D86592130808D00EDB3F2 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
+		C94E122121BFAB8600EB7EAE /* GroupDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDiaryViewController.swift; sourceTree = "<group>"; };
 		C96247452139D5C000BC7C69 /* mainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainPageViewController.swift; sourceTree = "<group>"; };
 		C962474C213B9D1D00BC7C69 /* topSelectPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = topSelectPageViewController.swift; sourceTree = "<group>"; };
 		C962474E213D36AA00BC7C69 /* memberEvaluationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memberEvaluationViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				C963CD5D217640670081C9F5 /* testScrollViewController.swift */,
 				C9104A4D216934EC00FDED0E /* diaryFromTimelineViewController.swift */,
 				C9104A4F2169352000FDED0E /* diarySubmitViewController.swift */,
+				C94E122121BFAB8600EB7EAE /* GroupDiaryViewController.swift */,
 				C9104A4B216934AE00FDED0E /* diaryEditViewController.swift */,
 				BE019DBB215F673E0019A38E /* planController.swift */,
 				C98EBCBD21A8E97800EC2200 /* ResetViewController.swift */,
@@ -571,6 +574,7 @@
 				C90648982133F1EA0025AD44 /* scheduleViewController.swift in Sources */,
 				C9169697214CDE85002EECEF /* teamReplesentRegisterViewController.swift in Sources */,
 				C9338E91215BE1C40008D2B5 /* profileEditViewController.swift in Sources */,
+				C94E122221BFAB8600EB7EAE /* GroupDiaryViewController.swift in Sources */,
 				C9162C9121367F3800370F34 /* managerUpdateViewController.swift in Sources */,
 				C923A4232130F23D0007D784 /* LoginViewController.swift in Sources */,
 				C98EBCBE21A8E97800EC2200 /* ResetViewController.swift in Sources */,
