@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,8 +41,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="texttexttexttexttextexttexttext" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nh0-yR-GXu">
-                        <rect key="frame" x="70" y="30" width="230" height="25"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="texttexttexttexttextext" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nh0-yR-GXu">
+                        <rect key="frame" x="70" y="30" width="192" height="25"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -54,7 +54,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ThJ-fu-n5T">
-                        <rect key="frame" x="270" y="53" width="30" height="28"/>
+                        <rect key="frame" x="270" y="36" width="30" height="28"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <state key="normal" title="返信">
                             <color key="titleColor" red="0.28375518620000001" green="0.5751196932" blue="0.90372270349999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -72,10 +72,10 @@
                     <constraint firstItem="wau-mh-MoH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="W0W-Fw-XoN"/>
                     <constraint firstItem="C8b-Np-qFD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="buS-KP-WUq"/>
                     <constraint firstItem="Jdj-Jm-evb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="gny-hQ-1rb"/>
-                    <constraint firstItem="ThJ-fu-n5T" firstAttribute="top" secondItem="C8b-Np-qFD" secondAttribute="bottom" constant="28" id="hh2-z6-dCb"/>
+                    <constraint firstItem="ThJ-fu-n5T" firstAttribute="top" secondItem="C8b-Np-qFD" secondAttribute="bottom" constant="11" id="hh2-z6-dCb"/>
                     <constraint firstItem="Jdj-Jm-evb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="i4p-7U-GxG"/>
                     <constraint firstAttribute="trailing" secondItem="ThJ-fu-n5T" secondAttribute="trailing" constant="20" id="k1p-Oj-08H"/>
-                    <constraint firstAttribute="trailing" secondItem="Nh0-yR-GXu" secondAttribute="trailing" constant="20" id="qgT-Ye-F8d"/>
+                    <constraint firstAttribute="trailing" secondItem="Nh0-yR-GXu" secondAttribute="trailing" constant="58" id="qgT-Ye-F8d"/>
                     <constraint firstAttribute="trailing" secondItem="C8b-Np-qFD" secondAttribute="trailing" constant="20" id="yiQ-Pa-eXM"/>
                 </constraints>
             </tableViewCellContentView>
