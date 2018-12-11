@@ -36,7 +36,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ece-1U-xiq">
-                                <rect key="frame" x="20" y="76" width="60" height="16"/>
+                                <rect key="frame" x="8" y="76" width="84" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -65,7 +65,7 @@
                             <constraint firstItem="SyP-sw-7M8" firstAttribute="leading" secondItem="mtK-6i-Dqd" secondAttribute="leading" constant="20" id="0Mu-sy-Ozq"/>
                             <constraint firstAttribute="height" constant="100" id="1TC-sa-FWn"/>
                             <constraint firstItem="lDl-6r-fS9" firstAttribute="top" secondItem="mtK-6i-Dqd" secondAttribute="top" constant="8" id="75d-OB-edu"/>
-                            <constraint firstItem="ece-1U-xiq" firstAttribute="leading" secondItem="mtK-6i-Dqd" secondAttribute="leading" constant="20" id="8fD-Q9-wrh"/>
+                            <constraint firstItem="ece-1U-xiq" firstAttribute="leading" secondItem="mtK-6i-Dqd" secondAttribute="leading" constant="8" id="8fD-Q9-wrh"/>
                             <constraint firstAttribute="trailing" secondItem="lDl-6r-fS9" secondAttribute="trailing" constant="20" id="C1e-MN-c2p"/>
                             <constraint firstAttribute="trailing" secondItem="lDl-6r-fS9" secondAttribute="trailing" constant="20" id="DeN-j7-TVL"/>
                             <constraint firstItem="lDl-6r-fS9" firstAttribute="leading" secondItem="mtK-6i-Dqd" secondAttribute="leading" constant="20" id="EFM-hi-h9C"/>
@@ -79,7 +79,7 @@
                             <constraint firstItem="bdX-sG-pji" firstAttribute="leading" secondItem="mtK-6i-Dqd" secondAttribute="leading" id="w42-xX-FuJ"/>
                             <constraint firstItem="bdX-sG-pji" firstAttribute="top" secondItem="mtK-6i-Dqd" secondAttribute="top" constant="67" id="w7n-v9-Lxy"/>
                             <constraint firstItem="SyP-sw-7M8" firstAttribute="top" secondItem="mtK-6i-Dqd" secondAttribute="top" constant="8" id="yYf-vB-Pz0"/>
-                            <constraint firstAttribute="trailing" secondItem="ece-1U-xiq" secondAttribute="trailing" constant="20" id="yuo-ht-U4k"/>
+                            <constraint firstAttribute="trailing" secondItem="ece-1U-xiq" secondAttribute="trailing" constant="8" id="yuo-ht-U4k"/>
                         </constraints>
                     </view>
                 </subviews>
