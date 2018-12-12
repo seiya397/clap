@@ -35,6 +35,10 @@ class GroupViewController: UIViewController {
         super.viewDidLoad()
         basicInfo()
         navColor()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getGroupData()
     }
     
@@ -54,7 +58,10 @@ class GroupViewController: UIViewController {
 
 private extension GroupViewController {
     private func getGroupData() {
-       
+        groupData = [GroupData]()
+        groupImageArr = []
+        groupTextArr = []
+        groupUserIDArr = []
        //firebaseのusersからリアルタイムのアップデート情報を取得
     self.db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot3, error) in
             guard let document3 = snapshot3 else {
