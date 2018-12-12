@@ -33,11 +33,13 @@ class diaryEditViewController: UIViewController {
     @IBOutlet weak var textLabel6: UILabel!
     @IBOutlet weak var textView6: UITextView!
     
+    @IBOutlet weak var toolBar: UINavigationBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         contentView.backgroundColor = UIColor.white
+        toolBar.clipsToBounds = true
         borderBottom(field: textView1)
         borderBottom(field: textView2)
         borderBottom(field: textView3)

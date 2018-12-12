@@ -43,6 +43,7 @@ class SubmitedNewDiaryViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var textLabel6: UILabel!
     @IBOutlet weak var textView6: UITextView!
     
+    @IBOutlet weak var toolBar: UINavigationBar!
     
     
     @IBOutlet weak var commentUserCount: UILabel!
@@ -55,6 +56,8 @@ class SubmitedNewDiaryViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         contentView.backgroundColor = UIColor.white
+        
+        toolBar.clipsToBounds = true
         
         textView1.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         textView2.addBorderBottom(height: 1.0, color: UIColor.lightGray)

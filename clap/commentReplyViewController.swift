@@ -27,8 +27,11 @@ class commentReplyViewController: UIViewController {
     @IBOutlet weak var replyUserText: UITextView!
     @IBOutlet weak var replyUserButton: UIButton!
     
+    @IBOutlet weak var toolBar: UINavigationBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        toolBar.clipsToBounds = true
         displayComment()
         displayReply()
         delegate()
