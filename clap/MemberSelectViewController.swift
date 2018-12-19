@@ -157,6 +157,7 @@ extension MemberSelectViewController: UICollectionViewDelegate, UICollectionView
             cell.memberTitle.text = cellData.text
             cell.userID.text = cellData.userID
             cell.memberSelectDefaultColor()
+            
         }
         return cell
     }

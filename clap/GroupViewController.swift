@@ -104,7 +104,9 @@ private extension GroupViewController {
             })
         }
     }
+   
     
+    //最新日誌情報
     func getDiaryData(userID: String) {
        self.memberNewDiaryID = []
         self.db.collection("users").document(self.fireAuthUID).addSnapshotListener { (snapshot3, error) in
@@ -117,7 +119,8 @@ private extension GroupViewController {
             let newSubmitDate = self.getNewSubmitDate()
            
             //firebaseのdiary-diariesの
-            //userIDが一致してて、提出状況submitが提出trueされている状態で、日付dateがnewSubmitDate=getNewSubmitDateで取ってきた本日付けの日付のドキュメントを取ってくる。
+            //userIDが一致してて、提出状況submitが提出trueされている状態で、日付dateがnewSubmitDate=getNewSubmitDateで取ってきた
+            //本日付けの日付のドキュメントを取ってくる。
             self.db.collection("diary").document(self.teamIDFromFirebase).collection("diaries").whereField("userID", isEqualTo: userID).whereField("submit", isEqualTo: true).whereField("date", isEqualTo: newSubmitDate).getDocuments(completion: { (query, err) in
                 if err != nil {
                     return
@@ -128,9 +131,13 @@ private extension GroupViewController {
                     //ない場合 i = 1  diaryID = NO DATA
                     var i = 0
                     for document in query!.documents {
-                        guard var documentData: [String: Any] = document.data() else { return }
+                        guard var documentData: [String: Any] = document.data() else {
+                        self.memberNewDiaryID.append("新着なし")
+                            return }
                         self.memberNewDiaryID.append(documentData["diaryID"] as? String ?? "NO DATA")
                         i += 1
+                        print("今日は")
+                        print (self.memberNewDiaryID)
                     }
                     //memberNewDiaryIDに値がない場合、
                     //MyDiaryDataを消して、"新着日誌はありません"のアラートを出す。

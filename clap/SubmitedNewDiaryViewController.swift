@@ -25,7 +25,6 @@ class SubmitedNewDiaryViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var contentView: UIView!
     
-    @IBOutlet weak var textLabel1: UILabel!
     @IBOutlet weak var textView1: UITextView!
     
     @IBOutlet weak var textLabel2: UILabel!
@@ -73,7 +72,6 @@ class SubmitedNewDiaryViewController: UIViewController, UIScrollViewDelegate {
         textView5.isEditable = false
         textView6.isEditable = false
         
-        textLabel1.text = "今日のタイトル"
         textLabel2.text = "ここが良かった！今日の自分"
         textLabel3.text = "監督へのメッセージ"
         textLabel4.text = "考えました明日の課題"

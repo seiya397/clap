@@ -212,7 +212,7 @@ extension GroupDiaryViewController {
             return
         }
         guard let text6 = diaryText6.text, !text6.isEmpty else {
-            self.ShowMessage(messageToDisplay: "項目6を記入してください。")
+            self.ShowMessage(messageToDisplay: "タイトルを記入してください。")
             return
         }
         
